@@ -1,0 +1,29 @@
+.block-item {
+  position: relative;
+  display: block;
+  padding: ($unit * 1.5) ($unit * 2);
+  margin-bottom: 1px;
+
+  background: $color-front;
+  box-shadow: 0 1px 2px 0 rgba(60,79,89,0.20);
+  border-radius: 3px;
+}
+
+a.block-item {
+  & {
+    transition: all 250ms;
+  }
+  &:hover {
+    background: mix($color-brand,$color-front,4%);
+  }
+}
+
+/*
+.switch {
+  .block-item & {
+    cursor: pointer;
+    margin: -12px -16px;
+    padding: 12px  16px;
+  }
+}
+*/

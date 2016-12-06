@@ -1,0 +1,43 @@
+$shade-color:         #000 !default;
+$tint-color:          #FFF !default;
+$tone-color:          gray !default;
+
+
+// Screen sizes
+$size-mini:            500px !default;
+$size-small:           768px !default;
+$size-medium:          992px !default;
+$size-large:          1200px !default;
+$size-oversized:      1500px !default;
+
+$size-container:       960px !default;
+
+
+// 2. Unit grid
+//
+// 4 | 8 16 32 64 128 256 512 1024 2048 4096
+// 4 | 4 8 12 20 32 52 84 136 220 356
+
+$unit:  8px;
+
+
+// 3. Gutters
+
+$gutter-xxs:          $unit /  2; //  4px
+$gutter-xs:           $unit *  1; //  8px
+$gutter-sm:           $unit *  2; // 16px
+$gutter:              $unit *  4; // 32px
+$gutter-md:           $unit *  4; // 32px
+$gutter-lg:           $unit *  8; // 64px
+$gutter-xl:           $unit * 12; // 96px
+
+
+$layer-dialog:      90;
+$layer-backdrop:    80;
+$layer-modal:       70;
+$layer-navigation:  60;
+$layer-controls:    50;
+$layer-content:     40;
+
+
+$base-background: #F9F9F9;

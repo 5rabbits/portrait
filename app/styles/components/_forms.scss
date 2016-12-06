@@ -1,0 +1,13 @@
+.input-max-medium {
+  width: 280px;
+
+  @include response(from laptop) {
+    width: 500px;
+  }
+
+}
+
+.input-max-small {
+  width: 240px;
+  display: inline-block;
+}

@@ -1,0 +1,94 @@
+@function map-deep-get($map, $keys...) {
+  $value: $map;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+
+@function map-get-value($map, $key, $msg) {
+  @if map-has-key($map, $key) {
+    @return map-get($map, $key);
+  }
+  @else {
+    @error $msg;
+  }
+}
+
+@function map-deep-get($map, $keys...) {
+  $value: $map;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+
+@mixin expose-map($map) {
+  @each $property, $value in $map  {
+    #{$property}: $value;
+  }
+}
+
+/// DEBUG
+/// http://www.sitepoint.com/debugging-sass-maps/
+
+/// Compute the maximum depth of a map
+/// @param {Map} $map
+/// @return {Number} max depth of `$map`
+@function depth($map) {
+  $level: 1;
+
+  @each $key, $value in $map {
+    @if type-of($value) == "map" {
+      $level: max(depth($value) + 1, $level);
+    }
+  }
+
+  @return $level;
+}
+
+/// Prints a map as a CSS rule
+/// @param {Map} $map
+@mixin debug-map($map,$class) {
+  @at-root {
+    @debug-map >> #{$class} {
+      //__toString__: inspect($map);
+      __length__: length($map);
+      __depth__: depth($map);
+      __keys__: map-keys($map);
+      __properties__ {
+        @each $key, $value in $map {
+          #{'(' + type-of($value) + ') ' + $key}: inspect($value);
+        }
+      }
+    }
+  }
+}
+
+@mixin debug-list($list,$class) {
+  @at-root {
+    @debug-list >> #{$class} {
+      //__toString__: inspect($list);
+      __length__: length($list);
+      //__keys__: list-keys($list);
+      __properties__ {
+        @each $value in $list {
+          #{type-of($value)}: inspect($value);
+        }
+      }
+    }
+  }
+}
+
+@mixin debug($source,$class:"") {
+  $type: type-of($source);
+  @if      ($type == list) { @include debug-list($source, $class); }
+  @else if ($type == map)  { @include  debug-map($source, $class); }
+  @else    {
+    @at-root {
+      @debug-value >> #{$class} {
+        #{type-of($source)}: "#{$source}";
+      }
+    }
+  }
+}

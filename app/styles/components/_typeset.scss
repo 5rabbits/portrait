@@ -1,0 +1,34 @@
+$typography: (
+  mega:     ( font-size:  56px, line-height: normal, letter-spacing:  -.1px, ),
+  jumbo:    ( font-size:  44px, line-height: normal, letter-spacing: -.05px, ),
+  display:  ( font-size:  34px, line-height: normal, letter-spacing:    0px, ),
+
+  headline: ( font-size:  24px, line-height: normal, letter-spacing:    0px, ),
+  title:    ( font-size:  20px, line-height: normal, letter-spacing:  .05px, ),
+  subhead:  ( font-size:  18px, line-height: normal, letter-spacing:   .1px, ),
+
+  body:     ( font-size:  16px, line-height:   24px, letter-spacing:   .1px, ),
+  footnote: ( font-size:  13px, line-height:   16px, letter-spacing:   .2px, ),
+  caption:  ( font-size:  12px, line-height:   16px, letter-spacing:   .2px, ),
+  small:    ( font-size:  10px, line-height: normal, letter-spacing:   .2px, ),
+);
+
+@mixin typography($name) {
+  $properties: map-get($typography,$name);
+  @include expose-map($properties);
+}
+
+body           { @include typography(body); line-height: 1; }
+
+.type-mega     { @include typography(mega);     }
+.type-jumbo    { @include typography(jumbo);    }
+.type-display  { @include typography(display);  }
+
+.type-headline { @include typography(headline); }
+.type-title    { @include typography(title);    }
+.type-subhead  { @include typography(subhead);  }
+
+.type-body     { @include typography(body);     }
+.type-footnote { @include typography(footnote); }
+.type-caption  { @include typography(caption);  }
+.type-small    { @include typography(small);    }

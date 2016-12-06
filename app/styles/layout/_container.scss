@@ -1,0 +1,54 @@
+$container-default-width: 1120px; // $unit * 140
+$container-page-width:    1120px; // $unit * 140
+$container-max-width:     1400px; // $unit * 175
+
+
+.container,
+.container-max,
+.container-fluid,
+.container-page {
+  margin-right: auto;
+  margin-left: auto;
+  @include clearfix;
+}
+
+.container {
+  max-width: $container-default-width;
+}
+
+.container-max,
+.container-fluid {
+  height: 100%;
+  padding-left:  $gutter-sm;
+  padding-right: $gutter-sm;
+}
+.container-max {
+  max-width: $container-max-width;
+}
+
+.container-page {
+  padding-top: $gutter-sm * 1.5;
+  padding-bottom: $gutter-sm * 1.5;
+  max-width: $container-page-width;
+}
+
+@include response(to mobile) {
+  .section-content > .container-max {
+    padding-left:  0;
+    padding-right: 0;
+  }
+
+  .container-page {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+@include response(from desktop) {
+  .container-page {
+    padding-top: $gutter * 2;
+    padding-bottom: $gutter * 2;
+  }
+}
+
+

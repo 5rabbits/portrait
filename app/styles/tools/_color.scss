@@ -1,0 +1,84 @@
+@function solidify($alpha-color, $background-color: white) {
+  $percent: alpha($alpha-color) * 100%;
+  $opaque: opacify($alpha-color, 1);
+  $color-dark-solid: mix($opaque, $background-color, $percent);
+  @return $color-dark-solid;
+}
+
+/// Mixes a color with black.
+///
+/// @param {Color} $color
+///
+/// @param {Number (Percentage)} $percent
+///   The amount of black to be mixed in.
+///
+/// @example scss - Usage
+///   .element {
+///     background-color: shade(#ffbb52, 60%);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-color: #664a20;
+///   }
+///
+/// @return {Color}
+
+$shade-color: #000 !default;
+
+@function shade($color, $percent) {
+  @return mix($shade-color, $color, $percent);
+}
+
+
+/// Mixes a color with white.
+///
+/// @param {Color} $color
+///
+/// @param {Number (Percentage)} $percent
+///   The amount of white to be mixed in.
+///
+/// @example scss - Usage
+///   .element {
+///     background-color: tint(#6ecaa6, 40%);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-color: #a8dfc9;
+///   }
+///
+/// @return {Color}
+
+$tint-color: #FFF !default;
+
+@function tint($color, $percent) {
+  @return mix($tint-color, $color, $percent);
+}
+
+
+
+/// Mixes a color with gray.
+///
+/// @param {Color} $color
+///
+/// @param {Number (Percentage)} $percent
+///   The amount of gray to be mixed in.
+///
+/// @example scss - Usage
+///   .element {
+///     background-color: tone(#ffbb52, 60%);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     background-color: #664a20;
+///   }
+///
+/// @return {Color}
+
+$tone-color: gray !default;
+
+@function tone($color, $percent) {
+  @return mix($tone-color, $color, $percent);
+}

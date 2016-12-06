@@ -1,0 +1,57 @@
+//
+//
+// TIME ENTRY
+//
+// 1. Base styles
+// 2. Runing state
+// 3. Reviewed state
+// 4. Editing state
+//
+//
+
+
+// 1. Base styles
+
+.timeentry,
+.timeentry-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.timeentry-content,
+.timeentry-info {
+  flex: 1;
+}
+
+.timeentry-activity {
+  width: 30px;
+  position: absolute;
+  display: none;
+}
+
+.timeentry-block {
+  padding-left: $unit * 2;
+  display: inline-block;
+}
+
+
+// 2. Runing state
+
+.timeentry--runing {
+
+}
+
+
+// 3. Reviewed state
+
+.timeentry--reviewed {
+
+}
+
+
+// 4. Editing state
+
+.timeentry--editing {
+
+}

@@ -1,0 +1,156 @@
+//
+// THEMES
+//
+// 1. Colors
+// 2. Shades
+// 3. Functions
+// 4. Mixins
+// 5. Variables
+// 6. Styles
+// 7. Themes
+//
+
+
+$theme-dark:       $color-text !default;
+$theme-light:      $color-inverse !default;
+
+
+// 1. Colors
+
+$themes: (
+  dark:  $theme-dark,
+  light: $theme-light,
+);
+
+
+// 2. Shades
+
+$theme-dark-shades: (
+  icon:      .6,
+  primary:   .9,
+  secondary: .6,
+  disabled:  .3,
+  hint:      .3,
+  divider:   .1,
+);
+
+$theme-light-shades: (
+  icon:      .8,
+  primary:    1,
+  secondary: .7,
+  disabled:  .4,
+  hint:      .4,
+  divider:   .2,
+);
+
+
+// 3. Functions
+
+@function dark-color($shade) {
+  $color: ();
+  @if $shade == solid {
+    $color: $theme-dark;
+  }
+  @else {
+    @if type_of($shade) == string {
+      $color: rgba($theme-dark, map-get($theme-dark-shades, $shade));
+    }
+    @else if type_of($shade) == number {
+      $color: rgba($theme-dark, $shade);
+    }
+  }
+  @return $color;
+}
+
+@function light-color($shade) {
+  $color: ();
+  @if $shade == solid {
+    $color: $theme-light;
+  }
+  @else {
+    @if type_of($shade) == string {
+      $color: rgba($theme-light, map-get($theme-light-shades, $shade));
+    }
+    @else if type_of($shade) == number {
+      $color: rgba($theme-light, $shade);
+    }
+  }
+  @return $color;
+}
+
+@function theme-color($theme: dark, $shade: solid) {
+  $color: ();
+  @if $theme == dark {
+    $color: dark-color($shade);
+  }
+  @elseif $theme == light {
+    $color: light-color($shade);
+  }
+  @else {
+    $color: "El tema indicado no existe."
+  }
+  @return $color;
+}
+
+
+// 4. Mixins
+
+@mixin color-theme-base($theme: dark) {
+  & {
+    color: theme-color($theme, primary);
+  }
+  a {
+    color: theme-color($theme, solid);
+  }
+}
+
+@mixin color-theme-classes($theme: dark) {
+  .color-solid          { color: theme-color($theme, solid); }
+  .color-icon           { color: theme-color($theme, icon); }
+  .color-primary        { color: theme-color($theme, primary); }
+  .color-secondary      { color: theme-color($theme, secondary); }
+  .color-disabled       { color: theme-color($theme, disabled); }
+  .color-hint           { color: theme-color($theme, hint); }
+  .color-divider        { color: theme-color($theme, divider); }
+  .color-soft           { color: theme-color($theme, divider); }
+}
+
+
+// 5. Variables
+
+$color-dark-icon:       dark-color(icon);
+$color-dark-primary:    dark-color(primary);
+$color-dark-secondary:  dark-color(secondary);
+$color-dark-hint:       dark-color(hint);
+$color-dark-divider:    dark-color(divider);
+
+$color-light-icon:      light-color(icon);
+$color-light-primary:   light-color(primary);
+$color-light-secondary: light-color(secondary);
+$color-light-hint:      light-color(hint);
+$color-light-divider:   light-color(divider);
+
+
+// 6. Styles
+
+body {
+  background-color: $color-base;
+  color: dark-color(primary);
+}
+a {
+  color: dark-color(solid);
+}
+@include color-theme-classes(dark);
+
+
+// 7. Themes
+
+.theme-dark {
+  @include color-theme-base(dark);
+  @include color-theme-classes(dark);
+}
+
+.theme-light {
+  @include color-theme-base(light);
+  @include color-theme-classes(light);
+}

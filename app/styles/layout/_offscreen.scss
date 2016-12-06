@@ -1,0 +1,61 @@
+//
+// OFF SCREEN
+//
+// 1. Variables
+// 2. Base styles
+// 3. Showing panel
+//
+
+
+// 1. Variables
+
+$offscreen-panel-width: 300px;
+$offscreen-panel-top:   $layout-navigation-size + $section-controls-size;
+$offscreen-panel-move:  -$offscreen-panel-width / 2;
+
+
+// 2. Base styles
+
+.offscreen-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.offscreen-aside,
+.offscreen-content {
+  transition: all 250ms;
+}
+
+.offscreen-aside {
+  position: fixed;
+  top: $offscreen-panel-top;
+  right: auto;
+  bottom: 0;
+  left: auto;
+  width: $offscreen-panel-width;
+  transform: translate3d($offscreen-panel-move,0,0);
+  opacity: 0;
+  pointer-events: none;
+  padding-right: $gutter;
+}
+
+.offscreen-content {
+  height: 100%;
+}
+
+
+// 3. Showing panel
+
+.offscreen--show {
+
+  .offscreen-aside {
+    transform: translate3d(0,0,0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .offscreen-content {
+    margin-left: $offscreen-panel-width;
+  }
+
+}

@@ -1,0 +1,9 @@
+.link {
+  & {
+    border-bottom: 1px solid dark-color(divider);
+    transition: all 250ms;
+  }
+  &:hover {
+    border-color: dark-color(hint)
+  }
+}

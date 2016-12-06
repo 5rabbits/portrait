@@ -1,0 +1,73 @@
+
+.app {
+  @extend %stretch-view;
+  @extend %flex-vertical;
+}
+.app-header {
+  height: 48px;
+  background-color: shade($color-brand,65%);
+  color: $light-text-color;
+}
+.app-main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+.section {
+  @extend %stretch-view;
+  @extend %flex-vertical;
+}
+.section-header {
+  & {
+    height: 64px;
+    background-color: $color-front;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10);
+    position: relative;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    background-image: linear-gradient(0deg, rgba(#042649,0) 0%, rgba(#042649,.05) 100%);
+    width: 100%;
+    height: 64px;
+    bottom: -100%;
+    position: absolute;
+    pointer-events: none;
+  }
+}
+.section-content {
+  @extend %flex-content;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+
+
+/*
+.app {
+  @extend %flex-vertical;
+}
+.app-header {
+  height: 48px;
+  //flex: 0 48px;
+}
+.app-main {
+  @extend %flex-content;
+}
+
+.section {
+  @extend %flex-vertical;
+}
+.section-header {
+  height: 64px;
+  //flex: 0 64px;
+}
+.section-content {
+  @extend %flex-content;
+  @extend %scrollable;
+}
+*/

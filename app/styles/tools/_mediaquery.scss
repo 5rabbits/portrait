@@ -1,0 +1,121 @@
+//
+//  MEDIA QUERY VARIABLES, FUNCTIONS AND MIXIN
+//  gist.github.com/cristianferrarig/4755293
+//
+//  @author  Cristian Ferrari
+//  @email   cristianferrarig@gmail.com
+//  @github  cristianferrarig
+//
+//  # Usage
+//  @import "vendor/mediaquery";
+//
+//  # Mixin usage:
+//  @include response(print)      { /* CSS here ... */ };
+//  @include response(to small)   { /* CSS here ... */ };
+//  @include response(from small) { /* CSS here ... */ };
+//
+//  @include response(to 320px)   { /* CSS here ... */ };
+//  @include response(from 320px) { /* CSS here ... */ };
+//
+//  @include response(from 320px, retina)               { /* CSS here ... */ };
+//  @include response(from small, portrait)             { /* CSS here ... */ };
+//  @include response(from large, to xlarge, landscape) { /* CSS here ... */ };
+//
+//  @include response(from 320px, to 500px)  { /* CSS here ... */ };
+//  @include response(from 320px, to medium) { /* CSS here ... */ };
+//
+
+
+// Screen sizes
+$size-mini:            500px !default;
+$size-small:           768px !default;
+$size-medium:          992px !default;
+$size-large:          1200px !default;
+$size-oversized:      1500px !default;
+
+$size-container:       960px !default;
+
+
+// Supported sizes
+$breakpoints: (
+  phone:          $size-mini,
+  tablet:         $size-small,
+  laptop:         $size-medium,
+  desktop:        $size-large,
+  cinema:         $size-oversized,
+
+  mobile:         $size-small,
+  container:      $size-container,
+) !default;
+
+
+@function breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+   @return map-get($breakpoints, $name);
+  }
+  @else {
+    @error "$name is not a valid breakpoint, was #{$name}.";
+  }
+}
+
+@function to($size) {
+  $media: $size; @if type-of($size) == string { $media: breakpoint($size); }
+  @return unquote('and (max-width: #{$media - 1})');
+}
+
+@function from($size) {
+  $media: $size; @if type-of($size) == string { $media: breakpoint($size); }
+  @return unquote('and (min-width: #{$media})');
+}
+
+@function orientation($type) {
+  @return unquote('and (orientation: #{$type})');
+}
+
+@function resolution($size) {
+  @return unquote('and (-webkit-min-device-pixel-ratio: #{$size}), (min-resolution: #{96 * $size}dpi)');
+}
+
+@mixin response($breakpoints...) {
+  $mediatype:  screen;
+  $mediaquery: null;
+
+  @if nth($breakpoints, 1) == print {
+    $mediatype: print;
+  }
+  @else {
+    @each $breakpoint in $breakpoints {
+
+      @if type-of($breakpoint) == list {
+        $condition: nth($breakpoint, 1);
+        $size:      nth($breakpoint, 2);
+
+        @if      $condition == 'from' { $breakpoint: from($size); }
+        @else if $condition == 'to'   { $breakpoint: to($size); }
+      }
+      @else if $breakpoint == portrait  { $breakpoint: orientation(portrait);  }
+      @else if $breakpoint == landscape { $breakpoint: orientation(landscape); }
+      @else if $breakpoint == retina    { $breakpoint: resolution(2); }
+
+      $mediaquery: append($mediaquery, $breakpoint, space);
+    }
+
+    @media #{$mediatype} #{$mediaquery} {
+      @content;
+    }
+  }
+}
+
+
+// Hacer grafica de response
+// https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_breakpoints.scss
+
+//
+// References
+//
+// http://css-tricks.com/snippets/css/retina-display-media-query/
+// https://coderwall.com/p/jlrerg
+// http://www.uifuel.com/hd-retina-display-media-queries/
+// ‘1dppx’ is equivalent to ‘96dpi’
+//
+// ‘2dppx’ is equivalent to ‘192dpi’

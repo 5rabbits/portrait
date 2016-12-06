@@ -1,0 +1,57 @@
+// Bootstrap
+$brand-primary:         $color-primary;
+$brand-success:         $color-success;
+$brand-info:            $color-info;
+$brand-warning:         $color-warning;
+$brand-danger:          $color-danger;
+
+
+
+$zindex-tooltip:           1070 !default;
+$zindex-popover:           1060 !default;
+$zindex-modal:             1050 !default;
+$zindex-modal-background:  1040 !default;
+$zindex-navbar-fixed:      1030 !default;
+$zindex-navbar:            1000 !default;
+$zindex-dropdown:          1000 !default;
+
+
+
+
+
+$border-radius-base:    3px;
+$border-radius-large:   $border-radius-base;
+$border-radius-small:   $border-radius-base;
+
+$navbar-height:             $layout-navigation-size;
+//$navbar-padding-horizontal: 0;
+
+
+
+//=== Inverted navbar
+// Reset inverted navbar basics
+$navbar-inverse-color:                      #fff;
+
+$navbar-inverse-bg:                         $layout-navigation-background;
+$navbar-inverse-border:                     transparent;
+
+// Inverted navbar links
+$navbar-inverse-link-color:                 rgba(#fff,.6);
+$navbar-inverse-link-hover-color:           #fff;
+$navbar-inverse-link-hover-bg:              transparent;
+$navbar-inverse-link-active-color:          #fff;
+$navbar-inverse-link-active-bg:             transparent;
+$navbar-inverse-link-disabled-color:        #444;
+$navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+$navbar-inverse-brand-color:                $navbar-inverse-link-color;
+$navbar-inverse-brand-hover-color:          #fff;
+$navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+$navbar-inverse-toggle-bg:                  darken($layout-navigation-background,5%);
+$navbar-inverse-toggle-hover-bg:            darken($layout-navigation-background,5%);
+$navbar-inverse-toggle-icon-bar-bg:         #fff;
+$navbar-inverse-toggle-border-color:        darken($layout-navigation-background,5%);
+$navbar-inverse-toggle-border-color:        transparent;

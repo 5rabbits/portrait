@@ -1,0 +1,231 @@
+// Aplicar https://medium.com/front-end-development/8f433689736f
+// http://codepen.io/bbodine1/pen/novBm
+// http://speckyboy.com/2013/01/31/collection-of-useful-open-source-css-resources/
+
+$option-transition-duration:  .3s !default;
+
+$switch-shadow:               false !default;
+$checkbox-shadow:             false !default;
+$radio-shadow:                false !default;
+
+$handler-color:               #FFF !default;
+$handler-active:              #FFF !default;
+$handler-bg:                  darken($handler-color,5%) !default;
+$handler-shadow:              inset 0 1px 1px 1px rgba(255,255,255,.5), 0 1px 1px 1px rgba(0,0,0,.2) !default;
+
+$switch-checked-color:        #58B957 !default;
+$switch-unchecked-color:      #D83B2D !default;
+
+$switch-inner-shadow:         0 -5px 30px -10px rgba(255,255,255,.5) inset, 0 1px 2px rgba(0,0,0,.15) inset !default;
+$switch-handler-bg:           white !default;
+
+$switch-checked-text:         "on" !default;
+$switch-unchecked-text:       "off" !default;
+
+$handler-size:                14px !default;
+
+$switch-height:               10px !default;
+$switch-width:                $handler-size * 2.5 !default;
+$label-width:                 $switch-width - ($handler-size * 1.25) !default;
+
+$handler-large-size:          24px !default;
+$switch-large-height:         $handler-large-size !default;
+$switch-large-width:          $handler-large-size * 2.5 !default;
+$label-large-width:           $switch-large-width - ($handler-large-size * 1.25) !default;
+
+
+
+
+$switch-checked-color:        $color-secondary;
+$switch-unchecked-color:      mix($theme-dark,$color-front,10%);
+$switch-checked-text:         "";
+$switch-unchecked-text:       "";
+
+
+// label + label {
+//   margin-left: 10px;
+// }
+
+// Handler style
+.control-indicator {
+  height: $handler-size;
+  width: $handler-size;
+  box-shadow: $handler-shadow + inset;
+  background: $handler-bg;
+}
+
+.switch .control-indicator:after {
+  height: $handler-size + 2;
+  width: $handler-size + 2;
+  margin: -1px;
+  box-shadow: $handler-shadow;
+  background: $switch-handler-bg;
+}
+
+
+// Common styles
+.checkbox,
+.radio,
+.switch {
+
+  & {
+    position: relative;
+    font-size: $handler-size;
+    margin-bottom: 0;
+  }
+
+  input {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 0;
+  }
+  .control-indicator,
+  .control-indicator:before,
+  .control-indicator:after {
+    transition: all $option-transition-duration;
+  }
+  .control-indicator {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    line-height: 1;
+  }
+  .control-indicator:before,
+  .control-indicator:after {
+    box-sizing: border-box;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+// Estilos compartidos entre radio y switch
+.radio, .switch {
+  .control-indicator, .control-indicator:after {
+    border-radius: $handler-size * 2;
+  }
+}
+
+// Estilos compartidos entre radio y switch
+.checkbox, .radio {
+  .control-indicator:after { display: none; }
+  input:checked + .control-indicator { background: darken($handler-bg,20%); }
+  input:checked + .control-indicator:after { display: block; }
+}
+
+// Checkbox styles
+.checkbox {
+  .control-indicator {
+    border-radius: 2px;
+    //margin-right: 1em;
+  }
+  .control-indicator:after {
+    width: 9px;
+    height: 6px;
+    margin: 3px;
+    background: transparent;
+    border: 3px solid $handler-active;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+  }
+}
+
+// Radio styles
+.radio {
+  .control-indicator:after {
+    background-position: #{$switch-width - ($handler-size / 2)} 0;
+    background-color: $handler-active;
+    height: $handler-size / 2;
+    width: $handler-size / 2;
+    margin: $handler-size / 4;
+  }
+}
+
+// Switch styles
+.switch {
+  .control-indicator {
+    cursor: pointer;
+    height: $switch-large-height;
+    width: $switch-large-width;
+    border: none;
+    box-shadow: $switch-inner-shadow;
+    background: linear-gradient(to right, $switch-unchecked-color 50%, $switch-checked-color 50%);
+    background-size: 200% 100%;
+    background-position: #{$handler-large-size / 2} 0;
+  }
+
+  .control-indicator:after {
+    z-index: 2;
+    left: 0;
+    height: $handler-large-size;
+    width: $handler-large-size;
+    transform: translate3d(0,0,0);
+  }
+
+  .control-indicator:before {
+    z-index: 1;
+    content: $switch-unchecked-text;
+    display: block;
+    text-transform: uppercase;
+    color: #FFF;
+    font-weight: bold;
+    font-size: $handler-large-size * .5;
+    text-align: center;
+    text-shadow: 0px 0px 1px rgba(0,0,0,.4);
+    line-height: $handler-large-size;
+    width: $label-large-width;
+    left: $handler-large-size;
+  }
+
+  input:checked {
+    + .control-indicator {
+      background-position: #{$switch-large-width - ($handler-large-size / 2)} 0;
+    }
+    + .control-indicator:after {
+      transform: translateX($switch-large-width - $handler-large-size);
+    }
+    + .control-indicator:before {
+      content: $switch-checked-text;
+      left: $handler-large-size * .25;
+    }
+  }
+
+  &.mini {
+    .control-indicator {
+      height: $switch-height;
+      width: $switch-width;
+      background-position: #{$handler-size / 2} 0;
+    }
+
+    .control-indicator:after {
+      height: $handler-size + 2;
+      width: $handler-size + 2;
+      top: -3px;
+    }
+
+    .control-indicator:before {
+      font-size: $handler-size * .5;
+      line-height: $handler-size;
+      width: $label-width;
+      left: $handler-size;
+      vertical-align: middle;
+    }
+
+    input:checked {
+      + .control-indicator {
+        background-position: #{$switch-width - ($handler-size / 2)} 0;
+      }
+      + .control-indicator:after {
+        transform: translateX($switch-width - $handler-size);
+      }
+      + .control-indicator:before {
+        left: $handler-size * .25;
+      }
+    }
+  }
+}

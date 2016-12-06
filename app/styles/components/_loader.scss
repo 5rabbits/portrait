@@ -1,0 +1,42 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+$loader-color:           $brand-primary;
+$loader-large-size:      78px;
+$loader-large-trickness: 6px;
+
+.loader {
+  position: relative;
+  border: $loader-large-trickness solid $loader-color;
+  border-top-color: rgba($loader-color,.2);
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+}
+
+.loader-round {
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    width: $loader-large-trickness;
+    height: $loader-large-trickness;
+    background-color: $loader-color;
+    border-radius: $loader-large-trickness * 2;
+    position: absolute;
+    top: 5px;
+  }
+  &:after  {  left: 4px; }
+  &:before { right: 4px; }
+}
+
+.loader-large {
+  width:  $loader-large-size;
+  height: $loader-large-size;
+}
+

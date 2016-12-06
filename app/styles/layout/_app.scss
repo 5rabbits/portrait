@@ -1,0 +1,28 @@
+$layout-navigation-size:       48px;
+$layout-navigation-background: shade($color-brand,65%);
+
+
+.layout-wrapper,
+.layout-main {
+  height: 100%;
+}
+
+.layout-wrapper {
+  position: relative;
+}
+
+.layout-header {
+  display: none;
+}
+
+.layout-navigation {
+  position: fixed;
+  z-index: 90;
+  width: 100%;
+  height: $layout-navigation-size;
+  background-color: $layout-navigation-background;
+}
+
+.layout-main {
+  padding-top: $layout-navigation-size;
+}

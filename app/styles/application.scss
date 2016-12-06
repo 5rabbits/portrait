@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+@import "settings";
+@import "tools";
+
+@import "base";
+@import "layout";
+
+@import "custom";
+@import "bootstrap";
+
+@import "components";
+@import "interface";
+
+@import "blame";
+
+#app {
+  height: 100%;
+}
+
+.divider-vertical {
+  display: inline-block;
+  height: 30px;
+  width: 1px;
+  background-color: $color-dark-divider;
+  margin: 0 24px;
+}
+
+.block-test {
+  width: 300px;
+  height: 300px;
+  background: red;
+
+  @include response(to phone){
+    background: blue;
+  }
+  @include response(from phone){
+    background: pink;
+  }
+  @include response(from tablet){
+    background: purple;
+  }
+  @include response(from laptop){
+    background: green;
+  }
+  @include response(from desktop){
+    background: brown;
+  }
+  @include response(from cinema){
+    background: brown;
+  }
+}

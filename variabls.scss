@@ -1,0 +1,26 @@
+
+// COLORS
+
+$color-brand:           #0E82F5;
+$color-highlight:       #FFF880;
+$color-accent:          $color-brand;
+
+$color-base:            #EFF2F4;
+$color-front:           #FFFFFF;
+
+$color-text:            shade($color-brand,80%);
+$color-inverse:         #FFFFFF;
+
+$color-primary:         $color-accent;
+$color-secondary:       #5E7C8B;
+
+$color-success:         #5cb85c;
+$color-info:            #5bc0de;
+$color-warning:         #f0ad4e;
+$color-danger:          #d9534f;
+
+
+// TEXT THEMES
+
+$theme-dark:       $color-text !default;
+$theme-light:      $color-inverse !default;
