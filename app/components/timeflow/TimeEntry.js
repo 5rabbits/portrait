@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-export default TimeEntry extends PureComponent {
+export default class TimeEntry extends PureComponent {
   render() {
     return (
       <div className="timeentry block-item">

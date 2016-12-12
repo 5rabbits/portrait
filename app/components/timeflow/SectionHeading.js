@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-export default SectionHeading extends PureComponent {
+export default class SectionHeading extends PureComponent {
   render() {
     return (
       <div>

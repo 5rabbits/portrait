@@ -1,32 +1,30 @@
 import React, { PureCompoonent } from 'react';
-import { Layout, Navigation, Section } from './app';
+import { Layout, Navigation, Section } from './App';
 
-import Controls from './Controls';
+import ControlsSection from './ControlsSection';
 import Content from './Content';
-import StyleGuide from './StyleGuide';
 
-export default class App extends PureCompoonent {
+export default class App extends PureComponent {
+  buildNavigation() {
+    return <Navigation />;
+  }
+
+  buildMain() {
+    return (
+      <Section
+        controls={
+          <ControlsSection/>
+        }
+        content={
+          <div>
+            <Content/>
+          </div>
+        }
+      />
+    );
+  }
+
   render() {
-    buildNavigation() {
-      return <Navigation />;
-    }
-
-    buildMain() {
-      return (
-        <Section
-          controls={
-            <Controls/>
-          }
-          content={
-            <div>
-              <Content/>
-              <StyleGuide/>
-            </div>
-          }
-        />
-      );
-    }
-
     return (
       <Layout header="header"
               navigation={this.buildNavigation()}

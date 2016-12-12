@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Loader, EmptyView } from './shared';
+import { Loader, EmptyView } from '../shared';
 
 export default class Section extends PureComponent {
   render() {

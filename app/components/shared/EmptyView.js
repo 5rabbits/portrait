@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-export default EmptyView extends PureComponent {
+export default class EmptyView extends PureComponent {
   render() {
     return (
       <div className="empty-view">

@@ -19,14 +19,21 @@
   },
   "devDependencies": {
     "auto-reload-brunch": "^2.0.0",
+    "autoprefixer": "^6.0",
     "babel-brunch": "~6.0.0",
-    "babel-preset-es2015": "~6.9.0",
+    "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "~6.11.1",
-    "brunch": "^2.4.0",
+    "brunch": "^2.9.1",
     "clean-css-brunch": "^2.0.0",
+    "coffee-reactify": "^5.0.0",
+    "coffee-script-brunch": "^2.0.0",
+    "coffeeify": "~0.6",
     "css-brunch": "^2.0.0",
-    "sass-brunch": "^2.7.0",
+    "cssnano-brunch": "^1.1.8",
     "javascript-brunch": "^2.0.0",
+    "postcss-brunch": "^0.5",
+    "react-coffee-brunch": "^1.8.0",
+    "sass-brunch": "^2.7.0",
     "uglify-js-brunch": "^2.0.0"
   }
 }

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { CalendarNavigation, TimingStats, UserSelect } from 'timeflow';
+import { CalendarNavigation, TimingStats, UserSelect } from './timeflow';
 
 export default class ContentProjects extends PureComponent {
   render() {

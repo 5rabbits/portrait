@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { SectionHeading } from 'timeflow';
-import { Button, SearchForm } from 'controls';
+import { SectionHeading } from './timeflow';
+import { Button, SearchForm } from './controls';
 
 export default class ControlsTimeEntry extends PureComponent {
   render() {

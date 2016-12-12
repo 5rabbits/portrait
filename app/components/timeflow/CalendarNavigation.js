@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-export default CalendarNavigation extends PureComponent {
+export default class CalendarNavigation extends PureComponent {
   render() {
     return (
       <div className="btn-toolbar" role="toolbar" aria-label="...">

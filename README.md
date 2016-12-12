@@ -1,14 +1,12 @@
-# Design
-
-## Brunch + React + Babel
+# Brunch + React + Babel/ES6
 
 This is a modern JS skeleton with React for [Brunch](http://brunch.io).
 
-### Installation
+## Installation
 
 Clone this repo manually or use `brunch new dir -s brunch/with-react`
 
-### Getting started
+## Getting started
 
 * Install (if you don't have them):
     * [Node.js](http://nodejs.org): `brew install node` on OS X

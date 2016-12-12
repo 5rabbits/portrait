@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-export default TimingStats extends PureComponent {
+export default class TimingStats extends PureComponent {
   render() {
     return (
       <div>

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-export default ReviewNavigation extends PureComponent {
+export default class ReviewNavigation extends PureComponent {
   render() {
     return (
       <div className="btn-toolbar" role="toolbar" aria-label="...">

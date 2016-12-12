@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Grid } from 'shared';
-import { TimeEntry } from 'timeflow';
+import { Grid } from './shared';
+import { TimeEntry } from './timeflow';
 
 export default class Content extends PureComponent {
   render() {

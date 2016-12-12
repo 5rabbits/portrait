@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-export default UserSelect extends PureComponent {
+export default class UserSelect extends PureComponent {
   render() {
     return (
       <select className="form-control input-max-small">
