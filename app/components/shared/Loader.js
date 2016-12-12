@@ -1,7 +1,7 @@
-React = require('react')
+import React, { PureComponent } from 'react';
 
-@Loader = React.createClass
-  render: ->
+export default class Loader extends PureComponent {
+  render() {
     return (
       <div className="empty-view">
         <div className="empty-container">
@@ -10,6 +10,6 @@ React = require('react')
           </div>
         </div>
       </div>
-    )
-
-module.exports = @Loader
+    );
+  }
+}

@@ -1,7 +1,7 @@
-React = require('react')
+import React, { PureComponent } from 'react'
 
-@Navigation = React.createClass
-  render: ->
+export default class Navigation extends PureComponent {
+  render() {
     return (
       <div className="navbar navbar-inverse navbar-fixed-top">
         <div className="container-max">
@@ -15,43 +15,13 @@ React = require('react')
               <span className="sr-only">Toggle navigation</span>
               <i className="fa fa-search"></i>
             </button>
-            <a className="navbar-brand" href="#">TimeFlow</a>
+            <a className="navbar-brand" href="#">{this.props.brand}</a>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul className="nav navbar-nav">
-              <li className="active">
-                <a href="#">
-                  <i className="fa mr-xs fa-calendar"></i>
-                  <span className="hidden-sm">Calendario</span>
-                  <span className="sr-only">(current)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa mr-xs fa-suitcase"></i>
-                  <span className="hidden-sm">Proyectos</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa mr-xs fa-file-text"></i>
-                  <span className="hidden-sm">Invoices</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa mr-xs fa-users"></i>
-                  <span className="hidden-sm">Equipos</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa mr-xs fa-cog"></i>
-                  <span className="hidden-sm">Ajustes</span>
-                </a>
-              </li>
+              {this.props.children}
             </ul>
 
             <ul className="nav navbar-nav navbar-right">
@@ -69,6 +39,6 @@ React = require('react')
           </div>
         </div>
       </div>
-    )
-
-module.exports = @Navigation
+    );
+  }
+}

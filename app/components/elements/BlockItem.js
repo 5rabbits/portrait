@@ -1,5 +1,7 @@
-@BlockItem = React.createClass
-  render: ->
+import React, { PureComponent } from 'react';
+
+export default class BlockItem extends PureComponent {
+  render() {
     return (
       <div className="block-item">
 
@@ -11,4 +13,6 @@
         <span className="type-caption color-secondary ml-xs">Sosafe</span>
 
       </div>
-    )
+    );
+  }
+}

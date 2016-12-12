@@ -1,19 +1,19 @@
-React = require('react')
+import React, { PureComponent } from 'react'
 
-@Controls = React.createClass
-  render: ->
+export default class Controls extends PureComponent {
+  render() {
     return (
       <div className="controls-container">
         <div className="controls-main">
-          { @props.main }
+          { this.props.main }
         </div>
         <div className="controls-content">
-          { @props.content }
+          { this.props.content }
         </div>
         <div className="controls-actions">
-          { @props.actions }
+          { this.props.actions }
         </div>
       </div>
-    )
-
-module.exports = @Controls
+    );
+  }
+}

@@ -1,7 +1,7 @@
-React = require('react')
+import React, { PureComponent } from 'react';
 
-@UserSelect = React.createClass
-  render: ->
+export default UserSelect extends PureComponent {
+  render() {
     return (
       <select className="form-control input-max-small">
         <option>Cristian Ferrari</option>
@@ -10,10 +10,6 @@ React = require('react')
         <option>4</option>
         <option>5</option>
       </select>
-    )
-
-module.exports = @UserSelect
-
-
-
-
+    );
+  }
+}

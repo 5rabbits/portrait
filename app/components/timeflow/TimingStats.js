@@ -1,7 +1,7 @@
-React = require('react')
+import React, { PureComponent } from 'react';
 
-@HourStats = React.createClass
-  render: ->
+export default TimingStats extends PureComponent {
+  render() {
     return (
       <div>
         <div className="inline-block text-right">
@@ -14,6 +14,6 @@ React = require('react')
           <div className="font-strong">14h 35m</div>
         </div>
       </div>
-    )
-
-module.exports = @HourStats
+    );
+  }
+}

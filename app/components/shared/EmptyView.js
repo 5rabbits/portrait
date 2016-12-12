@@ -1,0 +1,15 @@
+import React, { PureComponent } from 'react';
+
+export default EmptyView extends PureComponent {
+  render() {
+    return (
+      <div className="empty-view">
+        <div className="empty-container">
+          <div className="empty-dialog">
+            {this.props.children}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}

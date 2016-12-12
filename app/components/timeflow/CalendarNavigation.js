@@ -1,7 +1,7 @@
-React = require('react')
+import React, { PureComponent } from 'react';
 
-@CalendarNavigation = React.createClass
-  render: ->
+export default CalendarNavigation extends PureComponent {
+  render() {
     return (
       <div className="btn-toolbar" role="toolbar" aria-label="...">
         <div className="btn-group" role="group" aria-label="...">
@@ -21,8 +21,6 @@ React = require('react')
           <div className="type-footnote font-strong">05 al 11 de diciembre de 2016</div>
         </div>
       </div>
-    )
-
-module.exports = @CalendarNavigation
-
-
+    );
+  }
+}

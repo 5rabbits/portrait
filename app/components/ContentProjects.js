@@ -1,42 +1,12 @@
-React     = require('react')
+import React, { PureComponent } from 'react';
+import { Grid } from 'shared';
+import { TimeEntry } from 'timeflow';
 
-Container = require('components/shared/Grid')
-TimeEntry = require('components/timeflow/TimeEntry')
-
-@ContentTimeEntry = React.createClass
-  render: ->
+export default class ContentProjects extends PureComponent {
+  render() {
     return (
-      <Container>
-
-        <div className="block-group">
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-          <TimeEntry/>
-        </div>
-
-      </Container>
-    )
-
-@ContentProjects = React.createClass
-  render: ->
-    return (
-      <Container>
+      <Grid>
         <div className="block-item pa-nn">
-
           <table className="table table-expanded">
             <thead>
               <tr>
@@ -168,13 +138,9 @@ TimeEntry = require('components/timeflow/TimeEntry')
                 </td>
               </tr>
             </tbody>
-        </table>
-
+          </table>
         </div>
-      </Container>
-    )
-
-
-
-
-module.exports = @ContentProjects
+      </Grid>
+    );
+  }
+}

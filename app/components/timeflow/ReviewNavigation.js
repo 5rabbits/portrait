@@ -1,7 +1,7 @@
-React = require('react')
+import React, { PureComponent } from 'react';
 
-@ReviewNavigation = React.createClass
-  render: ->
+export default ReviewNavigation extends PureComponent {
+  render() {
     return (
       <div className="btn-toolbar" role="toolbar" aria-label="...">
         <div className="btn-group" role="group" aria-label="...">
@@ -18,8 +18,6 @@ React = require('react')
           </button>
         </div>
       </div>
-    )
-
-module.exports = @ReviewNavigation
-
-
+    );
+  }
+}
