@@ -9,6 +9,7 @@
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
     "serve": "NODE_ENV=production webpack-dev-server --mode=dev"
   },
+  "main": "lib/Library.build.js",
   "dependencies": {
     "babel": "6.3.13",
     "babel-core": "6.1.18",
