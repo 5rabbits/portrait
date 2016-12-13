@@ -5,7 +5,7 @@ export default class SectionOffscreen extends PureComponent {
   buildPanel() {
     return (
       <div className="container-page">
-        { this.props.panelContent}
+        { this.props.panelContent }
       </div>
     );
   }

@@ -2,7 +2,6 @@
   "name": "Design",
   "version": "16.0.0",
   "description": "Base design for all 5Rabbits products",
-  "main": "lib/library.js",
   "scripts": {
     "build": "rm -rf lib/ && webpack --progress --mode=build NODE_ENV=production",
     "dev": "webpack --progress --colors --watch --mode=dev",

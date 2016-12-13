@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { Layout, Navigation, Section } from './main';
+import { Layout, Navigation, SectionOffscreen } from './main';
 import ControlsSection from './ControlsSection';
 import Content from './Content';
 
@@ -11,8 +11,9 @@ export default class App extends PureComponent {
 
   buildMain() {
     return (
-      <Section controls={<ControlsSection/>}
-               content={<div><Content/></div>} />
+      <SectionOffscreen controls={<ControlsSection/>}
+                        panelContent={<h1>Hello world</h1>}
+                        content={<div><Content/></div>} />
     );
   }
 
