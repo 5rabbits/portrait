@@ -1,6 +1,6 @@
-import React, { PureCompoonent } from 'react';
-import { Layout, Navigation, Section } from './App';
+import React, { PureComponent } from 'react';
 
+import { Layout, Navigation, Section } from './main';
 import ControlsSection from './ControlsSection';
 import Content from './Content';
 
@@ -11,16 +11,8 @@ export default class App extends PureComponent {
 
   buildMain() {
     return (
-      <Section
-        controls={
-          <ControlsSection/>
-        }
-        content={
-          <div>
-            <Content/>
-          </div>
-        }
-      />
+      <Section controls={<ControlsSection/>}
+               content={<div><Content/></div>} />
     );
   }
 

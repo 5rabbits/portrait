@@ -8,7 +8,7 @@ export default class TimeEntry extends PureComponent {
         <div className="timeentry-content">
           <div className="timeentry-info">
             <div className="type-caption color-secondary">Ajustes Timeflow, 5rabbits</div>
-            <div className="type-footnote">Curabitur blandit tempus porttitor aenean lacinia bibendum nulla sed consectetur</div>
+            <div className="type-footnote">Curabitur blandit tempus porttitor</div>
           </div>
 
           <div className="timeentry-data">

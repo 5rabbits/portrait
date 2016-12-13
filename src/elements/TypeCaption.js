@@ -6,4 +6,4 @@ export default class TypeCaption extends PureComponent {
       <span className="type-caption"></span>
     );
   }
-} 
+}

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { ReviewNavigation, TimingStats } from './timeflow';
 import { Button } from './controls';
+import { Controls } from './main';
 
 export default class ControlsTimeEntry extends PureComponent {
   render() {
