@@ -1,9 +1,6 @@
-import React, { PureComponent } from 'react';
+import React from 'react'
 
-export default class TypeCaption extends PureComponent {
-  render() {
-    return (
-      <span className="type-caption"></span>
-    );
-  }
-}
+const TypeCaption = () =>
+  <span className="type-caption" />
+
+export default TypeCaption

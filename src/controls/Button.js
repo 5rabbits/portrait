@@ -1,11 +1,8 @@
-import React, { PureComponent } from 'react';
+import React from 'react'
 
-export default class Button extends PureComponent {
-  render() {
-    return (
-      <a href="#" className="btn btn-primary">
-        { this.props.label }
-      </a>
-    );
-  }
-}
+const Button = () =>
+  <a href="#" className="btn btn-primary">
+    {this.props.label}
+  </a>
+
+export default Button

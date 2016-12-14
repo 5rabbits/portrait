@@ -1,5 +1,21 @@
 {
   "parser": "babel-eslint",
   "plugins": ["react"],
-  "extends": "airbnb"
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [0],
+    "import/no-unresolved": [0],
+    "jsx-a11y/href-no-hash": [1],
+    "jsx-a11y/label-has-for": [1],
+    "react/jsx-closing-bracket-location": [2, { "nonEmpty": "props-aligned", "selfClosing": "tag-aligned" }],
+    "react/jsx-curly-spacing": [2, "never"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": [1],
+    "semi": [2, "never"],
+  },
 }

@@ -1,16 +1,13 @@
-import React, { PureComponent } from 'react';
+import React from 'react'
 
-export default class Offscreen extends PureComponent {
-  render() {
-    return (
-      <div className="offscreen-wrapper offscreen--show">
-        <div className="offscreen-aside">
-          { this.props.panel }
-        </div>
-        <div className="offscreen-content">
-          { this.props.content }
-        </div>
-      </div>
-    );
-  }
-}
+const Offscreen = () =>
+  <div className="offscreen-wrapper offscreen--show">
+    <div className="offscreen-aside">
+      {this.props.panel}
+    </div>
+    <div className="offscreen-content">
+      {this.props.content}
+    </div>
+  </div>
+
+export default Offscreen

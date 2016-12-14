@@ -1,15 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react'
 
-export default class EmptyView extends PureComponent {
-  render() {
-    return (
-      <div className="empty-view">
-        <div className="empty-container">
-          <div className="empty-dialog">
-            {this.props.children}
-          </div>
-        </div>
+const EmptyView = () =>
+  <div className="empty-view">
+    <div className="empty-container">
+      <div className="empty-dialog">
+        {this.props.children}
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+
+export default EmptyView
