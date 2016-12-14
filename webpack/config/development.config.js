@@ -5,12 +5,21 @@ var Config = require('webpack-config').default
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'cheap-module-eval-source-map',
+  output: {
+    publicPath: '/',
+  },
   module: {
     preLoaders: [
       {
         test: /\.jsx?$/,
         loader: 'eslint',
         exclude: /node_modules/,
+      },
+    ],
+    loaders: [
+      {
+        test: /\.s(c|a)ss$/,
+        loaders: ['style', 'css', 'sass?sourceMap=true'],
       },
     ],
   },

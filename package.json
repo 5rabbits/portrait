@@ -4,7 +4,7 @@
   "description": "Base design for all 5Rabbits products",
   "scripts": {
     "build": "NODE_ENV=production webpack --progress -p --config webpack/webpack.config.js",
-    "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js",
+    "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js --hot --inline",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
     "lint": "eslint --color --ext .js src"
   },
