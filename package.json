@@ -3,10 +3,9 @@
   "version": "16.0.0",
   "description": "Base design for all 5Rabbits products",
   "scripts": {
-    "build": "rm -rf lib/ && webpack --progress --mode=build NODE_ENV=production",
-    "dev": "webpack --progress --colors --watch --mode=dev",
+    "build": "NODE_ENV=production webpack --progress -p --config webpack/webpack.config.js",
+    "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
-    "serve": "NODE_ENV=production webpack-dev-server --mode=dev",
     "lint": "eslint --color --ext .js src"
   },
   "main": "lib/Library.build.js",
@@ -32,9 +31,8 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "1.12.9",
     "webpack-dev-server": "^1.16.2",
-    "yargs": "3.32.0"
+    "webpack": "1.12.9"
   },
   "repository": {
     "type": "git",
@@ -52,11 +50,13 @@
   "author": "Cristian Ferrari",
   "devDependencies": {
     "babel-eslint": "7.1.1",
+    "clean-webpack-plugin": "0.1.14",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "13.0.0",
     "eslint-loader": "1.6.1",
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.6.0"
+    "eslint-plugin-react": "^6.6.0",
+    "webpack-config": "6.2.1"
   }
 }
