@@ -6,7 +6,6 @@ var Config = require('webpack-config').default
 module.exports = new Config().merge({
   entry: {
     'Library.build': path.resolve('src/index.js'),
-    'Library.component': path.resolve('src/component.js'),
   },
   output: {
     path: path.resolve('lib'),
@@ -34,5 +33,9 @@ module.exports = new Config().merge({
   resolve: {
     root: path.resolve('./src'),
     extensions: ['', '.js', '.jsx'],
+    modulesDirectories: [
+      'src',
+      'node_modules',
+    ],
   },
 })

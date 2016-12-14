@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Layout, Navigation, SectionOffscreen } from './main'
+import { Layout, Navigation, SectionOffscreen } from 'main'
 import ControlsSection from './ControlsSection'
 import Content from './Content'
 

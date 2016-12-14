@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from './shared'
+import { Grid } from 'shared'
 import { TimeEntry } from './timeflow'
 
 const Content = () =>

@@ -1,7 +1,7 @@
 import React from 'react'
+import { Button } from 'controls'
+import { Controls } from 'main'
 import { ReviewNavigation, TimingStats } from './timeflow'
-import { Button } from './controls'
-import { Controls } from './main'
 
 const ControlsTimeEntry = () =>
   <Controls

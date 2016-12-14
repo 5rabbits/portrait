@@ -1,7 +1,6 @@
 import React from 'react'
-import { SectionHeading } from './timeflow'
-import { Button, SearchForm } from './controls'
-import { Controls } from './main'
+import { Button, SearchForm } from 'controls'
+import { Controls, SectionHeading } from 'main'
 
 const ControlsSection = () =>
   <Controls
