@@ -1,7 +1,6 @@
 /* eslint-disable no-var, prefer-template, object-shorthand */
 
 var path = require('path')
-var CleanWebpackPlugin = require('clean-webpack-plugin')
 var Config = require('webpack-config').default
 
 module.exports = new Config().merge({
@@ -36,11 +35,4 @@ module.exports = new Config().merge({
     root: path.resolve('./src'),
     extensions: ['', '.js', '.jsx'],
   },
-  plugins: [
-    new CleanWebpackPlugin(['lib'], {
-      root: path.resolve('.'),
-      verbose: false,
-      dry: false,
-    }),
-  ],
 })

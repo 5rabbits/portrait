@@ -1,8 +1,10 @@
 /* eslint-disable no-var */
 
 var webpack = require('webpack')
+var path = require('path')
 var Config = require('webpack-config').default
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'source-map',
@@ -24,6 +26,11 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
       compress: {
         warnings: false,
       },
+    }),
+    new CleanWebpackPlugin(['lib'], {
+      root: path.resolve('.'),
+      verbose: false,
+      dry: false,
     }),
   ],
 })
