@@ -6,6 +6,9 @@ var Config = require('webpack-config').default
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'cheap-module-eval-source-map',
+  devServer: {
+    port: process.env.PORT || 8080,
+  },
   entry: {
     'Library.component': path.resolve('example/component.js'),
   },
