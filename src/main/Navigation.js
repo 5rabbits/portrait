@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Navigation = () =>
+const Navigation = props =>
   <div className="navbar navbar-inverse navbar-fixed-top">
     <div className="container-max">
       <div className="navbar-header">
@@ -12,12 +12,12 @@ const Navigation = () =>
           <span className="sr-only">Toggle navigation</span>
           <i className="fa fa-search" />
         </button>
-        <a className="navbar-brand" href="#">{this.props.brand}</a>
+        <a className="navbar-brand" href="#">{props.brand}</a>
       </div>
 
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul className="nav navbar-nav">
-          {this.props.children}
+          {props.children}
         </ul>
 
         <ul className="nav navbar-nav navbar-right">

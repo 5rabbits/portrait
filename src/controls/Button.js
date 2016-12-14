@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Button = () =>
+const Button = props =>
   <a href="#" className="btn btn-primary">
-    {this.props.label}
+    {props.label}
   </a>
 
 export default Button

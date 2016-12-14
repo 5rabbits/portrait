@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Layout = () =>
+const Layout = props =>
   <section className="layout-wrapper" id="block-app">
     <header className="layout-header" id="block-header">
-      { this.props.header }
+      {props.header}
     </header>
     <nav className="layout-navigation" id="block-navigation">
-      { this.props.navigation }
+      {props.navigation}
     </nav>
     <main className="layout-main" id="block-main">
-      { this.props.main }
+      {props.main}
     </main>
   </section>
 

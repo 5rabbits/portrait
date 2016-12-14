@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Grid = () =>
+const Grid = props =>
   <div className="container-page">
-    {this.props.children}
+    {props.children}
   </div>
 
 export default Grid

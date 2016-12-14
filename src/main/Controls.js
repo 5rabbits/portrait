@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Controls = () =>
+const Controls = props =>
   <div className="controls-container">
     <div className="controls-main">
-      {this.props.main}
+      {props.main}
     </div>
     <div className="controls-content">
-      {this.props.content}
+      {props.content}
     </div>
     <div className="controls-actions">
-      {this.props.actions}
+      {props.actions}
     </div>
   </div>
 

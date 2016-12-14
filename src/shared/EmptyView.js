@@ -1,10 +1,10 @@
 import React from 'react'
 
-const EmptyView = () =>
+const EmptyView = props =>
   <div className="empty-view">
     <div className="empty-container">
       <div className="empty-dialog">
-        {this.props.children}
+        {props.children}
       </div>
     </div>
   </div>

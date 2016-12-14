@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Offscreen = () =>
+const Offscreen = props =>
   <div className="offscreen-wrapper offscreen--show">
     <div className="offscreen-aside">
-      {this.props.panel}
+      {props.panel}
     </div>
     <div className="offscreen-content">
-      {this.props.content}
+      {props.content}
     </div>
   </div>
 

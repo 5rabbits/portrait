@@ -1,11 +1,11 @@
 import React from 'react'
 import { Loader, EmptyView } from '../shared'
 
-const Section = () =>
+const Section = props =>
   <section className="section-wrapper" id="block-section">
     <header className="section-controls" id="block-controls">
       <div className="container-max">
-        {this.props.controls}
+        {props.controls}
       </div>
     </header>
     <section className="section-content" id="block-content">
@@ -19,7 +19,7 @@ const Section = () =>
         </article>
 
         <article className="hidden- section-state" id="block-content-data">
-          { this.props.content }
+          { props.content }
         </article>
       </div>
     </section>
