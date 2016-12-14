@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import { Link } from 'react-router'
 
 export default class SectionHeading extends PureComponent {
   buildFootnote() {
@@ -8,12 +7,12 @@ export default class SectionHeading extends PureComponent {
     }
 
     return (
-      <Link
+      <a
         href={this.props.footnoteUrl || '#'}
         className="link type-footnote color-secondary ml-sm"
         >
         {this.props.footnote}
-      </Link>
+      </a>
     )
   }
 
