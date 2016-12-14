@@ -13,7 +13,7 @@ export default class SectionHeading extends PureComponent {
 
   buildFootnote() {
     if (!this.props.footnote) {
-      return;
+      return null;
     }
 
     return (
