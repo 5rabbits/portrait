@@ -6,7 +6,8 @@
     "build": "rm -rf lib/ && webpack --progress --mode=build NODE_ENV=production",
     "dev": "webpack --progress --colors --watch --mode=dev",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
-    "serve": "NODE_ENV=production webpack-dev-server --mode=dev"
+    "serve": "NODE_ENV=production webpack-dev-server --mode=dev",
+    "lint": "eslint --color --ext .js src"
   },
   "main": "lib/Library.build.js",
   "dependencies": {
