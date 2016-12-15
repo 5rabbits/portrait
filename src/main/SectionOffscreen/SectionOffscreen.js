@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Loader, Offscreen, EmptyView } from '../shared'
+import { Loader, Offscreen, EmptyView } from 'shared'
 
 export default class SectionOffscreen extends PureComponent {
   buildPanel = () =>

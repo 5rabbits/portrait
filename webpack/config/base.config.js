@@ -1,7 +1,9 @@
 /* eslint-disable no-var, prefer-template, object-shorthand */
 
 var path = require('path')
+var webpack = require('webpack')
 var Config = require('webpack-config').default
+var DirectoryNamedWebpackPlugin = require('../plugins/directory-named')
 
 module.exports = new Config().merge({
   entry: {
@@ -43,4 +45,7 @@ module.exports = new Config().merge({
       path.resolve('.'),
     ],
   },
+  plugins: [
+    new webpack.ResolverPlugin(new DirectoryNamedWebpackPlugin(true)),
+  ],
 })
