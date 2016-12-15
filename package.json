@@ -11,7 +11,15 @@
     "universal",
     "webpack"
   ],
-  "author": "Cristian Ferrari",
+  "homepage": "https://bitbucket.org/lemontech/ux",
+  "bugs": "https://bitbucket.org/lemontech/ux/issues",
+  "license": "MIT",
+  "author": "5rabbits <5rabbits@lemontech.com> (http://5rabbits.com/)",
+  "contributors": [
+    "Cristian Ferrari <cferrari@lemontech.cl>",
+    "Daniel Ochoa <dochoa@lemontech.cl>",
+    "Rodrigo Díaz <rdiaz@lemontech.cl>"
+  ],
   "files": [
     "lib"
   ],
@@ -66,5 +74,8 @@
   },
   "peerDependencies": {
     "react": "^15.4.1"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   }
 }
