@@ -12,6 +12,9 @@
     "webpack"
   ],
   "author": "Cristian Ferrari",
+  "files": [
+    "lib"
+  ],
   "main": "lib/Library.build.js",
   "repository": {
     "type": "git",
