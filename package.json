@@ -24,6 +24,7 @@
     "build": "NODE_ENV=production webpack --progress -p --config webpack/webpack.config.js",
     "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js --hot --inline --content-base example/",
     "lint": "eslint --color --ext .js src example",
+    "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
   },
   "dependencies": {
