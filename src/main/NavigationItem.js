@@ -4,6 +4,7 @@ import classNames from 'classnames'
 const NavigationItem = props => {
   const { component: Component, isActive, icon, label, ...other } = props
 
+  debugger
   return (
     <li className={classNames({ active: isActive })}>
       <Component {...other}>
