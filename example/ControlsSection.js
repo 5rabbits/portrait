@@ -4,7 +4,7 @@ import { Controls, SectionHeading } from 'main'
 
 const ControlsSection = () =>
   <Controls
-    main={<SectionHeading />}
+    main={<SectionHeading title="Proyectos" url="#" label="Ver Clientes" />}
     content={<SearchForm />}
     actions={<Button label="Nuevo Proyecto" />}
   />
