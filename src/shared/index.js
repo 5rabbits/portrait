@@ -1,4 +1,4 @@
 export EmptyView from './EmptyView'
-export Grid from './Grid'
+export Container from './Container'
 export Loader from './Loader'
 export Offscreen from './Offscreen'
