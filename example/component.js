@@ -1,4 +1,4 @@
-import 'styles/application.scss'
+import 'styles/portrait.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
