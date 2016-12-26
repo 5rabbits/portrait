@@ -1,5 +1,5 @@
 {
-  "name": "Design",
+  "name": "portrait",
   "version": "0.0.1",
   "description": "Base design for all 5Rabbits products",
   "keywords": [
@@ -23,7 +23,7 @@
   "files": [
     "lib"
   ],
-  "main": "lib/Library.build.js",
+  "main": "lib/portrait.js",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/lemontech/ux"

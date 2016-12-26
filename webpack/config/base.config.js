@@ -5,7 +5,7 @@ var Config = require('webpack-config').default
 
 module.exports = new Config().merge({
   entry: {
-    'Library.build': path.resolve('src/index.js'),
+    portrait: path.resolve('src/index.js'),
   },
   output: {
     path: path.resolve('lib'),
