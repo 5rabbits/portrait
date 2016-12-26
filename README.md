@@ -5,8 +5,8 @@ Base design for all 5Rabbits products
 
 ```javascript
 import React from 'react'
-import 'portrait/lib/portrait.css'
 import { Layout, Navigation, SectionOffscreen } from 'portrait'
+import 'portrait/lib/portrait.css'
 
 const App = () =>
   <Layout
@@ -24,4 +24,13 @@ const App = () =>
   />
 
 export default App
+```
+
+## Using sass
+
+You can configure Portrait using the sass files:
+
+```scss
+$color-brand: #f00;
+@import '~portrait/lib/scss/portrait.scss';
 ```
