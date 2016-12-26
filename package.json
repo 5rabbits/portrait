@@ -1,6 +1,6 @@
 {
-  "name": "Design",
-  "version": "0.0.1",
+  "name": "portrait",
+  "version": "0.0.2",
   "description": "Base design for all 5Rabbits products",
   "keywords": [
     "commonjs",
@@ -11,8 +11,19 @@
     "universal",
     "webpack"
   ],
-  "author": "Cristian Ferrari",
-  "main": "lib/Library.build.js",
+  "homepage": "https://bitbucket.org/lemontech/ux",
+  "bugs": "https://bitbucket.org/lemontech/ux/issues",
+  "license": "MIT",
+  "author": "5rabbits <5rabbits@lemontech.com> (http://5rabbits.com/)",
+  "contributors": [
+    "Cristian Ferrari <cferrari@lemontech.cl>",
+    "Daniel Ochoa <dochoa@lemontech.cl>",
+    "Rodrigo Díaz <rdiaz@lemontech.cl>"
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/portrait.js",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/lemontech/ux"
@@ -21,7 +32,9 @@
     "build": "NODE_ENV=production webpack --progress -p --config webpack/webpack.config.js",
     "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js --hot --inline --content-base example/",
     "lint": "eslint --color --ext .js src example",
-    "test": "NODE_ENV=test karma start webpack/config/test.config.js"
+    "prepublish": "npm run build",
+    "test": "NODE_ENV=test karma start webpack/config/test.config.js",
+    "preversion": "npm run lint && SINGLE_RUN=true npm test"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -75,5 +88,8 @@
   },
   "peerDependencies": {
     "react": "^15.4.1"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   }
 }

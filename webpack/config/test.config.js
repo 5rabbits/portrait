@@ -12,7 +12,7 @@ module.exports = function testConfig(config) {
 
   config.set({
     browsers: ['PhantomJS'],
-    singleRun: !!process.env.CI,
+    singleRun: !!process.env.CI || process.env.SINGLE_RUN === 'true',
     frameworks: ['mocha'],
     files: [
       indexPath,
