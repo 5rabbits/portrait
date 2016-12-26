@@ -34,7 +34,7 @@
     "lint": "eslint --color --ext .js src example",
     "prepublish": "npm run build",
     "test": "NODE_ENV=test karma start webpack/config/test.config.js",
-    "preversion": "npm run lint && npm test"
+    "preversion": "npm run lint && SINGLE_RUN=true npm test"
   },
   "dependencies": {
     "classnames": "^2.2.5",
