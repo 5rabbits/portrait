@@ -10,7 +10,7 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
     port: process.env.PORT || 8080,
   },
   entry: {
-    'Library.component': path.resolve('example/component.js'),
+    'examples.build': path.resolve('example/component.js'),
   },
   output: {
     publicPath: '/',

@@ -7,7 +7,7 @@ var DirectoryNamedWebpackPlugin = require('../plugins/directory-named')
 
 module.exports = new Config().merge({
   entry: {
-    'Library.build': path.resolve('src/index.js'),
+    portrait: path.resolve('src/index.js'),
   },
   output: {
     path: path.resolve('lib'),
