@@ -1,7 +1,9 @@
 /* eslint-disable no-var, prefer-template, object-shorthand */
 
 var path = require('path')
+var webpack = require('webpack')
 var Config = require('webpack-config').default
+var DirectoryNamedWebpackPlugin = require('../plugins/directory-named')
 
 module.exports = new Config().merge({
   entry: {
@@ -28,6 +30,10 @@ module.exports = new Config().merge({
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
       },
+      {
+        test: /\.json$/,
+        loader: 'json',
+      },
     ],
   },
   resolve: {
@@ -36,6 +42,10 @@ module.exports = new Config().merge({
     modulesDirectories: [
       'src',
       'node_modules',
+      path.resolve('.'),
     ],
   },
+  plugins: [
+    new webpack.ResolverPlugin(new DirectoryNamedWebpackPlugin(true)),
+  ],
 })
