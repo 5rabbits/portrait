@@ -1,5 +1,5 @@
 import React from 'react'
-import { Loader, EmptyView } from '../shared'
+import { Loader, EmptyView } from 'shared'
 
 const Section = props =>
   <section className="section-wrapper" id="block-section">
