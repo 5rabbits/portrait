@@ -5,6 +5,7 @@ var path = require('path')
 var Config = require('webpack-config').default
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'source-map',
@@ -32,5 +33,11 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
       verbose: false,
       dry: false,
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve('src/styles'),
+        to: 'scss',
+      },
+    ]),
   ],
 })
