@@ -1,7 +1,7 @@
 import React from 'react'
 import childrenPropType from 'propTypes/children'
 
-const EmptyView = props =>
+const EmptyBlock = props =>
   <div className="empty-view">
     <div className="empty-container">
       <div className="empty-dialog">
@@ -10,8 +10,8 @@ const EmptyView = props =>
     </div>
   </div>
 
-EmptyView.propTypes = {
+EmptyBlock.propTypes = {
   children: childrenPropType,
 }
 
-export default EmptyView
+export default EmptyBlock

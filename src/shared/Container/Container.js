@@ -1,13 +1,13 @@
 import React from 'react'
 import childrenPropType from 'propTypes/children'
 
-const Grid = props =>
+const Container = props =>
   <div className="container-page">
     {props.children}
   </div>
 
-Grid.propTypes = {
+Container.propTypes = {
   children: childrenPropType,
 }
 
-export default Grid
+export default Container

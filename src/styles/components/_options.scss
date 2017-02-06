@@ -37,7 +37,7 @@ $label-large-width:           $switch-large-width - ($handler-large-size * 1.25)
 
 
 $switch-checked-color:        $color-secondary;
-$switch-unchecked-color:      mix($theme-dark,$color-front,10%);
+$switch-unchecked-color:      mix($theme-dark,$color-block,10%);
 $switch-checked-text:         "";
 $switch-unchecked-text:       "";
 

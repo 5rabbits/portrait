@@ -6,13 +6,12 @@
 // 3. Showing panel
 //
 
-
 // 1. Variables
 
-$offscreen-panel-width: 300px;
-$offscreen-panel-top:   $layout-navigation-size + $section-controls-size;
-$offscreen-panel-move:  -$offscreen-panel-width / 2;
-
+$offscreen-panel-width:       300px;
+$offscreen-panel-top:         $layout-navigation-size + $section-controls-size;
+$offscreen-panel-top-large:   $layout-navigation-size + $section-controls-size-large;
+$offscreen-panel-move:        -$offscreen-panel-width / 2;
 
 // 2. Base styles
 
@@ -28,21 +27,19 @@ $offscreen-panel-move:  -$offscreen-panel-width / 2;
 
 .offscreen-aside {
   position: fixed;
-  top: $offscreen-panel-top;
-  right: auto;
-  bottom: 0;
-  left: auto;
-  width: $offscreen-panel-width;
+  width: $offscreen-panel-width - $gutter/2;
   transform: translate3d($offscreen-panel-move,0,0);
   opacity: 0;
   pointer-events: none;
   padding-right: $gutter;
+  overflow: hidden;
+  overflow-y: scroll;
+  max-height: 90%;
 }
 
 .offscreen-content {
   height: 100%;
 }
-
 
 // 3. Showing panel
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import childrenPropType from 'propTypes/children'
 
 const Offscreen = props =>
   <div className="offscreen-wrapper offscreen--show">
@@ -9,5 +10,10 @@ const Offscreen = props =>
       {props.content}
     </div>
   </div>
+
+Offscreen.propTypes = {
+  content: childrenPropType,
+  panel: childrenPropType,
+}
 
 export default Offscreen

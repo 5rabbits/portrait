@@ -4,7 +4,7 @@
   padding: ($unit * 1.5) ($unit * 2);
   margin-bottom: 1px;
 
-  background: $color-front;
+  background: $color-block;
   box-shadow: 0 1px 2px 0 rgba(60,79,89,0.20);
   border-radius: 3px;
 }
@@ -14,7 +14,7 @@ a.block-item {
     transition: all 250ms;
   }
   &:hover {
-    background: mix($color-brand,$color-front,4%);
+    background: mix($color-brand,$color-block,4%);
   }
 }
 
