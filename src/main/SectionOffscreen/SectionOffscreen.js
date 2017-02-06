@@ -1,7 +1,14 @@
 import React, { PureComponent } from 'react'
 import { Loader, Offscreen, EmptyView } from 'shared'
+import childrenPropType from 'propTypes/children'
 
 export default class SectionOffscreen extends PureComponent {
+  static propTypes = {
+    content: childrenPropType,
+    controls: childrenPropType,
+    panelContent: childrenPropType,
+  }
+
   buildPanel = () =>
     <div className="container-page">
       {this.props.panelContent}

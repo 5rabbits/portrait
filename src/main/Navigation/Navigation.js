@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import childrenPropType from 'propTypes/children'
 
 const Navigation = props =>
   <div className="navbar navbar-inverse navbar-fixed-top">
@@ -23,5 +24,11 @@ const Navigation = props =>
       </div>
     </div>
   </div>
+
+Navigation.propTypes = {
+  brand: PropTypes.string,
+  children: childrenPropType,
+  navigationOptions: childrenPropType,
+}
 
 export default Navigation

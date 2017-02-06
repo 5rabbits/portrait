@@ -1,4 +1,5 @@
 import React from 'react'
+import childrenPropType from 'propTypes/children'
 
 const Section = props =>
   <section className="section-wrapper" id="block-section">
@@ -13,5 +14,10 @@ const Section = props =>
       </div>
     </section>
   </section>
+
+Section.propTypes = {
+  content: childrenPropType,
+  controls: childrenPropType,
+}
 
 export default Section

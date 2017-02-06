@@ -1,4 +1,5 @@
 import React from 'react'
+import childrenPropType from 'propTypes/children'
 
 const Controls = props =>
   <div className="controls-container">
@@ -12,5 +13,11 @@ const Controls = props =>
       {props.actions}
     </div>
   </div>
+
+Controls.propTypes = {
+  actions: childrenPropType,
+  content: childrenPropType,
+  main: childrenPropType,
+}
 
 export default Controls

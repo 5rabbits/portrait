@@ -1,6 +1,12 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 
 export default class SectionHeading extends PureComponent {
+  static propTypes = {
+    label: PropTypes.string,
+    url: PropTypes.string,
+    title: PropTypes.string,
+  }
+
   buildLink() {
     if (!this.props.label) {
       return null

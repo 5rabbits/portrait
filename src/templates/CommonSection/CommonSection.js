@@ -1,8 +1,16 @@
 import React, { PureComponent } from 'react'
-import { Section } from '../main'
-import { Offscreen, States } from '../shared'
+import childrenPropType from 'propTypes/children'
+import { Section } from 'main'
+import { Offscreen, States } from 'shared'
 
 export default class CommonSection extends PureComponent {
+  static propTypes = {
+    controls: childrenPropType,
+    content: childrenPropType,
+    empty: childrenPropType,
+    panel: childrenPropType,
+  }
+
   buildContent() {
     if (!this.props.panel) {
       return this.buildStates()

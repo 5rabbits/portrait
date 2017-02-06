@@ -1,4 +1,5 @@
 import React from 'react'
+import childrenPropType from 'propTypes/children'
 
 const Layout = props =>
   <section className="layout-wrapper" id="block-app">
@@ -12,5 +13,11 @@ const Layout = props =>
       {props.main}
     </main>
   </section>
+
+Layout.propTypes = {
+  header: childrenPropType,
+  main: childrenPropType,
+  navigation: childrenPropType,
+}
 
 export default Layout

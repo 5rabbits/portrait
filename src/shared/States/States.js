@@ -1,5 +1,6 @@
 import React from 'react'
 import { Loader, EmptyView } from 'shared'
+import childrenPropType from 'propTypes/children'
 
 const States = props =>
   <div className="section-states">
@@ -15,5 +16,10 @@ const States = props =>
       {props.content}
     </article>
   </div>
+
+States.propTypes = {
+  content: childrenPropType,
+  empty: childrenPropType,
+}
 
 export default States
