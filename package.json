@@ -1,37 +1,97 @@
 {
-  "name": "Design",
-  "description": "Base Design Styles",
-  "author": "Cristian Ferrari",
-  "version": "0.0.1",
+  "name": "portrait",
+  "version": "0.1.0",
+  "description": "Base design for all 5Rabbits products",
+  "keywords": [
+    "commonjs",
+    "es6",
+    "library",
+    "starter",
+    "umd",
+    "universal",
+    "webpack"
+  ],
+  "homepage": "https://bitbucket.org/lemontech/ux",
+  "bugs": "https://bitbucket.org/lemontech/ux/issues",
+  "license": "MIT",
+  "author": "5rabbits <5rabbits@lemontech.com> (http://5rabbits.com/)",
+  "contributors": [
+    "Cristian Ferrari <cferrari@lemontech.cl>",
+    "Daniel Ochoa <dochoa@lemontech.cl>",
+    "Rodrigo Díaz <rdiaz@lemontech.cl>"
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/portrait.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://bitbucket.org/lemontech/ux"
   },
   "scripts": {
-    "watcher": "brunch watch --server",
-    "start": "brunch watch --server",
-    "build": "brunch build --production"
+    "build": "NODE_ENV=production webpack --progress -p --config webpack/webpack.config.js",
+    "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js --hot --inline --content-base example/",
+    "lint": "eslint --color --ext .js src example",
+    "prepublish": "npm run build",
+    "test": "NODE_ENV=test karma start webpack/config/test.config.js",
+    "preversion": "npm run lint && SINGLE_RUN=true npm test"
   },
   "dependencies": {
-    "react": "~15.3.0",
-    "react-dom": "~15.3.0"
+    "bootstrap-sass": "3.3.7",
+    "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
-    "cssnano-brunch": "^1.1.8",
-    "auto-reload-brunch": "^2.0.0",
-    "babel-brunch": "~6.0.0",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-react": "~6.11.1",
-    "brunch": "^2.4.0",
-    "clean-css-brunch": "^2.0.0",
-    "sass-brunch": "^2.0",
-    "postcss-brunch": "^0.5",
-    "autoprefixer": "^6.0",
-    "javascript-brunch": "^2.0.0",
-    "uglify-js-brunch": "^2.0.0",
-    "coffee-reactify": "^5.0.0",
-    "coffee-script-brunch": "^2.0.0",
-    "coffeeify": "~0.6",
-    "react-coffee-brunch": "^1.8.0"
+    "babel": "6.3.13",
+    "babel-core": "6.1.18",
+    "babel-eslint": "7.1.1",
+    "babel-loader": "6.1.0",
+    "babel-plugin-add-module-exports": "0.1.2",
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
+    "chai": "3.5.0",
+    "chai-enzyme": "0.6.1",
+    "clean-webpack-plugin": "0.1.14",
+    "copy-webpack-plugin": "4.0.1",
+    "css-loader": "^0.26.1",
+    "enzyme": "2.6.0",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-loader": "1.6.1",
+    "eslint-plugin-import": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "imports-loader": "0.7.0",
+    "isparta-loader": "2.0.0",
+    "json-loader": "0.5.4",
+    "karma": "1.3.0",
+    "karma-coverage": "1.1.1",
+    "karma-mocha": "1.3.0",
+    "karma-mocha-reporter": "2.2.1",
+    "karma-phantomjs-launcher": "1.0.2",
+    "karma-webpack": "1.8.0",
+    "mocha": "2.3.4",
+    "node-sass": "^4.0.0",
+    "phantomjs-prebuilt": "2.1.14",
+    "react": "^15.4.1",
+    "react-addons-test-utils": "15.4.1",
+    "react-dom": "^15.4.1",
+    "sass-loader": "^4.0.2",
+    "sinon": "1.17.6",
+    "sinon-chai": "2.8.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "1.12.9",
+    "webpack-config": "6.2.1",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "peerDependencies": {
+    "react": "^15.4.1"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   }
 }

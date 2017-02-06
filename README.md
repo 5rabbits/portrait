@@ -1,23 +1,36 @@
-# Design
+# Portrait
+Base design for all 5Rabbits products
 
-## Brunch + React + Babel
+## Example Usage
 
-This is a modern JS skeleton with React for [Brunch](http://brunch.io).
+```javascript
+import React from 'react'
+import { Layout, Navigation, SectionOffscreen } from 'portrait'
+import 'portrait/lib/portrait.css'
 
-### Installation
+const App = () =>
+  <Layout
+    header="header"
+    navigation={
+      <Navigation />
+    }
+    main={
+      <SectionOffscreen
+        controls={<div>Controls</div>}
+        panelContent={<div>Panel</div>}
+        content={<h1>Hello world</h1>}
+      />
+    }
+  />
 
-Clone this repo manually or use `brunch new dir -s brunch/with-react`
+export default App
+```
 
-### Getting started
+## Using sass
 
-* Install (if you don't have them):
-    * [Node.js](http://nodejs.org): `brew install node` on OS X
-    * [Brunch](http://brunch.io): `npm install -g brunch`
-    * Brunch plugins and app dependencies: `npm install`
-* Run:
-    * `brunch watch --server` — watches the project with continuous rebuild. This will also launch HTTP server with [pushState](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history).
-    * `brunch build --production` — builds minified project for production
-* Learn:
-    * `public/` dir is fully auto-generated and served by HTTP server.  Write your code in `app/` dir.
-    * Place static files you want to be copied from `app/assets/` to `public/`.
-    * [Brunch site](http://brunch.io), [Getting started guide](https://github.com/brunch/brunch-guide#readme)
+You can configure Portrait using the sass files:
+
+```scss
+$color-brand: #f00;
+@import '~portrait/lib/scss/portrait.scss';
+```
