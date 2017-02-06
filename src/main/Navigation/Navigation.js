@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import childrenPropType from 'propTypes/children'
 
 const Navigation = props =>
-  <div className="navbar navbar-inverse navbar-fixed-top">
+  <div className={`navbar navbar-fixed-top navbar-${props.theme}`}>
     <div className="container-max">
       <div className="navbar-header">
         <button type="button" className="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -29,6 +29,11 @@ Navigation.propTypes = {
   brand: PropTypes.string,
   children: childrenPropType,
   navigationOptions: childrenPropType,
+  theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
+}
+
+Navigation.defaultProps = {
+  theme: 'default',
 }
 
 export default Navigation
