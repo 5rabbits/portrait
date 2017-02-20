@@ -9,6 +9,7 @@ export default class Offscreen extends PureComponent {
   }
 
   componentDidMount() {
+    this.resizeAsideHeight()
     $(window).on('resize', this.handleWindowResize)
   }
 
@@ -17,9 +18,13 @@ export default class Offscreen extends PureComponent {
   }
 
   handleWindowResize = () => {
-    $(".offscreen-aside").outerHeight($(".offscreen-wrapper").outerHeight())
+    this.resizeAsideHeight()
   }
-  
+
+  resizeAsideHeight = () => {
+    $('.offscreen-aside').outerHeight($('.offscreen-wrapper').outerHeight())
+  }
+
   render() {
     return (
       <div className="offscreen-wrapper offscreen--show">
