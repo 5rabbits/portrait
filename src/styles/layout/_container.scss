@@ -1,6 +1,6 @@
-$container-default-width: 1120px; // $unit * 140
-$container-page-width:    1120px; // $unit * 140
-$container-max-width:     1400px; // $unit * 175
+$container-default-width: 1120px !default; // $unit * 140
+$container-page-width:    1120px !default; // $unit * 140
+$container-max-width:     1400px !default; // $unit * 175
 
 
 .container,

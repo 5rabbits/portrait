@@ -4,7 +4,7 @@ import { Container } from 'shared'
 const PanelFilters = () =>
   <Container>
     <div className="filters">
-      <span className="filters-title">Filtrar resultados</span>
+      <h4 className="type-subhead mb-sm">Filtrar resultados</h4>
       <form>
         <div className="form-group form-input">
           <label className="form-label">Denominación</label>

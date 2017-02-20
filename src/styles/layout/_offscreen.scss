@@ -8,10 +8,10 @@
 
 // 1. Variables
 
-$offscreen-panel-width:       300px;
-$offscreen-panel-top:         $layout-navigation-size + $section-controls-size;
-$offscreen-panel-top-large:   $layout-navigation-size + $section-controls-size-large;
-$offscreen-panel-move:        -$offscreen-panel-width / 2;
+$offscreen-panel-width:       300px !default;
+$offscreen-panel-top:         $layout-navigation-size + $section-controls-size !default;
+$offscreen-panel-top-large:   $layout-navigation-size + $section-controls-size-large !default;
+$offscreen-panel-move:        -$offscreen-panel-width / 2 !default;
 
 // 2. Base styles
 
@@ -34,7 +34,6 @@ $offscreen-panel-move:        -$offscreen-panel-width / 2;
   padding-right: $gutter;
   overflow: hidden;
   overflow-y: scroll;
-  max-height: 90%;
 }
 
 .offscreen-content {

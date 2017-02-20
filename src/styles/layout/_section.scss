@@ -1,6 +1,6 @@
-$section-controls-size:       $unit * 6;
-$section-controls-size-large: $unit * 8;
-$section-controls-background: solidify(rgba($theme-dark,.03));
+$section-controls-size:       $unit * 6 !default;
+$section-controls-size-large: $unit * 8 !default;
+$section-controls-background: solidify(rgba($color-secondary,.03)) !default;
 
 .section-wrapper,
 .section-content,
