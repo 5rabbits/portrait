@@ -9,9 +9,9 @@ $container-max-width:     1400px !default; // $unit * 175
   @include clearfix;
   margin-right: auto;
   margin-left: auto;
-  height: 100%;
   padding-left:  $gutter-sm;
   padding-right: $gutter-sm;
+  height: 100%;
 }
 
 .container       { max-width: $container-default-width; }
@@ -22,11 +22,7 @@ $container-max-width:     1400px !default; // $unit * 175
 .container-page {
   padding-top: $gutter-sm * 1.5;
   padding-bottom: $gutter-sm * 1.5;
-}
-
-.section-content > .container-max {
-  padding-left:  0;
-  padding-right: 0;
+  height: auto;
 }
 
 @include response(to mobile) {

@@ -36,9 +36,16 @@ $section-controls-background: solidify(rgba($color-secondary,.03)) !default;
 }
 
 .section-content {
-  position: relative;
-  padding-top: $section-controls-size;
-  z-index: 70;
+  & {
+    position: relative;
+    padding-top: $section-controls-size;
+    z-index: 70;
+  }
+
+  > .container-max {
+    padding-left:  0;
+    padding-right: 0;
+  }
 }
 
 @include response(from mobile) {

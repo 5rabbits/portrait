@@ -13,7 +13,7 @@ export default class App extends PureComponent {
     />
 
   buildNavigation = () =>
-    <Navigation brand="Styleguide">
+    <Navigation brand="Styleguide" theme="inverse">
       <NavigationItem label="Base" />
       <NavigationItem label="Layout" />
       <NavigationItem label="Components" />
