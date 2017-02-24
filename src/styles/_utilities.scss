@@ -1,0 +1,29 @@
+
+.block-round   {  border-radius:   3px !important; }
+.block-rounded {  border-radius: 100px !important; }
+.block-rect    {  border-radius:   0px !important; }
+
+// Alignment
+
+.text-justify        { text-align: justify !important; }
+.text-nowrap         { white-space: nowrap !important; }
+//.text-truncate       { @include text-truncate; }
+
+.text-left           { text-align:  left !important;    }
+.text-center         { text-align:  center !important;  }
+.text-right          { text-align:  right !important;   }
+
+// Transformation
+
+.text-lowercase      { text-transform: lowercase !important; }
+.text-uppercase      { text-transform: uppercase !important; }
+.text-capitalize     { text-transform: capitalize !important; }
+
+// Weight and italics
+
+.font-normal         { font-weight: normal; }
+.font-bold           { font-weight: bold; }
+.font-strong         { font-weight: bold; }
+.font-italic         { font-style: italic; }
+
+//.text-hide           { @include text-hide(); }
