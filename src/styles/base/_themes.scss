@@ -115,18 +115,21 @@ $theme-light-shades: (
   .color-soft           { color: theme-color($theme, divider); }
 }
 
-
 // 5. Variables
 
+$color-dark-solid:      dark-color(solid) !default;
 $color-dark-icon:       dark-color(icon) !default;
 $color-dark-primary:    dark-color(primary) !default;
 $color-dark-secondary:  dark-color(secondary) !default;
+$color-dark-disabled:   dark color(disabled) !default;
 $color-dark-hint:       dark-color(hint) !default;
 $color-dark-divider:    dark-color(divider) !default;
 
+$color-light-solid:     light-color(solid) !default;
 $color-light-icon:      light-color(icon) !default;
 $color-light-primary:   light-color(primary) !default;
 $color-light-secondary: light-color(secondary) !default;
+$color-light-disabled:  light-color(disabled) !default;
 $color-light-hint:      light-color(hint) !default;
 $color-light-divider:   light-color(divider) !default;
 
