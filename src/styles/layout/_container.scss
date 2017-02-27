@@ -20,22 +20,29 @@ $container-max-width:     1400px !default; // $unit * 175
 .container-fluid { max-width: 100%; }
 
 .container-page {
-  padding-top: $gutter-sm * 1.5;
-  padding-bottom: $gutter-sm * 1.5;
   height: auto;
+  padding-top: $gutter * 2;
+  padding-bottom: $gutter * 2;
 }
 
 @include response(to mobile) {
   .container-page {
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@include response(from mobile) {
+  .container-page {
+    padding-top: $gutter * 2;
+    padding-bottom: $gutter * 2;
   }
 }
 
 @include response(from desktop) {
   .container-page {
-    padding-top: $gutter * 2;
-    padding-bottom: $gutter * 2;
+    padding-top: $gutter * 3;
+    padding-bottom: $gutter * 3;
   }
 }
 

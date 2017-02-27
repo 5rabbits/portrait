@@ -140,20 +140,30 @@ body {
   background-color: $color-base;
   color: dark-color(primary);
 }
+
 a {
-  color: dark-color(solid);
+  color: $color-accent;
+  text-decoration: none;
+  background-color: transparent; // Remove the gray background on active links in IE 10.
+  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
+
+  &:hover {
+    color: darken($color-accent,5%);
+    text-decoration: underline;
+  }
 }
+
 @include color-theme-classes(dark);
 
 
 // 7. Themes
 
 .theme-dark {
-  @include color-theme-base(dark);
+  //@include color-theme-base(dark);
   @include color-theme-classes(dark);
 }
 
 .theme-light {
-  @include color-theme-base(light);
+  //@include color-theme-base(light);
   @include color-theme-classes(light);
 }

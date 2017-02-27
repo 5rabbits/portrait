@@ -63,3 +63,11 @@ $section-controls-background: solidify(rgba($color-secondary,.03)) !default;
     padding-top: $section-controls-size-large;
   }
 }
+
+.section-subhead {
+  position: absolute;
+  height: $section-controls-size;
+  width: 100%;
+  z-index: 1;
+  padding: $gutter-md 0;
+}

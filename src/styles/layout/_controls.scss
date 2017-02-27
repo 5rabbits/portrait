@@ -10,8 +10,13 @@
 }
 
 .controls-content {
-  display: none;
   margin: 0 $gutter-sm;
+  display: flex;
+  align-items: center;
+
+  .section-controls & {
+    display: none;
+  }
 }
 
 .controls-actions {
@@ -21,8 +26,7 @@
 
 
 @include response(from mobile) {
-  .controls-content {
+  .section-controls .controls-content {
     display: flex;
-    align-items: center;
   }
 }

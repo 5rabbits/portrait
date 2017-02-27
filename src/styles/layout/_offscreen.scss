@@ -23,14 +23,17 @@ $offscreen-panel-move:        -$offscreen-panel-width / 2 !default;
 .offscreen-aside,
 .offscreen-content {
   transition: all 250ms;
+  transform: translate3d(0,0,0);
 }
 
 .offscreen-aside {
   position: fixed;
   width: $offscreen-panel-width - $gutter/2;
   transform: translate3d($offscreen-panel-move,0,0);
+  background: $color-base;
   opacity: 0;
   pointer-events: none;
+  z-index: 1;
 }
 
 .offscreen-content {
@@ -39,16 +42,20 @@ $offscreen-panel-move:        -$offscreen-panel-width / 2 !default;
 
 // 3. Showing panel
 
-.offscreen--show {
+@include response(from desktop) {
 
-  .offscreen-aside {
-    transform: translate3d(0,0,0);
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .offscreen--show {
 
-  .offscreen-content {
-    margin-left: $offscreen-panel-width;
+    .offscreen-aside {
+      transform: translate3d(0,0,0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .offscreen-content {
+      margin-left: $offscreen-panel-width;
+    }
+
   }
 
 }
