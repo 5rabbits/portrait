@@ -1,6 +1,8 @@
 import React from 'react'
 import childrenPropType from 'propTypes/children'
 
+// NO USAR
+
 const Grid = props =>
   <div className="container-page">
     {props.children}
