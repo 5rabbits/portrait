@@ -13,9 +13,9 @@ const Section = props =>
       <div className="section-subhead">
         <div className="container-max">
           <Controls
-            main={<a href="#"><i className="fa fa-filter" /><span className="ml-xs hidden-xs">Ver filtros</span></a>}
+            main={<a href="#" className="link link-badge type-footnote"><i className="fa fa-filter" /><span className="ml-xs hidden-xs">Ver filtros</span></a>}
             content={<span className="type-subhead">Hay <strong>356</strong> resultados</span>}
-            actions={<a href="#"><span className="mr-xs hidden-xs">Descargar listado</span><i className="fa fa-download" /></a>}
+            actions={<a href="#" className="link link-badge type-footnote"><span className="mr-xs hidden-xs">Descargar listado</span><i className="fa fa-download" /></a>}
           />
         </div>
       </div>

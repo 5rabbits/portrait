@@ -5,7 +5,7 @@ const ActionPanel = props =>
   <div className="flex-container flex-vertical">
     <div className="flex-content scrollable">
       <div className="flex-close">
-        <a href="#"><i className="fa fa-close" /><span className="ml-xs hidden-xs">Cerrar filtros</span></a>
+        <a href="#" className="link link-badge type-footnote"><i className="fa fa-close" /><span className="ml-xs hidden-xs">Cerrar filtros</span></a>
       </div>
       {props.content}
     </div>
