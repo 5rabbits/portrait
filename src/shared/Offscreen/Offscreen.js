@@ -27,7 +27,7 @@ export default class Offscreen extends PureComponent {
 
   render() {
     return (
-      <div className="offscreen-wrapper offscreen--show">
+      <div className="offscreen-wrapper offscreen--show-">
         <div className="offscreen-aside">
           {this.props.panel}
         </div>
