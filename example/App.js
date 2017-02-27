@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Layout, Navigation, NavigationItem } from 'main'
-import { CommonSection } from 'templates'
+import { Layout, Navigation, NavigationItem, SectionOffscreen } from 'main'
 import Controls from './ControlsSection'
 import Content from './Content'
 import PanelFilters from './PanelFilters'
@@ -20,7 +19,7 @@ export default class App extends PureComponent {
     </Navigation>
 
   buildMain = () =>
-    <CommonSection
+    <SectionOffscreen
       controls={<Controls />}
       panel={<PanelFilters />}
       content={<Content />}

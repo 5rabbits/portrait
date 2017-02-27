@@ -15,7 +15,7 @@ export default class SectionHeading extends PureComponent {
     return (
       <a
         href={this.props.url || '#'}
-        className="link type-footnote color-secondary ml-sm"
+        className="link link-border type-footnote color-secondary ml-sm"
         >
         {this.props.label}
       </a>
