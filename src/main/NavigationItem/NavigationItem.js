@@ -15,10 +15,10 @@ const NavigationItem = props => {
 }
 
 NavigationItem.propTypes = {
-  component: PropTypes.node,
+  component: PropTypes.func,
   isActive: PropTypes.bool,
   icon: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.node,
 }
 
 NavigationItem.defaultProps = {

@@ -26,7 +26,7 @@ const Navigation = props =>
   </div>
 
 Navigation.propTypes = {
-  brand: PropTypes.string,
+  brand: PropTypes.node,
   children: childrenPropType,
   navigationOptions: childrenPropType,
   theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
