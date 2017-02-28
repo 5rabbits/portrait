@@ -18,7 +18,7 @@ NavigationItem.propTypes = {
   component: PropTypes.func,
   isActive: PropTypes.bool,
   icon: PropTypes.string,
-  label: PropTypes.element,
+  label: PropTypes.node,
 }
 
 NavigationItem.defaultProps = {
