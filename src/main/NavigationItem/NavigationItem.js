@@ -7,7 +7,8 @@ const NavigationItem = props => {
   return (
     <li className={classNames({ active: isActive })}>
       <Component {...other}>
-        <i className={`fa mr-xs ${icon}`} />
+        {icon}
+        {' '}
         <span className="hidden-sm">{label}</span>
       </Component>
     </li>
@@ -17,7 +18,7 @@ const NavigationItem = props => {
 NavigationItem.propTypes = {
   component: PropTypes.node,
   isActive: PropTypes.bool,
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   label: PropTypes.string,
 }
 
