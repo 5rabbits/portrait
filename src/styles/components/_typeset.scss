@@ -11,7 +11,7 @@ $typography: (
   footnote: ( font-size:  13px, line-height:   16px, letter-spacing:   .2px, ),
   caption:  ( font-size:  12px, line-height:   16px, letter-spacing:   .2px, ),
   small:    ( font-size:  10px, line-height: normal, letter-spacing:   .2px, ),
-);
+) !default;
 
 @mixin typography($name) {
   $properties: map-get($typography,$name);

@@ -20,7 +20,7 @@ $theme-light:      $color-inverse !default;
 $themes: (
   dark:  $theme-dark,
   light: $theme-light,
-);
+) !default;
 
 
 // 2. Shades
@@ -32,7 +32,7 @@ $theme-dark-shades: (
   disabled:  .3,
   hint:      .3,
   divider:   .1,
-);
+) !default;
 
 $theme-light-shades: (
   icon:      .8,
@@ -41,7 +41,7 @@ $theme-light-shades: (
   disabled:  .4,
   hint:      .4,
   divider:   .2,
-);
+) !default;
 
 
 // 3. Functions
@@ -115,20 +115,23 @@ $theme-light-shades: (
   .color-soft           { color: theme-color($theme, divider); }
 }
 
-
 // 5. Variables
 
-$color-dark-icon:       dark-color(icon);
-$color-dark-primary:    dark-color(primary);
-$color-dark-secondary:  dark-color(secondary);
-$color-dark-hint:       dark-color(hint);
-$color-dark-divider:    dark-color(divider);
+$color-dark-solid:      dark-color(solid) !default;
+$color-dark-icon:       dark-color(icon) !default;
+$color-dark-primary:    dark-color(primary) !default;
+$color-dark-secondary:  dark-color(secondary) !default;
+$color-dark-disabled:   dark color(disabled) !default;
+$color-dark-hint:       dark-color(hint) !default;
+$color-dark-divider:    dark-color(divider) !default;
 
-$color-light-icon:      light-color(icon);
-$color-light-primary:   light-color(primary);
-$color-light-secondary: light-color(secondary);
-$color-light-hint:      light-color(hint);
-$color-light-divider:   light-color(divider);
+$color-light-solid:     light-color(solid) !default;
+$color-light-icon:      light-color(icon) !default;
+$color-light-primary:   light-color(primary) !default;
+$color-light-secondary: light-color(secondary) !default;
+$color-light-disabled:  light-color(disabled) !default;
+$color-light-hint:      light-color(hint) !default;
+$color-light-divider:   light-color(divider) !default;
 
 
 // 6. Styles
@@ -137,20 +140,30 @@ body {
   background-color: $color-base;
   color: dark-color(primary);
 }
+
 a {
-  color: dark-color(solid);
+  color: $color-accent;
+  text-decoration: none;
+  background-color: transparent; // Remove the gray background on active links in IE 10.
+  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
+
+  &:hover {
+    color: darken($color-accent,5%);
+    text-decoration: underline;
+  }
 }
+
 @include color-theme-classes(dark);
 
 
 // 7. Themes
 
 .theme-dark {
-  @include color-theme-base(dark);
+  //@include color-theme-base(dark);
   @include color-theme-classes(dark);
 }
 
 .theme-light {
-  @include color-theme-base(light);
+  //@include color-theme-base(light);
   @include color-theme-classes(light);
 }

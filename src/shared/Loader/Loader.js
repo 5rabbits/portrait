@@ -1,12 +1,9 @@
 import React from 'react'
+import { EmptyView } from 'shared'
 
 const Loader = () =>
-  <div className="empty-view">
-    <div className="empty-container">
-      <div className="empty-dialog">
-        <i className="fa fa-circle-o-notch fa-5x color-soft fa-spin" />
-      </div>
-    </div>
-  </div>
+  <EmptyView>
+    <i className="fa fa-circle-o-notch fa-5x color-soft fa-spin" />
+  </EmptyView>
 
 export default Loader

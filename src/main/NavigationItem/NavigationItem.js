@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import classNames from 'classnames'
 
 const NavigationItem = props => {
@@ -12,6 +12,13 @@ const NavigationItem = props => {
       </Component>
     </li>
   )
+}
+
+NavigationItem.propTypes = {
+  component: PropTypes.node,
+  isActive: PropTypes.bool,
+  icon: PropTypes.string,
+  label: PropTypes.string,
 }
 
 NavigationItem.defaultProps = {

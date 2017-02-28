@@ -46,7 +46,7 @@
 }
 
 // [1] Without min-height:0 overflow scrolling doesn't work
-%scrollable {
+.scrollable {
   overflow: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;

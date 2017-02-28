@@ -1,9 +1,9 @@
 import React from 'react'
-import { Grid } from 'shared'
+import { Container } from 'shared'
 import { TimeEntry } from './timeflow'
 
 const Content = () =>
-  <Grid>
+  <Container>
     <div className="block-group">
       <TimeEntry />
       <TimeEntry />
@@ -23,6 +23,6 @@ const Content = () =>
       <TimeEntry />
       <TimeEntry />
     </div>
-  </Grid>
+  </Container>
 
 export default Content

@@ -15,19 +15,12 @@
   }
 }
 
-@function map-deep-get($map, $keys...) {
-  $value: $map;
-  @each $key in $keys {
-    $value: map-get($value, $key);
-  }
-  @return $value;
-}
-
 @mixin expose-map($map) {
   @each $property, $value in $map  {
     #{$property}: $value;
   }
 }
+
 
 /// DEBUG
 /// http://www.sitepoint.com/debugging-sass-maps/
