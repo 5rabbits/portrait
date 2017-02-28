@@ -13,7 +13,11 @@ const Navigation = props =>
           <span className="sr-only">Toggle navigation</span>
           <i className="fa fa-search" />
         </button>
-        <a className="navbar-brand" href="#">{props.brand}</a>
+        {props.brand &&
+          <div className="navbar-brand">
+            {props.brand}
+          </div>
+        }
       </div>
 
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -26,7 +30,7 @@ const Navigation = props =>
   </div>
 
 Navigation.propTypes = {
-  brand: PropTypes.string,
+  brand: PropTypes.node,
   children: childrenPropType,
   navigationOptions: childrenPropType,
   theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
