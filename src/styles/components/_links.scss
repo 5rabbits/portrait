@@ -1,9 +1,29 @@
 .link {
   & {
-    border-bottom: 1px solid dark-color(divider);
     transition: all 250ms;
   }
   &:hover {
-    border-color: dark-color(hint)
+    text-decoration: none;
+  }
+}
+
+
+.link-border {
+  & {
+    border-bottom: 1px solid dark-color(divider);
+  }
+  &:hover {
+    border-color: dark-color(hint);
+  }
+}
+
+.link-badge {
+  & {
+    border-radius: 20px;
+    padding: 4px;
+  }
+  &:hover {
+    background: rgba($color-accent,.1);
+    padding: 4px 10px;
   }
 }

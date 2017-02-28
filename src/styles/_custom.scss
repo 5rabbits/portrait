@@ -23,7 +23,7 @@ $border-radius-base:    3px;
 $border-radius-large:   $border-radius-base;
 $border-radius-small:   $border-radius-base;
 
-$navbar-height:             $layout-navigation-size;
+$navbar-height:             48px;
 //$navbar-padding-horizontal: 0;
 
 
@@ -32,7 +32,7 @@ $navbar-height:             $layout-navigation-size;
 // Reset inverted navbar basics
 $navbar-inverse-color:                      #fff;
 
-$navbar-inverse-bg:                         $layout-navigation-background;
+$navbar-inverse-bg:                         shade($color-brand,65%);
 $navbar-inverse-border:                     transparent;
 
 // Inverted navbar links
@@ -50,8 +50,8 @@ $navbar-inverse-brand-hover-color:          #fff;
 $navbar-inverse-brand-hover-bg:             transparent;
 
 // Inverted navbar toggle
-$navbar-inverse-toggle-bg:                  darken($layout-navigation-background,5%);
-$navbar-inverse-toggle-hover-bg:            darken($layout-navigation-background,5%);
+$navbar-inverse-toggle-bg:                  darken($navbar-inverse-bg,5%);
+$navbar-inverse-toggle-hover-bg:            darken($navbar-inverse-bg,5%);
 $navbar-inverse-toggle-icon-bar-bg:         #fff;
-$navbar-inverse-toggle-border-color:        darken($layout-navigation-background,5%);
+$navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg,5%);
 $navbar-inverse-toggle-border-color:        transparent;

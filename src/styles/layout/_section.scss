@@ -1,6 +1,6 @@
-$section-controls-size:       $unit * 6;
-$section-controls-size-large: $unit * 8;
-$section-controls-background: solidify(rgba($theme-dark,.03));
+$section-controls-size:       $unit * 6 !default;
+$section-controls-size-large: $unit * 8 !default;
+$section-controls-background: solidify(rgba($color-secondary,.03)) !default;
 
 .section-wrapper,
 .section-content,
@@ -36,9 +36,16 @@ $section-controls-background: solidify(rgba($theme-dark,.03));
 }
 
 .section-content {
-  position: relative;
-  padding-top: $section-controls-size;
-  z-index: 70;
+  & {
+    position: relative;
+    padding-top: $section-controls-size;
+    z-index: 70;
+  }
+
+  > .container-max {
+    padding-left:  0;
+    padding-right: 0;
+  }
 }
 
 @include response(from mobile) {
@@ -55,4 +62,12 @@ $section-controls-background: solidify(rgba($theme-dark,.03));
   .section-content {
     padding-top: $section-controls-size-large;
   }
+}
+
+.section-subhead {
+  position: absolute;
+  height: $section-controls-size;
+  width: 100%;
+  z-index: 1;
+  padding: $gutter-md 0;
 }

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Grid } from './shared'
+import { Container } from './shared'
 
 const ContentProjects = () =>
-  <Grid>
+  <Container>
     <div className="block-item pa-nn">
       <table className="table table-expanded">
         <thead>
@@ -137,6 +137,6 @@ const ContentProjects = () =>
         </tbody>
       </table>
     </div>
-  </Grid>
+  </Container>
 
 export default ContentProjects

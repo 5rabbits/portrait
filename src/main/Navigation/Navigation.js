@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import childrenPropType from 'propTypes/children'
 
 const Navigation = props =>
-  <div className="navbar navbar-inverse navbar-fixed-top">
+  <div className={`navbar navbar-fixed-top navbar-${props.theme}`}>
     <div className="container-max">
       <div className="navbar-header">
         <button type="button" className="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -19,21 +20,20 @@ const Navigation = props =>
         <ul className="nav navbar-nav">
           {props.children}
         </ul>
-
-        <ul className="nav navbar-nav navbar-right">
-          <li className="dropdown">
-            <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil <span className="caret" /></a>
-            <ul className="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" className="divider" />
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
-        </ul>
+        {props.navigationOptions}
       </div>
     </div>
   </div>
+
+Navigation.propTypes = {
+  brand: PropTypes.string,
+  children: childrenPropType,
+  navigationOptions: childrenPropType,
+  theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
+}
+
+Navigation.defaultProps = {
+  theme: 'default',
+}
 
 export default Navigation

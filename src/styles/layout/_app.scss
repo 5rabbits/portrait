@@ -1,5 +1,4 @@
-$layout-navigation-size:       48px;
-$layout-navigation-background: shade($color-brand,65%);
+$layout-navigation-size:       48px !default;
 
 
 .layout-wrapper,
@@ -20,7 +19,6 @@ $layout-navigation-background: shade($color-brand,65%);
   z-index: 90;
   width: 100%;
   height: $layout-navigation-size;
-  background-color: $layout-navigation-background;
 }
 
 .layout-main {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Loader, EmptyView } from 'shared'
+import childrenPropType from 'propTypes/children'
 
 const Section = props =>
   <section className="section-wrapper" id="block-section">
@@ -10,19 +10,14 @@ const Section = props =>
     </header>
     <section className="section-content" id="block-content">
       <div className="container-max">
-        <article className="hidden section-state" id="block-content-loading">
-          <Loader />
-        </article>
-
-        <article className="hidden section-state" id="block-content-empty">
-          <EmptyView />
-        </article>
-
-        <article className="hidden- section-state" id="block-content-data">
-          { props.content }
-        </article>
+        {props.content}
       </div>
     </section>
   </section>
+
+Section.propTypes = {
+  content: childrenPropType,
+  controls: childrenPropType,
+}
 
 export default Section
