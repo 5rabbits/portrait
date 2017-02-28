@@ -163,8 +163,9 @@
 
 .navbar-brand {
   //float: left;
-  display: inline-block;
-  padding: $navbar-padding-vertical $navbar-padding-horizontal;
+  display: flex;
+  align-items: center;
+  padding: 0 $navbar-padding-horizontal;
   font-size: $font-size-large;
   line-height: $line-height-computed;
   height: $navbar-height;
