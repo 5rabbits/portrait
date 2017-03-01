@@ -7,7 +7,7 @@
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-  .navigation-item__icon {
+  .navigation-item--top-level > a > .navigation-item__icon {
     margin-right: 0 !important;
   }
 }
