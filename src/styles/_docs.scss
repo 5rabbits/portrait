@@ -1,0 +1,49 @@
+.docs-theme-default-solid      { background-color: $color-dark-solid; }
+.docs-theme-default-icon       { background-color: $color-dark-icon; }
+.docs-theme-default-primary    { background-color: $color-dark-primary; }
+.docs-theme-default-secondary  { background-color: $color-dark-secondary; }
+.docs-theme-default-disabled   { background-color: $color-dark-disabled; }
+.docs-theme-default-hint       { background-color: $color-dark-hint; }
+.docs-theme-default-divider    { background-color: $color-dark-divider; }
+
+.docs-theme-inverse-solid      { background-color: $color-light-solid; }
+.docs-theme-inverse-icon       { background-color: $color-light-icon; }
+.docs-theme-inverse-primary    { background-color: $color-light-primary; }
+.docs-theme-inverse-secondary  { background-color: $color-light-secondary; }
+.docs-theme-inverse-disabled   { background-color: $color-light-disabled; }
+.docs-theme-inverse-hint       { background-color: $color-light-hint; }
+.docs-theme-inverse-divider    { background-color: $color-light-divider; }
+
+
+
+
+//Revisar
+
+.swatch-color {
+  padding-bottom: 50%;
+}
+
+.py-z {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.mb-z {
+  margin-bottom: 0px;
+}
+
+.swatch-color-lg {
+  padding-bottom: 60%;
+}
+
+.swatch-color-sm {
+  padding-bottom: 20%;
+}
+
+.swatch-color-full {
+  padding-bottom: 100%;
+}
+
+.bt-z {
+  border-top: 0px!important;
+}

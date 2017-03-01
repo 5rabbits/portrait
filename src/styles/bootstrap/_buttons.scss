@@ -351,8 +351,8 @@ input[type="button"] {
   &:active,
   &.active,
   .open > &.dropdown-toggle {
-    background-color: solidify(dark-color(.1));
-        border-color: solidify(dark-color(.2));
+    background-color: solidify(dark-text-color(.1));
+        border-color: solidify(dark-text-color(.2));
 
   }
 }
@@ -360,7 +360,7 @@ input[type="button"] {
 
 .btn-outline-default {
   & {
-    color: dark-color(secondary);
+    color: dark-text-color(secondary);
   }
   &:hover,
   &:focus,
@@ -368,16 +368,16 @@ input[type="button"] {
   &:active,
   &.active,
   .open > &.dropdown-toggle {
-               color: dark-color(primary);
-    background-color: solidify(dark-color(.15));
-        border-color: solidify(dark-color(.15));
+               color: dark-text-color(primary);
+    background-color: solidify(dark-text-color(.15));
+        border-color: solidify(dark-text-color(.15));
 
   }
 }
 
 .btn-inverse-default {
   & {
-    color: dark-color(secondary);
+    color: dark-text-color(secondary);
   }
   &:hover,
   &:focus,
@@ -385,9 +385,9 @@ input[type="button"] {
   &:active,
   &.active,
   .open > &.dropdown-toggle {
-               color: dark-color(primary);
-    background-color: solidify(dark-color(.15));
-        border-color: solidify(dark-color(.15));
+               color: dark-text-color(primary);
+    background-color: solidify(dark-text-color(.15));
+        border-color: solidify(dark-text-color(.15));
 
   }
 }

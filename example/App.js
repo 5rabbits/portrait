@@ -3,7 +3,7 @@ import { Layout, Navigation, NavigationItem } from 'main'
 import { CommonSection } from 'templates'
 import Controls from './ControlsSection'
 import Content from './Content'
-import PanelFilters from './PanelFilters'
+// import PanelFilters from './PanelFilters'
 
 export default class App extends PureComponent {
 
@@ -22,7 +22,6 @@ export default class App extends PureComponent {
   buildMain = () =>
     <CommonSection
       controls={<Controls />}
-      panel={<PanelFilters />}
       content={<Content />}
       empty={<hr />}
     />

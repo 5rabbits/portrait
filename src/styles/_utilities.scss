@@ -7,20 +7,18 @@
 .font-normal   { font-style: normal; }
 .font-italic   { font-style: italic; }
 
-
-
-
+//@function lighter-color($name) {
+//  @return scale-color($name, $lightness: 80%);
+//}
 @function light-color($name) {
   @return scale-color($name, $lightness: 80%);
 }
 @function dark-color($name) {
-  @return scale-color($name, $lightness: -80%);
+  @return scale-color($name, $lightness: -40%);
 }
-
-.bg-brand      { background-color: $color-brand;}
-
-.bg-highlight  { background-color: $color-highlight;}
-.bg-accent     { background-color: $color-accent;}
+//@function darker-color($name) {
+//  @return scale-color($name, $lightness: -40%);
+//}
 
 .bg-primary    { background-color: $color-primary;}
 .bg-secondary  { background-color: $color-secondary;}
@@ -28,48 +26,16 @@
 .bg-base       { background-color: $color-base;}
 .bg-block      { background-color: $color-block;}
 
-.bg-text       { background-color: $color-text;}
-.bg-inverse    { background-color: $color-inverse;}
-
 .bg-success    { background-color: $color-success;}
 .bg-warning    { background-color: $color-warning;}
 .bg-danger     { background-color: $color-danger;}
 .bg-info       { background-color: $color-info;}
 
 
-.bg-brand-light      { background-color: light-color($color-brand);}
-
-.bg-highlight-light  { background-color: light-color($color-highlight);}
-.bg-accent-light     { background-color: light-color($color-accent);}
-
-.bg-primary-light    { background-color: light-color($color-primary);}
-.bg-secondary-light  { background-color: light-color($color-secondary);}
-
-.bg-base-light       { background-color: light-color($color-base);}
-.bg-block-light      { background-color: light-color($color-block);}
-
-.bg-text-light       { background-color: light-color($color-text);}
-.bg-inverse-light    { background-color: light-color($color-inverse);}
-
 .bg-success-light    { background-color: light-color($color-success);}
 .bg-warning-light    { background-color: light-color($color-warning);}
 .bg-danger-light     { background-color: light-color($color-danger);}
 .bg-info-light       { background-color: light-color($color-info);}
-
-
-.bg-brand-dark       { background-color: dark-color($color-brand);}
-
-.bg-highlight-dark   { background-color: dark-color($color-highlight);}
-.bg-accent-dark      { background-color: dark-color($color-accent);}
-
-.bg-primary-dark     { background-color: dark-color($color-primary);}
-.bg-secondary-dark   { background-color: dark-color($color-secondary);}
-
-.bg-base-dark        { background-color: dark-color($color-base);}
-.bg-block-dark       { background-color: dark-color($color-block);}
-
-.bg-text-dark        { background-color: dark-color($color-text);}
-.bg-inverse-dark     { background-color: dark-color($color-inverse);}
 
 .bg-success-dark     { background-color: dark-color($color-success);}
 .bg-warning-dark     { background-color: dark-color($color-warning);}
