@@ -2,12 +2,17 @@ import React, { PropTypes } from 'react'
 import classNames from 'classnames'
 
 const NavigationItem = props => {
-  const { component: Component, isActive, icon, label, children, ...other } = props
+  const {
+    component: Component, isActive, icon, label, children, containerProps,
+    ...other
+  } = props
+
   const isDropdown = children != null
 
   return (
     <li
-      className={classNames({
+      {...containerProps}
+      className={classNames(containerProps.className, {
         active: isActive,
         dropdown: isDropdown,
       })}
@@ -42,6 +47,7 @@ const NavigationItem = props => {
 
 NavigationItem.propTypes = {
   children: PropTypes.node,
+  containerProps: PropTypes.object,
   component: PropTypes.node,
   isActive: PropTypes.bool,
   icon: PropTypes.node,
