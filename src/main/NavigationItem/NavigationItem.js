@@ -48,10 +48,10 @@ const NavigationItem = props => {
 NavigationItem.propTypes = {
   children: PropTypes.node,
   containerProps: PropTypes.object,
-  component: PropTypes.node,
+  component: PropTypes.func,
   isActive: PropTypes.bool,
   icon: PropTypes.node,
-  label: PropTypes.string,
+  label: PropTypes.node,
 }
 
 NavigationItem.defaultProps = {
