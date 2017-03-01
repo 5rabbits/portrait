@@ -48,7 +48,9 @@ const NavigationItem = props => {
 NavigationItem.propTypes = {
   children: PropTypes.node,
   containerProps: PropTypes.object,
-  component: PropTypes.func,
+  component: PropTypes.oneOfType([
+    PropTypes.string, PropTypes.func,
+  ]),
   isActive: PropTypes.bool,
   icon: PropTypes.node,
   label: PropTypes.node,
