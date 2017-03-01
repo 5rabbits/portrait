@@ -494,10 +494,19 @@
       .open .dropdown-menu {
         > li > a {
           color: $navbar-default-link-color;
+
+          path[fill] {
+            fill: $navbar-default-link-color;
+          }
+
           &:hover,
           &:focus {
             color: $navbar-default-link-hover-color;
             background-color: $navbar-default-link-hover-bg;
+
+            path[fill] {
+              fill: $navbar-default-link-hover-color;
+            }
           }
         }
         > .active > a {
@@ -506,6 +515,10 @@
           &:focus {
             color: $navbar-default-link-active-color;
             background-color: $navbar-default-link-active-bg;
+
+            path[fill] {
+              fill: $navbar-default-link-active-color;
+            }
           }
         }
         > .disabled > a {
@@ -514,6 +527,10 @@
           &:focus {
             color: $navbar-default-link-disabled-color;
             background-color: $navbar-default-link-disabled-bg;
+
+            path[fill] {
+              fill: $navbar-default-link-disabled-color;
+            }
           }
         }
       }
@@ -654,10 +671,19 @@
         }
         > li > a {
           color: $navbar-inverse-link-color;
+
+          path[fill] {
+            fill: $navbar-inverse-link-color;
+          }
+
           &:hover,
           &:focus {
             color: $navbar-inverse-link-hover-color;
             background-color: $navbar-inverse-link-hover-bg;
+
+            path[fill] {
+              fill: $navbar-inverse-link-hover-color;
+            }
           }
         }
         > .active > a {
@@ -666,6 +692,10 @@
           &:focus {
             color: $navbar-inverse-link-active-color;
             background-color: $navbar-inverse-link-active-bg;
+
+            path[fill] {
+              fill: $navbar-inverse-link-active-color;
+            }
           }
         }
         > .disabled > a {
@@ -674,6 +704,10 @@
           &:focus {
             color: $navbar-inverse-link-disabled-color;
             background-color: $navbar-inverse-link-disabled-bg;
+
+            path[fill] {
+              fill: $navbar-inverse-link-disabled-color;
+            }
           }
         }
       }
