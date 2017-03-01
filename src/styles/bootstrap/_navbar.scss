@@ -702,3 +702,8 @@
     }
   }
 }
+
+.navbar-nav .dropdown-menu > li > a {
+  display: flex;
+  align-items: center;
+}
