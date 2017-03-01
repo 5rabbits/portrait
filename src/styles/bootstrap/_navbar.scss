@@ -235,6 +235,8 @@
     padding-top:    10px;
     padding-bottom: 10px;
     line-height: $line-height-computed;
+    display: flex;
+    align-items: center;
   }
 
   @media (max-width: $grid-float-breakpoint-max) {
@@ -269,8 +271,9 @@
     > li {
       float: left;
       > a {
-        padding-top:    $navbar-padding-vertical;
-        padding-bottom: $navbar-padding-vertical;
+        padding-top:    0;
+        padding-bottom: 0;
+        height: $navbar-height;
       }
     }
   }

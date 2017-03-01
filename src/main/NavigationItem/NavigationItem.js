@@ -7,9 +7,14 @@ const NavigationItem = props => {
   return (
     <li className={classNames({ active: isActive })}>
       <Component {...other}>
-        {icon}
-        {' '}
-        <span className="hidden-sm">{label}</span>
+        {icon &&
+          <span className="mr-xs navigation-item__icon">
+            {icon}
+          </span>
+        }
+        <span className="hidden-sm">
+          {label}
+        </span>
       </Component>
     </li>
   )
