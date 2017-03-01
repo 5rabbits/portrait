@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import childrenPropType from 'propTypes/children'
+import classNames from 'classnames'
 
 const Navigation = props =>
   <div className={`navbar navbar-fixed-top navbar-${props.theme}`}>
@@ -21,7 +22,11 @@ const Navigation = props =>
       </div>
 
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul className="nav navbar-nav">
+        <ul
+          className={classNames('nav navbar-nav', {
+            'navbar-nav--align-left': props.align === 'left',
+          })}
+          >
           {props.children}
         </ul>
         {props.navigationOptions}
@@ -30,6 +35,7 @@ const Navigation = props =>
   </div>
 
 Navigation.propTypes = {
+  align: PropTypes.oneOf(['left', 'center']).isRequired,
   brand: PropTypes.node,
   children: childrenPropType,
   navigationOptions: childrenPropType,
@@ -37,6 +43,7 @@ Navigation.propTypes = {
 }
 
 Navigation.defaultProps = {
+  align: 'center',
   theme: 'default',
 }
 

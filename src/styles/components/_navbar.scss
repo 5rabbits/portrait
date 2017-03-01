@@ -3,6 +3,10 @@
     display: inline-block;
     float: none;
     vertical-align: top;
+
+    &.navbar-nav--align-left {
+      float: left;
+    }
   }
 
   .navbar .navbar-collapse {
