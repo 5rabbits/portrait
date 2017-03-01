@@ -56,6 +56,7 @@ NavigationItem.propTypes = {
 
 NavigationItem.defaultProps = {
   component: 'a',
+  containerProps: {},
 }
 
 export default NavigationItem
