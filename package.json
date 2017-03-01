@@ -29,7 +29,7 @@
     "url": "https://bitbucket.org/lemontech/ux"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --progress -p --config webpack/webpack.config.js",
+    "build": "NODE_ENV=production webpack --progress --config webpack/webpack.config.js",
     "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js --hot --inline --content-base example/",
     "lint": "eslint --color --ext .js src example",
     "prepublish": "npm run build",
