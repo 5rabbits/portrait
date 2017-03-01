@@ -482,6 +482,10 @@
       &:focus {
         background-color: $navbar-default-link-active-bg;
         color: $navbar-default-link-active-color;
+
+        path[fill] {
+          fill: $navbar-default-link-active-color;
+        }
       }
     }
 
@@ -587,6 +591,10 @@
       &:focus {
         color: $navbar-inverse-link-active-color;
         background-color: $navbar-inverse-link-active-bg;
+
+        path[fill] {
+          fill: $navbar-inverse-link-active-color;
+        }
       }
     }
     > .disabled > a {
@@ -595,6 +603,10 @@
       &:focus {
         color: $navbar-inverse-link-disabled-color;
         background-color: $navbar-inverse-link-disabled-bg;
+
+        path[fill] {
+          fill: $navbar-inverse-link-disabled-color;
+        }
       }
     }
   }
@@ -624,6 +636,10 @@
       &:focus {
         background-color: $navbar-inverse-link-active-bg;
         color: $navbar-inverse-link-active-color;
+
+        path[fill] {
+          fill: $navbar-inverse-link-active-color;
+        }
       }
     }
 

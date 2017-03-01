@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.navigation-item__caret {
+  margin-top: 4px;
+}
+
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
   .navigation-item__icon {
     margin-right: 0 !important;
