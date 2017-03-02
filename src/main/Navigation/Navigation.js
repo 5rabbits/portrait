@@ -1,55 +1,92 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import childrenPropType from 'propTypes/children'
-import classNames from 'classnames'
+import cx from 'classnames'
+import responsive from 'helpers/responsive'
 
-const Navigation = props =>
-  <div
-    className={classNames('navbar', 'navbar-fixed-top',
-      `navbar-${props.theme}`, props.className,
-    )}
-    >
-    <div className="container-max">
-      <div className="navbar-header">
-        <button type="button" className="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span className="sr-only">Toggle navigation</span>
-          <i className="fa fa-bars" />
-        </button>
-        <button type="button" className="navbar-toggle pull-right" aria-expanded="false">
-          <span className="sr-only">Toggle navigation</span>
-          <i className="fa fa-search" />
-        </button>
-        {props.brand &&
-          <div className="navbar-brand">
-            {props.brand}
+class Navigation extends Component {
+  static propTypes = {
+    // align: PropTypes.oneOf(['left', 'center']).isRequired,
+    brand: PropTypes.node,
+    children: childrenPropType,
+    // className: PropTypes.string,
+    // navigationOptions: childrenPropType,
+    theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
+    hideTexts: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    align: 'center',
+    theme: 'default',
+  }
+
+  static childContextTypes = {
+    hideNavigationItemText: PropTypes.bool,
+  }
+
+  getChildContext() {
+    return {
+      hideNavigationItemText: this.props.hideTexts,
+    }
+  }
+
+  componentDidMount() {}
+
+  render() {
+    const { brand, children, theme } = this.props
+
+    return (
+      <div
+        className={cx('navigation', `navigation--${theme}`)}
+        >
+        {brand &&
+          <div className="navigation__brand">
+            {brand}
           </div>
         }
-      </div>
 
-      <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul
-          className={classNames('nav navbar-nav', {
-            'navbar-nav--align-left': props.align === 'left',
-          })}
-          >
-          {props.children}
-        </ul>
-        {props.navigationOptions}
+        <div className="navigation__links">
+          {children}
+        </div>
       </div>
-    </div>
-  </div>
-
-Navigation.propTypes = {
-  align: PropTypes.oneOf(['left', 'center']).isRequired,
-  brand: PropTypes.node,
-  children: childrenPropType,
-  className: PropTypes.string,
-  navigationOptions: childrenPropType,
-  theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
+    )
+  }
 }
 
-Navigation.defaultProps = {
-  align: 'center',
-  theme: 'default',
-}
+const rules = () => ({
+  hideTexts: '(max-width: 1000px)',
+})
 
-export default Navigation
+export default responsive(rules)(Navigation)
+
+  // <div
+  //   className={classNames('navbar', 'navbar-fixed-top',
+  //     `navbar-${props.theme}`, props.className,
+  //   )}
+  //   >
+  //   <div className="container-max">
+  //     <div className="navbar-header">
+  //       <button type="button" className="navbar-t
+  // oggle collapsed pull-left" data-toggle="collapse" d
+  // ata-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  //         <span className="sr-only">Toggle navigation</span>
+  //         <i className="fa fa-bars" />
+  //       </button>
+  //       {props.brand &&
+  //         <div className="navbar-brand">
+  //           {props.brand}
+  //         </div>
+  //       }
+  //     </div>
+  //
+  //     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  //       <ul
+  //         className={classNames('nav navbar-nav', {
+  //           'navbar-nav--align-left': props.align === 'left',
+  //         })}
+  //         >
+  //         {props.children}
+  //       </ul>
+  //       {props.navigationOptions}
+  //     </div>
+  //   </div>
+  // </div>

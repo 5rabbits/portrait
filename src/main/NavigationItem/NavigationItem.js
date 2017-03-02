@@ -20,6 +20,7 @@ export default class NavigationItem extends React.Component {
 
   static contextTypes = {
     isNestedNavigationItem: PropTypes.bool,
+    hideNavigationItemText: PropTypes.bool,
   }
 
   static childContextTypes = {
@@ -38,13 +39,14 @@ export default class NavigationItem extends React.Component {
       ...other
     } = this.props
 
-    const isNested = this.context.isNestedNavigationItem || false
+    const { isNestedNavigationItem, hideNavigationItemText } = this.context
+    const isNested = isNestedNavigationItem || false
     const isDropdown = children != null
 
     return (
-      <li
+      <div
         {...containerProps}
-        className={classNames(containerProps.className, {
+        className={classNames('navigation-item', containerProps.className, {
           active: isActive,
           dropdown: isDropdown,
           'navigation-item--top-level': !isNested,
@@ -60,9 +62,7 @@ export default class NavigationItem extends React.Component {
             </span>
           }
 
-          <span className={classNames({ 'hidden-sm': !isNested })}>
-            {label}
-          </span>
+          {!hideNavigationItemText && label}
 
           {isDropdown &&
             <span className="caret navigation-item__caret" />
@@ -74,7 +74,7 @@ export default class NavigationItem extends React.Component {
             {children}
           </ul>
         }
-      </li>
+      </div>
     )
   }
 }
