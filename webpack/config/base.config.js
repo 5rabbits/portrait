@@ -27,12 +27,23 @@ module.exports = new Config().merge({
         loader: 'url-loader?limit=10000&mimetype=application/font-woff',
       },
       {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
       },
       {
         test: /\.json$/,
         loader: 'json',
+      },
+      {
+        test: /\.svg$/,
+        loader: 'babel!react-svg?' + JSON.stringify({
+          svgo: {
+            plugins: [
+              { removeTitle: false },
+            ],
+            floatPrecision: 2,
+          },
+        }),
       },
     ],
   },
