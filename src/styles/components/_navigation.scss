@@ -1,38 +1,69 @@
+@mixin itemColor($color) {
+  color: $color;
+
+  path[fill] {
+    fill: $color;
+  }
+}
+
 .navigation {
   position: relative;
   min-height: $navbar-height;
   margin-bottom: $navbar-margin-bottom;
-  background-color: $navbar-default-bg;
   display: flex;
   align-items: center;
 }
 
 .navigation__brand {
-  color: $navbar-default-brand-color;
   height: $navbar-height;
   display: flex;
   align-items: center;
-
-  &:hover,
-  &:focus {
-    color: $navbar-default-brand-hover-color;
-  }
 }
 
 .navigation__links {
   display: flex;
   align-items: center;
+}
 
-  .navigation-item {
-    > a {
-      padding: 0 $navbar-padding-horizontal;
-    }
-  }
+// Theme
+.navigation--default {
+  background-color: $navbar-default-bg;
 }
 
 .navigation--inverse {
   background-color: $navbar-inverse-bg;
+
+  .navigation__brand {
+    color: $navbar-inverse-brand-color;
+
+    &:hover,
+    &:focus {
+      color: $navbar-inverse-brand-hover-color;
+    }
+  }
+
+  .navigation-item {
+    > a {
+      @include itemColor($navbar-inverse-link-color);
+
+      &:hover,
+      &:focus {
+        @include itemColor($navbar-inverse-link-hover-color);
+        background-color: $navbar-inverse-link-hover-bg;
+      }
+    }
+
+    &--active > a {
+      &,
+      &:hover,
+      &:focus {
+        @include itemColor($navbar-inverse-link-active-color);
+        background-color: $navbar-inverse-link-active-bg;
+      }
+    }
+  }
 }
+
 
 //
 // // Navbar heading

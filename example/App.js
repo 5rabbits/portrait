@@ -19,6 +19,7 @@ export default class App extends PureComponent {
       <NavigationItem
         label="Calendar"
         icon={<CalendarIcon height={20} width={20} />}
+        isActive
       />
       <NavigationItem
         label="Clients"

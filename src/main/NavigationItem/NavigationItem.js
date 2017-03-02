@@ -47,9 +47,10 @@ export default class NavigationItem extends React.Component {
       <div
         {...containerProps}
         className={classNames('navigation-item', containerProps.className, {
-          active: isActive,
-          dropdown: isDropdown,
+          'navigation-item--active': isActive,
           'navigation-item--top-level': !isNested,
+          'navigation-item--with-text': !hideNavigationItemText,
+          dropdown: isDropdown,
         })}
         >
         <Component
@@ -57,7 +58,7 @@ export default class NavigationItem extends React.Component {
           data-toggle={isDropdown ? 'dropdown' : undefined}
           >
           {icon &&
-            <span className="mr-xs navigation-item__icon">
+            <span className="navigation-item__icon">
               {icon}
             </span>
           }

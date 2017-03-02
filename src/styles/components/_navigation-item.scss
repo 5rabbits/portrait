@@ -1,3 +1,16 @@
+.navigation-item {
+  > a {
+    height: $navbar-height;
+    padding: 0 $navbar-padding-horizontal;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 .navigation-item__icon {
   display: flex;
 }
@@ -6,8 +19,8 @@
   margin-top: 4px;
 }
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-  .navigation-item--top-level > a > .navigation-item__icon {
-    margin-right: 0 !important;
+.navigation-item--with-text {
+  .navigation-item__icon {
+    margin-right: 8px;
   }
 }
