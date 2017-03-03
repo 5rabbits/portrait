@@ -5,7 +5,7 @@ import responsive from 'helpers/responsive'
 
 class Navigation extends Component {
   static propTypes = {
-    // align: PropTypes.oneOf(['left', 'center']).isRequired,
+    align: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
     brand: PropTypes.node,
     children: childrenPropType,
     className: PropTypes.string,
@@ -32,11 +32,13 @@ class Navigation extends Component {
   componentDidMount() {}
 
   render() {
-    const { brand, children, theme, className } = this.props
+    const { align, brand, children, theme, className } = this.props
 
     return (
       <div
-        className={cx('navigation', `navigation--${theme}`, className)}
+        className={cx('navigation', `navigation--${theme}`,
+          `navigation--align-${align}`, className,
+        )}
         >
         {brand &&
           <div className="navigation__brand">

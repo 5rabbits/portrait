@@ -18,11 +18,36 @@
   height: $navbar-height;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  position: absolute;
 }
 
 .navigation__links {
   display: flex;
   align-items: center;
+  flex: 1;
+}
+
+.navigation--align-left {
+  .navigation__brand {
+    position: static
+  }
+
+  .navigation__links {
+    justify-content: flex-start;
+  }
+}
+
+.navigation--align-center {
+  .navigation__links {
+    justify-content: center;
+  }
+}
+
+.navigation--align-right {
+  .navigation__links {
+    justify-content: flex-end;
+  }
 }
 
 // Theme

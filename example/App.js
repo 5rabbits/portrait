@@ -16,7 +16,11 @@ export default class App extends PureComponent {
     />
 
   buildNavigation = () =>
-    <Navigation brand="Styleguide" theme="inverse">
+    <Navigation
+      align="center"
+      brand="Styleguide"
+      theme="inverse"
+      >
       <NavigationItem
         label="Calendar"
         icon={<CalendarIcon height={20} width={20} />}
