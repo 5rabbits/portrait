@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import childrenPropType from 'propTypes/children'
 import cx from 'classnames'
 import responsive from 'helpers/responsive'
-import NavigationItem from 'main/NavigationItem'
+import NavigationLinks from './NavigationLinks'
 
 class Navigation extends Component {
   static propTypes = {
@@ -26,18 +26,8 @@ class Navigation extends Component {
     theme: 'default',
   }
 
-  static childContextTypes = {
-    hideNavigationItemText: PropTypes.bool,
-  }
-
   state = {
     sideVisible: false,
-  }
-
-  getChildContext() {
-    return {
-      hideNavigationItemText: this.props.collapsed ? false : this.props.hideTexts,
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,7 +45,7 @@ class Navigation extends Component {
   render() {
     const {
       align, brand, children, theme, className, collapsed, currentUser,
-      userLinks,
+      userLinks, hideTexts,
     } = this.props
 
     return (
@@ -92,30 +82,27 @@ class Navigation extends Component {
             }
           </div>
 
-          <div className="navigation__links">
-            <div className="navigation__main-links">
-              {children}
-            </div>
+          <NavigationLinks
+            className={cx({
+              'navigation__links--hidden': collapsed,
+            })}
+            currentUser={currentUser}
+            hideTexts={hideTexts}
+            userLinks={userLinks}
+            >
+            {children}
+          </NavigationLinks>
 
-            <div className="navigation__user-links">
-              {currentUser &&
-                <NavigationItem
-                  hideText={!collapsed}
-                  label={currentUser.name}
-                  icon={
-                    <img
-                      alt={currentUser.name}
-                      className="navigation__user-image"
-                      src={currentUser.image}
-                    />
-                  }
-                  menuAlign="right"
-                  >
-                  {userLinks}
-                </NavigationItem>
-              }
-            </div>
-          </div>
+          {collapsed &&
+            <NavigationLinks
+              className="navigation__links-side"
+              currentUser={currentUser}
+              collapsed={collapsed}
+              userLinks={userLinks}
+              >
+              {children}
+            </NavigationLinks>
+          }
         </div>
       </div>
     )
