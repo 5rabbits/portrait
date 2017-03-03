@@ -52,7 +52,6 @@
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
   z-index: $zindex-dropdown;
   min-width: 160px;
   font-size: $font-size-base;
@@ -70,6 +69,19 @@
     line-height: $line-height-base;
     white-space: nowrap;
   }
+}
+
+.navigation-item__dropdown--align-left {
+  left: 0;
+}
+
+.navigation-item__dropdown--align-center {
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.navigation-item__dropdown--align-right {
+  right: 0;
 }
 
 //

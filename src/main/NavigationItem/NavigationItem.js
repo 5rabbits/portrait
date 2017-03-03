@@ -13,11 +13,13 @@ export default class NavigationItem extends React.Component {
     icon: PropTypes.node,
     label: PropTypes.node,
     hideText: PropTypes.bool,
+    menuAlign: PropTypes.oneOf(['left', 'center', 'right']),
   }
 
   static defaultProps = {
     component: 'a',
     containerProps: {},
+    menuAlign: 'left',
   }
 
   static contextTypes = {
@@ -46,7 +48,7 @@ export default class NavigationItem extends React.Component {
   render() {
     const {
       component: Component, isActive, icon, label, children, containerProps,
-      hideText, ...other
+      hideText, menuAlign, ...other
     } = this.props
 
     const { open } = this.state
@@ -92,9 +94,13 @@ export default class NavigationItem extends React.Component {
 
         {isDropdown &&
           <div
-            className={cx('navigation-item__dropdown', {
-              'navigation-item__dropdown--visible': open,
-            })}
+            className={cx(
+              'navigation-item__dropdown',
+              `navigation-item__dropdown--align-${menuAlign}`,
+              {
+                'navigation-item__dropdown--visible': open,
+              },
+            )}
             >
             {children}
           </div>

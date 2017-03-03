@@ -91,6 +91,7 @@ class Navigation extends Component {
                     src={currentUser.image}
                   />
                 }
+                menuAlign="right"
                 >
                 {userLinks}
               </NavigationItem>
