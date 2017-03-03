@@ -14,12 +14,17 @@
   align-items: center;
 }
 
-.navigation__brand {
-  height: $navbar-height;
+.navigation__brand-container {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   position: absolute;
+}
+
+.navigation__brand {
+  height: $navbar-height;
+  display: flex;
+  align-items: center;
 }
 
 .navigation__links {
@@ -29,7 +34,7 @@
 }
 
 .navigation--align-left {
-  .navigation__brand {
+  .navigation__brand-container {
     position: static
   }
 
@@ -47,6 +52,14 @@
 .navigation--align-right {
   .navigation__links {
     justify-content: flex-end;
+  }
+}
+
+.navigation--collapsed {
+  .navigation__brand-container {
+    position: static;
+    flex: 1;
+    justify-content: center;
   }
 }
 

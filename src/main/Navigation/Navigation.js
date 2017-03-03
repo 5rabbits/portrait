@@ -12,6 +12,7 @@ class Navigation extends Component {
     // navigationOptions: childrenPropType,
     theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
     hideTexts: PropTypes.bool,
+    collapsed: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -32,23 +33,33 @@ class Navigation extends Component {
   componentDidMount() {}
 
   render() {
-    const { align, brand, children, theme, className } = this.props
+    const { align, brand, children, theme, className, collapsed } = this.props
 
     return (
       <div
-        className={cx('navigation', `navigation--${theme}`,
-          `navigation--align-${align}`, className,
+        className={cx(
+          'navigation',
+          `navigation--${theme}`,
+          `navigation--align-${align}`,
+          className,
+          {
+            'navigation--collapsed': collapsed,
+          },
         )}
         >
         {brand &&
-          <div className="navigation__brand">
-            {brand}
+          <div className="navigation__brand-container">
+            <div className="navigation__brand">
+              {brand}
+            </div>
           </div>
         }
 
-        <div className="navigation__links">
-          {children}
-        </div>
+        {!collapsed &&
+          <div className="navigation__links">
+            {children}
+          </div>
+        }
       </div>
     )
   }
@@ -56,6 +67,7 @@ class Navigation extends Component {
 
 const rules = () => ({
   hideTexts: '(max-width: 1000px)',
+  collapsed: '(max-width: 800px)',
 })
 
 export default responsive(rules)(Navigation)
