@@ -229,11 +229,9 @@ $toggle-width: 40px;
   .navigation__toggle {
     border-color: $navbar-default-toggle-border-color;
     &:hover,
-    &:focus {
+    &:focus,
+    &--active {
       background-color: $navbar-default-toggle-hover-bg;
-    }
-    .icon-bar {
-      background-color: $navbar-default-toggle-icon-bar-bg;
     }
   }
 }
@@ -289,11 +287,9 @@ $toggle-width: 40px;
   .navigation__toggle {
     border-color: $navbar-inverse-toggle-border-color;
     &:hover,
-    &:focus {
+    &:focus,
+    &--active {
       background-color: $navbar-inverse-toggle-hover-bg;
-    }
-    .icon-bar {
-      background-color: $navbar-inverse-toggle-icon-bar-bg;
     }
   }
 

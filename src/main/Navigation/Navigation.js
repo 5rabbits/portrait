@@ -69,7 +69,9 @@ class Navigation extends Component {
             >
             <button
               type="button"
-              className="navigation__toggle"
+              className={cx('navigation__toggle', {
+                'navigation__toggle--active': this.state.sideVisible,
+              })}
               onClick={this.handleToggleClick}
               >
               <i className="fa fa-bars" />
