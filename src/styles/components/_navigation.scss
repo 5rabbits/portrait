@@ -35,10 +35,17 @@ $toggle-width: 40px;
   display: flex;
   align-items: center;
   flex: 1;
+  position: relative;
+}
+
+.navigation__main-links {
+  display: flex;
+  align-items: center;
+  flex: 1;
   height: $navbar-height;
 }
 
-.navigation__side {
+.navigation__user-links {
   position: absolute;
   top: 0;
   right: 0;
@@ -79,19 +86,23 @@ $toggle-width: 40px;
     position: static
   }
 
-  .navigation__links {
+  .navigation__main-links {
     justify-content: flex-start;
   }
 }
 
 .navigation--align-center {
-  .navigation__links {
+  .navigation__main-links {
     justify-content: center;
   }
 }
 
 .navigation--align-right {
-  .navigation__links {
+  .navigation__user-links {
+    position: static;
+  }
+
+  .navigation__main-links {
     justify-content: flex-end;
   }
 }

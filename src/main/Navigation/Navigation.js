@@ -77,25 +77,27 @@ class Navigation extends Component {
           </div>
 
           <div className="navigation__links">
-            {!collapsed && children}
-          </div>
+            <div className="navigation__main-links">
+              {!collapsed && children}
+            </div>
 
-          <div className="navigation__side">
-            {!collapsed && currentUser &&
-              <NavigationItem
-                hideText={false}
-                label={
-                  <img
-                    alt={currentUser.name}
-                    className="navigation__user-image"
-                    src={currentUser.image}
-                  />
-                }
-                menuAlign="right"
-                >
-                {userLinks}
-              </NavigationItem>
-            }
+            <div className="navigation__user-links">
+              {!collapsed && currentUser &&
+                <NavigationItem
+                  hideText={false}
+                  label={
+                    <img
+                      alt={currentUser.name}
+                      className="navigation__user-image"
+                      src={currentUser.image}
+                    />
+                  }
+                  menuAlign="right"
+                  >
+                  {userLinks}
+                </NavigationItem>
+              }
+            </div>
           </div>
         </div>
       </div>
