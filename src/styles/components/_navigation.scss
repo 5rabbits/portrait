@@ -35,6 +35,7 @@
 
   .navigation__brand {
     color: $navbar-inverse-brand-color;
+    padding: 0 $navbar-padding-horizontal;
 
     &:hover,
     &:focus {
