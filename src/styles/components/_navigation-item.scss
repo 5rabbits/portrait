@@ -15,6 +15,12 @@
   display: flex;
 }
 
+.navigation-item__label {
+  overflow: hidden;
+  opacity: 1;
+  transition: width 150ms linear, opacity 150ms linear;
+}
+
 .navigation-item__caret.caret {
   margin-top: 4px;
   margin-left: 4px;
@@ -24,6 +30,13 @@
 .navigation-item--with-text {
   .navigation-item__icon {
     margin-right: 8px;
+  }
+}
+
+.navigation-item--without-text {
+  .navigation-item__label {
+    width: 0 !important;
+    opacity: 0;
   }
 }
 

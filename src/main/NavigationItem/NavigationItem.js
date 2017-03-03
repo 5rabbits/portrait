@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import cx from 'classnames'
+import FixedWidth from 'helpers/FixedWidth'
 
 export default class NavigationItem extends React.Component {
   static propTypes = {
@@ -60,6 +61,7 @@ export default class NavigationItem extends React.Component {
           'navigation-item--active': isActive,
           'navigation-item--top-level': !isNested,
           'navigation-item--with-text': withText,
+          'navigation-item--without-text': !withText,
           'navigation-item--open': open,
           dropdown: isDropdown,
         })}
@@ -74,7 +76,11 @@ export default class NavigationItem extends React.Component {
             </span>
           }
 
-          {withText && label}
+          <FixedWidth>
+            <span className="navigation-item__label">
+              {label}
+            </span>
+          </FixedWidth>
 
           {isDropdown &&
             <span className="caret navigation-item__caret" />
