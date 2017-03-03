@@ -56,44 +56,46 @@ class Navigation extends Component {
           },
         )}
         >
-        <div
-          className={cx('navigation__header', {
-            'navigation__header--visible': collapsed,
-          })}
-          >
-          <button
-            type="button"
-            className="navigation__toggle"
+        <div className="navigation__container">
+          <div
+            className={cx('navigation__header', {
+              'navigation__header--visible': collapsed,
+            })}
             >
-            <i className="fa fa-bars" />
-          </button>
-
-          {brand &&
-            <div className="navigation__brand">
-              {brand}
-            </div>
-          }
-        </div>
-
-        <div className="navigation__links">
-          {!collapsed && children}
-        </div>
-
-        <div className="navigation__side">
-          {!collapsed && currentUser &&
-            <NavigationItem
-              hideText={false}
-              label={
-                <img
-                  alt={currentUser.name}
-                  className="navigation__user-image"
-                  src={currentUser.image}
-                />
-              }
+            <button
+              type="button"
+              className="navigation__toggle"
               >
-              {userLinks}
-            </NavigationItem>
-          }
+              <i className="fa fa-bars" />
+            </button>
+
+            {brand &&
+              <div className="navigation__brand">
+                {brand}
+              </div>
+            }
+          </div>
+
+          <div className="navigation__links">
+            {!collapsed && children}
+          </div>
+
+          <div className="navigation__side">
+            {!collapsed && currentUser &&
+              <NavigationItem
+                hideText={false}
+                label={
+                  <img
+                    alt={currentUser.name}
+                    className="navigation__user-image"
+                    src={currentUser.image}
+                  />
+                }
+                >
+                {userLinks}
+              </NavigationItem>
+            }
+          </div>
         </div>
       </div>
     )

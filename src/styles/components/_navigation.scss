@@ -9,9 +9,13 @@
 $toggle-width: 40px;
 
 .navigation {
+  margin-bottom: $navbar-margin-bottom;
+}
+
+.navigation__container {
+  margin: 0 $navbar-padding-horizontal;
   position: relative;
   min-height: $navbar-height;
-  margin-bottom: $navbar-margin-bottom;
   display: flex;
   align-items: center;
 }
@@ -51,6 +55,9 @@ $toggle-width: 40px;
   border: 1px solid transparent;
   border-radius: $border-radius-base;
   outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms linear;
 }
 
 .navigation__brand {
@@ -91,7 +98,12 @@ $toggle-width: 40px;
 
 .navigation--collapsed {
   .navigation__header {
-    margin-left: $navbar-padding-horizontal;
+    margin-left: 0;
+  }
+
+  .navigation__toggle {
+    pointer-events: auto;
+    opacity: 1;
   }
 }
 
