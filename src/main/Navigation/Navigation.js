@@ -40,6 +40,12 @@ class Navigation extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.collapsed && this.state.sideVisible) {
+      this.setState({ sideVisible: false })
+    }
+  }
+
   handleToggleClick = () => {
     this.setState({
       sideVisible: !this.state.sideVisible,
