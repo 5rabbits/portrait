@@ -30,13 +30,21 @@ class Navigation extends Component {
     hideNavigationItemText: PropTypes.bool,
   }
 
+  state = {
+    sideVisible: false,
+  }
+
   getChildContext() {
     return {
-      hideNavigationItemText: this.props.hideTexts,
+      hideNavigationItemText: this.props.collapsed ? false : this.props.hideTexts,
     }
   }
 
-  componentDidMount() {}
+  handleToggleClick = () => {
+    this.setState({
+      sideVisible: !this.state.sideVisible,
+    })
+  }
 
   render() {
     const {
@@ -53,6 +61,7 @@ class Navigation extends Component {
           className,
           {
             'navigation--collapsed': collapsed,
+            'navigation--side-visible': this.state.sideVisible,
           },
         )}
         >
@@ -65,6 +74,7 @@ class Navigation extends Component {
             <button
               type="button"
               className="navigation__toggle"
+              onClick={this.handleToggleClick}
               >
               <i className="fa fa-bars" />
             </button>
@@ -78,14 +88,15 @@ class Navigation extends Component {
 
           <div className="navigation__links">
             <div className="navigation__main-links">
-              {!collapsed && children}
+              {children}
             </div>
 
             <div className="navigation__user-links">
-              {!collapsed && currentUser &&
+              {currentUser &&
                 <NavigationItem
-                  hideText={false}
-                  label={
+                  hideText={!collapsed}
+                  label={currentUser.name}
+                  icon={
                     <img
                       alt={currentUser.name}
                       className="navigation__user-image"
