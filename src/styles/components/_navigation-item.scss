@@ -13,12 +13,13 @@
 
 .navigation-item__icon {
   display: flex;
+  transition: margin-right 250ms ease-out
 }
 
 .navigation-item__label {
   overflow: hidden;
   opacity: 1;
-  transition: width 150ms linear, opacity 150ms linear;
+  transition: width 250ms ease-out, opacity 250ms ease-out;
 }
 
 .navigation-item__caret.caret {
