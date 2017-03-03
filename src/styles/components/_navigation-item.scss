@@ -34,7 +34,7 @@
 }
 
 .navigation-item--without-text {
-  .navigation-item__label {
+  > a > .navigation-item__label {
     width: 0 !important;
     opacity: 0;
   }

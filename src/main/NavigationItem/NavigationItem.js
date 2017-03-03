@@ -56,7 +56,7 @@ export default class NavigationItem extends React.Component {
     const isNested = isNestedNavigationItem || false
     const isDropdown = children != null
     const withText = hideText === undefined ?
-      !hideNavigationItemText || isNested :
+      (!hideNavigationItemText || isNested) :
       !hideText
 
     return (
