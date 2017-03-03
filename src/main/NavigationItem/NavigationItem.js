@@ -51,6 +51,7 @@ export default class NavigationItem extends React.Component {
     const { isNestedNavigationItem, hideNavigationItemText } = this.context
     const isNested = isNestedNavigationItem || false
     const isDropdown = children != null
+    const withText = !hideNavigationItemText || isNested
 
     return (
       <div
@@ -58,7 +59,7 @@ export default class NavigationItem extends React.Component {
         className={cx('navigation-item', containerProps.className, {
           'navigation-item--active': isActive,
           'navigation-item--top-level': !isNested,
-          'navigation-item--with-text': !hideNavigationItemText,
+          'navigation-item--with-text': withText,
           'navigation-item--open': open,
           dropdown: isDropdown,
         })}
@@ -73,7 +74,7 @@ export default class NavigationItem extends React.Component {
             </span>
           }
 
-          {!hideNavigationItemText && label}
+          {withText && label}
 
           {isDropdown &&
             <span className="caret navigation-item__caret" />
