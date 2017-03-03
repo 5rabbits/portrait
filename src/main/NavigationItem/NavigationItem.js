@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import classNames from 'classnames'
+import cx from 'classnames'
 
 export default class NavigationItem extends React.Component {
   static propTypes = {
@@ -27,10 +27,18 @@ export default class NavigationItem extends React.Component {
     isNestedNavigationItem: PropTypes.bool,
   }
 
+  state = {
+    open: false,
+  }
+
   getChildContext() {
     return {
       isNestedNavigationItem: true,
     }
+  }
+
+  toggleDropdown = () => {
+    this.setState({ open: !this.state.open })
   }
 
   render() {
@@ -39,6 +47,7 @@ export default class NavigationItem extends React.Component {
       ...other
     } = this.props
 
+    const { open } = this.state
     const { isNestedNavigationItem, hideNavigationItemText } = this.context
     const isNested = isNestedNavigationItem || false
     const isDropdown = children != null
@@ -46,16 +55,17 @@ export default class NavigationItem extends React.Component {
     return (
       <div
         {...containerProps}
-        className={classNames('navigation-item', containerProps.className, {
+        className={cx('navigation-item', containerProps.className, {
           'navigation-item--active': isActive,
           'navigation-item--top-level': !isNested,
           'navigation-item--with-text': !hideNavigationItemText,
+          'navigation-item--open': open,
           dropdown: isDropdown,
         })}
         >
         <Component
           {...other}
-          data-toggle={isDropdown ? 'dropdown' : undefined}
+          onClick={isDropdown ? this.toggleDropdown : undefined}
           >
           {icon &&
             <span className="navigation-item__icon">
@@ -71,9 +81,13 @@ export default class NavigationItem extends React.Component {
         </Component>
 
         {isDropdown &&
-          <ul className="dropdown-menu">
+          <div
+            className={cx('navigation-item__dropdown', {
+              'navigation-item__dropdown--visible': open,
+            })}
+            >
             {children}
-          </ul>
+          </div>
         }
       </div>
     )

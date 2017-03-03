@@ -4,8 +4,9 @@ import Controls from './ControlsSection'
 import Content from './Content'
 import PanelFilters from './PanelFilters'
 import CalendarIcon from './svg-icons/calendar.svg'
+import SettingsIcon from './svg-icons/settings.svg'
 import ClientsIcon from './svg-icons/clients.svg'
-import DraftsIcon from './svg-icons/drafts.svg'
+import ProjectsIcon from './svg-icons/projects.svg'
 
 export default class App extends PureComponent {
 
@@ -22,13 +23,18 @@ export default class App extends PureComponent {
         isActive
       />
       <NavigationItem
-        label="Clients"
-        icon={<ClientsIcon height={20} width={20} />}
-      />
-      <NavigationItem
-        label="Drafts"
-        icon={<DraftsIcon height={20} width={20} />}
-      />
+        label="Settings"
+        icon={<SettingsIcon height={20} width={20} />}
+        >
+        <NavigationItem
+          label="Clients"
+          icon={<ClientsIcon height={20} width={20} />}
+        />
+        <NavigationItem
+          label="Projects"
+          icon={<ProjectsIcon height={20} width={20} />}
+        />
+      </NavigationItem>
     </Navigation>
 
   buildMain = () =>

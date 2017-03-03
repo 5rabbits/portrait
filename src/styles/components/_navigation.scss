@@ -53,12 +53,27 @@
       }
     }
 
-    &--active > a {
-      &,
+    &--active,
+    &--open {
+      > a {
+        &,
+        &:hover,
+        &:focus {
+          @include itemColor($navbar-inverse-link-active-color);
+          background-color: $navbar-inverse-link-active-bg;
+        }
+      }
+    }
+  }
+
+  .navigation-item__dropdown {
+    .navigation-item > a {
+      @include itemColor($dropdown-link-color);
+
       &:hover,
       &:focus {
-        @include itemColor($navbar-inverse-link-active-color);
-        background-color: $navbar-inverse-link-active-bg;
+        @include itemColor($dropdown-link-hover-color);
+        background-color: $dropdown-link-hover-bg;
       }
     }
   }
