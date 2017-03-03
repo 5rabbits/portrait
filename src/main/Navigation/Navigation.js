@@ -8,7 +8,7 @@ class Navigation extends Component {
     // align: PropTypes.oneOf(['left', 'center']).isRequired,
     brand: PropTypes.node,
     children: childrenPropType,
-    // className: PropTypes.string,
+    className: PropTypes.string,
     // navigationOptions: childrenPropType,
     theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
     hideTexts: PropTypes.bool,
@@ -32,11 +32,11 @@ class Navigation extends Component {
   componentDidMount() {}
 
   render() {
-    const { brand, children, theme } = this.props
+    const { brand, children, theme, className } = this.props
 
     return (
       <div
-        className={cx('navigation', `navigation--${theme}`)}
+        className={cx('navigation', `navigation--${theme}`, className)}
         >
         {brand &&
           <div className="navigation__brand">
