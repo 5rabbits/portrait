@@ -23,15 +23,6 @@
   padding-bottom: 50%;
 }
 
-.py-z {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-.mb-z {
-  margin-bottom: 0px;
-}
-
 .swatch-color-lg {
   padding-bottom: 60%;
 }
@@ -46,4 +37,50 @@
 
 .bt-z {
   border-top: 0px!important;
+}
+
+.to-align {
+  height: 70px;
+}
+
+//Contador timeflow
+
+.contador {
+  border-radius: 145px;
+  padding: 10px 0;
+  width: 220px;
+  position: relative;
+}
+
+.container-agregar {
+  display: inline-block;
+  position: absolute;
+  margin-left: 10px;
+}
+
+.agregar {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.ocultar {
+  display: inline-block;
+}
+
+.pausar {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .4);
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+}
+
+.limite {
+  display: inline-block;
 }

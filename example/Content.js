@@ -7,7 +7,7 @@ const Content = () =>
       <div className="block-item pa-md">
         <div>
           <h2 className="type-title mt-xs mb-md font-strong">Display</h2>
-          <table className="table mb-z">
+          <table className="table mb-nn">
             <tbody>
               <tr>
                 <td className="type-mega py-md">Lorem ipsum dolore siet amet.</td>
@@ -28,7 +28,7 @@ const Content = () =>
       <div className="block-item pa-md">
         <div>
           <h2 className="type-title mb-md font-strong">Headings</h2>
-          <table className="table mb-z">
+          <table className="table mb-nn">
             <tbody>
               <tr>
                 <td className="type-headline py-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</td>
@@ -49,7 +49,7 @@ const Content = () =>
       <div className="block-item pa-md">
         <div>
           <h2 className="type-title mb-md font-strong">Copy</h2>
-          <table className="table mb-z">
+          <table className="table mb-nn">
             <tbody>
               <tr>
                 <td className="type-body py-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor.</td>
@@ -165,7 +165,7 @@ const Content = () =>
             <p className="color-primary type-headline font-strong pb-sm">AENEAN EU LEO QUAM PELLENTESQUE ORNARE</p>
             <p className="color-secondary type-body">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur.</p>
             <hr className="color-divider pb-sm" />
-            <p className="color-hint type-footnote mb-z">Etiam porta sem malesuada magna mollis euismod.</p>
+            <p className="color-hint type-footnote mb-nn">Etiam porta sem malesuada magna mollis euismod.</p>
           </div>
           <div className="col-xs-12 col-md-3">
             <p><code>.color-solid-default</code></p>
@@ -205,7 +205,7 @@ const Content = () =>
             <p className="color-primary type-headline font-strong pb-sm">AENEAN EU LEO QUAM PELLENTESQUE ORNARE</p>
             <p className="color-secondary type-body">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur.</p>
             <hr className="color-divider pb-sm" />
-            <p className="color-hint type-footnote mb-z">Etiam porta sem malesuada magna mollis euismod.</p>
+            <p className="color-hint type-footnote mb-nn">Etiam porta sem malesuada magna mollis euismod.</p>
           </div>
           <div className="col-xs-12 col-md-3">
             <p><code>.color-solid-inverse</code></p>
@@ -221,7 +221,7 @@ const Content = () =>
     </div>
 
     <div>
-      <div className="block-item pa-md my-md">
+      <div className="block-item pa-md mt-sm">
         <div className="row">
           <div className="col-xs-9">
             <button className="btn">Button</button>
@@ -334,6 +334,655 @@ const Content = () =>
             <code>.btn-block</code>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <div className="limite">
+          <div className="contador bg-secondary">
+            <div>
+              <div className="type-footnote color-secondary-inverse font-strong pl-md pr-lg">Texto de prueba</div>
+              <div className="type-headline color-primary-inverse pl-md pr-lg">23:12:<span className="color-disabled-inverse">45</span></div>
+            </div>
+            <div className="pausar" />
+          </div>
+        </div>
+        <div className="container-agregar">
+          <div className="agregar bg-primary" />
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Typography</h2>
+        <h2 className="type-title mt-xs mb-md font-strong">Text alignment</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="text-left">Lorem ipsum dolor sit amet.</p>
+            <p className="text-center">Lorem ipsum dolor sit amet.</p>
+            <p className="text-right">Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.text-left</code></p>
+            <p><code>.text-right</code></p>
+            <p><code>.text-center</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <div className="col-xs-3">
+            <code>.text-justify</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.</p>
+          </div>
+          <div className="col-xs-3">
+            <code>.text-nowrap</code>
+          </div>
+        </div>
+      </div>
+      <div className="block-item pa-md">
+        <h2 className="type-title mt-xs mb-md font-strong">Text transform</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="text-lowercase">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+          </div>
+          <div className="col-xs-3">
+            <code>.text-lowercase</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="text-uppercase">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+          </div>
+          <div className="col-xs-3">
+            <code>.text-uppercase</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="text-capitalize">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+          </div>
+          <div className="col-xs-3">
+            <code>.text-capitalize</code>
+          </div>
+        </div>
+      </div>
+      <div className="block-item pa-md">
+        <h2 className="type-title mt-xs mb-md font-strong">Font weight and italic</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="font-strong">Lorem ipsum dolor sit amet.</p>
+            <p className="font-normal">Lorem ipsum dolor sit amet.</p>
+            <p className="font-italic">Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.font-strong</code></p>
+            <p><code>.font-normal</code></p>
+            <p><code>.font-italic</code></p>
+          </div>
+        </div>
+      </div>
+      <div className="block-item pa-md">
+        <h2 className="type-title mt-xs mb-md font-strong">Font family</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="font-sans">Lorem ipsum dolor sit amet.</p>
+            <p className="font-serif">Lorem ipsum dolor sit amet.</p>
+            <p className="font-mono">Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.font-sans</code></p>
+            <p><code>.font-serif</code></p>
+            <p><code>.font-mono</code></p>
+          </div>
+        </div>
+      </div>
+      <div className="block-item pa-md">
+        <h2 className="type-title mt-xs mb-md font-strong">Line height</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="line-height-small">Lorem ipsum dolor sit amet.</p>
+            <p className="line-height-small">Lorem ipsum dolor sit amet.</p>
+            <p className="line-height-small">Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div className="col-xs-3">
+            <code>.line-height-small</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="line-height-medium">Lorem ipsum dolor sit amet.</p>
+            <p className="line-height-medium">Lorem ipsum dolor sit amet.</p>
+            <p className="line-height-medium">Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div className="col-xs-3">
+            <code>.line-height-medium</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="line-height-large">Lorem ipsum dolor sit amet.</p>
+            <p className="line-height-large">Lorem ipsum dolor sit amet.</p>
+            <p className="line-height-large">Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div className="col-xs-3">
+            <code>.line-height-large</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Tables</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>-</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <code>.table</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="table table-condensed">
+              <thead>
+                <tr>
+                  <th>-</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <code>.table .table-condensed</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="table table-expanded">
+              <thead>
+                <tr>
+                  <th>-</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <code>.table .table-expanded</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th>-</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <code>.table .table-bordered</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>-</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <code>.table .table-striped</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th>-</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <code>.table .table-hover</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="table table-responsive">
+              <thead>
+                <tr>
+                  <th>-</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                  <th>Column</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>Row</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <code>.table .table-responsive</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Clearfix</h2>
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="clearfix">
+              <p className="center-block bg-primary pa-xs mb-sm">Lorem ipsum dolor sit amet.</p>
+              <p className="pull-right bg-primary pa-xs">Lorem ipsum dolor sit amet.</p>
+              <p className="pull-left bg-primary pa-xs">Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.clearfix</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Badge</h2>
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="mb-sm">
+              <h1>&lt;h1&gt; <span className="badge bg-primary">Badge</span> &lt;/h1&gt;</h1>
+            </div>
+            <div className="my-sm">
+              <h2>&lt;h2&gt; <span className="badge bg-primary">Badge</span> &lt;/h2&gt;</h2>
+            </div>
+            <div className="my-sm">
+              <h3>&lt;h3&gt; <span className="badge bg-primary">Badge</span> &lt;/h3&gt;</h3>
+            </div>
+            <div className="my-sm">
+              <h4>&lt;h4&gt; <span className="badge bg-primary">Badge</span> &lt;/h4&gt;</h4>
+            </div>
+            <div className="my-sm">
+              <h5>&lt;h5&gt; <span className="badge bg-primary">Badge</span> &lt;/h5&gt;</h5>
+            </div>
+            <div className="my-sm">
+              <h6>&lt;h6&gt; <span className="badge bg-primary">Badge</span> &lt;/h6&gt;</h6>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p className="mb-sm"><code>.badge</code></p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="my-sm">
+              <span className="badge badge-default">Badge default</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-primary">Badge primary</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-success">Badge success</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-info">Badge info</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-warning">Badge warning</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-danger">Badge danger</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge">Badge</span>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p className="my-sm"><code>.badge .badge-default</code></p>
+            <p className="my-sm"><code>.badge .badge-primary</code></p>
+            <p className="my-sm"><code>.badge .badge-success</code></p>
+            <p className="my-sm"><code>.badge .badge-info</code></p>
+            <p className="my-sm"><code>.badge .badge-warning</code></p>
+            <p className="my-sm"><code>.badge .badge-danger</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Display property</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="display-inline docs-theme-default-secondary pa-xs color-primary-inverse">Display-inline</div>
+            <div className="display-inline docs-theme-default-disabled pa-xs">Display-inline</div>
+            <div className="display-inline docs-theme-default-secondary pa-xs color-primary-inverse">Display-inline</div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.display-inline</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="display-inblock docs-theme-default-secondary pa-xs color-primary-inverse">Display-inblock</div>
+            <div className="display-inblock docs-theme-default-disabled pa-xs">Display-inblock</div>
+            <div className="display-inblock docs-theme-default-secondary pa-xs color-primary-inverse">Display-inblock</div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.display-inblock</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="display-block docs-theme-default-secondary pa-xs color-primary-inverse">Display-block</div>
+            <div className="display-block docs-theme-default-disabled pa-xs">Display-block</div>
+            <div className="display-block docs-theme-default-secondary pa-xs color-primary-inverse">Display-block</div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.display-block</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="no-float docs-theme-default-secondary pa-xs color-primary-inverse">No float</div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.no-float</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="no-float affix docs-theme-default-secondary pa-xs color-primary-inverse">Affix</div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.affix</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Vertical alignment</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="to-align">
+              <tbody>
+                <tr>
+                  <td className="align-top">top</td>
+                  <td className="align-middle">middle</td>
+                  <td className="align-bottom">bottom</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.align-top</code></p>
+            <p><code>.align-middle</code></p>
+            <p><code>.align-bottom</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Spacing</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <table className="table">
+              <tbody>
+                <tr>
+                  <th>Property</th>
+                  <th>Sides</th>
+                  <th>Size</th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>m = Margin</p>
+                    <p>p = Padding</p>
+                  </td>
+                  <td>
+                    <p>a = All</p>
+                    <p>y = Vertical axis</p>
+                    <p>x = Horizontal axis</p>
+                    <p>t = Top</p>
+                    <p>r = Right</p>
+                    <p>b = Bottom</p>
+                    <p>l = Left</p>
+                  </td>
+                  <td>
+                    <p>nn = None</p>
+                    <p>xxs = Double extra small</p>
+                    <p>xs = Extra small</p>
+                    <p>sm = Small</p>
+                    <p>md = Medium</p>
+                    <p>lg = Large</p>
+                    <p>xl = Extra large</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col-xs-3">
+            <p>Examples</p>
+            <br />
+            <p><code>.ma-nn</code></p>
+            <p><code>.mt-xs</code></p>
+            <p><code>.my-md</code></p>
+            <br />
+            <p><code>.pl-xxs</code></p>
+            <p><code>.px-lg</code></p>
+            <p><code>.pb-sm</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Button groups</h2>
       </div>
     </div>
 

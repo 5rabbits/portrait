@@ -1,43 +1,12 @@
-
-.block-round   {  border-radius:   3px !important; }
-.block-rounded {  border-radius: 100px !important; }
-.block-rect    {  border-radius:   0px !important; }
-
-.font-strong   { font-weight: bold; }
-.font-normal   { font-style: normal; }
-.font-italic   { font-style: italic; }
-
-//@function lighter-color($name) {
-//  @return scale-color($name, $lightness: 80%);
-//}
-@function light-color($name) {
-  @return scale-color($name, $lightness: 80%);
-}
-@function dark-color($name) {
-  @return scale-color($name, $lightness: -40%);
-}
-//@function darker-color($name) {
-//  @return scale-color($name, $lightness: -40%);
-//}
-
-.bg-primary    { background-color: $color-primary;}
-.bg-secondary  { background-color: $color-secondary;}
-
-.bg-base       { background-color: $color-base;}
-.bg-block      { background-color: $color-block;}
-
-.bg-success    { background-color: $color-success;}
-.bg-warning    { background-color: $color-warning;}
-.bg-danger     { background-color: $color-danger;}
-.bg-info       { background-color: $color-info;}
-
-
-.bg-success-light    { background-color: light-color($color-success);}
-.bg-warning-light    { background-color: light-color($color-warning);}
-.bg-danger-light     { background-color: light-color($color-danger);}
-.bg-info-light       { background-color: light-color($color-info);}
-
-.bg-success-dark     { background-color: dark-color($color-success);}
-.bg-warning-dark     { background-color: dark-color($color-warning);}
-.bg-danger-dark      { background-color: dark-color($color-danger);}
-.bg-info-dark        { background-color: dark-color($color-info);}
+@import "utilities/others";
+@import "utilities/mixins";
+@import "utilities/background";
+@import "utilities/layout";
+@import "utilities/typography";
+@import "utilities/tables";
+@import "utilities/others";
+@import "utilities/float";
+@import "utilities/toggle";
+@import "utilities/display";
+@import "utilities/alignment";
+@import "utilities/spacing";

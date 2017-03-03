@@ -1,0 +1,11 @@
+//Display property
+
+.inline          { float: none !important; display: inline !important; }
+.inline-block    { float: none !important; display: inline-block !important; }
+
+.display-inline  { float: none !important; display: inline !important; }
+.display-inblock { float: none !important; display: inline-block !important; }
+.display-block   { display: block !important; }
+
+.no-float        { float: none !important; }
+.affix           { position: fixed; }
