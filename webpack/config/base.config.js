@@ -27,7 +27,7 @@ module.exports = new Config().merge({
         loader: 'url-loader?limit=10000&mimetype=application/font-woff',
       },
       {
-        test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(ttf|eot|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
       },
       {

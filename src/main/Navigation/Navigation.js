@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import childrenPropType from 'propTypes/children'
 import cx from 'classnames'
 import responsive from 'helpers/responsive'
+import NavigationItem from 'main/NavigationItem'
 
 class Navigation extends Component {
   static propTypes = {
@@ -13,10 +14,16 @@ class Navigation extends Component {
     theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
     hideTexts: PropTypes.bool,
     collapsed: PropTypes.bool,
+    currentUser: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string,
+    }),
+    userLinks: childrenPropType,
   }
 
   static defaultProps = {
     align: 'center',
+    currentUser: {},
     theme: 'default',
   }
 
@@ -33,7 +40,10 @@ class Navigation extends Component {
   componentDidMount() {}
 
   render() {
-    const { align, brand, children, theme, className, collapsed } = this.props
+    const {
+      align, brand, children, theme, className, collapsed, currentUser,
+      userLinks,
+    } = this.props
 
     return (
       <div
@@ -66,11 +76,26 @@ class Navigation extends Component {
           }
         </div>
 
-        {!collapsed &&
-          <div className="navigation__links">
-            {children}
-          </div>
-        }
+        <div className="navigation__links">
+          {!collapsed && children}
+        </div>
+
+        <div className="navigation__side">
+          {!collapsed && currentUser &&
+            <NavigationItem
+              hideText={false}
+              label={
+                <img
+                  alt={currentUser.name}
+                  className="navigation__user-image"
+                  src={currentUser.image}
+                />
+              }
+              >
+              {userLinks}
+            </NavigationItem>
+          }
+        </div>
       </div>
     )
   }

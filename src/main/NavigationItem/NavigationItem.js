@@ -12,6 +12,7 @@ export default class NavigationItem extends React.Component {
     isActive: PropTypes.bool,
     icon: PropTypes.node,
     label: PropTypes.node,
+    hideText: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -45,14 +46,16 @@ export default class NavigationItem extends React.Component {
   render() {
     const {
       component: Component, isActive, icon, label, children, containerProps,
-      ...other
+      hideText, ...other
     } = this.props
 
     const { open } = this.state
     const { isNestedNavigationItem, hideNavigationItemText } = this.context
     const isNested = isNestedNavigationItem || false
     const isDropdown = children != null
-    const withText = !hideNavigationItemText || isNested
+    const withText = hideText === undefined ?
+      !hideNavigationItemText || isNested :
+      !hideText
 
     return (
       <div

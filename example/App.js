@@ -7,6 +7,7 @@ import CalendarIcon from './svg-icons/calendar.svg'
 import SettingsIcon from './svg-icons/settings.svg'
 import ClientsIcon from './svg-icons/clients.svg'
 import ProjectsIcon from './svg-icons/projects.svg'
+import ProfileImage from './images/profile.png'
 
 export default class App extends PureComponent {
 
@@ -20,6 +21,14 @@ export default class App extends PureComponent {
       align="center"
       brand="Styleguide"
       theme="inverse"
+      currentUser={{
+        name: 'Etropos',
+        image: ProfileImage,
+      }}
+      userLinks={[
+        <NavigationItem key={0} label="Profile" />,
+        <NavigationItem key={1} label="Log out" />,
+      ]}
       >
       <NavigationItem
         label="Calendar"

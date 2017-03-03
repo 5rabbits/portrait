@@ -24,6 +24,21 @@ $toggle-width: 40px;
   top: 0;
   margin-left: -$toggle-width;
   transition: margin-left 150ms ease-out;
+  height: $navbar-height;
+}
+
+.navigation__links {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: $navbar-height;
+}
+
+.navigation__side {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: $navbar-height;
 }
 
 .navigation__toggle {
@@ -42,13 +57,14 @@ $toggle-width: 40px;
   display: flex;
   align-items: center;
   padding: 0 $navbar-padding-horizontal;
-  height: $navbar-height;
+  align-self: stretch;
 }
 
-.navigation__links {
-  display: flex;
-  align-items: center;
-  flex: 1;
+.navigation__user-image {
+  display: block;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
 }
 
 .navigation--align-left {
