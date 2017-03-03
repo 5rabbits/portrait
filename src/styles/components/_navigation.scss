@@ -110,6 +110,62 @@ $toggle-width: 40px;
 // Theme
 .navigation--default {
   background-color: $navbar-default-bg;
+
+  .navigation__brand {
+    color: $navbar-default-brand-color;
+
+    &:hover,
+    &:focus {
+      color: $navbar-default-brand-hover-color;
+    }
+  }
+
+  .navigation-item {
+    > a {
+      @include itemColor($navbar-default-link-color);
+
+      &:hover,
+      &:focus {
+        @include itemColor($navbar-default-link-hover-color);
+        background-color: $navbar-default-link-hover-bg;
+      }
+    }
+
+    &--active,
+    &--open {
+      > a {
+        &,
+        &:hover,
+        &:focus {
+          @include itemColor($navbar-default-link-active-color);
+          background-color: $navbar-default-link-active-bg;
+        }
+      }
+    }
+  }
+
+  .navigation-item__dropdown {
+    .navigation-item > a {
+      @include itemColor($dropdown-link-color);
+
+      &:hover,
+      &:focus {
+        @include itemColor($dropdown-link-hover-color);
+        background-color: $dropdown-link-hover-bg;
+      }
+    }
+  }
+
+  .navigation__toggle {
+    border-color: $navbar-default-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: $navbar-default-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: $navbar-default-toggle-icon-bar-bg;
+    }
+  }
 }
 
 .navigation--inverse {
