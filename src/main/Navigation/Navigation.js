@@ -64,8 +64,8 @@ class Navigation extends Component {
 }
 
 const rules = () => ({
-  hideTexts: '(max-width: 1000px)',
-  collapsed: '(max-width: 800px)',
+  hideTexts: '(max-width: 991px)',
+  collapsed: '(max-width: 767px)',
 })
 
 export default responsive(rules)(Navigation)
