@@ -48,10 +48,8 @@ class Navigation extends Component {
         )}
         >
         {brand &&
-          <div className="navigation__brand-container">
-            <div className="navigation__brand">
-              {brand}
-            </div>
+          <div className="navigation__brand">
+            {brand}
           </div>
         }
 

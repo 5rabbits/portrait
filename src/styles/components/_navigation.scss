@@ -14,17 +14,14 @@
   align-items: center;
 }
 
-.navigation__brand-container {
+.navigation__brand {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   position: absolute;
-}
-
-.navigation__brand {
   height: $navbar-height;
-  display: flex;
-  align-items: center;
+  left: 0;
+  transition: left 150ms ease-out, transform 150ms ease-out
 }
 
 .navigation__links {
@@ -34,7 +31,7 @@
 }
 
 .navigation--align-left {
-  .navigation__brand-container {
+  .navigation__brand {
     position: static
   }
 
@@ -56,10 +53,9 @@
 }
 
 .navigation--collapsed {
-  .navigation__brand-container {
-    position: static;
-    flex: 1;
-    justify-content: center;
+  .navigation__brand {
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
