@@ -16,9 +16,21 @@ export default class ComponentDoc extends Component {
   }
 
   componentWillMount() {
+    this.requireInfo(this.props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.requireInfo(nextProps)
+  }
+
+  requireInfo = props => {
+    this.setState({
+      loaded: false,
+    })
+
     require.ensure([], () => {
-      const path = this.props.path
-      const file = this.props.path.split('/').pop()
+      const path = props.path
+      const file = props.path.split('/').pop()
       const docsContext = require.context('!!docs!../../src', true, /^((?!test(\.js|$)).)*$/)
       const context = require.context('../../src', true, /^((?!test(\.js|$)).)*\.(js|yml)$/)
       let examples = []

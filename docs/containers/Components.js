@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Container } from 'shared'
 import ComponentDoc from '../components/ComponentDoc'
 
-const Components = () =>
+const Components = ({ params: { splat } }) =>
   <Container>
-    <ComponentDoc path="main/Navigation" />
+    <ComponentDoc path={splat} />
   </Container>
+
+Components.propTypes = {
+  params: PropTypes.shape({
+    splat: PropTypes.string.isRequired,
+  }).isRequired,
+}
 
 export default Components
