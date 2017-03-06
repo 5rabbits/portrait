@@ -12,8 +12,10 @@ export default class ComponentDoc extends Component {
   }
 
   componentWillMount() {
-    require(`!!bundle!docs!../src/${this.props.path}.js`)(docs => {
-      this.setState({ docs })
+    require.ensure([], () => {
+      const context = require.context('!!docs!../src', true, /^((?!test(\.js|$)|\.scss$).)*$/)
+
+      this.setState({ docs: context(`./${this.props.path}`) })
     })
   }
 
