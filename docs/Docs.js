@@ -1,11 +1,24 @@
 import React from 'react'
+import { Layout, Navigation, NavigationItem } from 'main'
+import { Container } from 'shared'
 import ComponentDoc from './ComponentDoc'
 
-const Docs = () =>
-  <div>
-    <h1>Docs</h1>
+const App = () =>
+  <Layout
+    navigation={
+      <Navigation brand="Portrait" theme="inverse">
+        <NavigationItem label="Getting Started" />
+        <NavigationItem label="Components" isActive>
+          <NavigationItem label="Navigation" />
+        </NavigationItem>
+        <NavigationItem label="Customize" />
+      </Navigation>
+    }
+    main={
+      <Container>
+        <ComponentDoc path="main/Navigation" />
+      </Container>
+    }
+  />
 
-    <ComponentDoc path="main/Navigation" />
-  </div>
-
-export default Docs
+export default App
