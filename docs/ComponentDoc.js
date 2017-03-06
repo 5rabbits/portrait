@@ -1,7 +1,7 @@
 /* eslint-disable global-require, import/no-dynamic-require */
 
 import React, { Component, PropTypes } from 'react'
-import Playground from 'component-playground'
+import Example from './Example'
 
 export default class ComponentDoc extends Component {
   static propTypes = {
@@ -53,10 +53,10 @@ export default class ComponentDoc extends Component {
         <pre>{JSON.stringify(docs, null, 2)}</pre>
 
         {examples.map((example, index) =>
-          <Playground
-            codeText={example.code}
+          <Example
             key={index}
-            scope={{ React }}
+            componentName={component.displayName}
+            {...example}
           />,
         )}
       </div>

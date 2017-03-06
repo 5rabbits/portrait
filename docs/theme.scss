@@ -1,0 +1,14 @@
+
+// Example
+.example {
+  .playgroundPreview {
+    position: relative;
+  }
+}
+
+// Example overrides
+.example--Navigation {
+  .navbar {
+    position: static;
+  }
+}

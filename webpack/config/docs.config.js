@@ -11,7 +11,10 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
     port: process.env.PORT || 8080,
   },
   entry: {
-    'docs.build': path.resolve('docs/entry.js'),
+    'docs.build': [
+      path.resolve('docs/entry.js'),
+      path.resolve('docs/theme.scss'),
+    ],
   },
   output: {
     publicPath: '/',
