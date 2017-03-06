@@ -10,16 +10,25 @@ export default class ComponentDoc extends Component {
   state = {
     component: null,
     docs: null,
+    examples: [],
   }
 
   componentWillMount() {
     require.ensure([], () => {
-      const docsContext = require.context('!!docs!../src', true, /^((?!test(\.js|$)).)*\.js$/)
-      const componentContext = require.context('../src', true, /^((?!test(\.js|$)).)*\.js$/)
+      const path = this.props.path
+      const file = this.props.path.split('/').pop()
+      const docsContext = require.context('!!docs!../src', true, /^((?!test(\.js|$)).)*$/)
+      const context = require.context('../src', true, /^((?!test(\.js|$)).)*\.(js|yml)$/)
+      let examples = null
+
+      try {
+        examples = context(`./${path}/examples.yml`)
+      } catch (error) {} // eslint-disable-line no-empty
 
       this.setState({
-        component: componentContext(`./${this.props.path}.js`),
-        docs: docsContext(`./${this.props.path}.js`),
+        component: context(`./${path}/${file}.js`),
+        docs: docsContext(`./${path}/${file}.js`),
+        examples,
       })
     })
   }

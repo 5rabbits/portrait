@@ -1,0 +1,17 @@
+-
+  description: Default theme.
+  code: >
+    <Navigation brand="Example">
+      <NavigationItem label="Link1" />
+      <NavigationItem label="Link2" />
+      <NavigationItem label="Link3" />
+    </Navigation>
+
+-
+  description: Inverse theme.
+  code: >
+    <Navigation brand="Example" theme="inverse">
+      <NavigationItem label="Link1" />
+      <NavigationItem label="Link2" />
+      <NavigationItem label="Link3" />
+    </Navigation>
