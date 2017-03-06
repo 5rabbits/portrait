@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react'
 import { Layout, Navigation, NavigationItem } from 'main'
 import { Link } from 'react-router'
+import sortBy from 'lodash/sortBy'
 
-const COMPONENTS = [
+const COMPONENTS = sortBy([
   'controls/RoundButton',
   'controls/SearchForm',
   'elements/BlockItem',
@@ -22,7 +23,7 @@ const COMPONENTS = [
   'shared/States',
   'shared/ActionPanel',
   'templates/CommonSection',
-]
+], module => module.split('/').pop())
 
 const App = ({ children, router }) =>
   <Layout
