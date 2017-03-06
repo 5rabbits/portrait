@@ -14,12 +14,12 @@ export default class ComponentDoc extends Component {
 
   componentWillMount() {
     require.ensure([], () => {
-      const docsContext = require.context('!!docs!../src', true, /^((?!test(\.js|$)|\.scss$).)*$/)
-      const componentContext = require.context('../src', true, /^((?!test(\.js|$)|\.scss$).)*$/)
+      const docsContext = require.context('!!docs!../src', true, /^((?!test(\.js|$)).)*\.js$/)
+      const componentContext = require.context('../src', true, /^((?!test(\.js|$)).)*\.js$/)
 
       this.setState({
-        component: componentContext(`./${this.props.path}`),
-        docs: docsContext(`./${this.props.path}`),
+        component: componentContext(`./${this.props.path}.js`),
+        docs: docsContext(`./${this.props.path}.js`),
       })
     })
   }
