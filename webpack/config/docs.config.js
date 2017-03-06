@@ -24,6 +24,12 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
       },
     ],
   },
+  resolveLoader: {
+    fallback: [
+      path.resolve('docs/helpers'),
+      path.resolve('node_modules'),
+    ],
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
