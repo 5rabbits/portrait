@@ -9,6 +9,7 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: false,
   devServer: {
     port: process.env.PORT || 8080,
+    historyApiFallback: true,
   },
   entry: {
     'docs.build': [
