@@ -40,7 +40,7 @@ module.exports = new Config().merge({
     root: path.resolve('./src'),
     extensions: ['', '.js', '.jsx'],
     modulesDirectories: [
-      'src',
+      path.resolve('src'),
       'node_modules',
       path.resolve('.'),
     ],
