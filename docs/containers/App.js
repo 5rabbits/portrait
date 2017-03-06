@@ -1,29 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Layout, Navigation, NavigationItem } from 'main'
 import { Link } from 'react-router'
-import sortBy from 'lodash/sortBy'
-
-const COMPONENTS = sortBy([
-  'controls/RoundButton',
-  'controls/SearchForm',
-  'elements/BlockItem',
-  'main/Controls',
-  'main/Layout',
-  'main/Navigation',
-  'main/NavigationItem',
-  'main/Section',
-  'main/SectionHeading',
-  'main/SectionOffscreen',
-  'shared/Container',
-  'shared/EmptyBlock',
-  'shared/EmptyView',
-  'shared/Grid',
-  'shared/Loader',
-  'shared/Offscreen',
-  'shared/States',
-  'shared/ActionPanel',
-  'templates/CommonSection',
-], module => module.split('/').pop())
+import manifest from '../manifest'
 
 const App = ({ children, router }) =>
   <Layout
@@ -40,13 +18,13 @@ const App = ({ children, router }) =>
           isActive={router.isActive('/components')}
           label="Components"
           >
-          {COMPONENTS.map((component, index) =>
+          {manifest.map(component =>
             <NavigationItem
               component={Link}
-              key={index}
-              label={component.split('/').pop()}
-              to={`/components/${component}`}
-              isActive={router.isActive(`/components/${component}`, true)}
+              key={component.name}
+              label={component.name}
+              to={`/components/${component.name}`}
+              isActive={router.isActive(`/components/${component.name}`, true)}
             />,
           )}
         </NavigationItem>

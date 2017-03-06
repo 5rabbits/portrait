@@ -1,18 +1,13 @@
-/* eslint-disable global-require, import/no-dynamic-require */
-
 import React, { Component, PropTypes } from 'react'
 import Example from './Example'
 
 export default class ComponentDoc extends Component {
   static propTypes = {
-    path: PropTypes.string.isRequired,
+    getComponent: PropTypes.func.isRequired,
   }
 
   state = {
-    loaded: false,
-    component: null,
-    docs: null,
-    examples: null,
+    module: null,
   }
 
   componentWillMount() {
@@ -20,51 +15,33 @@ export default class ComponentDoc extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.requireInfo(nextProps)
+    if (this.props.getComponent !== nextProps.getComponent) {
+      this.setState({ module: null })
+      this.requireInfo(nextProps)
+    }
   }
 
   requireInfo = props => {
-    this.setState({
-      loaded: false,
-    })
-
-    require.ensure([], () => {
-      const path = props.path
-      const file = props.path.split('/').pop()
-      const docsContext = require.context('!!docs!../../src', true, /^((?!test(\.js|$)).)*$/)
-      const context = require.context('../../src', true, /^((?!test(\.js|$)).)*\.(js|yml)$/)
-      let examples = []
-
-      try {
-        examples = context(`./${path}/examples.yml`)
-
-        if (!(examples instanceof Array)) {
-          examples = [examples]
-        }
-      } catch (error) {} // eslint-disable-line no-empty
-
-      this.setState({
-        loaded: true,
-        component: context(`./${path}/${file}.js`),
-        docs: docsContext(`./${path}/${file}.js`),
-        examples,
-      })
+    props.getComponent(module => {
+      this.setState({ module })
     })
   }
 
   render() {
-    const { component, docs, examples, loaded } = this.state
+    const { module } = this.state
 
-    if (!loaded) {
+    if (!module) {
       return <div>Loading...</div>
     }
+
+    const { component, source, examples } = module
 
     return (
       <div>
         <h1>{component.displayName}</h1>
-        <pre>{JSON.stringify(docs, null, 2)}</pre>
+        <pre>{JSON.stringify(source, null, 2)}</pre>
 
-        {examples.map((example, index) =>
+        {examples && examples.map((example, index) =>
           <Example
             key={index}
             componentName={component.displayName}
