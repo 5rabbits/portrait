@@ -1,18 +1,37 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './App'
-import GettingStarted from './GettingStarted'
-import Components from './Components'
-import Customize from './Customize'
 
 const Routes = () =>
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={GettingStarted} />
+    <Route component={App} path="/">
+      <IndexRoute
+        getComponent={(_nextState, callback) => {
+          require.ensure([], require => {
+            callback(null, require('./GettingStarted'))
+          }, 'getting-started')
+        }}
+      />
+
       <Route path="components">
-        <Route path="**" component={Components} />
+        <Route
+          getComponent={(_nextState, callback) => {
+            require.ensure([], require => {
+              callback(null, require('./Components'))
+            }, 'components')
+          }}
+          path="**"
+        />
       </Route>
-      <Route path="customize" component={Customize} />
+
+      <Route
+        getComponent={(_nextState, callback) => {
+          require.ensure([], require => {
+            callback(null, require('./Customize'))
+          }, 'customize')
+        }}
+        path="customize"
+      />
     </Route>
   </Router>
 
