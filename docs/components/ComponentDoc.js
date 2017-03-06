@@ -3,6 +3,7 @@ import Example from './Example'
 
 export default class ComponentDoc extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
     getComponent: PropTypes.func.isRequired,
   }
 
@@ -34,17 +35,25 @@ export default class ComponentDoc extends Component {
       return <div>Loading...</div>
     }
 
-    const { component, source, examples } = module
+    const { name } = this.props
+    const { source } = module
+    let { examples } = module
+
+    if (!examples) {
+      examples = []
+    } else if (!(examples instanceof Array)) {
+      examples = [examples]
+    }
 
     return (
       <div>
-        <h1>{component.displayName}</h1>
+        <h1>{name}</h1>
         <pre>{JSON.stringify(source, null, 2)}</pre>
 
-        {examples && examples.map((example, index) =>
+        {examples.map((example, index) =>
           <Example
             key={index}
-            componentName={component.displayName}
+            componentName={name}
             {...example}
           />,
         )}

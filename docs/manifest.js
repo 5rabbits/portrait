@@ -5,11 +5,22 @@ import sortBy from 'lodash/sortBy'
 export default sortBy([
   // Controls
   {
+    name: 'Button',
+    getComponent: callback => require.ensure([], require => {
+      callback({
+        component: require('controls/Button'),
+        source: require('!!docs!controls/Button'),
+        examples: require('controls/Button/examples.yml'),
+      })
+    }, 'Button'),
+  },
+  {
     name: 'RoundButton',
     getComponent: callback => require.ensure([], require => {
       callback({
         component: require('controls/RoundButton'),
         source: require('!!docs!controls/RoundButton'),
+        examples: require('controls/RoundButton/examples.yml'),
       })
     }, 'RoundButton'),
   },
@@ -19,6 +30,7 @@ export default sortBy([
       callback({
         component: require('controls/SearchForm'),
         source: require('!!docs!controls/SearchForm'),
+        examples: require('controls/SearchForm/examples.yml'),
       })
     }, 'SearchForm'),
   },
@@ -30,6 +42,7 @@ export default sortBy([
       callback({
         component: require('elements/BlockItem'),
         source: require('!!docs!elements/BlockItem'),
+        examples: require('elements/BlockItem/examples.yml'),
       })
     }, 'BlockItem'),
   },
@@ -41,6 +54,7 @@ export default sortBy([
       callback({
         component: require('main/Controls'),
         source: require('!!docs!main/Controls'),
+        examples: require('main/Controls/examples.yml'),
       })
     }, 'Controls'),
   },
@@ -50,6 +64,7 @@ export default sortBy([
       callback({
         component: require('main/Layout'),
         source: require('!!docs!main/Layout'),
+        examples: require('main/Layout/examples.yml'),
       })
     }, 'Layout'),
   },
@@ -69,6 +84,7 @@ export default sortBy([
       callback({
         component: require('main/NavigationItem'),
         source: require('!!docs!main/NavigationItem'),
+        examples: require('main/NavigationItem/examples.yml'),
       })
     }, 'NavigationItem'),
   },
@@ -78,6 +94,7 @@ export default sortBy([
       callback({
         component: require('main/Section'),
         source: require('!!docs!main/Section'),
+        examples: require('main/Section/examples.yml'),
       })
     }, 'Section'),
   },
@@ -87,6 +104,7 @@ export default sortBy([
       callback({
         component: require('main/SectionHeading'),
         source: require('!!docs!main/SectionHeading'),
+        examples: require('main/SectionHeading/examples.yml'),
       })
     }, 'SectionHeading'),
   },
@@ -96,6 +114,7 @@ export default sortBy([
       callback({
         component: require('main/SectionOffscreen'),
         source: require('!!docs!main/SectionOffscreen'),
+        examples: require('main/SectionOffscreen/examples.yml'),
       })
     }, 'SectionOffscreen'),
   },
@@ -107,6 +126,7 @@ export default sortBy([
       callback({
         component: require('shared/Container'),
         source: require('!!docs!shared/Container'),
+        examples: require('shared/Container/examples.yml'),
       })
     }, 'Container'),
   },
@@ -116,6 +136,7 @@ export default sortBy([
       callback({
         component: require('shared/EmptyBlock'),
         source: require('!!docs!shared/EmptyBlock'),
+        examples: require('shared/EmptyBlock/examples.yml'),
       })
     }, 'EmptyBlock'),
   },
@@ -125,6 +146,7 @@ export default sortBy([
       callback({
         component: require('shared/EmptyView'),
         source: require('!!docs!shared/EmptyView'),
+        examples: require('shared/EmptyView/examples.yml'),
       })
     }, 'EmptyView'),
   },
@@ -134,6 +156,7 @@ export default sortBy([
       callback({
         component: require('shared/Grid'),
         source: require('!!docs!shared/Grid'),
+        examples: require('shared/Grid/examples.yml'),
       })
     }, 'Grid'),
   },
@@ -143,6 +166,7 @@ export default sortBy([
       callback({
         component: require('shared/Loader'),
         source: require('!!docs!shared/Loader'),
+        examples: require('shared/Loader/examples.yml'),
       })
     }, 'Loader'),
   },
@@ -152,6 +176,7 @@ export default sortBy([
       callback({
         component: require('shared/Offscreen'),
         source: require('!!docs!shared/Offscreen'),
+        examples: require('shared/Offscreen/examples.yml'),
       })
     }, 'Offscreen'),
   },
@@ -161,6 +186,7 @@ export default sortBy([
       callback({
         component: require('shared/States'),
         source: require('!!docs!shared/States'),
+        examples: require('shared/States/examples.yml'),
       })
     }, 'States'),
   },
@@ -170,6 +196,7 @@ export default sortBy([
       callback({
         component: require('shared/ActionPanel'),
         source: require('!!docs!shared/ActionPanel'),
+        examples: require('shared/ActionPanel/examples.yml'),
       })
     }, 'ActionPanel'),
   },
@@ -181,6 +208,7 @@ export default sortBy([
       callback({
         component: require('templates/CommonSection'),
         source: require('!!docs!templates/CommonSection'),
+        examples: require('templates/CommonSection/examples.yml'),
       })
     }, 'CommonSection'),
   },
