@@ -10,6 +10,7 @@ const Example = ({ code, componentName, description }) =>
     <Playground
       codeText={code}
       scope={{ React }}
+      theme="material"
     />
   </div>
 
