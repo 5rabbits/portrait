@@ -8,7 +8,6 @@ export default sortBy([
     name: 'Button',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('controls/Button'),
         source: require('!!docs!controls/Button'),
         examples: require('controls/Button/examples.yml'),
       })
@@ -18,7 +17,6 @@ export default sortBy([
     name: 'RoundButton',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('controls/RoundButton'),
         source: require('!!docs!controls/RoundButton'),
         examples: require('controls/RoundButton/examples.yml'),
       })
@@ -28,7 +26,6 @@ export default sortBy([
     name: 'SearchForm',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('controls/SearchForm'),
         source: require('!!docs!controls/SearchForm'),
         examples: require('controls/SearchForm/examples.yml'),
       })
@@ -40,7 +37,6 @@ export default sortBy([
     name: 'BlockItem',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('elements/BlockItem'),
         source: require('!!docs!elements/BlockItem'),
         examples: require('elements/BlockItem/examples.yml'),
       })
@@ -52,7 +48,6 @@ export default sortBy([
     name: 'Controls',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('main/Controls'),
         source: require('!!docs!main/Controls'),
         examples: require('main/Controls/examples.yml'),
       })
@@ -62,7 +57,6 @@ export default sortBy([
     name: 'Layout',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('main/Layout'),
         source: require('!!docs!main/Layout'),
         examples: require('main/Layout/examples.yml'),
       })
@@ -72,7 +66,6 @@ export default sortBy([
     name: 'Navigation',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('main/Navigation'),
         source: require('!!docs!main/Navigation'),
         examples: require('main/Navigation/examples.yml'),
       })
@@ -82,7 +75,6 @@ export default sortBy([
     name: 'NavigationItem',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('main/NavigationItem'),
         source: require('!!docs!main/NavigationItem'),
         examples: require('main/NavigationItem/examples.yml'),
       })
@@ -92,7 +84,6 @@ export default sortBy([
     name: 'Section',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('main/Section'),
         source: require('!!docs!main/Section'),
         examples: require('main/Section/examples.yml'),
       })
@@ -102,7 +93,6 @@ export default sortBy([
     name: 'SectionHeading',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('main/SectionHeading'),
         source: require('!!docs!main/SectionHeading'),
         examples: require('main/SectionHeading/examples.yml'),
       })
@@ -112,7 +102,6 @@ export default sortBy([
     name: 'SectionOffscreen',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('main/SectionOffscreen'),
         source: require('!!docs!main/SectionOffscreen'),
         examples: require('main/SectionOffscreen/examples.yml'),
       })
@@ -124,7 +113,6 @@ export default sortBy([
     name: 'Container',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('shared/Container'),
         source: require('!!docs!shared/Container'),
         examples: require('shared/Container/examples.yml'),
       })
@@ -134,7 +122,6 @@ export default sortBy([
     name: 'EmptyBlock',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('shared/EmptyBlock'),
         source: require('!!docs!shared/EmptyBlock'),
         examples: require('shared/EmptyBlock/examples.yml'),
       })
@@ -144,7 +131,6 @@ export default sortBy([
     name: 'EmptyView',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('shared/EmptyView'),
         source: require('!!docs!shared/EmptyView'),
         examples: require('shared/EmptyView/examples.yml'),
       })
@@ -154,7 +140,6 @@ export default sortBy([
     name: 'Grid',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('shared/Grid'),
         source: require('!!docs!shared/Grid'),
         examples: require('shared/Grid/examples.yml'),
       })
@@ -164,7 +149,6 @@ export default sortBy([
     name: 'Loader',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('shared/Loader'),
         source: require('!!docs!shared/Loader'),
         examples: require('shared/Loader/examples.yml'),
       })
@@ -174,7 +158,6 @@ export default sortBy([
     name: 'Offscreen',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('shared/Offscreen'),
         source: require('!!docs!shared/Offscreen'),
         examples: require('shared/Offscreen/examples.yml'),
       })
@@ -184,7 +167,6 @@ export default sortBy([
     name: 'States',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('shared/States'),
         source: require('!!docs!shared/States'),
         examples: require('shared/States/examples.yml'),
       })
@@ -194,7 +176,6 @@ export default sortBy([
     name: 'ActionPanel',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('shared/ActionPanel'),
         source: require('!!docs!shared/ActionPanel'),
         examples: require('shared/ActionPanel/examples.yml'),
       })
@@ -206,7 +187,6 @@ export default sortBy([
     name: 'CommonSection',
     getComponent: callback => require.ensure([], require => {
       callback({
-        component: require('templates/CommonSection'),
         source: require('!!docs!templates/CommonSection'),
         examples: require('templates/CommonSection/examples.yml'),
       })
