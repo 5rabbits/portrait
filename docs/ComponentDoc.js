@@ -8,24 +8,34 @@ export default class ComponentDoc extends Component {
   }
 
   state = {
+    component: null,
     docs: null,
   }
 
   componentWillMount() {
     require.ensure([], () => {
-      const context = require.context('!!docs!../src', true, /^((?!test(\.js|$)|\.scss$).)*$/)
+      const docsContext = require.context('!!docs!../src', true, /^((?!test(\.js|$)|\.scss$).)*$/)
+      const componentContext = require.context('../src', true, /^((?!test(\.js|$)|\.scss$).)*$/)
 
-      this.setState({ docs: context(`./${this.props.path}`) })
+      this.setState({
+        component: componentContext(`./${this.props.path}`),
+        docs: docsContext(`./${this.props.path}`),
+      })
     })
   }
 
   render() {
+    const { component, docs } = this.state
+    const loaded = docs && component
+
+    if (!loaded) {
+      return <div>Loading...</div>
+    }
+
     return (
       <div>
-        <h2>{this.props.path}</h2>
-        {this.state.docs &&
-          <pre>{JSON.stringify(this.state.docs, null, 2)}</pre>
-        }
+        <h1>{component.displayName}</h1>
+        <pre>{JSON.stringify(docs, null, 2)}</pre>
       </div>
     )
   }
