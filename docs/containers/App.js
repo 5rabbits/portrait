@@ -15,6 +15,13 @@ const App = ({ children, router }) =>
         />
 
         <NavigationItem
+          component={Link}
+          label="CSS"
+          isActive={router.isActive('/css', true)}
+          to="/css"
+        />
+
+        <NavigationItem
           isActive={router.isActive('/components')}
           label="Components"
           >
@@ -28,6 +35,13 @@ const App = ({ children, router }) =>
             />,
           )}
         </NavigationItem>
+
+        <NavigationItem
+          component={Link}
+          label="Examples"
+          isActive={router.isActive('/examples', true)}
+          to="/examples"
+        />
 
         <NavigationItem
           component={Link}
