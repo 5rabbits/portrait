@@ -27,7 +27,7 @@ module.exports = new Config().merge({
   module: {
     loaders: [
       {
-        test: require.resolve('bootstrap-sass//assets/javascripts/bootstrap'),
+        test: require.resolve('bootstrap-sass/assets/javascripts/bootstrap'),
         loader: 'imports-loader?jQuery=jquery,$=jquery',
       },
       {
