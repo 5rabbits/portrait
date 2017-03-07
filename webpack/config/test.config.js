@@ -55,7 +55,7 @@ module.exports = function testConfig(config) {
             loader: 'imports?define=>false,require=>false',
           },
           {
-            test: /\.s(c|a)ss$/,
+            test: /\.(css|sass|scss)$/,
             loaders: ['style', 'css', 'sass?sourceMap=true'],
           },
         ],

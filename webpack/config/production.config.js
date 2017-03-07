@@ -16,7 +16,7 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
   module: {
     loaders: [
       {
-        test: /\.s(c|a)ss$/,
+        test: /\.(css|sass|scss)$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css!sass?sourceMap=true'),
       },
     ],

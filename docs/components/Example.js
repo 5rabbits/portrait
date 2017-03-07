@@ -2,6 +2,8 @@
 
 import React, { PropTypes } from 'react'
 import Playground from 'component-playground'
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/material.css'
 import markdown from '../helpers/markdown'
 
 const Example = ({ code, componentName, description }) =>
