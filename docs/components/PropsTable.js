@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import PropRow from './PropRow'
 
 const PropsTable = ({ props }) =>
-  <table className="table table-condensed">
+  <table className="props-table table table-condensed">
     <thead>
       <tr>
         <th>Name</th>

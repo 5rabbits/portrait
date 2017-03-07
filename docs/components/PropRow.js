@@ -1,4 +1,8 @@
+/* eslint-disable react/no-danger */
+
 import React, { PropTypes, Component } from 'react'
+
+const markdown = require('markdown-it')()
 
 export default class PropRow extends Component {
   static propTypes = {
@@ -72,7 +76,11 @@ export default class PropRow extends Component {
           }
         </td>
         <td>{definition.required ? '✓' : null}</td>
-        <td>{definition.description}</td>
+        <td
+          dangerouslySetInnerHTML={{
+            __html: markdown.render(definition.description || ''),
+          }}
+        />
       </tr>
     )
   }

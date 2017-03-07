@@ -1,6 +1,10 @@
+/* eslint-disable react/no-danger */
+
 import React, { Component, PropTypes } from 'react'
 import Example from './Example'
 import PropsTable from './PropsTable'
+
+const markdown = require('markdown-it')()
 
 export default class ComponentDoc extends Component {
   static propTypes = {
@@ -51,7 +55,11 @@ export default class ComponentDoc extends Component {
         <h1>{name}</h1>
 
         {source.description &&
-          <p>{source.description}</p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: markdown.render(source.description),
+            }}
+          />
         }
 
         {source.props &&
