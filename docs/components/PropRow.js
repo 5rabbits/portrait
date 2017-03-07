@@ -6,10 +6,20 @@ export default class PropRow extends Component {
       type: PropTypes.shape({
         name: PropTypes.string,
         raw: PropTypes.string,
-        value: PropTypes.arrayOf(PropTypes.shape({
-          value: PropTypes.string,
-          computed: PropTypes.bool,
-        })),
+        value: PropTypes.oneOfType([
+          // For shapes
+          PropTypes.objectOf(PropTypes.shape({
+            name: PropTypes.string,
+            required: PropTypes.bool,
+            value: PropTypes.object,
+          })),
+
+          // For anything else
+          PropTypes.arrayOf(PropTypes.shape({
+            value: PropTypes.string,
+            computed: PropTypes.bool,
+          })),
+        ]),
       }),
       required: PropTypes.bool,
       description: PropTypes.description,

@@ -24,22 +24,7 @@ const PropsTable = ({ props }) =>
   </table>
 
 PropsTable.propTypes = {
-  props: PropTypes.objectOf(PropTypes.shape({
-    type: PropTypes.shape({
-      name: PropTypes.string,
-      raw: PropTypes.string,
-      value: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.string,
-        computed: PropTypes.bool,
-      })),
-    }),
-    required: PropTypes.bool,
-    description: PropTypes.description,
-    defaultValue: PropTypes.shape({
-      value: PropTypes.string,
-      computed: PropTypes.bool,
-    }),
-  })).isRequired,
+  props: PropTypes.object.isRequired,
 }
 
 export default PropsTable
