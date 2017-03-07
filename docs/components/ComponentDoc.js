@@ -50,6 +50,10 @@ export default class ComponentDoc extends Component {
       <div>
         <h1>{name}</h1>
 
+        {source.description &&
+          <p>{source.description}</p>
+        }
+
         {source.props &&
           <PropsTable props={source.props} />
         }
