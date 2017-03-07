@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Example from './Example'
+import PropsTable from './PropsTable'
 
 export default class ComponentDoc extends Component {
   static propTypes = {
@@ -48,7 +49,10 @@ export default class ComponentDoc extends Component {
     return (
       <div>
         <h1>{name}</h1>
-        <pre>{JSON.stringify(source, null, 2)}</pre>
+
+        {source.props &&
+          <PropsTable props={source.props} />
+        }
 
         {examples.map((example, index) =>
           <Example
