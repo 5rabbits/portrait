@@ -359,8 +359,8 @@ const Content = () =>
             <div className="timer-controler" />
           </div>
         </div>
-        <div className="timer-plus">
-          <div className="agregar bg-primary" />
+        <div className="timer-add">
+          <div className="add bg-primary" />
         </div>
       </div>
     </div>
