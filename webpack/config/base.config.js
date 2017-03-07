@@ -37,7 +37,7 @@ module.exports = new Config().merge({
       },
       {
         test: /\.(eot|ttf|woff|woff2|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader',
+        loader: 'file-loader?&name=docs/fonts/[name].[ext]',
       },
       {
         test: /\.json$/,
