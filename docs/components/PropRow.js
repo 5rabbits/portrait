@@ -1,8 +1,7 @@
 /* eslint-disable react/no-danger */
 
 import React, { PropTypes, Component } from 'react'
-
-const markdown = require('markdown-it')()
+import markdown from '../helpers/markdown'
 
 export default class PropRow extends Component {
   static propTypes = {

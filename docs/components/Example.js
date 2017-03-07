@@ -2,8 +2,7 @@
 
 import React, { PropTypes } from 'react'
 import Playground from 'component-playground'
-
-const markdown = require('markdown-it')()
+import markdown from '../helpers/markdown'
 
 const Example = ({ code, componentName, description }) =>
   <div className={`example example--${componentName}`}>

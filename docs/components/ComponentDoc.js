@@ -3,8 +3,7 @@
 import React, { Component, PropTypes } from 'react'
 import Example from './Example'
 import PropsTable from './PropsTable'
-
-const markdown = require('markdown-it')()
+import markdown from '../helpers/markdown'
 
 export default class ComponentDoc extends Component {
   static propTypes = {
