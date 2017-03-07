@@ -1,9 +1,12 @@
-import React from 'react'
-import { Container } from 'shared'
+import React, { PropTypes } from 'react'
 
-const Examples = () =>
-  <Container>
-    <h1>Examples</h1>
-  </Container>
+const Examples = ({ children }) =>
+  <div className="example">
+    {children}
+  </div>
+
+Examples.propTypes = {
+  children: PropTypes.node,
+}
 
 export default Examples

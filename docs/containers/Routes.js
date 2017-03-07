@@ -52,7 +52,16 @@ const Routes = () =>
           }, 'examples')
         }}
         path="examples"
-      />
+        >
+        <Route
+          getComponent={(_nextState, callback) => {
+            require.ensure([], require => {
+              callback(null, require('../examples/timeflow'))
+            }, 'example-timeflow')
+          }}
+          path="timeflow"
+        />
+      </Route>
     </Route>
   </Router>
 

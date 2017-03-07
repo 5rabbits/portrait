@@ -5,7 +5,7 @@ import Playground from 'component-playground'
 import markdown from '../helpers/markdown'
 
 const Example = ({ code, componentName, description }) =>
-  <div className={`example example--${componentName}`}>
+  <div className={`component-example component-example--${componentName}`}>
     {description &&
       <div dangerouslySetInnerHTML={{ __html: markdown.render(description) }} />
     }

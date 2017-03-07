@@ -5,16 +5,25 @@
   }
 }
 
-// Example
-.example {
+// Component example
+.component-example {
   .playgroundPreview {
     position: relative;
   }
 }
 
-// Example overrides
-.example--Navigation {
+// Component example overrides
+.component-example--Navigation {
   .navbar {
     position: static;
   }
+}
+
+// Examples
+.example {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
