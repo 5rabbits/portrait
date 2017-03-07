@@ -9,6 +9,9 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'source-map',
+  output: {
+    publicPath: '../',
+  },
   module: {
     loaders: [
       {

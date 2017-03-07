@@ -1,9 +1,9 @@
 import React from 'react'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import App from './App'
 
 const Routes = () =>
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route component={App} path="/">
       <IndexRoute
         getComponent={(_nextState, callback) => {

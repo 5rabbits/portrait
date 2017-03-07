@@ -4,14 +4,20 @@ var path = require('path')
 var webpack = require('webpack')
 var Config = require('webpack-config').default
 var DirectoryNamedWebpackPlugin = require('../plugins/directory-named')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Config().merge({
   entry: {
     portrait: path.resolve('src/index.js'),
+    'docs/index': [
+      path.resolve('docs/entry.js'),
+      path.resolve('docs/theme.scss'),
+    ],
   },
   output: {
     path: path.resolve('lib'),
     filename: '[name].js',
+    chunkFilename: 'docs/chunks/[id].[name].js',
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },
@@ -34,6 +40,10 @@ module.exports = new Config().merge({
         test: /\.json$/,
         loader: 'json',
       },
+      {
+        test: /\.yml/,
+        loaders: ['json', 'yaml'],
+      },
     ],
   },
   resolve: {
@@ -45,7 +55,17 @@ module.exports = new Config().merge({
       path.resolve('.'),
     ],
   },
+  resolveLoader: {
+    fallback: [
+      path.resolve('webpack/loaders'),
+      path.resolve('node_modules'),
+    ],
+  },
   plugins: [
     new webpack.ResolverPlugin(new DirectoryNamedWebpackPlugin(true)),
+    new HtmlWebpackPlugin({
+      template: path.resolve('docs/index.html'),
+      filename: 'docs/index.html',
+    }),
   ],
 })

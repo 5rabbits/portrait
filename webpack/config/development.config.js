@@ -1,6 +1,5 @@
 /* eslint-disable no-var */
 
-var path = require('path')
 var webpack = require('webpack')
 var Config = require('webpack-config').default
 
@@ -8,9 +7,6 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     port: process.env.PORT || 8080,
-  },
-  entry: {
-    'examples.build': path.resolve('example/component.js'),
   },
   output: {
     publicPath: '/',
