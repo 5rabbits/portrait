@@ -1,7 +1,9 @@
 /* eslint-disable no-var */
 
+var path = require('path')
 var webpack = require('webpack')
 var Config = require('webpack-config').default
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'cheap-module-eval-source-map',
@@ -30,6 +32,10 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve('docs/index.html'),
+      filename: 'index.html',
     }),
   ],
 })

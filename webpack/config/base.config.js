@@ -4,7 +4,6 @@ var path = require('path')
 var webpack = require('webpack')
 var Config = require('webpack-config').default
 var DirectoryNamedWebpackPlugin = require('../plugins/directory-named')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Config().merge({
   entry: {
@@ -63,9 +62,5 @@ module.exports = new Config().merge({
   },
   plugins: [
     new webpack.ResolverPlugin(new DirectoryNamedWebpackPlugin(true)),
-    new HtmlWebpackPlugin({
-      template: path.resolve('docs/index.html'),
-      filename: 'docs/index.html',
-    }),
   ],
 })
