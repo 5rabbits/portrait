@@ -34,7 +34,18 @@ export default class PropRow extends Component {
   getType = () => {
     const { definition } = this.props
 
-    return definition.type.name
+    switch (definition.type.name) {
+      case 'custom':
+        return `<i>${definition.type.raw}</i>`
+
+      case 'enum':
+        return definition.type.value
+          .map(value => `<code>${value.value}</code>`)
+          .join(' or ')
+
+      default:
+        return definition.type.name
+    }
   }
 
   getDefaultValue = () => {
@@ -49,12 +60,17 @@ export default class PropRow extends Component {
 
   render() {
     const { name, definition } = this.props
+    const defaultValue = this.getDefaultValue()
 
     return (
       <tr>
         <td>{name}</td>
-        <td>{this.getType()}</td>
-        <td>{this.getDefaultValue()}</td>
+        <td dangerouslySetInnerHTML={{ __html: this.getType() }} />
+        <td>
+          {defaultValue &&
+            <code>{defaultValue}</code>
+          }
+        </td>
         <td>{definition.required ? '✓' : null}</td>
         <td>{definition.description}</td>
       </tr>
