@@ -6,7 +6,7 @@ var Config = require('webpack-config').default
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
   devServer: {
     port: process.env.PORT || 8080,
     historyApiFallback: true,

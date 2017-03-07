@@ -6,6 +6,7 @@ var Config = require('webpack-config').default
 var DirectoryNamedWebpackPlugin = require('../plugins/directory-named')
 
 module.exports = new Config().merge({
+  cache: true,
   entry: {
     portrait: path.resolve('src/index.js'),
     'docs/index': [
@@ -20,6 +21,7 @@ module.exports = new Config().merge({
     chunkFilename: 'docs/chunks/[id].[name].js',
     libraryTarget: 'umd',
     umdNamedDefine: true,
+    pathinfo: true,
   },
   module: {
     loaders: [
@@ -29,16 +31,18 @@ module.exports = new Config().merge({
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel',
-        exclude: /(node_modules|bower_components)/,
+        loader: 'babel?cacheDirectory=true',
+        exclude: /node_modules/,
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+        exclude: /node_modules/,
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.json$/,
@@ -47,17 +51,13 @@ module.exports = new Config().merge({
       {
         test: /\.yml/,
         loaders: ['json', 'yaml'],
+        exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    root: path.resolve('./src'),
+    root: path.resolve('src'),
     extensions: ['', '.js', '.jsx'],
-    modulesDirectories: [
-      path.resolve('src'),
-      'node_modules',
-      path.resolve('.'),
-    ],
   },
   resolveLoader: {
     fallback: [
