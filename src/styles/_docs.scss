@@ -45,14 +45,14 @@
 
 //Contador timeflow
 
-.contador {
+.timer {
   border-radius: 145px;
   padding: 10px 0;
   width: 220px;
   position: relative;
 }
 
-.container-agregar {
+.timer-plus{
   display: inline-block;
   position: absolute;
   margin-left: 10px;
@@ -68,19 +68,19 @@
   display: inline-block;
 }
 
-.pausar {
+.timer-controler {
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, .4);
-  height: 40px;
-  width: 40px;
+  height: 32px;
+  width: 32px;
   display: inline-block;
   position: absolute;
-  right: 10%;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   color: #ffffff;
 }
 
-.limite {
+.timer-container {
   display: inline-block;
 }

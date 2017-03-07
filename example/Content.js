@@ -6,6 +6,9 @@ const Content = () =>
     <div>
       <div className="block-item pa-md">
         <div>
+          <p>Portrait includes simple and easily customized typography
+          for display, headings and copy.</p>
+          <hr className="color-divider my-md" />
           <h2 className="type-title mt-xs mb-md font-strong">Display</h2>
           <table className="table mb-nn">
             <tbody>
@@ -75,6 +78,7 @@ const Content = () =>
 
     <div>
       <div className="block-item pa-md mt-sm">
+        <p className="font-strong mb-md">Brand colors</p>
         <div className="row">
           <div className="col-xs-3">
             <div className="swatch-color-sm" />
@@ -103,6 +107,7 @@ const Content = () =>
         </div>
       </div>
       <div className="block-item pa-md">
+        <p className="font-strong mb-md">Semantic colors</p>
         <div className="row">
           <div className="col-xs-3">
             <div className="swatch-color-sm bg-success-light" />
@@ -222,6 +227,7 @@ const Content = () =>
 
     <div>
       <div className="block-item pa-md mt-sm">
+        <p className="font-strong mb-md">Basic button</p>
         <div className="row">
           <div className="col-xs-9">
             <button className="btn">Button</button>
@@ -233,6 +239,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="font-strong mb-md">Predefined button styles, each serving its own semantic purpose.</p>
         <div className="row">
           <div className="col-xs-9">
             <button className="btn btn-default">Default</button>
@@ -249,6 +256,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="font-strong mb-md">Remove all background colors on any button.</p>
         <div className="row">
           <div className="col-xs-9">
             <button className="btn btn-outline-default">Default</button>
@@ -264,6 +272,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="font-strong mb-md">Remove all background colors and borders on any button.</p>
         <div className="row">
           <div className="col-xs-9">
             <button className="btn btn-inverse-default">Default</button>
@@ -279,6 +288,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="font-strong mb-md">Sizes</p>
         <div className="row">
           <div className="col-xs-9">
             <p>
@@ -308,6 +318,16 @@ const Content = () =>
         <hr className="color-divider my-md" />
         <div className="row">
           <div className="col-xs-9">
+            <button className="btn btn-primary btn-block">Block button</button>
+          </div>
+          <div className="col-xs-3">
+            <code>.btn-block</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <p className="font-strong mb-md">Other buttons</p>
+        <div className="row">
+          <div className="col-xs-9">
             <button className="btn btn-primary btn-rounded">Rounded button</button>
             <button className="btn btn-secondary btn-rounded">Rounded button</button>
           </div>
@@ -325,30 +345,21 @@ const Content = () =>
             <code>.btn-ghost</code>
           </div>
         </div>
-        <hr className="color-divider my-md" />
-        <div className="row">
-          <div className="col-xs-9">
-            <button className="btn btn-primary btn-block">Block button</button>
-          </div>
-          <div className="col-xs-3">
-            <code>.btn-block</code>
-          </div>
-        </div>
       </div>
     </div>
 
     <div>
       <div className="block-item pa-md mt-sm">
-        <div className="limite">
-          <div className="contador bg-secondary">
+        <div className="timer-container">
+          <div className="timer bg-secondary py-xs">
             <div>
               <div className="type-footnote color-secondary-inverse font-strong pl-md pr-lg">Texto de prueba</div>
               <div className="type-headline color-primary-inverse pl-md pr-lg">23:12:<span className="color-disabled-inverse">45</span></div>
             </div>
-            <div className="pausar" />
+            <div className="timer-controler" />
           </div>
         </div>
-        <div className="container-agregar">
+        <div className="timer-plus">
           <div className="agregar bg-primary" />
         </div>
       </div>
@@ -358,6 +369,7 @@ const Content = () =>
       <div className="block-item pa-md mt-sm">
         <h2 className="type-title mt-xs mb-md font-strong">Typography</h2>
         <h2 className="type-title mt-xs mb-md font-strong">Text alignment</h2>
+        <p className="font-strong mb-md">Realign text with this classes.</p>
         <hr className="color-divider my-md" />
         <div className="row">
           <div className="col-xs-9">
@@ -454,6 +466,7 @@ const Content = () =>
       </div>
       <div className="block-item pa-md">
         <h2 className="type-title mt-xs mb-md font-strong">Line height</h2>
+        <p className="font-strong mb-md">Specify the space between the lines.</p>
         <hr className="color-divider my-md" />
         <div className="row">
           <div className="col-xs-9">
@@ -493,7 +506,10 @@ const Content = () =>
     <div>
       <div className="block-item pa-md mt-sm">
         <h2 className="type-title mt-xs mb-md font-strong">Tables</h2>
+        <p>Use the base class .table to any <code>&lt;table&gt;</code>,
+        then extend with custom styles or our various included modifier classes.</p>
         <hr className="color-divider my-md" />
+        <p className="type-title font-strong mb-md">Basic Example</p>
         <div className="row">
           <div className="col-xs-9">
             <table className="table">
@@ -532,6 +548,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="mb-md">Make tables more compact by cutting cell padding in half.</p>
         <div className="row">
           <div className="col-xs-9">
             <table className="table table-condensed">
@@ -570,6 +587,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="mb-md">Make tables more expanded by duplicating cell padding.</p>
         <div className="row">
           <div className="col-xs-9">
             <table className="table table-expanded">
@@ -608,6 +626,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="mb-md">Borders on all sides of the table and cells.</p>
         <div className="row">
           <div className="col-xs-9">
             <table className="table table-bordered">
@@ -646,6 +665,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="mb-md">Add zebra-striping to any table row within the <code>&lt;tbody&gt;</code></p>
         <div className="row">
           <div className="col-xs-9">
             <table className="table table-striped">
@@ -684,6 +704,7 @@ const Content = () =>
           </div>
         </div>
         <hr className="color-divider my-md" />
+        <p className="mb-md">To enable a hover state on table rows within a <code>&lt;tbody&gt;</code></p>
         <div className="row">
           <div className="col-xs-9">
             <table className="table table-hover">
@@ -724,39 +745,42 @@ const Content = () =>
         <hr className="color-divider my-md" />
         <div className="row">
           <div className="col-xs-9">
-            <table className="table table-responsive">
-              <thead>
-                <tr>
-                  <th>-</th>
-                  <th>Column</th>
-                  <th>Column</th>
-                  <th>Column</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Row</th>
-                  <td>Text</td>
-                  <td>Text</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <th>Row</th>
-                  <td>Text</td>
-                  <td>Text</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <th>Row</th>
-                  <td>Text</td>
-                  <td>Text</td>
-                  <td>Text</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="table-responsive">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>-</th>
+                    <th>Column</th>
+                    <th>Column</th>
+                    <th>Column</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Row</th>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                  </tr>
+                  <tr>
+                    <th>Row</th>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                  </tr>
+                  <tr>
+                    <th>Row</th>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div className="col-xs-3">
-            <code>.table .table-responsive</code>
+            <p><code>&lt;div class=&quot;table-responsive&quot;&gt;</code></p>
+            <p className="ml-md"><code>&lt;table class=&quot;table&quot;&gt;</code></p>
           </div>
         </div>
       </div>
@@ -765,6 +789,7 @@ const Content = () =>
     <div>
       <div className="block-item pa-md mt-sm">
         <h2 className="type-title mt-xs mb-md font-strong">Clearfix</h2>
+        <p className="mb-md">Easily clear floats by adding <code>.clearfix</code>to the parent element.</p>
         <div className="row">
           <div className="col-xs-9">
             <div className="clearfix">
@@ -783,6 +808,8 @@ const Content = () =>
     <div>
       <div className="block-item pa-md mt-sm">
         <h2 className="type-title mt-xs mb-md font-strong">Badge</h2>
+        <hr className="color-divider my-md" />
+        <p className="mb-md">Badges scale to match the size of the immediate parent element by using relative font sizing and <code>em</code> units.</p>
         <div className="row">
           <div className="col-xs-9">
             <div className="mb-sm">
@@ -808,6 +835,8 @@ const Content = () =>
             <p className="mb-sm"><code>.badge</code></p>
           </div>
         </div>
+        <hr className="color-divider my-sm" />
+        <p>Add any of these modifier classes to change the appearance of a badge.</p>
         <div className="row">
           <div className="col-xs-9">
             <div className="my-sm">
@@ -929,6 +958,9 @@ const Content = () =>
     <div>
       <div className="block-item pa-md mt-sm">
         <h2 className="type-title mt-xs mb-md font-strong">Spacing</h2>
+        <p className="my-md">Assign margin and padding values to an element or a subset
+        of its sides with shorthand classes. Includes support for individual properties,
+        all properties, and vertical and horizontal properties.</p>
         <hr className="color-divider my-md" />
         <div className="row">
           <div className="col-xs-9">
@@ -980,9 +1012,281 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
       <div className="block-item pa-md mt-sm">
         <h2 className="type-title mt-xs mb-md font-strong">Button groups</h2>
+        <p className="my-md">Group a series of buttons together on a single line with the button group.</p>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="btn-group">
+              <button className="btn btn-default">1</button>
+              <button className="btn btn-default">2</button>
+              <button className="btn btn-default">3</button>
+              <button className="btn btn-default">4</button>
+              <button className="btn btn-default">5</button>
+              <button className="btn btn-default">6</button>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.btn-group</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="btn-toolbar">
+              <div className="btn-group">
+                <button className="btn btn-default">1</button>
+                <button className="btn btn-default">2</button>
+                <button className="btn btn-default">3</button>
+              </div>
+              <div className="btn-group">
+                <button className="btn btn-default">4</button>
+                <button className="btn btn-default">5</button>
+                <button className="btn btn-default">6</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.btn-toolbar</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row my-sm">
+          <div className="col-xs-9">
+            <div className="btn-group-sm">
+              <button className="btn btn-default">1</button>
+              <button className="btn btn-default">2</button>
+              <button className="btn btn-default">3</button>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.btn-group-sm</code>
+          </div>
+        </div>
+        <div className="row my-sm">
+          <div className="col-xs-9">
+            <div className="btn-group-md">
+              <button className="btn btn-default">1</button>
+              <button className="btn btn-default">2</button>
+              <button className="btn btn-default">3</button>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.btn-group-md</code>
+          </div>
+        </div>
+        <div className="row my-sm">
+          <div className="col-xs-9">
+            <div className="btn-group-lg">
+              <button className="btn btn-default">1</button>
+              <button className="btn btn-default">2</button>
+              <button className="btn btn-default">3</button>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.btn-group-lg</code>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="btn-group-vertical">
+              <button className="btn btn-default">1</button>
+              <button className="btn btn-default">2</button>
+              <button className="btn btn-default">3</button>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.btn-group-vertical</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Input groups</h2>
+        <p>Easily extend form control by adding text, buttons, or button group.</p>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="input-group">
+              <span className="input-group-addon">$</span>
+              <input type="text" className="form-control" />
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.input-group</code></p>
+            <p className="pl-md"><code>.input-group-addon</code></p>
+            <p className="pl-md"><code>.form-control</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <p className="mb-md">Add the relative form sizing classes to the <code>.input-group</code> and
+        contents within will automatically resize.</p>
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="input-group input-group-sm">
+              <span className="input-group-addon">$</span>
+              <input type="text" className="form-control" />
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.input-group .input-group-sm</code>
+          </div>
+        </div>
+        <div className="row my-md">
+          <div className="col-xs-9">
+            <div className="input-group">
+              <span className="input-group-addon">$</span>
+              <input type="text" className="form-control" />
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.input-group</code>
+          </div>
+        </div>
+        <div className="row my-md">
+          <div className="col-xs-9">
+            <div className="input-group input-group-lg">
+              <span className="input-group-addon">$</span>
+              <input type="text" className="form-control" />
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <code>.input-group .input-group-lg</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">List groups</h2>
+        <p>List groups are components for displaying a series of content.
+        List groups can be modified and extended to support just about any content within.</p>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <ul className="list-group">
+              <li className="list-group-item">lorem ipsum dolor sit amet</li>
+              <li className="list-group-item">consectetur adipisicing elit</li>
+              <li className="list-group-item">sed do eiusmod tempor incididunt</li>
+            </ul>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.list-group</code></p>
+            <p className="pl-md"><code>.list-group-item</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <p className="mb-md">Use contextual classes to style list items with a stateful background and color.</p>
+        <div className="row">
+          <div className="col-xs-9">
+            <ul className="list-group">
+              <li className="list-group-item">lorem ipsum dolor sit amet</li>
+              <li className="list-group-item list-group-item-success">consectetur adipisicing elit</li>
+              <li className="list-group-item list-group-item-info">sed do eiusmod tempor incididunt</li>
+              <li className="list-group-item list-group-item-warning">ut labore et dolore magna aliqua</li>
+              <li className="list-group-item list-group-item-danger">ut enim ad minim veniam</li>
+            </ul>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.list-group-item</code></p>
+            <p className="mt-sm"><code>.list-group-item .list-group-item-success</code></p>
+            <p className="mt-sm"><code>.list-group-item .list-group-item-info</code></p>
+            <p className="mt-sm"><code>.list-group-item .list-group-item-warning</code></p>
+            <p className="mt-sm"><code>.list-group-item .list-group-item-danger</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <h2 className="type-title mt-xs mb-md font-strong">Forms</h2>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="form-group">
+              <label>Name</label>
+              <input type="text" className="form-control" />
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.form-group</code></p>
+            <p className="pl-sm"><code>&lt;input class=&quot;form-control&quot;&gt;</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="form-group">
+              <label>Select</label>
+              <select className="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.form-group</code></p>
+            <p className="pl-sm"><code>&lt;select class=&quot;form-control&quot;&gt;</code></p>
+            <p className="pl-md"><code>&lt;option&gt;</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="form-group">
+              <label>Multiple select</label>
+              <select multiple className="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.form-group</code></p>
+            <p className="pl-sm"><code>&lt;select multiple class=&quot;form-control&quot;&gt;</code></p>
+            <p className="pl-md"><code>&lt;option&gt;</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="form-group">
+              <label>Textarea</label>
+              <textarea className="form-control" />
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.form-group</code></p>
+            <p className="pl-sm"><code>&lt;textarea class=&quot;form-control&quot;&gt;</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-md" />
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="form-group">
+              <input type="file" className="form-control-file" />
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.form-group</code></p>
+            <p className="pl-sm"><code>&lt;input type=&quot;file&quot; className=&quot;form-control-file&quot;/&gt;</code></p>
+          </div>
+        </div>
+
       </div>
     </div>
 
