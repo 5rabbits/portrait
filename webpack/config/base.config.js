@@ -9,6 +9,7 @@ module.exports = new Config().merge({
   entry: {
     portrait: path.resolve('src/index.js'),
     'docs/index': [
+      'bootstrap-sass/assets/javascripts/bootstrap',
       path.resolve('docs/entry.js'),
       path.resolve('docs/theme.scss'),
     ],
@@ -22,6 +23,10 @@ module.exports = new Config().merge({
   },
   module: {
     loaders: [
+      {
+        test: require.resolve('bootstrap-sass//assets/javascripts/bootstrap'),
+        loader: 'imports-loader?jQuery=jquery,$=jquery',
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel',
