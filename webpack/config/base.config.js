@@ -11,6 +11,7 @@ module.exports = new Config().merge({
     portrait: path.resolve('src/index.js'),
     'docs/index': [
       'bootstrap-sass/assets/javascripts/bootstrap',
+      'font-awesome/css/font-awesome.css',
       path.resolve('docs/entry.js'),
       path.resolve('docs/theme.scss'),
     ],
@@ -35,14 +36,8 @@ module.exports = new Config().merge({
         exclude: /node_modules/,
       },
       {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(eot|ttf|woff|woff2|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
-        exclude: /node_modules/,
       },
       {
         test: /\.json$/,
