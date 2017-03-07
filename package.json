@@ -83,6 +83,7 @@
     "mocha": "2.3.4",
     "node-sass": "^4.0.0",
     "phantomjs-prebuilt": "2.1.14",
+    "raw-loader": "^0.5.1",
     "react": "^15.4.1",
     "react-addons-test-utils": "15.4.1",
     "react-docgen": "^2.13.0",
