@@ -58,6 +58,10 @@ export default class ComponentDoc extends Component {
           <PropsTable props={source.props} />
         }
 
+        {examples.length > 0 &&
+          <h2>Examples</h2>
+        }
+
         {examples.map((example, index) =>
           <Example
             key={index}
