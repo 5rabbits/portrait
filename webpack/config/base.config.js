@@ -8,7 +8,7 @@ var DirectoryNamedWebpackPlugin = require('../plugins/directory-named')
 module.exports = new Config().merge({
   cache: true,
   entry: {
-    portrait: path.resolve('src/index.js'),
+    portrait: path.resolve('src/components/index.js'),
     'docs/index': [
       'bootstrap-sass/assets/javascripts/bootstrap',
       'font-awesome/css/font-awesome.css',
@@ -51,7 +51,11 @@ module.exports = new Config().merge({
     ],
   },
   resolve: {
-    root: path.resolve('src'),
+    root: [
+      path.resolve('src'),
+      path.resolve('src/components'),
+      path.resolve('src/styles'),
+    ],
     extensions: ['', '.js', '.jsx'],
   },
   resolveLoader: {

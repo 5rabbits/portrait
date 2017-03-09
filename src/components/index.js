@@ -1,4 +1,4 @@
-import 'styles/portrait.scss'
+import 'styles/prev/portrait.scss'
 
 export * from './controls'
 export * from './elements'
