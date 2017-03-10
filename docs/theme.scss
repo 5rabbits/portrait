@@ -1,6 +1,15 @@
 @import '~codemirror/lib/codemirror';
 @import '~codemirror/theme/material';
 
+// Code without scrolls
+.CodeMirror {
+  height: auto;
+}
+
+.CodeMirror-scroll {
+  overflow: visible !important;
+}
+
 // Props table
 .props-table {
   td p:last-child {
