@@ -4,6 +4,9 @@ import cx from 'classnames'
 import './Grid.scss'
 import normalizeSize from './normalizeSize'
 
+/**
+ * Allows to place elements using the [CSS Flexible Box Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout).
+ */
 const Grid = ({ align, children, className, direction, gutter, size, ...other }) => {
   const childrenArray = Children.toArray(children)
   const columns = []
@@ -31,11 +34,48 @@ const Grid = ({ align, children, className, direction, gutter, size, ...other })
 }
 
 Grid.propTypes = {
+  /**
+   * Changes the alignment on the opposite axis.
+   *
+   * For example, `center` will center items vertically if `direction="horizontal"` and
+   * horizontally if `direction="vertical"`.
+   */
   align: PropTypes.oneOf(['start', 'center', 'end', 'stretch']).isRequired,
+
+  /**
+   * Any number of items that will be placed in the grid.
+   */
   children: childrenPropType,
+
+  /**
+   * CSS class of the grid outer wrapper.
+   */
   className: PropTypes.string,
+
+  /**
+   * Direction in which the items are going to be placed.
+   *
+   * The items are going to be placed left to right if `horizontal` and top to bottom
+   * if `vertical`.
+   */
   direction: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
+
+  /**
+   * Space between items.
+   */
   gutter: PropTypes.oneOf([false, 'small', 'normal', 'large']),
+
+  /**
+   * Size of the items.
+   *
+   * A size unit correspond any of the following values.
+   * - `'fill'`: Distribute the available space equally between all items with `fill`.
+   * - `'min'`: Use the minimum space possible.
+   * - Using any *string* or *number* will pass the value directly to the css
+   * [flex](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) property.
+   *
+   * The size can be specified globally (`size="fill"`) or item by item (`size={['fill', 'min']}`).
+   */
   size: PropTypes.oneOfType([
     PropTypes.oneOf(['fill', 'min']),
     PropTypes.string,
