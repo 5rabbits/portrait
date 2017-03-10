@@ -1,2 +1,68 @@
-code: >
-  <Grid />
+-
+  description: Simple time entry.
+  code: >
+    <Grid
+      className="time-entry"
+      direction="vertical"
+      gutter="small"
+      size={['min', 'fill', 'min']}
+      style={{ height: 100 }}
+      >
+      <div>Project</div>
+      <div className="overflow-hidden">
+        Aliqua culpa consequat mollit sint duis ullamco deserunt duis. Irure consequat velit est officia anim tempor.
+      </div>
+      <Grid
+        align="center"
+        size={[1, 'min']}
+        >
+        <div>00h 00m</div>
+        <i className="fa fa-lock" />
+      </Grid>
+    </Grid>
+
+-
+  description: Calendar
+  inline: false
+  code: >
+    const Calendar = () =>
+      <Grid
+        className="calendar"
+        gutter={false}
+        >
+        <CalendarDay date="Monday 24" time="2h 25m">
+          <div className="time-entry" style={{ height: 40 }} />
+          <div className="time-entry" style={{ height: 80 }} />
+        </CalendarDay>
+        <CalendarDay date="Tuesday 25" time="0h 00m" />
+        <CalendarDay date="Wednesday 26" time="0h 00m" />
+        <CalendarDay date="Thursday 27" time="3h 30m" />
+        <CalendarDay date="Friday 28" time="0h 00m" />
+      </Grid>
+
+    const CalendarDay = ({ children, date, time, ...other }) =>
+      <Grid
+        {...other}
+        className="calendar-day"
+        direction="vertical"
+        size={['min', 'fill']}
+        gutter="small"
+        >
+        <Grid
+          className="calendar-day__head"
+          size={['fill', 'min']}
+          >
+          <div className="calendar-day__date">{date}</div>
+          <div className="calendar-day__duration">{time}</div>
+        </Grid>
+        <Grid
+          className="calendar-day__body"
+          direction="vertical"
+          gutter="small"
+          size="min"
+          >
+          {children}
+        </Grid>
+      </Grid>
+
+    ReactDOM.render(<Calendar />, mountNode)

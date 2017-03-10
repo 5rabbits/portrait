@@ -139,6 +139,8 @@ export default sortBy([
   {
     name: 'Grid',
     getComponent: callback => require.ensure([], require => {
+      require('shared/Grid/examples.scss')
+
       callback({
         source: require('!!docs!shared/Grid'),
         examples: require('shared/Grid/examples.yml'),

@@ -1,0 +1,54 @@
+@import '~core/variables';
+
+.component-example--Grid {
+  // Time entry example
+  .time-entry {
+    width: 200px;
+    background-color: #4cb07d;
+    color: #fff;
+    border-radius: $border-radius-medium-component;
+    padding: $spacing-base;
+    font-size: $font-size-caption;
+    line-height: $line-height-caption;
+
+    > div:first-child {
+      opacity: 0.6;
+    }
+
+    > div:last-child {
+      font-size: 1rem;
+    }
+  }
+
+  // Calendar example
+  .calendar {
+    $day-padding: $spacing-base * 2;
+
+    height: 300px;
+
+    .calendar-day__head {
+      font-size: 0.8rem;
+      padding: $day-padding;
+    }
+
+    .calendar-day__body {
+      padding: 0 $day-padding $day-padding $day-padding;
+    }
+
+    .calendar-day__date {
+      font-weight: bold;
+    }
+
+    .calendar-day__duration {
+      color: $default-secondary-text-color;
+    }
+
+    .calendar-day + .calendar-day {
+      border-left: $default-divider-color solid 1px;
+    }
+
+    .time-entry {
+      width: auto;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import '~core/variables';
+
+.grid-component {
+  display: flex;
+
+  // Alignment
+  &.grid-component--start-align   { align-items: flex-start; }
+  &.grid-component--center-align  { align-items: center; }
+  &.grid-component--end-align     { align-items: flex-end; }
+  &.grid-component--stretch-align { align-items: stretch; }
+
+  // Direction
+  &.grid-component--vertical-direction   { flex-direction: column; }
+  &.grid-component--horizontal-direction { flex-direction: row; }
+
+  // Gutter
+  @mixin gutter($name, $spacing) {
+    &.grid-component--#{$name}-gutter.grid-component--vertical-direction > div + div {
+      margin-top: $spacing;
+    }
+
+    &.grid-component--#{$name}-gutter.grid-component--horizontal-direction > div + div {
+      margin-left: $spacing;
+    }
+  }
+
+  @include gutter('small', $spacing-base);
+  @include gutter('normal', $spacing-base * 2);
+  @include gutter('large', $spacing-base * 3);
+}
