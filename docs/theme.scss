@@ -9,6 +9,8 @@
     padding: $spacing-base * 2;
     border-top-left-radius: $border-radius-medium-component;
     border-top-right-radius: $border-radius-medium-component;
+    font-size: $font-size-body;
+    line-height: 1.2em;
   }
 
   .CodeMirror-scroll {
