@@ -68,8 +68,6 @@ export default class PropRow extends Component {
     const { name, definition } = this.props
     const defaultValue = this.getDefaultValue()
 
-    console.log('>', definition)
-
     return (
       <tr>
         <td>{name}</td>
