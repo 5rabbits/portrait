@@ -65,6 +65,8 @@ export default sortBy([
   {
     name: 'Navigation',
     getComponent: callback => require.ensure([], require => {
+      require('main/Navigation/examples.scss')
+
       callback({
         source: require('!!docs!main/Navigation'),
         examples: require('main/Navigation/examples.yml'),
