@@ -4,6 +4,9 @@
 @import '~core/variables';
 
 .playground {
+  display: flex;
+  flex-direction: column;
+
   .CodeMirror {
     height: auto;
     padding: $spacing-base * 2;
@@ -17,7 +20,12 @@
     overflow: visible !important;
   }
 
+  .playgroundCode {
+    order: 2;
+  }
+
   .playgroundPreview {
+    order: 3;
     padding: $spacing-base * 2;
     border-bottom-left-radius: $border-radius-medium-component;
     border-bottom-right-radius: $border-radius-medium-component;
@@ -27,6 +35,33 @@
   .previewArea {
     display: flex;
     justify-content: center;
+  }
+
+  &.collapsableCode {
+    .playgroundToggleCodeLink {
+      display: inline-block;
+      background: $primary-color;
+      color: #fff;
+      height: $spacing-base * 4;
+      line-height: $spacing-base * 4;
+      padding: 0 $spacing-base;
+      border-radius: $border-radius-medium-component;
+      cursor: pointer;
+    }
+
+    .playgroundToggleCodeBar {
+      margin-bottom: $spacing-base;
+      order: 1;
+    }
+
+    .playgroundCode:not(.expandedCode) {
+      height: 0;
+      overflow: hidden;
+
+      .playgroundToggleCodeLink {
+        position: absolute;
+      }
+    }
   }
 }
 

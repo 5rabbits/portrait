@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import Playground from 'component-playground'
 import markdown from '../helpers/markdown'
 
-const Example = ({ code, componentName, description, inline }) =>
+const Example = ({ code, collapsible, componentName, description, expanded, inline }) =>
   <div className={`component-example component-example--${componentName}`}>
     {description &&
       <div dangerouslySetInnerHTML={{ __html: markdown.render(description) }} />
@@ -13,6 +13,8 @@ const Example = ({ code, componentName, description, inline }) =>
 
     <Playground
       codeText={code}
+      collapsableCode={collapsible}
+      initiallyExpanded={expanded}
       noRender={inline}
       scope={{ React, ReactDOM }}
       theme="material"
@@ -21,12 +23,16 @@ const Example = ({ code, componentName, description, inline }) =>
 
 Example.propTypes = {
   code: PropTypes.string.isRequired,
+  collapsible: PropTypes.bool,
   componentName: PropTypes.string.isRequired,
   description: PropTypes.string,
+  expanded: PropTypes.bool,
   inline: PropTypes.bool,
 }
 
 Example.defaultProps = {
+  collapsible: false,
+  expanded: true,
   inline: true,
 }
 
