@@ -71,3 +71,93 @@
       </Grid>
 
     ReactDOM.render(<Calendar />, mountNode)
+
+-
+  description: Properties playground.
+  inline: false
+  collapsible: true
+  expanded: false
+  code: >
+    class Example extends React.Component {
+      state = {
+        align: 'center',
+        direction: 'horizontal',
+        gutter: 'normal',
+        justify: 'center',
+        size: 'min',
+      }
+
+      handleChange = (field, event) => {
+        this.setState({
+          [field]: event.target.value,
+        })
+      }
+
+      render() {
+        return (
+          <div className="properties-playground">
+            <form>
+              <Grid size="min">
+                <div>
+                  <label>Align:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'align')} value={this.state.align}>
+                    <option value="start">Start</option>
+                    <option value="center">Center</option>
+                    <option value="end">End</option>
+                    <option value="stretch">Stretch</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Direction:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'direction')} value={this.state.direction}>
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Gutter:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'gutter')} value={this.state.gutter}>
+                    <option value={false}>None</option>
+                    <option value="small">Small</option>
+                    <option value="normal">Normal</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Size:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'size')} value={this.state.size}>
+                    <option value="fill">Fill</option>
+                    <option value="min">Min</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Justify:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'justify')} value={this.state.justify}>
+                    <option value="start">Start</option>
+                    <option value="center">Center</option>
+                    <option value="end">End</option>
+                    <option value="around">Around</option>
+                    <option value="between">Between</option>
+                  </select>
+                </div>
+              </Grid>
+            </form>
+
+            <Grid {...this.state} className="properties-playground__grid">
+              <div style={{ minHeight: 60 }}>1</div>
+              <div style={{ minHeight: 40 }}>2</div>
+              <div style={{ minHeight: 50 }}>3</div>
+              <div style={{ minHeight: 70 }}>4</div>
+              <div style={{ minHeight: 40 }}>5</div>
+            </Grid>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Example />, mountNode)

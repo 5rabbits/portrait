@@ -53,4 +53,25 @@
       width: auto;
     }
   }
+
+  // Properties playground example
+  .properties-playground {
+    width: 100%;
+    background-color: #fff;
+    padding: $spacing-base * 2;
+
+    .properties-playground__grid {
+      margin-top: $spacing-base * 2;
+      height: 400px;
+
+      > div {
+        background: #4cb07d;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $spacing-base;
+      }
+    }
+  }
 }
