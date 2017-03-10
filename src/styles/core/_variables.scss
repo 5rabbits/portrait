@@ -1,0 +1,88 @@
+// Colors
+$primary-color: #1e85f2;
+$secondary-color: #062748;
+$default-color: #5f7c8a;
+$inverse-color: #ffffff;
+$success-color: #4dae51;
+$warning-color: #f6b755;
+$danger-color: #ef4043;
+
+// Shades
+$primary-color-light: lighten($primary-color, 5%);
+$primary-color-dark: darken($primary-color, 5%);
+
+$secondary-color-light: lighten($secondary-color, 5%);
+$secondary-color-dark: darken($secondary-color, 5%);
+
+$default-color-light: lighten($default-color, 5%);
+$default-color-dark: darken($default-color, 5%);
+
+$success-color-light: lighten($success-color, 5%);
+$success-color-dark: darken($success-color, 5%);
+
+$warning-color-light: lighten($warning-color, 5%);
+$warning-color-dark: darken($warning-color, 5%);
+
+$danger-color-light: lighten($danger-color, 5%);
+$danger-color-dark: darken($danger-color, 5%);
+
+// Theme
+$default-theme-color: #042649;
+$default-divider-color: #e5e9ec;
+$default-disabled-color: #b3bdc7;
+$default-hint-color: $default-disabled-color;
+$default-text-color: #0f2f4f;
+$default-secondary-text-color: #50687e;
+
+$light-theme-color: #ffffff;
+$light-divider-color: #3F5872;
+$light-disabled-color: #6F8195;
+$light-hint-color: $light-disabled-color;
+$light-text-color: #ffffff;
+$light-secondary-text-color: #B7C0C9;
+
+// Shadows
+$interactive-shadow: rgba(0, 0, 0, 0.15) 0 2px 3px;
+$interactive-hover-shadow: rgba(0, 0, 0, 0.2) 0 4px 8px;
+$floating-shadow: rgba(0, 0, 0, 0.35) 0 8px 24px;
+$modal-shadow: rgba(0, 0, 0, 0.4) 0 18px 34px;
+$mega-shadow: rgba(0, 0, 0, 0.45) 0 26px 48px;
+
+// Types
+$font-size-mega: 56px;
+$line-height-mega: 64px;
+
+$font-size-jumbo: 44px;
+$line-height-jumbo: 48px;
+
+$font-size-display: 34px;
+$line-height-display: 40px;
+
+$font-size-headline: 24px;
+$line-height-headline: 32px;
+
+$font-size-title: 20px;
+$line-height-title: 28px;
+
+$font-size-subhead: 18px;
+$line-height-subhead: 24px;
+
+$font-size-body: 16px;
+$line-height-body: 24px;
+
+$font-size-footnote: 14px;
+$line-height-footnote: 16px;
+
+$font-size-caption: 12px;
+$line-height-caption: 16px;
+
+$font-size-small: 10px;
+$line-height-small: 12px;
+
+// Border radius
+$border-radius-tiny-component: 2px;
+$border-radius-medium-component: 4px;
+$border-radius-large-component: 8px;
+
+// Negative spacing
+$spacing-base: 8px
