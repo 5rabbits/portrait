@@ -15,11 +15,11 @@
 
   // Gutter
   @mixin gutter($name, $spacing) {
-    &.grid-component--#{$name}-gutter.grid-component--vertical-direction > div + div {
+    &.grid-component--#{$name}-gutter.grid-component--vertical-direction > * + * {
       margin-top: $spacing;
     }
 
-    &.grid-component--#{$name}-gutter.grid-component--horizontal-direction > div + div {
+    &.grid-component--#{$name}-gutter.grid-component--horizontal-direction > * + * {
       margin-left: $spacing;
     }
   }
