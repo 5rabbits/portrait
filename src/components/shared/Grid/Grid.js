@@ -7,7 +7,7 @@ import normalizeSize from './normalizeSize'
 /**
  * Allows to place elements using the [CSS Flexible Box Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout).
  */
-const Grid = ({ align, children, className, direction, gutter, size, ...other }) => {
+const Grid = ({ align, children, className, direction, gutter, justify, size, ...other }) => {
   const childrenArray = Children.toArray(children)
   const columns = []
 
@@ -26,6 +26,7 @@ const Grid = ({ align, children, className, direction, gutter, size, ...other })
         [`grid-component--${align}-align`]: align,
         [`grid-component--${direction}-direction`]: direction,
         [`grid-component--${gutter}-gutter`]: gutter,
+        [`grid-component--${justify}-justify`]: justify,
       })}
       >
       {columns}
@@ -66,6 +67,14 @@ Grid.propTypes = {
   gutter: PropTypes.oneOf([false, 'small', 'normal', 'large']),
 
   /**
+   * Manages negative space on the main axis.
+   *
+   * For example, `center` will center items vertically if `direction="vertical"` and
+   * horizontally if `direction="horizontal"`.
+   */
+  justify: PropTypes.oneOf(['start', 'center', 'end', 'between', 'around']).isRequired,
+
+  /**
    * Size of the items.
    *
    * A size unit correspond any of the following values.
@@ -90,6 +99,7 @@ Grid.defaultProps = {
   align: 'stretch',
   direction: 'horizontal',
   gutter: 'normal',
+  justify: 'start',
   size: 'fill',
 }
 

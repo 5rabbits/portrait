@@ -9,6 +9,13 @@
   &.grid-component--end-align     { align-items: flex-end; }
   &.grid-component--stretch-align { align-items: stretch; }
 
+  // Justify
+  &.grid-component--start-justify   { justify-content: flex-start; }
+  &.grid-component--center-justify  { justify-content: center; }
+  &.grid-component--end-justify     { justify-content: flex-end; }
+  &.grid-component--around-justify  { justify-content: space-around; }
+  &.grid-component--between-justify { justify-content: space-between; }
+
   // Direction
   &.grid-component--vertical-direction   { flex-direction: column; }
   &.grid-component--horizontal-direction { flex-direction: row; }
