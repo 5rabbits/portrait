@@ -3,14 +3,13 @@
 var path = require('path')
 var webpack = require('webpack')
 var Config = require('webpack-config').default
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
   devServer: {
     port: process.env.PORT || 8080,
-  },
-  entry: {
-    'examples.build': path.resolve('example/component.js'),
+    historyApiFallback: true,
   },
   output: {
     publicPath: '/',
@@ -25,7 +24,7 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
     ],
     loaders: [
       {
-        test: /\.s(c|a)ss$/,
+        test: /\.(css|sass|scss)$/,
         loaders: ['style', 'css', 'sass?sourceMap=true'],
       },
     ],
@@ -33,6 +32,10 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve('docs/index.html'),
+      filename: 'index.html',
     }),
   ],
 })

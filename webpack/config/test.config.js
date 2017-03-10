@@ -5,7 +5,7 @@ var webpack = require('webpack')
 var Config = require('webpack-config').default
 
 module.exports = function testConfig(config) {
-  var indexPath = path.resolve('test/index.js')
+  var indexPath = path.resolve('src/test/index.js')
   var preprocessors = {}
 
   preprocessors[indexPath] = 'webpack'
@@ -25,7 +25,7 @@ module.exports = function testConfig(config) {
         },
         {
           type: 'html',
-          dir: path.resolve('test/coverage'),
+          dir: path.resolve('coverage'),
         },
       ],
     },
@@ -55,7 +55,7 @@ module.exports = function testConfig(config) {
             loader: 'imports?define=>false,require=>false',
           },
           {
-            test: /\.s(c|a)ss$/,
+            test: /\.(css|sass|scss)$/,
             loaders: ['style', 'css', 'sass?sourceMap=true'],
           },
         ],

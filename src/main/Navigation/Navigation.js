@@ -2,6 +2,9 @@ import React, { PropTypes } from 'react'
 import childrenPropType from 'propTypes/children'
 import classNames from 'classnames'
 
+/**
+ * Creates a navigation bar.
+ */
 const Navigation = props =>
   <div
     className={classNames('navbar', 'navbar-fixed-top',
@@ -39,11 +42,34 @@ const Navigation = props =>
   </div>
 
 Navigation.propTypes = {
+  /**
+   * Main links alignment.
+   */
   align: PropTypes.oneOf(['left', 'center']).isRequired,
+
+  /**
+   * Product name or logo.
+   */
   brand: PropTypes.node,
+
+  /**
+   * One or more NavigationItem that represents the main links.
+   */
   children: childrenPropType,
+
+  /**
+   * `className` for the outermost wrapper.
+   */
   className: PropTypes.string,
+
+  /**
+   * Right navbar sections contents.
+   */
   navigationOptions: childrenPropType,
+
+  /**
+   * Visual theme.
+   */
   theme: PropTypes.oneOf(['default', 'inverse']).isRequired,
 }
 

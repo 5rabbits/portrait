@@ -1,0 +1,32 @@
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/material';
+
+// Props table
+.props-table {
+  td p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Component example
+.component-example {
+  .playgroundPreview {
+    position: relative;
+  }
+}
+
+// Component example overrides
+.component-example--Navigation {
+  .navbar {
+    position: static;
+  }
+}
+
+// Examples
+.example {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
