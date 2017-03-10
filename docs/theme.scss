@@ -1,14 +1,31 @@
 @import '~codemirror/lib/codemirror';
 @import '~codemirror/theme/material';
 @import '~styles/utils';
+@import '~core/variables';
 
-// Code without scrolls
-.CodeMirror {
-  height: auto;
-}
+.playground {
+  .CodeMirror {
+    height: auto;
+    padding: $spacing-base * 2;
+    border-top-left-radius: $border-radius-medium-component;
+    border-top-right-radius: $border-radius-medium-component;
+  }
 
-.CodeMirror-scroll {
-  overflow: visible !important;
+  .CodeMirror-scroll {
+    overflow: visible !important;
+  }
+
+  .playgroundPreview {
+    padding: $spacing-base * 2;
+    border-bottom-left-radius: $border-radius-medium-component;
+    border-bottom-right-radius: $border-radius-medium-component;
+    background-color: $default-divider-color;
+  }
+
+  .previewArea {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 // Props table
@@ -23,6 +40,10 @@
   .playgroundPreview {
     position: relative;
   }
+}
+
+.component-example + .component-example {
+  margin-top: $spacing-base * 10;
 }
 
 // Component example overrides
