@@ -80,3 +80,57 @@
 .timer-container {
   display: inline-block;
 }
+
+/*Para variables generic colors*/
+
+.brand-color {
+  background-color: $color-brand;
+}
+
+.highlight-color {
+  background-color: $color-highlight;
+}
+
+.accent-color {
+  background-color: $color-accent;
+}
+
+.primary-color {
+  background-color: $color-primary;
+}
+
+.secondary-color {
+  background-color: $color-secondary;
+}
+
+.base-color {
+  background-color: $color-base;
+}
+
+.block-color {
+  background-color: $color-block;
+}
+
+.text-color {
+  background-color: $color-text;
+}
+
+.inverse-color {
+  background-color: $color-inverse;
+}
+
+.success-color {
+  background-color: $color-success;
+}
+
+.info-color {
+  background-color: $color-info;
+}
+
+.warning-color {
+  background-color: $color-warning;
+}
+
+.danger-color {
+  background-color: $color-danger;
+}
