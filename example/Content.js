@@ -1414,44 +1414,58 @@ const Content = () =>
         </table>
       </div>
       <div className="block-item pa-md">
-        <p className="type-subhead font-strong mb-md">Theme colors</p>
+        <p className="type-subhead font-strong mb-sm">Theme colors</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Default</td>
+              <td><code>$theme-dark</code></td>
+              <td><code>$color-text</code></td>
+            </tr>
+            <tr>
+              <td>Inverse</td>
+              <td><code>$theme-light</code></td>
+              <td><code>$color-inverse</code></td>
+            </tr>
+          </tbody>
+        </table>
         <p className="type-body font-strong mb-sm">Default</p>
         <table className="table">
           <tbody>
             <tr>
               <td>Solid</td>
               <td><code>$color-dark-solid</code></td>
-              <td>dark-text-color(solid)</td>
-            </tr>
-            <tr>
-              <td>Icon</td>
-              <td><code>$color-dark-icon</code></td>
-              <td>dark-text-color(icon)</td>
+              <td>#031A31</td>
             </tr>
             <tr>
               <td>Primary</td>
               <td><code>$color-dark-primary</code></td>
-              <td>dark-text-color(primary)</td>
+              <td>90%</td>
+            </tr>
+            <tr>
+              <td>Icon</td>
+              <td><code>$color-dark-icon</code></td>
+              <td>60%</td>
             </tr>
             <tr>
               <td>Secondary</td>
               <td><code>$color-dark-secondary</code></td>
-              <td>dark-text-color(secondary)</td>
+              <td>60%</td>
             </tr>
             <tr>
               <td>Disabled</td>
               <td><code>$color-dark-disabled</code></td>
-              <td>dark-text-color(disabled)</td>
+              <td>30%</td>
             </tr>
             <tr>
               <td>Hint</td>
               <td><code>$color-dark-hint</code></td>
-              <td>dark-text-color(hint)</td>
+              <td>30%</td>
             </tr>
             <tr>
               <td>Divider</td>
               <td><code>$color-dark-divider</code></td>
-              <td>dark-text-color(divider)</td>
+              <td>10%</td>
             </tr>
           </tbody>
         </table>
@@ -1461,37 +1475,37 @@ const Content = () =>
             <tr>
               <td>Solid</td>
               <td><code>$color-light-solid</code></td>
-              <td>light-text-color(solid)</td>
-            </tr>
-            <tr>
-              <td>Icon</td>
-              <td><code>$color-light-icon</code></td>
-              <td>light-text-color(icon)</td>
+              <td>#FFFFFF</td>
             </tr>
             <tr>
               <td>Primary</td>
               <td><code>$color-light-primary</code></td>
-              <td>light-text-color(primary)</td>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <td>Icon</td>
+              <td><code>$color-light-icon</code></td>
+              <td>80%</td>
             </tr>
             <tr>
               <td>Secondary</td>
               <td><code>$color-light-secondary</code></td>
-              <td>light-text-color(secondary)</td>
+              <td>70%</td>
             </tr>
             <tr>
               <td>Disabled</td>
               <td><code>$color-light-disabled</code></td>
-              <td>light-text-color(disabled)</td>
+              <td>40%</td>
             </tr>
             <tr>
               <td>Hint</td>
               <td><code>$color-light-hint</code></td>
-              <td>light-text-color(hint)</td>
+              <td>40%</td>
             </tr>
             <tr>
               <td>Divider</td>
               <td><code>$color-light-divider</code></td>
-              <td>light-text-color(divider)</td>
+              <td>20%</td>
             </tr>
           </tbody>
         </table>
@@ -1536,11 +1550,126 @@ const Content = () =>
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Mixins</p>
       </div>
-      <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong mb-nn">Buttons</p>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Buttons</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin button-variant($color, $background, $border)</code>
+                  <pre className="mt-sm mb-nn">.btn-default &#123;@include button-variant ($btn-default-color, $btn-default-bg, $btn-default-border);}</pre>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Outline variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin button-outline-variant($color)</code>
+                  <pre className="mt-sm mb-nn">.btn-outline-primary &#123;@include button-outline-variant ($btn-primary-bg);}</pre>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Inverse variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin button-inverse-variant($color)</code>
+                  <pre className="mt-sm mb-nn">.btn-inverse-secondary &#123;@include button-inverse-variant ($btn-secondary-bg);}</pre>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Size</td>
+              <td>
+                <code>@mixin button-size($padding-vertical, $padding-horizontal,
+                $font-size, $line-height, $border-radius)</code>
+                <pre className="mt-sm mb-nn">.btn-xs &#123;@include button-size ($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, <br />$line-height-small, $btn-border-radius-small);}</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div className="block-item pa-md">
-        <p className="type-subhead font-strong mb-md">Size</p>
+        <p className="type-subhead font-strong mb-md">Badges</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin label-variant($color)</code>
+                  <pre className="mt-sm mb-nn">.badge-success &#123;@include label-variant ($label-success-bg);}</pre>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-sm">Border-radius</p>
+        <p className="mb-sm">Single side border-radius.</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Border top</td>
+              <td><code>@mixin border-top-radius($radius)</code></td>
+            </tr>
+            <tr>
+              <td>Border right</td>
+              <td><code>@mixin border-right-radius($radius)</code></td>
+            </tr>
+            <tr>
+              <td>Border bottom</td>
+              <td><code>@mixin border-bottom-radius($radius)</code></td>
+            </tr>
+            <tr>
+              <td>Border left</td>
+              <td><code>@mixin border-left-radius($radius)</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">List-group</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin list-group-item-variant($state, $background, $color)</code>
+                  <pre className="mt-sm mb-nn">.list-group-item-success &#123;@include list-group-item-variant (info, $state-info-bg, $state-info-text);}</pre>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Themes</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>
+                <p>Base</p>
+                <p>Classes</p>
+              </td>
+              <td>
+                <div className="py-xs">
+                  <p><code>@mixin color-theme-base($theme: dark)</code></p>
+                  <p><code>@mixin color-theme-classes($theme: dark)</code></p>
+                  <pre className="mt-sm mb-nn">
+                    .theme-default &#123;@include color-theme-base(dark);
+                    @include color-theme-classes(dark);}
+                  </pre>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
