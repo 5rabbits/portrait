@@ -1532,6 +1532,17 @@ const Content = () =>
         </tbody>
       </table>
     </div>
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">Mixins</p>
+      </div>
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">Buttons</p>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Size</p>
+      </div>
+    </div>
 
   </Container>
 
