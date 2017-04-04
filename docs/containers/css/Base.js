@@ -1602,9 +1602,11 @@ const Content = () =>
             <tr>
               <td>Size</td>
               <td>
-                <code>@mixin button-size($padding-vertical, $padding-horizontal,
+                <div className="py-xs">
+                  <code>@mixin button-size($padding-vertical, $padding-horizontal,
                 $font-size, $line-height, $border-radius)</code>
-                <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-xs &#123;@include button-size ($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, <br />$line-height-small, $btn-border-radius-small);&#125;</pre>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-xs &#123;@include button-size ($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, <br />$line-height-small, $btn-border-radius-small);&#125;</pre>
+                </div>
               </td>
             </tr>
           </tbody>

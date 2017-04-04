@@ -1,0 +1,136 @@
+.docs-theme-default-solid      { background-color: $color-dark-solid; }
+.docs-theme-default-icon       { background-color: $color-dark-icon; }
+.docs-theme-default-primary    { background-color: $color-dark-primary; }
+.docs-theme-default-secondary  { background-color: $color-dark-secondary; }
+.docs-theme-default-disabled   { background-color: $color-dark-disabled; }
+.docs-theme-default-hint       { background-color: $color-dark-hint; }
+.docs-theme-default-divider    { background-color: $color-dark-divider; }
+
+.docs-theme-inverse-solid      { background-color: $color-light-solid; }
+.docs-theme-inverse-icon       { background-color: $color-light-icon; }
+.docs-theme-inverse-primary    { background-color: $color-light-primary; }
+.docs-theme-inverse-secondary  { background-color: $color-light-secondary; }
+.docs-theme-inverse-disabled   { background-color: $color-light-disabled; }
+.docs-theme-inverse-hint       { background-color: $color-light-hint; }
+.docs-theme-inverse-divider    { background-color: $color-light-divider; }
+
+
+
+
+//Revisar
+
+.swatch-color {
+  padding-bottom: 50%;
+}
+
+.swatch-color-lg {
+  padding-bottom: 60%;
+}
+
+.swatch-color-sm {
+  padding-bottom: 20%;
+}
+
+.swatch-color-full {
+  padding-bottom: 100%;
+}
+
+.bt-z {
+  border-top: 0px!important;
+}
+
+.to-align {
+  height: 70px;
+}
+
+//Contador timeflow
+
+.timer {
+  border-radius: 145px;
+  padding: 10px 0;
+  width: 220px;
+  position: relative;
+}
+
+.timer-add{
+  display: inline-block;
+  position: absolute;
+  margin-left: 10px;
+}
+
+.add {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.timer-controler {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .4);
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+}
+
+.timer-container {
+  display: inline-block;
+}
+
+/*Para variables generic colors*/
+
+.brand-color {
+  background-color: $color-brand;
+}
+
+.highlight-color {
+  background-color: $color-highlight;
+}
+
+.accent-color {
+  background-color: $color-accent;
+}
+
+.primary-color {
+  background-color: $color-primary;
+}
+
+.secondary-color {
+  background-color: $color-secondary;
+}
+
+.base-color {
+  background-color: $color-base;
+}
+
+.block-color {
+  background-color: $color-block;
+}
+
+.text-color {
+  background-color: $color-text;
+}
+
+.inverse-color {
+  background-color: $color-inverse;
+}
+
+.success-color {
+  background-color: $color-success;
+}
+
+.info-color {
+  background-color: $color-info;
+}
+
+.warning-color {
+  background-color: $color-warning;
+}
+
+.danger-color {
+  background-color: $color-danger;
+}
