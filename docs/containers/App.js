@@ -22,9 +22,15 @@ const App = ({ children, router }) => {
           <NavigationItem
             component={Link}
             label="CSS"
-            isActive={router.isActive('/css', true)}
-            to="/css"
-          />
+            isActive={router.isActive('/css')}
+            >
+            <NavigationItem
+              component={Link}
+              label="Core"
+              isActive={router.isActive('/css/core', true)}
+              to="/css/core"
+            />
+          </NavigationItem>
 
           <NavigationItem
             isActive={router.isActive('/components')}

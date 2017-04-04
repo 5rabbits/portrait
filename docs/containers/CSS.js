@@ -1,9 +1,12 @@
-import React from 'react'
-import { Container } from 'shared'
+import React, { PropTypes } from 'react'
 
-const CSS = () =>
-  <Container>
-    <h1>CSS</h1>
-  </Container>
+const CSS = ({ children }) =>
+  <div>
+    {children}
+  </div>
+
+CSS.propTypes = {
+  children: PropTypes.node,
+}
 
 export default CSS

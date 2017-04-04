@@ -43,7 +43,16 @@ const Routes = () =>
           }, 'css')
         }}
         path="css"
-      />
+        >
+        <Route
+          getComponent={(_nextState, callback) => {
+            require.ensure([], require => {
+              callback(null, require('./css/Core'))
+            }, 'core')
+          }}
+          path="core"
+        />
+      </Route>
 
       <Route
         getComponent={(_nextState, callback) => {
