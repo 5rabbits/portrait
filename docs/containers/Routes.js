@@ -47,10 +47,10 @@ const Routes = () =>
         <Route
           getComponent={(_nextState, callback) => {
             require.ensure([], require => {
-              callback(null, require('./css/Core'))
-            }, 'core')
+              callback(null, require('./css/Base'))
+            }, 'base')
           }}
-          path="core"
+          path="base"
         />
       </Route>
 
