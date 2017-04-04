@@ -1032,6 +1032,24 @@ const Content = () =>
             <p><code>.pb-sm</code></p>
           </div>
         </div>
+        <div className="row">
+          <div className="col-xs-9">
+            <p className="pt-xxs bg-primary" />
+            <p className="pt-xs bg-primary" />
+            <p className="pt-sm bg-primary" />
+            <p className="pt-md bg-primary" />
+            <p className="pt-lg bg-primary" />
+            <p className="pt-xl bg-primary" />
+          </div>
+          <div className="col-xs-3">
+            <p><code>.pt-xxs</code></p>
+            <p><code>.pt-xs</code></p>
+            <p><code>.pt-sm</code></p>
+            <p><code>.pt-md</code></p>
+            <p><code>.pt-lg</code></p>
+            <p><code>.pt-xl</code></p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1559,7 +1577,7 @@ const Content = () =>
               <td>
                 <div className="py-xs">
                   <code>@mixin button-variant($color, $background, $border)</code>
-                  <pre className="mt-sm mb-nn">.btn-default &#123;@include button-variant ($btn-default-color, $btn-default-bg, $btn-default-border);}</pre>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-default &#123;@include button-variant ($btn-default-color, $btn-default-bg, $btn-default-border);&#125;</pre>
                 </div>
               </td>
             </tr>
@@ -1568,7 +1586,7 @@ const Content = () =>
               <td>
                 <div className="py-xs">
                   <code>@mixin button-outline-variant($color)</code>
-                  <pre className="mt-sm mb-nn">.btn-outline-primary &#123;@include button-outline-variant ($btn-primary-bg);}</pre>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-outline-primary &#123;@include button-outline-variant ($btn-primary-bg);&#125;</pre>
                 </div>
               </td>
             </tr>
@@ -1577,7 +1595,7 @@ const Content = () =>
               <td>
                 <div className="py-xs">
                   <code>@mixin button-inverse-variant($color)</code>
-                  <pre className="mt-sm mb-nn">.btn-inverse-secondary &#123;@include button-inverse-variant ($btn-secondary-bg);}</pre>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-inverse-secondary &#123;@include button-inverse-variant ($btn-secondary-bg);&#125;</pre>
                 </div>
               </td>
             </tr>
@@ -1586,7 +1604,7 @@ const Content = () =>
               <td>
                 <code>@mixin button-size($padding-vertical, $padding-horizontal,
                 $font-size, $line-height, $border-radius)</code>
-                <pre className="mt-sm mb-nn">.btn-xs &#123;@include button-size ($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, <br />$line-height-small, $btn-border-radius-small);}</pre>
+                <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-xs &#123;@include button-size ($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, <br />$line-height-small, $btn-border-radius-small);&#125;</pre>
               </td>
             </tr>
           </tbody>
@@ -1601,7 +1619,7 @@ const Content = () =>
               <td>
                 <div className="py-xs">
                   <code>@mixin label-variant($color)</code>
-                  <pre className="mt-sm mb-nn">.badge-success &#123;@include label-variant ($label-success-bg);}</pre>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.badge-success &#123;@include label-variant ($label-success-bg);&#125;</pre>
                 </div>
               </td>
             </tr>
@@ -1641,7 +1659,7 @@ const Content = () =>
               <td>
                 <div className="py-xs">
                   <code>@mixin list-group-item-variant($state, $background, $color)</code>
-                  <pre className="mt-sm mb-nn">.list-group-item-success &#123;@include list-group-item-variant (info, $state-info-bg, $state-info-text);}</pre>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.list-group-item-success &#123;@include list-group-item-variant (info, $state-info-bg, $state-info-text);&#125;</pre>
                 </div>
               </td>
             </tr>
@@ -1661,10 +1679,26 @@ const Content = () =>
                 <div className="py-xs">
                   <p><code>@mixin color-theme-base($theme: dark)</code></p>
                   <p><code>@mixin color-theme-classes($theme: dark)</code></p>
-                  <pre className="mt-sm mb-nn">
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">
                     .theme-default &#123;@include color-theme-base(dark);
-                    @include color-theme-classes(dark);}
+                    @include color-theme-classes(dark);&#125;
                   </pre>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Typography</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Type</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin typography($name)</code>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.type-jumbo &#123;@include typography(jumbo);&#125;</pre>
                 </div>
               </td>
             </tr>

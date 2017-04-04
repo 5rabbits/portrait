@@ -20,35 +20,3 @@
     clear: both;
   }
 }
-
-
-%flex-view {
-  display: flex;
-}
-%flex-vertical {
-  @extend %flex-view;
-  flex-direction: column;
-}
-%flex-horizontal {
-  @extend %flex-view;
-  flex-direction: row;
-}
-%flex-content {
-  flex: 1;
-}
-
-%stretch-view {
-  position: absolute;
-  top:      0;
-  right:    0;
-  bottom:   0;
-  left:     0;
-}
-
-// [1] Without min-height:0 overflow scrolling doesn't work
-.scrollable {
-  overflow: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  min-height: 0; // [1]
-}
