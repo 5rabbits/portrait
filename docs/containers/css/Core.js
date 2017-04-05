@@ -5,10 +5,7 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
-        <p className="type-headline font-strong mb-nn">Core</p>
-      </div>
-      <div className="block-item pa-md mt-sm">
-        <p className="type-subhead font-strong mb-nn">Colors</p>
+        <p className="type-headline font-strong mb-nn">Colors</p>
       </div>
       <div className="block-item pa-md">
         <p className="type-subhead font-strong mb-md">Generic colors</p>
@@ -175,6 +172,189 @@ const Content = () =>
               <td>Divider</td>
               <td><code>$color-light-divider</code></td>
               <td>20%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">Layout</p>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">App</p>
+        <table className="table mb-md">
+          <tbody>
+            <tr>
+              <td><code>$layout-navigation-size</code></td>
+              <td>48px</td>
+            </tr>
+            <tr>
+              <td><code>$layout-navigation-background</code></td>
+              <td>shade ($color-brand, 65%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Container</p>
+        <table className="table mb-md">
+          <tbody>
+            <tr>
+              <td><code>$container-default-width</code></td>
+              <td>1120px</td>
+            </tr>
+            <tr>
+              <td><code>$container-page-width</code></td>
+              <td>1120px</td>
+            </tr>
+            <tr>
+              <td><code>$container-max-width</code></td>
+              <td>1400px</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">Mixins</p>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Buttons</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin button-variant($color, $background, $border)</code>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-default &#123;@include button-variant ($btn-default-color, $btn-default-bg, $btn-default-border);&#125;</pre>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Outline variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin button-outline-variant($color)</code>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-outline-primary &#123;@include button-outline-variant ($btn-primary-bg);&#125;</pre>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Inverse variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin button-inverse-variant($color)</code>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-inverse-secondary &#123;@include button-inverse-variant ($btn-secondary-bg);&#125;</pre>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Size</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin button-size($padding-vertical, $padding-horizontal,
+                $font-size, $line-height, $border-radius)</code>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.btn-xs &#123;@include button-size ($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, <br />$line-height-small, $btn-border-radius-small);&#125;</pre>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Badges</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin label-variant($color)</code>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.badge-success &#123;@include label-variant ($label-success-bg);&#125;</pre>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-sm">Border-radius</p>
+        <p className="mb-sm">Single side border-radius.</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Border top</td>
+              <td><code>@mixin border-top-radius($radius)</code></td>
+            </tr>
+            <tr>
+              <td>Border right</td>
+              <td><code>@mixin border-right-radius($radius)</code></td>
+            </tr>
+            <tr>
+              <td>Border bottom</td>
+              <td><code>@mixin border-bottom-radius($radius)</code></td>
+            </tr>
+            <tr>
+              <td>Border left</td>
+              <td><code>@mixin border-left-radius($radius)</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">List-group</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Variant</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin list-group-item-variant($state, $background, $color)</code>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.list-group-item-success &#123;@include list-group-item-variant (info, $state-info-bg, $state-info-text);&#125;</pre>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Themes</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>
+                <p>Base</p>
+                <p>Classes</p>
+              </td>
+              <td>
+                <div className="py-xs">
+                  <p><code>@mixin color-theme-base($theme: dark)</code></p>
+                  <p><code>@mixin color-theme-classes($theme: dark)</code></p>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">
+                    .theme-default &#123;@include color-theme-base(dark);
+                    @include color-theme-classes(dark);&#125;
+                  </pre>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-md">Typography</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Type</td>
+              <td>
+                <div className="py-xs">
+                  <code>@mixin typography($name)</code>
+                  <p className="mt-xs mb-nn">Example: </p><pre className="mb-nn">.type-jumbo &#123;@include typography(jumbo);&#125;</pre>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>

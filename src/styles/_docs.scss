@@ -43,44 +43,6 @@
   height: 70px;
 }
 
-//Contador timeflow
-
-.timer {
-  border-radius: 145px;
-  padding: 10px 0;
-  width: 220px;
-  position: relative;
-}
-
-.timer-add{
-  display: inline-block;
-  position: absolute;
-  margin-left: 10px;
-}
-
-.add {
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-}
-
-.timer-controler {
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, .4);
-  height: 32px;
-  width: 32px;
-  display: inline-block;
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #ffffff;
-}
-
-.timer-container {
-  display: inline-block;
-}
-
 /*Para variables generic colors*/
 
 .brand-color {

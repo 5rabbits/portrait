@@ -5,10 +5,9 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
-        <p className="type-headline font-strong mb-nn">Tools</p>
+        <p className="type-headline font-strong mb-nn">Color</p>
       </div>
-      <div className="block-item pa-md mt-sm">
-        <p className="type-subhead font-strong mb-md">Colors</p>
+      <div className="block-item pa-md">
         <table className="table">
           <tbody>
             <tr>
@@ -45,7 +44,9 @@ const Content = () =>
         </table>
       </div>
       <div className="block-item pa-md mt-sm">
-        <p className="type-subhead font-strong mb-md">Maps</p>
+        <p className="type-headline font-strong mb-nn">Maps</p>
+      </div>
+      <div className="block-item pa-md">
         <table className="table">
           <tbody>
             <tr>

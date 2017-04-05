@@ -26,12 +26,6 @@ const App = ({ children, router }) => {
             >
             <NavigationItem
               component={Link}
-              label="Base"
-              isActive={router.isActive('/css/base', true)}
-              to="/css/base"
-            />
-            <NavigationItem
-              component={Link}
               label="Tools"
               isActive={router.isActive('/css/tools', true)}
               to="/css/tools"
@@ -59,6 +53,12 @@ const App = ({ children, router }) => {
               label="Utils"
               isActive={router.isActive('/css/utils', true)}
               to="/css/utils"
+            />
+            <NavigationItem
+              component={Link}
+              label="Component"
+              isActive={router.isActive('/css/component', true)}
+              to="/css/components"
             />
           </NavigationItem>
 

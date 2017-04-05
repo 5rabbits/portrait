@@ -1,0 +1,27 @@
+// 7. Themes
+
+.theme-default {
+  @include color-theme-base(dark);
+  @include color-theme-classes(dark);
+}
+
+.theme-inverse {
+  @include color-theme-base(light);
+  @include color-theme-classes(light);
+}
+
+.color-solid-default      { color: $color-dark-solid;}
+.color-icon-default       { color: $color-dark-icon;}
+.color-primary-default    { color: $color-dark-primary;}
+.color-secondary-default  { color: $color-dark-secondary;}
+.color-disabled-default   { color: $color-dark-disabled;}
+.color-hint-default       { color: $color-dark-hint;}
+.color-divider-default    { color: $color-dark-divider;}
+
+.color-solid-inverse      { color: $color-light-solid;}
+.color-icon-inverse       { color: $color-light-icon;}
+.color-primary-inverse    { color: $color-light-primary;}
+.color-secondary-inverse  { color: $color-light-secondary;}
+.color-disabled-inverse   { color: $color-light-disabled;}
+.color-hint-inverse       { color: $color-light-hint;}
+.color-divider-inverse    { color: $color-light-divider;}
