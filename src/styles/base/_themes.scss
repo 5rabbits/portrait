@@ -46,7 +46,7 @@ $theme-light-shades: (
 
 // 3. Functions
 
-@function dark-color($shade) {
+@function color-text-default($shade) {
   $color: ();
   @if $shade == solid {
     $color: $theme-dark;
@@ -61,8 +61,11 @@ $theme-light-shades: (
   }
   @return $color;
 }
+@function dark-text-color($shade) {
+  @return color-text-default($shade);
+}
 
-@function light-color($shade) {
+@function color-text-inverse($shade) {
   $color: ();
   @if $shade == solid {
     $color: $theme-light;
@@ -77,14 +80,17 @@ $theme-light-shades: (
   }
   @return $color;
 }
+@function light-text-color($shade) {
+  @return color-text-inverse($shade);
+}
 
 @function theme-color($theme: dark, $shade: solid) {
   $color: ();
   @if $theme == dark {
-    $color: dark-color($shade);
+    $color: dark-text-color($shade);
   }
   @elseif $theme == light {
-    $color: light-color($shade);
+    $color: light-text-color($shade);
   }
   @else {
     $color: "El tema indicado no existe."
@@ -117,53 +123,59 @@ $theme-light-shades: (
 
 // 5. Variables
 
-$color-dark-solid:      dark-color(solid) !default;
-$color-dark-icon:       dark-color(icon) !default;
-$color-dark-primary:    dark-color(primary) !default;
-$color-dark-secondary:  dark-color(secondary) !default;
-$color-dark-disabled:   dark color(disabled) !default;
-$color-dark-hint:       dark-color(hint) !default;
-$color-dark-divider:    dark-color(divider) !default;
+$color-dark-solid:      dark-text-color(solid) !default;
+$color-dark-icon:       dark-text-color(icon) !default;
+$color-dark-primary:    dark-text-color(primary) !default;
+$color-dark-secondary:  dark-text-color(secondary) !default;
+$color-dark-disabled:   dark-text-color(disabled) !default;
+$color-dark-hint:       dark-text-color(hint) !default;
+$color-dark-divider:    dark-text-color(divider) !default;
 
-$color-light-solid:     light-color(solid) !default;
-$color-light-icon:      light-color(icon) !default;
-$color-light-primary:   light-color(primary) !default;
-$color-light-secondary: light-color(secondary) !default;
-$color-light-disabled:  light-color(disabled) !default;
-$color-light-hint:      light-color(hint) !default;
-$color-light-divider:   light-color(divider) !default;
+$color-light-solid:     light-text-color(solid) !default;
+$color-light-icon:      light-text-color(icon) !default;
+$color-light-primary:   light-text-color(primary) !default;
+$color-light-secondary: light-text-color(secondary) !default;
+$color-light-disabled:  light-text-color(disabled) !default;
+$color-light-hint:      light-text-color(hint) !default;
+$color-light-divider:   light-text-color(divider) !default;
 
 
 // 6. Styles
 
 body {
   background-color: $color-base;
-  color: dark-color(primary);
+  color: dark-text-color(primary);
 }
-
 a {
-  color: $color-accent;
-  text-decoration: none;
-  background-color: transparent; // Remove the gray background on active links in IE 10.
-  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
-
-  &:hover {
-    color: darken($color-accent,5%);
-    text-decoration: underline;
-  }
+  color: dark-text-color(solid);
 }
-
 @include color-theme-classes(dark);
 
 
 // 7. Themes
 
-.theme-dark {
-  //@include color-theme-base(dark);
+.theme-default {
+  @include color-theme-base(dark);
   @include color-theme-classes(dark);
 }
 
-.theme-light {
-  //@include color-theme-base(light);
+.theme-inverse {
+  @include color-theme-base(light);
   @include color-theme-classes(light);
 }
+
+.color-solid-default      { color: $color-dark-solid;}
+.color-icon-default       { color: $color-dark-icon;}
+.color-primary-default    { color: $color-dark-primary;}
+.color-secondary-default  { color: $color-dark-secondary;}
+.color-disabled-default   { color: $color-dark-disabled;}
+.color-hint-default       { color: $color-dark-hint;}
+.color-divider-default    { color: $color-dark-divider;}
+
+.color-solid-inverse      { color: $color-light-solid;}
+.color-icon-inverse       { color: $color-light-icon;}
+.color-primary-inverse    { color: $color-light-primary;}
+.color-secondary-inverse  { color: $color-light-secondary;}
+.color-disabled-inverse   { color: $color-light-disabled;}
+.color-hint-inverse       { color: $color-light-hint;}
+.color-divider-inverse    { color: $color-light-divider;}

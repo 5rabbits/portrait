@@ -68,6 +68,30 @@ const Routes = () =>
           }}
           path="core"
         />
+        <Route
+          getComponent={(_nextState, callback) => {
+            require.ensure([], require => {
+              callback(null, require('./css/Common'))
+            }, 'common')
+          }}
+          path="common"
+        />
+        <Route
+          getComponent={(_nextState, callback) => {
+            require.ensure([], require => {
+              callback(null, require('./css/Layouts'))
+            }, 'layouts')
+          }}
+          path="layouts"
+        />
+        <Route
+          getComponent={(_nextState, callback) => {
+            require.ensure([], require => {
+              callback(null, require('./css/Utils'))
+            }, 'utils')
+          }}
+          path="utils"
+        />
       </Route>
 
       <Route

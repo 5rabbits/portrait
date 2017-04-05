@@ -3,9 +3,13 @@
 .block-rounded {  border-radius: 100px !important; }
 .block-rect    {  border-radius:   0px !important; }
 
+.font-strong   { font-weight: bold; }
+.font-normal   { font-style: normal; }
+.font-italic   { font-style: italic; }
+
 // Alignment
 
-.text-justify        { text-align: justify !important; }
+/*.text-justify        { text-align: justify !important; }
 .text-nowrap         { white-space: nowrap !important; }
 //.text-truncate       { @include text-truncate; }
 
@@ -26,17 +30,22 @@
 .font-strong         { font-weight: bold; }
 .font-italic         { font-style: italic; }
 
-//.text-hide           { @include text-hide(); }
+//.text-hide           { @include text-hide(); }*/
 
 
 
-
+//@function lighter-color($name) {
+//  @return scale-color($name, $lightness: 80%);
+//}
 @function light-color($name) {
   @return scale-color($name, $lightness: 80%);
 }
 @function dark-color($name) {
-  @return scale-color($name, $lightness: -80%);
+  @return scale-color($name, $lightness: -40%);
 }
+//@function darker-color($name) {
+//  @return scale-color($name, $lightness: -40%);
+//}
 
 .bg-brand      { background-color: $color-brand;}
 

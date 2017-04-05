@@ -8,7 +8,9 @@ const Content = () =>
         <p className="type-headline font-strong mb-nn">Core</p>
       </div>
       <div className="block-item pa-md mt-sm">
-        <p className="type-subhead font-strong mb-md">Colors</p>
+        <p className="type-subhead font-strong mb-nn">Colors</p>
+      </div>
+      <div className="block-item pa-md">
         <p className="type-subhead font-strong mb-md">Generic colors</p>
         <table className="table">
           <tbody>
@@ -80,65 +82,99 @@ const Content = () =>
           </tbody>
         </table>
       </div>
-      <div className="block-item pa-md mt-sm">
-        <p className="type-subhead font-strong mb-md">Maps</p>
+      <div className="block-item pa-md">
+        <p className="type-subhead font-strong mb-sm">Theme colors</p>
         <table className="table">
           <tbody>
             <tr>
-              <td>Map deep get</td>
-              <td>
-                <div className="py-xs">
-                  <code>@function map-deep-get ($map, $keys...)</code>
-                </div>
-              </td>
+              <td>Default</td>
+              <td><code>$theme-dark</code></td>
+              <td><code>$color-text</code></td>
             </tr>
             <tr>
-              <td>Map get value</td>
-              <td>
-                <div className="py-xs">
-                  <code>@function map-get-value ($map, $key, $msg)</code>
-                </div>
-              </td>
+              <td>Inverse</td>
+              <td><code>$theme-light</code></td>
+              <td><code>$color-inverse</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="type-body font-strong mb-sm">Default</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Solid</td>
+              <td><code>$color-dark-solid</code></td>
+              <td>#031A31</td>
             </tr>
             <tr>
-              <td>Expose map</td>
-              <td>
-                <div className="py-xs">
-                  <code>@mixin expose-map ($map)</code>
-                </div>
-              </td>
+              <td>Primary</td>
+              <td><code>$color-dark-primary</code></td>
+              <td>90%</td>
             </tr>
             <tr>
-              <td>Depth</td>
-              <td>
-                <div className="py-xs">
-                  <code>@function depth ($map)</code>
-                </div>
-              </td>
+              <td>Icon</td>
+              <td><code>$color-dark-icon</code></td>
+              <td>60%</td>
             </tr>
             <tr>
-              <td>Debug map</td>
-              <td>
-                <div className="py-xs">
-                  <code>@mixin debug-map ($map,$class)</code>
-                </div>
-              </td>
+              <td>Secondary</td>
+              <td><code>$color-dark-secondary</code></td>
+              <td>60%</td>
             </tr>
             <tr>
-              <td>Debug list</td>
-              <td>
-                <div className="py-xs">
-                  <code>@mixin debug-list ($list,$class)</code>
-                </div>
-              </td>
+              <td>Disabled</td>
+              <td><code>$color-dark-disabled</code></td>
+              <td>30%</td>
             </tr>
             <tr>
-              <td>Debug</td>
-              <td>
-                <div className="py-xs">
-                  <code>@mixin debug ($source,$class:&#34;&#34;)</code>
-                </div>
-              </td>
+              <td>Hint</td>
+              <td><code>$color-dark-hint</code></td>
+              <td>30%</td>
+            </tr>
+            <tr>
+              <td>Divider</td>
+              <td><code>$color-dark-divider</code></td>
+              <td>10%</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="type-body font-strong mb-sm">Inverse</p>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>Solid</td>
+              <td><code>$color-light-solid</code></td>
+              <td>#FFFFFF</td>
+            </tr>
+            <tr>
+              <td>Primary</td>
+              <td><code>$color-light-primary</code></td>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <td>Icon</td>
+              <td><code>$color-light-icon</code></td>
+              <td>80%</td>
+            </tr>
+            <tr>
+              <td>Secondary</td>
+              <td><code>$color-light-secondary</code></td>
+              <td>70%</td>
+            </tr>
+            <tr>
+              <td>Disabled</td>
+              <td><code>$color-light-disabled</code></td>
+              <td>40%</td>
+            </tr>
+            <tr>
+              <td>Hint</td>
+              <td><code>$color-light-hint</code></td>
+              <td>40%</td>
+            </tr>
+            <tr>
+              <td>Divider</td>
+              <td><code>$color-light-divider</code></td>
+              <td>20%</td>
             </tr>
           </tbody>
         </table>
