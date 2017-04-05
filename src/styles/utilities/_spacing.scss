@@ -1,0 +1,56 @@
+//Spacing
+
+@mixin spacing($type, $direction:false) {
+  @if $direction == "x" {
+    &-nn { #{$type}-left: 0 !important;          #{$type}-right: 0 !important; }
+    &-xxs { #{$type}-left: $gutter-xxs !important; #{$type}-right: $gutter-xxs !important; }
+    &-xs { #{$type}-left: $gutter-xs !important; #{$type}-right: $gutter-xs !important; }
+    &-sm { #{$type}-left: $gutter-sm !important; #{$type}-right: $gutter-sm !important; }
+    &-md { #{$type}-left: $gutter-md !important; #{$type}-right: $gutter-md !important; }
+    &-lg { #{$type}-left: $gutter-lg !important; #{$type}-right: $gutter-lg !important; }
+    &-xl { #{$type}-left: $gutter-xl !important; #{$type}-right: $gutter-xl !important; }
+  }
+  @else if $direction == "y" {
+    &-nn { #{$type}-top: 0 !important;          #{$type}-bottom: 0 !important; }
+    &-xxs { #{$type}-top: $gutter-xxs !important; #{$type}-bottom: $gutter-xxs !important; }
+    &-xs { #{$type}-top: $gutter-xs !important; #{$type}-bottom: $gutter-xs !important; }
+    &-sm { #{$type}-top: $gutter-sm !important; #{$type}-bottom: $gutter-sm !important; }
+    &-md { #{$type}-top: $gutter-md !important; #{$type}-bottom: $gutter-md !important; }
+    &-lg { #{$type}-top: $gutter-lg !important; #{$type}-bottom: $gutter-lg !important; }
+    &-xl { #{$type}-top: $gutter-xl !important; #{$type}-bottom: $gutter-xl !important; }
+  }
+  @else {
+    $direction: if($direction != "", "-#{$direction}", $direction);
+    &-nn { #{$type}#{$direction}: 0 !important; }
+    &-xxs { #{$type}#{$direction}: $gutter-xxs !important; }
+    &-xs { #{$type}#{$direction}: $gutter-xs !important; }
+    &-sm { #{$type}#{$direction}: $gutter-sm !important; }
+    &-md { #{$type}#{$direction}: $gutter-md !important; }
+    &-lg { #{$type}#{$direction}: $gutter-lg !important; }
+    &-xl { #{$type}#{$direction}: $gutter-xl !important; }
+  }
+}
+
+@mixin margin($direction:"") {
+  @include spacing(margin, $direction);
+}
+
+@mixin padding($direction:"") {
+  @include spacing(padding, $direction);
+}
+
+.ma { @include margin; }
+.my { @include margin(y); }
+.mx { @include margin(x); }
+.mt { @include margin(top); }
+.mr { @include margin(right); }
+.mb { @include margin(bottom); }
+.ml { @include margin(left); }
+
+.pa { @include padding; }
+.py { @include padding(y); }
+.px { @include padding(x); }
+.pt { @include padding(top); }
+.pr { @include padding(right); }
+.pb { @include padding(bottom); }
+.pl { @include padding(left); }

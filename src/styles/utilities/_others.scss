@@ -1,0 +1,39 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+
+// Floats
+// -------------------------
+
+.clearfix {
+  @include clearfix;
+}
+.center-block {
+  @include center-block;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+// For Affix plugin
+// -------------------------
+
+.affix {
+  position: fixed;
+}
+
+.no-float        { float: none !important; }
+.inline          { float: none !important; display: inline !important; }
+.inline-block    { float: none !important; display: inline-block !important; }
+
+.display-inline  { float: none !important; display: inline !important; }
+.display-inblock { float: none !important; display: inline-block !important; }
+.display-block   { display: block !important; }
+
+.align-top       { vertical-align: top !important; }
+.align-middle    { vertical-align: middle !important; }
+.align-bottom    { vertical-align: bottom !important; }
