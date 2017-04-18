@@ -14,7 +14,17 @@
 .docs-theme-inverse-hint       { background-color: $color-light-hint; }
 .docs-theme-inverse-divider    { background-color: $color-light-divider; }
 
-/*Para variables generic colors*/
+//Schema
+.swatch-color-lg {
+  padding-bottom: 60%;
+}
+
+.swatch-color-sm {
+  padding-bottom: 20%;
+}
+
+
+//Para variables generic colors
 
 .brand-color {
   background-color: $color-brand;
@@ -66,4 +76,67 @@
 
 .danger-color {
   background-color: $color-danger;
+}
+
+//Vistas timeflow
+
+.modal-one {
+  width: 470px;
+  height: 250px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+.to-close {
+  top: 15px;
+  right: 15px;
+}
+
+.modal-two {
+  width: 470px;
+  height: 480px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.modal-three {
+  width: 325px;
+  height: 350px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.if-user {
+  line-height: 23px!important; //blame
+}
+
+.text-part {
+  height: 60%;
+}
+
+.buttons-part {
+  height: 40%;
+}
+
+.middle-button {
+  height: 50%;
+  width: 100%;
+}
+
+.total-danger {
+  color: $color-danger!important; //blame
+}
+
+//Others
+
+.flex-height {
+  height: 50px;
 }

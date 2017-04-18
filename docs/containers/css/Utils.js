@@ -3,6 +3,7 @@ import { Container } from 'shared'
 
 const Content = () =>
   <Container>
+
     <div>
       <div className="block-item pa-md">
         <p className="type-headline font-strong">Typography</p>
@@ -77,6 +78,7 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Background colors</p>
@@ -87,19 +89,19 @@ const Content = () =>
         <div className="row">
           <div className="col-xs-3">
             <div className="swatch-color-lg bg-primary mb-xs" />
-            <div><code>.bg-primary</code></div>
+            <div className="mt-sm"><code>.bg-primary</code></div>
           </div>
           <div className="col-xs-3">
             <div className="swatch-color-lg bg-secondary mb-xs" />
-            <div><code>.bg-secondary</code></div>
+            <div className="mt-sm"><code>.bg-secondary</code></div>
           </div>
           <div className="col-xs-3">
             <div className="swatch-color-lg bg-base mb-xs" />
-            <div><code>.bg-base</code></div>
+            <div className="mt-sm"><code>.bg-base</code></div>
           </div>
           <div className="col-xs-3">
             <div className="swatch-color-lg bg-block mb-xs" />
-            <div><code>.bg-block</code></div>
+            <div className="mt-sm"><code>.bg-block</code></div>
           </div>
         </div>
       </div>
@@ -110,37 +112,38 @@ const Content = () =>
             <div className="swatch-color-sm bg-success-light" />
             <div className="swatch-color-lg bg-success" />
             <div className="swatch-color-sm bg-success-dark mb-xs" />
-            <div><code>.bg-success-light</code></div>
-            <div><code>.bg-success</code></div>
-            <div><code>.bg-success-dark</code></div>
+            <div className="mt-sm"><code>.bg-success-light</code></div>
+            <div className="mt-sm"><code>.bg-success</code></div>
+            <div className="mt-sm"><code>.bg-success-dark</code></div>
           </div>
           <div className="col-xs-3">
             <div className="swatch-color-sm bg-warning-light" />
             <div className="swatch-color-lg bg-warning" />
             <div className="swatch-color-sm bg-warning-dark mb-xs" />
-            <div><code>.bg-warning-light</code></div>
-            <div><code>.bg-warning</code></div>
-            <div><code>.bg-warning-dark</code></div>
+            <div className="mt-sm"><code>.bg-warning-light</code></div>
+            <div className="mt-sm"><code>.bg-warning</code></div>
+            <div className="mt-sm"><code>.bg-warning-dark</code></div>
           </div>
           <div className="col-xs-3">
             <div className="swatch-color-sm bg-danger-light" />
             <div className="swatch-color-lg bg-danger" />
             <div className="swatch-color-sm bg-danger-dark mb-xs" />
-            <div><code>.bg-danger-light</code></div>
-            <div><code>.bg-danger</code></div>
-            <div><code>.bg-danger-dark</code></div>
+            <div className="mt-sm"><code>.bg-danger-light</code></div>
+            <div className="mt-sm"><code>.bg-danger</code></div>
+            <div className="mt-sm"><code>.bg-danger-dark</code></div>
           </div>
           <div className="col-xs-3">
             <div className="swatch-color-sm bg-info-light" />
             <div className="swatch-color-lg bg-info" />
             <div className="swatch-color-sm bg-info-dark mb-xs" />
-            <div><code>.bg-info-light</code></div>
-            <div><code>.bg-info</code></div>
-            <div><code>.bg-info-dark</code></div>
+            <div className="mt-sm"><code>.bg-info-light</code></div>
+            <div className="mt-sm"><code>.bg-info</code></div>
+            <div className="mt-sm"><code>.bg-info-dark</code></div>
           </div>
         </div>
       </div>
     </div>
+
     <div>
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Themes</p>
@@ -179,7 +182,7 @@ const Content = () =>
             <p><code>.color-disabled-default</code></p>
             <p><code>.color-hint-default</code></p>
             <p><code>.color-icon-default</code></p>
-            <p><code>.color-secondary-default</code></p>
+            <p><code className="line-height-medium">.color-secondary-default</code></p>
             <p><code>.color-primary-default</code></p>
           </div>
         </div>
@@ -220,12 +223,13 @@ const Content = () =>
             <p><code>.color-disabled-inverse</code></p>
             <p><code>.color-hint-inverse</code></p>
             <p><code>.color-icon-inverse</code></p>
-            <p><code>.color-secondary-inverse</code></p>
+            <p><code className="line-height-medium">.color-secondary-inverse</code></p>
             <p><code>.color-primary-inverse</code></p>
           </div>
         </div>
       </div>
     </div>
+
     <div>
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Text</p>
@@ -367,6 +371,7 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Clearfix</p>
@@ -385,6 +390,7 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Display property</p>
@@ -442,6 +448,7 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Vertical alignment</p>
@@ -469,6 +476,7 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Spacing</p>
@@ -540,6 +548,86 @@ const Content = () =>
             <p><code>.pt-md</code></p>
             <p><code>.pt-lg</code></p>
             <p><code>.pt-xl</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong">Flexbox</p>
+        <p className="type-body mb-nn">Flexbox is a layout mode to accomodate elements in a page
+        into a predectible way in different screen sizes and display divices.</p>
+      </div>
+      <div className="block-item pa-md">
+        <div className="row mb-xs">
+          <div className="col-xs-9">
+            <div className="flex-container flex-vertical mb-sm">
+              <div className="bg-warning">Div 1</div>
+              <div className="bg-info-light">Div 2</div>
+              <div className="bg-warning">Div 3</div>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.flex-container</code></p>
+            <p><code>.flex-vertical</code></p>
+          </div>
+        </div>
+        <div className="row mb-xs">
+          <div className="col-xs-9">
+            <div className="flex-container flex-horizontal flex-height bg-secondary mb-sm">
+              <div className="bg-warning">Div 1</div>
+              <div className="bg-info-light">Div 2</div>
+              <div className="bg-warning">Div 3</div>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.flex-container</code></p>
+            <p><code>.flex-horizontal</code></p>
+          </div>
+        </div>
+        <div className="row mb-sm">
+          <div className="col-xs-9">
+            <div className="flex-container flex-horizontal flex-vertical-align flex-height bg-secondary mb-sm">
+              <div className="bg-warning">Div 1</div>
+              <div className="bg-info-light">Div 2</div>
+              <div className="bg-warning">Div 3</div>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.flex-container</code></p>
+            <p><code>.flex-horizontal</code></p>
+            <p><code>.flex-vertical-align</code></p>
+          </div>
+        </div>
+        <div className="row mb-xs">
+          <div className="col-xs-9">
+            <div className="flex-container flex-horizontal flex-vertical-align flex-height bg-secondary">
+              <div className="flex-content bg-warning">Div 1</div>
+              <div className="flex-content bg-info-light">Div 2</div>
+              <div className="flex-content bg-warning">Div 3</div>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.flex-container</code></p>
+            <p><code>.flex-horizontal</code></p>
+            <p><code>.flex-vertical-align</code></p>
+            <p><code>.flex-content</code></p>
+          </div>
+        </div>
+        <div className="row mb-xs">
+          <div className="col-xs-9">
+            <div className="flex-container flex-horizontal flex-vertical-align flex-height bg-secondary">
+              <div className="bg-warning">Div 1</div>
+              <div className="bg-info-light">Div 2</div>
+              <div className="bg-warning">Div 3</div>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p><code>.flex-container</code></p>
+            <p><code>.flex-horizontal</code></p>
+            <p><code>.flex-vertical-align</code></p>
+            <p><code>.flex-content</code></p>
           </div>
         </div>
       </div>

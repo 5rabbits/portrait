@@ -60,6 +60,12 @@ const App = ({ children, router }) => {
               isActive={router.isActive('/css/component', true)}
               to="/css/components"
             />
+            <NavigationItem
+              component={Link}
+              label="Timeflow"
+              isActive={router.isActive('/css/timeflow', true)}
+              to="/css/timeflow"
+            />
           </NavigationItem>
 
           <NavigationItem
