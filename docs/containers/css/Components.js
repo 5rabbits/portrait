@@ -359,7 +359,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <code>.input-group .input-group-sm</code>
+            <code className="line-height-medium">.input-group .input-group-sm</code>
           </div>
         </div>
         <div className="row my-md">
@@ -381,7 +381,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <code>.input-group .input-group-lg</code>
+            <code className="line-height-medium">.input-group .input-group-lg</code>
           </div>
         </div>
       </div>
@@ -420,10 +420,10 @@ const Content = () =>
           </div>
           <div className="col-xs-3">
             <p><code>.list-group-item</code></p>
-            <p className="mt-sm"><code>.list-group-item .list-group-item-success</code></p>
-            <p className="mt-sm"><code>.list-group-item .list-group-item-info</code></p>
-            <p className="mt-sm"><code>.list-group-item .list-group-item-warning</code></p>
-            <p className="mt-sm"><code>.list-group-item .list-group-item-danger</code></p>
+            <p className="mt-sm"><code className="line-height-medium">.list-group-item .list-group-item-success</code></p>
+            <p className="mt-sm"><code className="line-height-medium">.list-group-item .list-group-item-info</code></p>
+            <p className="mt-sm"><code className="line-height-medium">.list-group-item .list-group-item-warning</code></p>
+            <p className="mt-sm"><code className="line-height-medium">.list-group-item .list-group-item-danger</code></p>
           </div>
         </div>
       </div>
@@ -441,7 +441,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code>&lt;input class=&quot;form-control&quot;&gt;</code></p>
+            <p><code className="line-height-medium">&lt;input class=&quot;form-control&quot;&gt;</code></p>
           </div>
         </div>
         <hr className="color-divider my-md" />
@@ -459,7 +459,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code>&lt;select class=&quot;form-control&quot;&gt;</code></p>
+            <p><code className="line-height-medium">&lt;select class=&quot;form-control&quot;&gt;</code></p>
             <p className="pl-sm"><code>&lt;option&gt;</code></p>
           </div>
         </div>
@@ -478,7 +478,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code>&lt;select multiple class=&quot;form-control&quot;&gt;</code></p>
+            <p><code className="line-height-medium">&lt;select multiple class=&quot;form-control&quot;&gt;</code></p>
             <p className="pl-sm"><code>&lt;option&gt;</code></p>
           </div>
         </div>
@@ -491,7 +491,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code>&lt;textarea class=&quot;form-control&quot;&gt;</code></p>
+            <p><code className="line-height-medium">&lt;textarea class=&quot;form-control&quot;&gt;</code></p>
           </div>
         </div>
         <hr className="color-divider my-md" />
@@ -502,7 +502,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code>&lt;input type=&quot;file&quot; className=&quot;form-control-file
+            <p><code className="line-height-medium">&lt;input type=&quot;file&quot; className=&quot;form-control-file
             &quot;/&gt;</code></p>
           </div>
         </div>
