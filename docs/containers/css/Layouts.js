@@ -5,6 +5,17 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
+        <p className="type-headline font-strong">Contents</p>
+        <ul className="pl-md">
+          <li className="pb-xs type-title">
+            <a href="#tables" className="type-subhead">Tables</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm" id="tables">
         <p className="type-headline font-strong">Tables</p>
         <p className="type-body mb-nn">Use the base class <code>.table</code> to any <code>&lt;table&gt;</code>,
         then extend with custom styles or our various included modifier classes.</p>

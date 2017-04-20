@@ -5,10 +5,112 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
+        <p className="type-headline font-strong">Contents</p>
+        <ul className="pl-md">
+          <li className="pb-xs type-title">
+            <a href="#badge" className="type-subhead">Badge</a>
+          </li>
+          <li className="pb-xs type-title">
+            <a href="#buttons" className="type-subhead">Buttons</a>
+            <ul className="pl-md type-body">
+              <li>Types</li>
+              <li>Sizes</li>
+              <li>Other buttons</li>
+            </ul>
+          </li>
+          <li className="pb-xs type-title">
+            <a href="#button-groups" className="type-subhead">Button groups</a>
+          </li>
+          <li className="pb-xs type-title">
+            <a href="#input-groups" className="type-subhead">Input groups</a>
+          </li>
+          <li className="pb-xs type-title">
+            <a href="#list-groups" className="type-subhead">List groups</a>
+          </li>
+          <li className="pb-xs type-title">
+            <a href="#forms" className="type-subhead">Forms</a>
+            <ul className="pl-md type-body">
+              <li>Form groups</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm" id="badge">
+        <p className="type-headline font-strong mb-nn">Badge</p>
+        <hr className="color-divider my-md" />
+        <p className="mb-md">Badges scale to match the size of the immediate parent element by using relative font sizing and <code>em</code> units.</p>
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="mb-sm">
+              <h1>&lt;h1&gt; <span className="badge bg-primary">Badge</span> &lt;/h1&gt;</h1>
+            </div>
+            <div className="my-sm">
+              <h2>&lt;h2&gt; <span className="badge bg-primary">Badge</span> &lt;/h2&gt;</h2>
+            </div>
+            <div className="my-sm">
+              <h3>&lt;h3&gt; <span className="badge bg-primary">Badge</span> &lt;/h3&gt;</h3>
+            </div>
+            <div className="my-sm">
+              <h4>&lt;h4&gt; <span className="badge bg-primary">Badge</span> &lt;/h4&gt;</h4>
+            </div>
+            <div className="my-sm">
+              <h5>&lt;h5&gt; <span className="badge bg-primary">Badge</span> &lt;/h5&gt;</h5>
+            </div>
+            <div className="my-sm">
+              <h6>&lt;h6&gt; <span className="badge bg-primary">Badge</span> &lt;/h6&gt;</h6>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p className="mb-sm"><code>.badge</code></p>
+          </div>
+        </div>
+        <hr className="color-divider my-sm" />
+        <p>Add any of these modifier classes to change the appearance of a badge.</p>
+        <div className="row">
+          <div className="col-xs-9">
+            <div className="my-sm">
+              <span className="badge badge-default">Badge default</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-primary">Badge primary</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-success">Badge success</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-info">Badge info</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-warning">Badge warning</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge badge-danger">Badge danger</span>
+            </div>
+            <div className="my-sm">
+              <span className="badge">Badge</span>
+            </div>
+          </div>
+          <div className="col-xs-3">
+            <p className="my-sm"><code>.badge .badge-default</code></p>
+            <p className="my-sm"><code>.badge .badge-primary</code></p>
+            <p className="my-sm"><code>.badge .badge-success</code></p>
+            <p className="my-sm"><code>.badge .badge-info</code></p>
+            <p className="my-sm"><code>.badge .badge-warning</code></p>
+            <p className="my-sm"><code>.badge .badge-danger</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm" id="buttons">
         <p className="type-headline font-strong mb-nn">Buttons</p>
       </div>
       <div className="block-item pa-md">
-        <p className="type-subhead font-strong mb-nn">Types of buttons</p>
+        <p className="type-subhead font-strong mb-nn">Types</p>
         <hr className="color-divider my-md" />
         <p className="type-body">Basic button</p>
         <div className="row">
@@ -134,75 +236,9 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
-      <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong mb-nn">Badge</p>
-        <hr className="color-divider my-md" />
-        <p className="mb-md">Badges scale to match the size of the immediate parent element by using relative font sizing and <code>em</code> units.</p>
-        <div className="row">
-          <div className="col-xs-9">
-            <div className="mb-sm">
-              <h1>&lt;h1&gt; <span className="badge bg-primary">Badge</span> &lt;/h1&gt;</h1>
-            </div>
-            <div className="my-sm">
-              <h2>&lt;h2&gt; <span className="badge bg-primary">Badge</span> &lt;/h2&gt;</h2>
-            </div>
-            <div className="my-sm">
-              <h3>&lt;h3&gt; <span className="badge bg-primary">Badge</span> &lt;/h3&gt;</h3>
-            </div>
-            <div className="my-sm">
-              <h4>&lt;h4&gt; <span className="badge bg-primary">Badge</span> &lt;/h4&gt;</h4>
-            </div>
-            <div className="my-sm">
-              <h5>&lt;h5&gt; <span className="badge bg-primary">Badge</span> &lt;/h5&gt;</h5>
-            </div>
-            <div className="my-sm">
-              <h6>&lt;h6&gt; <span className="badge bg-primary">Badge</span> &lt;/h6&gt;</h6>
-            </div>
-          </div>
-          <div className="col-xs-3">
-            <p className="mb-sm"><code>.badge</code></p>
-          </div>
-        </div>
-        <hr className="color-divider my-sm" />
-        <p>Add any of these modifier classes to change the appearance of a badge.</p>
-        <div className="row">
-          <div className="col-xs-9">
-            <div className="my-sm">
-              <span className="badge badge-default">Badge default</span>
-            </div>
-            <div className="my-sm">
-              <span className="badge badge-primary">Badge primary</span>
-            </div>
-            <div className="my-sm">
-              <span className="badge badge-success">Badge success</span>
-            </div>
-            <div className="my-sm">
-              <span className="badge badge-info">Badge info</span>
-            </div>
-            <div className="my-sm">
-              <span className="badge badge-warning">Badge warning</span>
-            </div>
-            <div className="my-sm">
-              <span className="badge badge-danger">Badge danger</span>
-            </div>
-            <div className="my-sm">
-              <span className="badge">Badge</span>
-            </div>
-          </div>
-          <div className="col-xs-3">
-            <p className="my-sm"><code>.badge .badge-default</code></p>
-            <p className="my-sm"><code>.badge .badge-primary</code></p>
-            <p className="my-sm"><code>.badge .badge-success</code></p>
-            <p className="my-sm"><code>.badge .badge-info</code></p>
-            <p className="my-sm"><code>.badge .badge-warning</code></p>
-            <p className="my-sm"><code>.badge .badge-danger</code></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div className="block-item pa-md mt-sm">
+      <div className="block-item pa-md mt-sm" id="button-groups">
         <p className="type-headline font-strong">Button groups</p>
         <p className="type-body mb-nn">Group a series of buttons together on a single line with the button group.</p>
         <hr className="color-divider my-md" />
@@ -293,8 +329,9 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
-      <div className="block-item pa-md mt-sm">
+      <div className="block-item pa-md mt-sm" id="input-groups">
         <p className="type-headline font-strong">Input groups</p>
         <p className="type-body mb-nn">Easily extend form control by adding text, buttons, or button group.</p>
         <hr className="color-divider my-md" />
@@ -349,8 +386,9 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
-      <div className="block-item pa-md mt-sm">
+      <div className="block-item pa-md mt-sm" id="list-groups">
         <p className="type-headline font-strong">List groups</p>
         <p className="type-body mb-nn">List groups are components for displaying a series of content.
         List groups can be modified and extended to support just about any content within.</p>
@@ -390,8 +428,9 @@ const Content = () =>
         </div>
       </div>
     </div>
+
     <div>
-      <div className="block-item pa-md mt-sm">
+      <div className="block-item pa-md mt-sm" id="forms">
         <p className="type-headline font-strong mb-nn">Forms</p>
         <hr className="color-divider my-md" />
         <div className="row">

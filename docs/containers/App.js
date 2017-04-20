@@ -56,8 +56,8 @@ const App = ({ children, router }) => {
             />
             <NavigationItem
               component={Link}
-              label="Component"
-              isActive={router.isActive('/css/component', true)}
+              label="Components"
+              isActive={router.isActive('/css/components', true)}
               to="/css/components"
             />
             <NavigationItem

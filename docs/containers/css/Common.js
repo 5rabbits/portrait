@@ -5,6 +5,20 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
+        <p className="type-headline font-strong">Contents</p>
+        <ul className="pl-md">
+          <li className="pb-xs type-title">
+            <a href="#normalize" className="type-subhead">Normalize</a>
+          </li>
+          <li className="pb-xs type-title">
+            <a href="#scaffolding" className="type-subhead">Scaffolding</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm" id="normalize">
         <p className="type-headline font-strong">Normalize</p>
         <p className="type-body mb-nn">Normalize.css is an alternative to CSS resets.</p>
       </div>
@@ -61,7 +75,7 @@ const Content = () =>
     </div>
 
     <div>
-      <div className="block-item pa-md mt-sm">
+      <div className="block-item pa-md mt-sm" id="scaffolding">
         <p className="type-headline font-strong mb-nn">Scaffolding</p>
       </div>
       <div className="block-item pa-md">

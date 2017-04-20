@@ -5,6 +5,20 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
+        <p className="type-headline font-strong">Contents</p>
+        <ul className="pl-md">
+          <li className="pb-xs type-title">
+            <a href="#color" className="type-subhead">Color</a>
+          </li>
+          <li className="pb-xs type-title">
+            <a href="#maps" className="type-subhead">Maps</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div className="block-item pa-md mt-sm" id="color">
         <p className="type-headline font-strong mb-nn">Color</p>
       </div>
       <div className="block-item pa-md">
@@ -44,7 +58,7 @@ const Content = () =>
         </table>
       </div>
       <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong mb-nn">Maps</p>
+        <p className="type-headline font-strong mb-nn" id="maps">Maps</p>
       </div>
       <div className="block-item pa-md">
         <table className="table">
