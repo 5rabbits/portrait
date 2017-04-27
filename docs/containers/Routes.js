@@ -92,14 +92,6 @@ const Routes = () =>
           }}
           path="components"
         />
-        <Route
-          getComponent={(_nextState, callback) => {
-            require.ensure([], require => {
-              callback(null, require('./css/Timeflow'))
-            }, 'timeflow')
-          }}
-          path="timeflow"
-        />
       </Route>
 
       <Route

@@ -78,65 +78,48 @@
   background-color: $color-danger;
 }
 
-//Vistas timeflow
-
-.modal-one {
-  width: 470px;
-  height: 250px;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-
-.p-relative {
-  position: relative;
-}
-
-.p-absolute {
-  position: absolute;
-}
-
-.to-close {
-  top: 15px;
-  right: 15px;
-}
-
-.modal-two {
-  width: 470px;
-  height: 480px;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-
-.modal-three {
-  width: 325px;
-  height: 350px;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-
-.if-user {
-  line-height: 23px!important; //blame
-}
-
-.text-part {
-  height: 60%;
-}
-
-.buttons-part {
-  height: 40%;
-}
-
-.middle-button {
-  height: 50%;
-  width: 100%;
-}
-
-.total-danger {
-  color: $color-danger!important; //blame
-}
-
 //Others
 
 .flex-height {
   height: 50px;
+}
+
+.table-width {
+  table-layout: fixed;
+}
+
+.to-align {
+  height: 50px;
+}
+
+.btn-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  background-color: #052e56;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+#contents:before {
+  display: block;
+  content: " ";
+  margin-top: -200px;
+  height: 200px;
+  visibility: hidden;
+}
+
+.index-items:before {
+  display: block;
+  content: " ";
+  margin-top: -30px;
+  height: 30px;
+  visibility: hidden;
+}
+
+code {
+  line-height: 1.5;
 }

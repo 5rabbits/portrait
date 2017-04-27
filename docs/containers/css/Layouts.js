@@ -5,7 +5,7 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
-        <p className="type-headline font-strong">Contents</p>
+        <p className="type-headline font-strong" id="contents">Contents</p>
         <ul className="pl-md">
           <li className="pb-xs type-title">
             <a href="#tables" className="type-subhead">Tables</a>
@@ -14,8 +14,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="tables">
+    <div className="index-items" id="tables">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Tables</p>
         <p className="type-body mb-nn">Use the base class <code>.table</code> to any <code>&lt;table&gt;</code>,
         then extend with custom styles or our various included modifier classes.</p>
@@ -293,12 +293,13 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code className="line-height-medium">&lt;div class=&quot;table-responsive&quot;&gt;</code></p>
-            <p className="ml-md"><code className="line-height-medium">&lt;table class=&quot;table&quot;&gt;</code></p>
+            <p><code>&lt;div class=&quot;table-responsive&quot;&gt;</code></p>
+            <p className="ml-md"><code>&lt;table class=&quot;table&quot;&gt;</code></p>
           </div>
         </div>
       </div>
     </div>
+    <a href="#contents"><button className="btn btn-lg btn-to-top">Up</button></a>
   </Container>
 
 export default Content

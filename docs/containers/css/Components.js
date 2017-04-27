@@ -5,7 +5,7 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
-        <p className="type-headline font-strong">Contents</p>
+        <p className="type-headline font-strong" id="contents">Contents</p>
         <ul className="pl-md">
           <li className="pb-xs type-title">
             <a href="#badge" className="type-subhead">Badge</a>
@@ -37,8 +37,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="badge">
+    <div className="index-items" id="badge">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Badge</p>
         <hr className="color-divider my-md" />
         <p className="mb-md">Badges scale to match the size of the immediate parent element by using relative font sizing and <code>em</code> units.</p>
@@ -67,7 +67,7 @@ const Content = () =>
             <p className="mb-sm"><code>.badge</code></p>
           </div>
         </div>
-        <hr className="color-divider my-sm" />
+        <hr className="color-divider mt-sm mb-md" />
         <p>Add any of these modifier classes to change the appearance of a badge.</p>
         <div className="row">
           <div className="col-xs-9">
@@ -105,8 +105,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="buttons">
+    <div className="index-items" id="buttons">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Buttons</p>
       </div>
       <div className="block-item pa-md">
@@ -237,8 +237,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="button-groups">
+    <div className="index-items" id="button-groups">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Button groups</p>
         <p className="type-body mb-nn">Group a series of buttons together on a single line with the button group.</p>
         <hr className="color-divider my-md" />
@@ -330,8 +330,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="input-groups">
+    <div className="index-items" id="input-groups">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Input groups</p>
         <p className="type-body mb-nn">Easily extend form control by adding text, buttons, or button group.</p>
         <hr className="color-divider my-md" />
@@ -359,7 +359,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <code className="line-height-medium">.input-group .input-group-sm</code>
+            <code>.input-group .input-group-sm</code>
           </div>
         </div>
         <div className="row my-md">
@@ -381,13 +381,13 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <code className="line-height-medium">.input-group .input-group-lg</code>
+            <code>.input-group .input-group-lg</code>
           </div>
         </div>
       </div>
     </div>
 
-    <div>
+    <div className="index-items" id="list-groups">
       <div className="block-item pa-md mt-sm" id="list-groups">
         <p className="type-headline font-strong">List groups</p>
         <p className="type-body mb-nn">List groups are components for displaying a series of content.
@@ -420,17 +420,17 @@ const Content = () =>
           </div>
           <div className="col-xs-3">
             <p><code>.list-group-item</code></p>
-            <p className="mt-sm"><code className="line-height-medium">.list-group-item .list-group-item-success</code></p>
-            <p className="mt-sm"><code className="line-height-medium">.list-group-item .list-group-item-info</code></p>
-            <p className="mt-sm"><code className="line-height-medium">.list-group-item .list-group-item-warning</code></p>
-            <p className="mt-sm"><code className="line-height-medium">.list-group-item .list-group-item-danger</code></p>
+            <p className="mt-sm"><code>.list-group-item .list-group-item-success</code></p>
+            <p className="mt-sm"><code>.list-group-item .list-group-item-info</code></p>
+            <p className="mt-sm"><code>.list-group-item .list-group-item-warning</code></p>
+            <p className="mt-sm"><code>.list-group-item .list-group-item-danger</code></p>
           </div>
         </div>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="forms">
+    <div className="index-items" id="forms">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Forms</p>
         <hr className="color-divider my-md" />
         <div className="row">
@@ -441,7 +441,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code className="line-height-medium">&lt;input class=&quot;form-control&quot;&gt;</code></p>
+            <p><code>&lt;input class=&quot;form-control&quot;&gt;</code></p>
           </div>
         </div>
         <hr className="color-divider my-md" />
@@ -459,7 +459,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code className="line-height-medium">&lt;select class=&quot;form-control&quot;&gt;</code></p>
+            <p><code>&lt;select class=&quot;form-control&quot;&gt;</code></p>
             <p className="pl-sm"><code>&lt;option&gt;</code></p>
           </div>
         </div>
@@ -478,7 +478,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code className="line-height-medium">&lt;select multiple class=&quot;form-control&quot;&gt;</code></p>
+            <p><code>&lt;select multiple class=&quot;form-control&quot;&gt;</code></p>
             <p className="pl-sm"><code>&lt;option&gt;</code></p>
           </div>
         </div>
@@ -491,7 +491,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code className="line-height-medium">&lt;textarea class=&quot;form-control&quot;&gt;</code></p>
+            <p><code>&lt;textarea class=&quot;form-control&quot;&gt;</code></p>
           </div>
         </div>
         <hr className="color-divider my-md" />
@@ -502,7 +502,7 @@ const Content = () =>
             </div>
           </div>
           <div className="col-xs-3">
-            <p><code className="line-height-medium">&lt;input type=&quot;file&quot; className=&quot;form-control-file
+            <p><code>&lt;input type=&quot;file&quot; className=&quot;form-control-file
             &quot;/&gt;</code></p>
           </div>
         </div>
@@ -535,6 +535,7 @@ const Content = () =>
         </div>
       </div>
     </div>
+    <a href="#contents"><button className="btn btn-lg btn-to-top">Up</button></a>
   </Container>
 
 export default Content

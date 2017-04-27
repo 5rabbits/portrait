@@ -5,90 +5,122 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
-        <p className="type-headline font-strong">Contents</p>
-        <ul className="pl-md">
-          <li className="pb-xs type-title">
-            <a href="#badges" className="type-subhead">Badges</a>
-            <ul className="pl-md type-body">
-              <li>Variant</li>
+        <p className="type-headline font-strong" id="contents">Contents</p>
+        <div className="row">
+          <div className="col-xs-6">
+            <ul className="pl-md">
+              <li className="pb-xs type-title">
+                <a href="#badges" className="type-subhead">Badges</a>
+                <ul className="pl-md type-body">
+                  <li>Variant</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#border-radius" className="type-subhead">Border-radius</a>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#buttons" className="type-subhead">Buttons</a>
+                <ul className="pl-md type-body">
+                  <li>Variant</li>
+                  <li>Outline variant</li>
+                  <li>Inverse variant</li>
+                  <li>Size</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#colors" className="type-subhead">Colors</a>
+                <ul className="pl-md type-body">
+                  <li>Generic colors</li>
+                  <li>Brand colors</li>
+                  <li>Theme colors</li>
+                  <li>Others</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#container-sizes" className="type-subhead">Container sizes</a>
+                <ul className="pl-md type-body">
+                  <li>Small screen (tablet)</li>
+                  <li>Medium screen (desktop)</li>
+                  <li>Large screen (wide desktop)</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#grid" className="type-subhead">Grid</a>
+                <ul className="pl-md type-body">
+                  <li>Variables</li>
+                  <li>Gutters</li>
+                  <li>Grid framework</li>
+                  <li>Grid mixins</li>
+                  <li>Grid system</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#layer" className="type-subhead">Layer</a>
+              </li>
             </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#buttons" className="type-subhead">Buttons</a>
-            <ul className="pl-md type-body">
-              <li>Variant</li>
-              <li>Outline variant</li>
-              <li>Inverse variant</li>
-              <li>Size</li>
+          </div>
+          <div className="col-xs-6">
+            <ul className="pl-md">
+              <li className="pb-xs type-title">
+                <a href="#layout" className="type-subhead">Layout</a>
+                <ul className="pl-md type-body">
+                  <li>App</li>
+                  <li>Container</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#list-group" className="type-subhead">List-group</a>
+                <ul className="pl-md type-body">
+                  <li>Variant</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#navbar" className="type-subhead">Navbar</a>
+                <ul className="pl-md type-body">
+                  <li>Inverted navbar</li>
+                  <li>Inverted navbar links</li>
+                  <li>Inverted navbar brand label</li>
+                  <li>Inverted navbar toggle</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#media-queries-breakpoints" className="type-subhead">Media queries breakpoints</a>
+                <ul className="pl-md type-body">
+                  <li>Extra small screen (phone)</li>
+                  <li>Small screen (tablet)</li>
+                  <li>Medium screen (desktop)</li>
+                  <li>Large screen (wide desktop)</li>
+                  <li>Maximum</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#screen-sizes" className="type-subhead">Screen sizes</a>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#themes" className="type-subhead">Themes</a>
+                <ul className="pl-md type-body">
+                  <li>Base</li>
+                  <li>Classes</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#typography" className="type-subhead">Typography</a>
+                <ul className="pl-md type-body">
+                  <li>Type</li>
+                </ul>
+              </li>
+              <li className="pb-xs type-title">
+                <a href="#z-index" className="type-subhead">z-index</a>
+              </li>
             </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#colors" className="type-subhead">Colors</a>
-            <ul className="pl-md type-body">
-              <li>Generic colors</li>
-              <li>Theme colors</li>
-            </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#container-sizes" className="type-subhead">Container sizes</a>
-            <ul className="pl-md type-body">
-              <li>Small screen (tablet)</li>
-              <li>Medium screen (desktop)</li>
-              <li>Large screen (wide desktop)</li>
-            </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#grid" className="type-subhead">Grid</a>
-            <ul className="pl-md type-body">
-              <li>Variables</li>
-              <li>Grid framework</li>
-              <li>Grid mixins</li>
-              <li>Grid system</li>
-            </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#layout" className="type-subhead">Layout</a>
-            <ul className="pl-md type-body">
-              <li>App</li>
-              <li>Container</li>
-            </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#list-group" className="type-subhead">List-group</a>
-            <ul className="pl-md type-body">
-              <li>Variant</li>
-            </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#media-queries-breakpoints" className="type-subhead">Media queries breakpoints</a>
-            <ul className="pl-md type-body">
-              <li>Extra small screen (phone)</li>
-              <li>Small screen (tablet)</li>
-              <li>Medium screen (desktop)</li>
-              <li>Large screen (wide desktop)</li>
-              <li>Maximum</li>
-            </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#themes" className="type-subhead">Themes</a>
-            <ul className="pl-md type-body">
-              <li>Base</li>
-              <li>Classes</li>
-            </ul>
-          </li>
-          <li className="pb-xs type-title">
-            <a href="#typography" className="type-subhead">Typography</a>
-            <ul className="pl-md type-body">
-              <li>Type</li>
-            </ul>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="badges">
-        <p className="type-headline font-strong mb-nn">Badges</p>
+    <div className="index-items" id="badges">
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong">Badges</p>
       </div>
       <div className="block-item pa-md">
         <div>
@@ -100,8 +132,32 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="buttons">
+    <div className="index-items" id="border-radius">
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">Border-radius</p>
+      </div>
+      <div className="block-item pa-md">
+        <table className="table mb-nn table-width">
+          <tbody>
+            <tr>
+              <td><code>$border-radius-base</code></td>
+              <td>3px</td>
+            </tr>
+            <tr>
+              <td><code>$border-radius-large</code></td>
+              <td><code>$border-radius-base</code></td>
+            </tr>
+            <tr>
+              <td><code>$border-radius-small</code></td>
+              <td><code>$border-radius-base</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="index-items" id="buttons">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Buttons</p>
       </div>
       <div className="block-item pa-md">
@@ -135,13 +191,13 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="colors">
+    <div className="index-items" id="colors">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Colors</p>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Generic colors</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><div className="brand-color pa-sm pull-left" /></td>
@@ -212,8 +268,35 @@ const Content = () =>
         </table>
       </div>
       <div className="block-item pa-md">
+        <p className="type-title font-strong mb-md">Brand colors</p>
+        <table className="table mb-nn table-width">
+          <tbody>
+            <tr>
+              <td><code>$brand-primary</code></td>
+              <td><code>$color-primary</code></td>
+            </tr>
+            <tr>
+              <td><code>$brand-success</code></td>
+              <td><code>$color-success</code></td>
+            </tr>
+            <tr>
+              <td><code>$brand-info</code></td>
+              <td><code>$color-info</code></td>
+            </tr>
+            <tr>
+              <td><code>$brand-warning</code></td>
+              <td><code>$color-warning</code></td>
+            </tr>
+            <tr>
+              <td><code>$brand-danger</code></td>
+              <td><code>$color-danger</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
         <p className="type-title font-strong mb-sm">Theme colors</p>
-        <table className="table">
+        <table className="table table-width">
           <tbody>
             <tr>
               <td>Default</td>
@@ -228,7 +311,7 @@ const Content = () =>
           </tbody>
         </table>
         <p className="type-body font-strong mb-sm">Default</p>
-        <table className="table">
+        <table className="table table-width">
           <tbody>
             <tr>
               <td>Solid</td>
@@ -268,7 +351,7 @@ const Content = () =>
           </tbody>
         </table>
         <p className="type-body font-strong mb-sm">Inverse</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td>Solid</td>
@@ -308,15 +391,38 @@ const Content = () =>
           </tbody>
         </table>
       </div>
+      <div className="block-item pa-md">
+        <p className="type-title font-strong mb-md">Others</p>
+        <table className="table mb-nn table-width">
+          <tbody>
+            <tr>
+              <td><code>$shade-color</code></td>
+              <td>#000</td>
+            </tr>
+            <tr>
+              <td><code>$tint-color</code></td>
+              <td>#FFF</td>
+            </tr>
+            <tr>
+              <td><code>$tone-color</code></td>
+              <td>gray</td>
+            </tr>
+            <tr>
+              <td><code>$base-background</code></td>
+              <td>#F9F9F9</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="container-sizes">
+    <div className="index-items" id="container-sizes">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Container sizes</p>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Small screen (tablet)</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$container-tablet</code></td>
@@ -331,7 +437,7 @@ const Content = () =>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Medium screen (desktop)</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$container-desktop</code></td>
@@ -346,7 +452,7 @@ const Content = () =>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Large screen (wide desktop)</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$container-large-desktop</code></td>
@@ -361,13 +467,13 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="grid">
+    <div className="index-items" id="grid">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Grid</p>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Variables</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$grid-columns</code></td>
@@ -384,6 +490,45 @@ const Content = () =>
             <tr>
               <td><code>$grid-float-breakpoint-max</code></td>
               <td>(<code>$grid-float-breakpoint</code> - 1)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="block-item pa-md">
+        <p className="type-title font-strong mb-md">Gutters</p>
+        <table className="table mb-nn table-width">
+          <tbody>
+            <tr>
+              <td><code>$unit</code></td>
+              <td>8px</td>
+            </tr>
+            <tr>
+              <td><code>$gutter-xxs</code></td>
+              <td><code>$unit</code> / 2</td>
+            </tr>
+            <tr>
+              <td><code>$gutter-xs</code></td>
+              <td><code>$unit</code> * 1</td>
+            </tr>
+            <tr>
+              <td><code>$gutter-sm</code></td>
+              <td><code>$unit</code> * 2</td>
+            </tr>
+            <tr>
+              <td><code>$gutter</code></td>
+              <td><code>$unit</code> * 4</td>
+            </tr>
+            <tr>
+              <td><code>$gutter-md</code></td>
+              <td><code>$unit</code> * 4</td>
+            </tr>
+            <tr>
+              <td><code>$gutter-lg</code></td>
+              <td><code>$unit</code> * 8</td>
+            </tr>
+            <tr>
+              <td><code>$gutter-xl</code></td>
+              <td><code>$unit</code> * 12</td>
             </tr>
           </tbody>
         </table>
@@ -467,7 +612,7 @@ const Content = () =>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Grid system</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td>Row</td>
@@ -499,13 +644,49 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="layout">
+    <div className="index-items" id="layer">
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">Layer</p>
+      </div>
+      <div className="block-item pa-md">
+        <table className="table mb-nn table-width">
+          <tbody>
+            <tr>
+              <td><code>$layer-dialog</code></td>
+              <td>90</td>
+            </tr>
+            <tr>
+              <td><code>$layer-backdrop</code></td>
+              <td>80</td>
+            </tr>
+            <tr>
+              <td><code>$layer-modal</code></td>
+              <td>70</td>
+            </tr>
+            <tr>
+              <td><code>$layer-navigation</code></td>
+              <td>60</td>
+            </tr>
+            <tr>
+              <td><code>$layer-controls</code></td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td><code>$layer-content</code></td>
+              <td>40</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="index-items" id="layout">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Layout</p>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">App</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$layout-navigation-size</code></td>
@@ -520,7 +701,7 @@ const Content = () =>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Container</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$container-default-width</code></td>
@@ -539,8 +720,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="list-group">
+    <div className="index-items" id="list-group">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">List-group</p>
       </div>
       <div className="block-item pa-md">
@@ -553,13 +734,117 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="media-queries-breakpoints">
+    <div className="index-items" id="navbar">
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">Navbar</p>
+      </div>
+      <div className="block-item pa-md">
+        <table className="table table-width">
+          <tbody>
+            <tr>
+              <td><code>$navbar-height</code></td>
+              <td>48px</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="type-body font-strong mb-sm">Inverted navbar</p>
+        <table className="table table-width">
+          <tbody>
+            <tr>
+              <td><code>$navbar-inverse-color</code></td>
+              <td>#fff</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-bg</code></td>
+              <td>shade(<code>$color-brand</code>,65%)</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-border</code></td>
+              <td>transparent</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="type-body font-strong mb-sm">Inverted navbar links</p>
+        <table className="table table-width">
+          <tbody>
+            <tr>
+              <td><code>$navbar-inverse-link-color</code></td>
+              <td>rgba(#fff,.6)</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-link-hover-color</code></td>
+              <td>#fff</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-link-hover-bg</code></td>
+              <td>transparent</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-link-active-color</code></td>
+              <td>#fff</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-link-active-bg</code></td>
+              <td>transparent</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-link-disabled-color</code></td>
+              <td>#444</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-link-disabled-bg</code></td>
+              <td>transparent</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="type-body font-strong mb-sm">Inverted navbar brand label</p>
+        <table className="table table-width">
+          <tbody>
+            <tr>
+              <td><code>$navbar-inverse-brand-color</code></td>
+              <td><code>$navbar-inverse-link-color</code></td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-brand-hover-color</code></td>
+              <td>#fff</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-brand-hover-bg</code></td>
+              <td>transparent</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="type-body font-strong mb-sm">Inverted navbar toggle</p>
+        <table className="table table-width">
+          <tbody>
+            <tr>
+              <td><code>$navbar-inverse-toggle-bg</code></td>
+              <td>darken(<code>$navbar-inverse-bg</code>,5%)</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-toggle-hover-bg</code></td>
+              <td>darken(<code>$navbar-inverse-bg</code>,5%)</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-toggle-icon-bar-bg</code></td>
+              <td>#fff</td>
+            </tr>
+            <tr>
+              <td><code>$navbar-inverse-toggle-border-color</code></td>
+              <td>darken(<code>$navbar-inverse-bg</code>,5%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="index-items" id="media-queries-breakpoints">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Media queries breakpoints</p>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Extra small screen (phone)</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width ">
           <tbody>
             <tr>
               <td><code>$screen-xs</code></td>
@@ -578,7 +863,7 @@ const Content = () =>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Small screen (tablet)</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$screen-sm</code></td>
@@ -597,7 +882,7 @@ const Content = () =>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Medium screen (desktop)</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$screen-md</code></td>
@@ -616,7 +901,7 @@ const Content = () =>
       </div>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-md">Large screen (wide desktop)</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$screen-lg</code></td>
@@ -636,7 +921,7 @@ const Content = () =>
       <div className="block-item pa-md">
         <p className="type-title font-strong mb-xs">Maximum</p>
         <p className="type-body mb-md">So media queries do not overlap when required, provide a maximum</p>
-        <table className="table mb-nn">
+        <table className="table mb-nn table-width">
           <tbody>
             <tr>
               <td><code>$screen-xs-max</code></td>
@@ -655,8 +940,44 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="themes">
+    <div className="index-items" id="screen-sizes">
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">Screen sizes</p>
+      </div>
+      <div className="block-item pa-md">
+        <table className="table mb-nn table-width">
+          <tbody>
+            <tr>
+              <td><code>$size-mini</code></td>
+              <td>500px</td>
+            </tr>
+            <tr>
+              <td><code>$size-small</code></td>
+              <td>768px</td>
+            </tr>
+            <tr>
+              <td><code>$size-medium:</code></td>
+              <td>992px</td>
+            </tr>
+            <tr>
+              <td><code>$size-large</code></td>
+              <td>1200px</td>
+            </tr>
+            <tr>
+              <td><code>$size-oversized</code></td>
+              <td>1500px</td>
+            </tr>
+            <tr>
+              <td><code>$size-container</code></td>
+              <td>960px</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="index-items" id="themes">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Themes</p>
       </div>
       <div className="block-item pa-md">
@@ -671,8 +992,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="typography">
+    <div className="index-items" id="typography">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Typography</p>
       </div>
       <div className="block-item pa-md">
@@ -685,6 +1006,46 @@ const Content = () =>
       </div>
     </div>
 
+    <div className="index-items" id="z-index">
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong mb-nn">z-index</p>
+      </div>
+      <div className="block-item pa-md">
+        <table className="table mb-nn table-width">
+          <tbody>
+            <tr>
+              <td><code>$zindex-tooltip</code></td>
+              <td>1070</td>
+            </tr>
+            <tr>
+              <td><code>$zindex-popover</code></td>
+              <td>1060</td>
+            </tr>
+            <tr>
+              <td><code>$zindex-modal</code></td>
+              <td>1050</td>
+            </tr>
+            <tr>
+              <td><code>$zindex-modal-background</code></td>
+              <td>1040</td>
+            </tr>
+            <tr>
+              <td><code>$zindex-navbar-fixed</code></td>
+              <td>1030</td>
+            </tr>
+            <tr>
+              <td><code>$zindex-navbar</code></td>
+              <td>1000</td>
+            </tr>
+            <tr>
+              <td><code>$zindex-dropdown</code></td>
+              <td>1000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <a href="#contents"><button className="btn btn-lg btn-to-top">Up</button></a>
   </Container>
 
 export default Content

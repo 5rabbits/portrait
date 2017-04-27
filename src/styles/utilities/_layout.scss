@@ -2,22 +2,7 @@
 .block-rounded {  border-radius: 100px !important; }
 .block-rect    {  border-radius:   0px !important; }
 
-%flex-view {
-  display: flex;
-}
-%flex-vertical {
-  @extend %flex-view;
-  flex-direction: column;
-}
-%flex-horizontal {
-  @extend %flex-view;
-  flex-direction: row;
-}
-%flex-content {
-  flex: 1;
-}
-
-%stretch-view {
+.stretch-view {
   position: absolute;
   top:      0;
   right:    0;

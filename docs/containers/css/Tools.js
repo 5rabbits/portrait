@@ -5,7 +5,7 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
-        <p className="type-headline font-strong">Contents</p>
+        <p className="type-headline font-strong" id="contents">Contents</p>
         <ul className="pl-md">
           <li className="pb-xs type-title">
             <a href="#color" className="type-subhead">Color</a>
@@ -17,12 +17,13 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="color">
-        <p className="type-headline font-strong mb-nn">Color</p>
+    <div className="index-items" id="color">
+      <div className="block-item pa-md mt-sm">
+        <p className="type-headline font-strong">Color</p>
+        <p className="type-body mb-nn">These functions change the tone of a color.</p>
       </div>
       <div className="block-item pa-md">
-        <table className="table">
+        <table className="table table-width">
           <tbody>
             <tr>
               <td>Solidify</td>
@@ -57,11 +58,13 @@ const Content = () =>
           </tbody>
         </table>
       </div>
+    </div>
+    <div className="index-items" id="maps">
       <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong mb-nn" id="maps">Maps</p>
+        <p className="type-headline font-strong mb-nn">Maps</p>
       </div>
       <div className="block-item pa-md">
-        <table className="table">
+        <table className="table table-width">
           <tbody>
             <tr>
               <td>Map deep get</td>
@@ -123,6 +126,7 @@ const Content = () =>
         </table>
       </div>
     </div>
+    <a href="#contents"><button className="btn btn-lg btn-to-top">Up</button></a>
   </Container>
 
 export default Content

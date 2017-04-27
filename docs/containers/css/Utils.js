@@ -5,7 +5,7 @@ const Content = () =>
   <Container>
     <div>
       <div className="block-item pa-md">
-        <p className="type-headline font-strong">Contents</p>
+        <p className="type-headline font-strong" id="contents">Contents</p>
         <ul className="pl-md">
           <li className="pb-xs type-title">
             <a href="#background-colors" className="type-subhead">Background colors</a>
@@ -45,8 +45,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="background-colors">
+    <div className="index-items" id="background-colors">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Background colors</p>
       </div>
       <div className="block-item pa-md">
@@ -110,8 +110,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="clearfix">
+    <div className="index-items" id="clearfix">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Clearfix</p>
         <p className="type-body">Easily clear floats by adding <code>.clearfix</code>to the parent element.</p>
         <div className="row">
@@ -129,8 +129,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="display-property">
+    <div className="index-items" id="display-property">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Display property</p>
         <p className="type-body">The display property specifies the type of box used for an HTML element.</p>
         <hr className="color-divider my-md" />
@@ -187,14 +187,14 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="flexbox">
+    <div className="index-items" id="flexbox">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Flexbox</p>
         <p className="type-body mb-nn">Flexbox is a layout mode to accomodate elements in a page
         into a predectible way in different screen sizes and display divices.</p>
       </div>
       <div className="block-item pa-md">
-        <div className="row mb-xs">
+        <div className="row">
           <div className="col-xs-9">
             <div className="flex-container flex-vertical mb-sm">
               <div className="bg-warning">Div 1</div>
@@ -207,7 +207,8 @@ const Content = () =>
             <p><code>.flex-vertical</code></p>
           </div>
         </div>
-        <div className="row mb-xs">
+        <hr className="color-divider my-md" />
+        <div className="row">
           <div className="col-xs-9">
             <div className="flex-container flex-horizontal flex-height bg-secondary mb-sm">
               <div className="bg-warning">Div 1</div>
@@ -220,7 +221,8 @@ const Content = () =>
             <p><code>.flex-horizontal</code></p>
           </div>
         </div>
-        <div className="row mb-sm">
+        <hr className="color-divider my-md" />
+        <div className="row">
           <div className="col-xs-9">
             <div className="flex-container flex-horizontal flex-vertical-align flex-height bg-secondary mb-sm">
               <div className="bg-warning">Div 1</div>
@@ -234,7 +236,8 @@ const Content = () =>
             <p><code>.flex-vertical-align</code></p>
           </div>
         </div>
-        <div className="row mb-xs">
+        <hr className="color-divider my-md" />
+        <div className="row">
           <div className="col-xs-9">
             <div className="flex-container flex-horizontal flex-vertical-align flex-height bg-secondary">
               <div className="flex-content bg-warning">Div 1</div>
@@ -249,7 +252,8 @@ const Content = () =>
             <p><code>.flex-content</code></p>
           </div>
         </div>
-        <div className="row mb-xs">
+        <hr className="color-divider my-md" />
+        <div className="row">
           <div className="col-xs-9">
             <div className="flex-container flex-horizontal flex-vertical-align flex-height bg-secondary">
               <div className="bg-warning">Div 1</div>
@@ -267,8 +271,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="text">
+    <div className="index-items" id="text">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Text</p>
       </div>
       <div className="block-item pa-md">
@@ -409,8 +413,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="themes">
+    <div className="index-items" id="themes">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Themes</p>
         <p className="type-body mb-nn">These are the colors for default and inverse themes.</p>
       </div>
@@ -447,7 +451,7 @@ const Content = () =>
             <p><code>.color-disabled-default</code></p>
             <p><code>.color-hint-default</code></p>
             <p><code>.color-icon-default</code></p>
-            <p><code className="line-height-medium">.color-secondary-default</code></p>
+            <p><code>.color-secondary-default</code></p>
             <p><code>.color-primary-default</code></p>
           </div>
         </div>
@@ -488,15 +492,15 @@ const Content = () =>
             <p><code>.color-disabled-inverse</code></p>
             <p><code>.color-hint-inverse</code></p>
             <p><code>.color-icon-inverse</code></p>
-            <p><code className="line-height-medium">.color-secondary-inverse</code></p>
+            <p><code>.color-secondary-inverse</code></p>
             <p><code>.color-primary-inverse</code></p>
           </div>
         </div>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="typography">
+    <div className="index-items" id="typography">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Typography</p>
         <p className="type-body mb-nn">Portrait includes customized typography
           for display, headings and copy.</p>
@@ -570,8 +574,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="spacing">
+    <div className="index-items" id="spacing">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Spacing</p>
         <p className="type-body mb-nn">Assign margin and padding values to an element or a subset
         of its sides with shorthand classes. Includes support for individual properties,
@@ -646,8 +650,8 @@ const Content = () =>
       </div>
     </div>
 
-    <div>
-      <div className="block-item pa-md mt-sm" id="vertical-alignment">
+    <div className="index-items" id="vertical-alignment">
+      <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong">Vertical alignment</p>
         <p className="type-body mb-nn">Top: The element is aligned with the top of the element that content it.</p>
         <p className="type-body mb-nn">Middle: The element is placed in the middle of the element that content it.</p>
@@ -673,7 +677,7 @@ const Content = () =>
         </div>
       </div>
     </div>
-
+    <a href="#contents"><button className="btn btn-lg btn-to-top">Up</button></a>
   </Container>
 
 export default Content
