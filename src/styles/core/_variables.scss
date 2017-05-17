@@ -87,4 +87,17 @@ $border-radius-medium-component: 4px;
 $border-radius-large-component: 8px;
 
 // Negative spacing
-$spacing-base: 8px
+$spacing-base: 8px;
+
+// Gutter
+$gutter-xxs: $spacing-base / 2;
+$gutter-xs:  $spacing-base;
+$gutter-sm:  $spacing-base * 2;
+$gutter:     $spacing-base * 4;
+$gutter-md:  $spacing-base * 4;
+$gutter-lg:  $spacing-base * 8;
+$gutter-xl:  $spacing-base * 12;
+
+// Container
+$container-normal-width:    1120px;
+$container-large-width:     1400px;

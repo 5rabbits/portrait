@@ -1,2 +1,4 @@
 code: >
-  <Container />
+  <Container style={{ background: '#fff' }}>
+    Some content
+  </Container>
