@@ -1,0 +1,13 @@
+@import '~styles/core';
+
+.SectionToolbar {
+  background-color: $body-color;
+}
+
+.SectionToolbar__grid {
+  height: 80px;
+}
+
+.SectionToolbar__actions {
+  text-align: right;
+}

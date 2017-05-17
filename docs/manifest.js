@@ -45,13 +45,15 @@ export default sortBy([
 
   // Main
   {
-    name: 'Controls',
+    name: 'SectionToolbar',
     getComponent: callback => require.ensure([], require => {
+      require('main/SectionToolbar/examples.scss')
+
       callback({
-        source: require('!!docs!main/Controls'),
-        examples: require('main/Controls/examples.yml'),
+        source: require('!!docs!main/SectionToolbar'),
+        examples: require('main/SectionToolbar/examples.yml'),
       })
-    }, 'Controls'),
+    }, 'SectionToolbar'),
   },
   {
     name: 'Layout',

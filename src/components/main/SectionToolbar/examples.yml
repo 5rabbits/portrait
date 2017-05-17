@@ -1,0 +1,7 @@
+description: The most common use case of the section toolbar.
+code: >
+  <SectionToolbar
+    title={<h4>Users</h4>}
+    search={<SearchInput placeholder="Write to search" />}
+    actions={<Button label="Add user" />}
+  />

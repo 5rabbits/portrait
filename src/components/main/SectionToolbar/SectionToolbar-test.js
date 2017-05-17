@@ -1,9 +1,9 @@
 import { React, expect, mount } from 'test/helper'
-import Controls from 'main/Controls'
+import SectionToolbar from 'main/SectionToolbar'
 
-describe('Controls', () => {
+describe('SectionToolbar', () => {
   it('should render with minimum props', () => {
-    const component = mount(<Controls />)
+    const component = mount(<SectionToolbar />)
 
     expect(component).to.be.ok
   })
