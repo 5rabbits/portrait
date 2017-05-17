@@ -5,7 +5,7 @@ var webpack = require('webpack')
 var Config = require('webpack-config').default
 
 module.exports = function testConfig(config) {
-  var indexPath = path.resolve('src/test/index.js')
+  var indexPath = path.resolve('src/components/test/index.js')
   var preprocessors = {}
 
   preprocessors[indexPath] = 'webpack'

@@ -1,0 +1,7 @@
+@import '~core/variables';
+
+body {
+  color: $default-text-color;
+  font-size: $font-size-body;
+  line-height: $line-height-body;
+}
