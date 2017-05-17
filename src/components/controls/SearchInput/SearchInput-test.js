@@ -1,9 +1,9 @@
 import { React, expect, mount } from 'test/helper'
-import SearchForm from 'controls/SearchForm'
+import SearchInput from 'controls/SearchInput'
 
-describe('SearchForm', () => {
+describe('SearchInput', () => {
   it('should render with minimum props', () => {
-    const component = mount(<SearchForm />)
+    const component = mount(<SearchInput />)
 
     expect(component).to.be.ok
   })

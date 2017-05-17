@@ -23,13 +23,13 @@ export default sortBy([
     }, 'RoundButton'),
   },
   {
-    name: 'SearchForm',
+    name: 'SearchInput',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!controls/SearchForm'),
-        examples: require('controls/SearchForm/examples.yml'),
+        source: require('!!docs!controls/SearchInput'),
+        examples: require('controls/SearchInput/examples.yml'),
       })
-    }, 'SearchForm'),
+    }, 'SearchInput'),
   },
 
   // Elements
