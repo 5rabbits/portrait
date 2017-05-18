@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 
-import React, { PropTypes, Component } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import markdown from '../helpers/markdown'
 
 export default class PropRow extends Component {

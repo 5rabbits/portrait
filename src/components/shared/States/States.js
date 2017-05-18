@@ -22,4 +22,9 @@ States.propTypes = {
   empty: childrenPropType,
 }
 
+States.defaultProps = {
+  content: null,
+  empty: null,
+}
+
 export default States

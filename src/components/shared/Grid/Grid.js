@@ -1,4 +1,5 @@
-import React, { PropTypes, Children } from 'react'
+import React, { Children } from 'react'
+import PropTypes from 'prop-types'
 import childrenPropType from 'propTypes/children'
 import cx from 'classnames'
 import './Grid.scss'
@@ -98,6 +99,8 @@ Grid.propTypes = {
 
 Grid.defaultProps = {
   align: 'stretch',
+  children: null,
+  className: null,
   direction: 'horizontal',
   gutter: 'normal',
   justify: 'start',

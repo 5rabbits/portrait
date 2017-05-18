@@ -3,6 +3,7 @@
 exports[`Grid it should allow to specify individual size 1`] = `
 <Grid
   align="stretch"
+  className={null}
   direction="horizontal"
   gutter="normal"
   justify="start"
@@ -37,6 +38,7 @@ exports[`Grid it should allow to specify individual size 1`] = `
 exports[`Grid it should assign normalized flex size to each grid item 1`] = `
 <Grid
   align="stretch"
+  className={null}
   direction="horizontal"
   gutter="normal"
   justify="start"
@@ -66,6 +68,7 @@ exports[`Grid it should assign normalized flex size to each grid item 1`] = `
 exports[`Grid should render with minimum props 1`] = `
 <Grid
   align="stretch"
+  className={null}
   direction="horizontal"
   gutter="normal"
   justify="start"

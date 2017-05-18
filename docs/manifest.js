@@ -8,7 +8,7 @@ export default sortBy([
     name: 'Button',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!controls/Button'),
+        source: require('!!docs-loader!controls/Button'),
         examples: require('controls/Button/examples.yml'),
       })
     }, 'Button'),
@@ -17,7 +17,7 @@ export default sortBy([
     name: 'RoundButton',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!controls/RoundButton'),
+        source: require('!!docs-loader!controls/RoundButton'),
         examples: require('controls/RoundButton/examples.yml'),
       })
     }, 'RoundButton'),
@@ -26,7 +26,7 @@ export default sortBy([
     name: 'SearchInput',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!controls/SearchInput'),
+        source: require('!!docs-loader!controls/SearchInput'),
         examples: require('controls/SearchInput/examples.yml'),
       })
     }, 'SearchInput'),
@@ -37,7 +37,7 @@ export default sortBy([
     name: 'BlockItem',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!elements/BlockItem'),
+        source: require('!!docs-loader!elements/BlockItem'),
         examples: require('elements/BlockItem/examples.yml'),
       })
     }, 'BlockItem'),
@@ -50,7 +50,7 @@ export default sortBy([
       require('main/SectionToolbar/examples.scss')
 
       callback({
-        source: require('!!docs!main/SectionToolbar'),
+        source: require('!!docs-loader!main/SectionToolbar'),
         examples: require('main/SectionToolbar/examples.yml'),
       })
     }, 'SectionToolbar'),
@@ -59,7 +59,7 @@ export default sortBy([
     name: 'Layout',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!main/Layout'),
+        source: require('!!docs-loader!main/Layout'),
         examples: require('main/Layout/examples.yml'),
       })
     }, 'Layout'),
@@ -70,7 +70,7 @@ export default sortBy([
       require('main/Navigation/examples.scss')
 
       callback({
-        source: require('!!docs!main/Navigation'),
+        source: require('!!docs-loader!main/Navigation'),
         examples: require('main/Navigation/examples.yml'),
       })
     }, 'Navigation'),
@@ -79,7 +79,7 @@ export default sortBy([
     name: 'NavigationItem',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!main/NavigationItem'),
+        source: require('!!docs-loader!main/NavigationItem'),
         examples: require('main/NavigationItem/examples.yml'),
       })
     }, 'NavigationItem'),
@@ -88,7 +88,7 @@ export default sortBy([
     name: 'Section',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!main/Section'),
+        source: require('!!docs-loader!main/Section'),
         examples: require('main/Section/examples.yml'),
       })
     }, 'Section'),
@@ -99,7 +99,7 @@ export default sortBy([
     name: 'Container',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!shared/Container'),
+        source: require('!!docs-loader!shared/Container'),
         examples: require('shared/Container/examples.yml'),
       })
     }, 'Container'),
@@ -110,7 +110,7 @@ export default sortBy([
       require('shared/TableContainer/examples.scss')
 
       callback({
-        source: require('!!docs!shared/TableContainer'),
+        source: require('!!docs-loader!shared/TableContainer'),
         examples: require('shared/TableContainer/examples.yml'),
       })
     }, 'TableContainer'),
@@ -119,7 +119,7 @@ export default sortBy([
     name: 'EmptyBlock',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!shared/EmptyBlock'),
+        source: require('!!docs-loader!shared/EmptyBlock'),
         examples: require('shared/EmptyBlock/examples.yml'),
       })
     }, 'EmptyBlock'),
@@ -128,7 +128,7 @@ export default sortBy([
     name: 'EmptyView',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!shared/EmptyView'),
+        source: require('!!docs-loader!shared/EmptyView'),
         examples: require('shared/EmptyView/examples.yml'),
       })
     }, 'EmptyView'),
@@ -139,7 +139,7 @@ export default sortBy([
       require('shared/Grid/examples.scss')
 
       callback({
-        source: require('!!docs!shared/Grid'),
+        source: require('!!docs-loader!shared/Grid'),
         examples: require('shared/Grid/examples.yml'),
       })
     }, 'Grid'),
@@ -148,7 +148,7 @@ export default sortBy([
     name: 'Loader',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!shared/Loader'),
+        source: require('!!docs-loader!shared/Loader'),
         examples: require('shared/Loader/examples.yml'),
       })
     }, 'Loader'),
@@ -157,7 +157,7 @@ export default sortBy([
     name: 'States',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!shared/States'),
+        source: require('!!docs-loader!shared/States'),
         examples: require('shared/States/examples.yml'),
       })
     }, 'States'),
@@ -166,7 +166,7 @@ export default sortBy([
     name: 'FiltersForm',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!shared/FiltersForm'),
+        source: require('!!docs-loader!shared/FiltersForm'),
         examples: require('shared/FiltersForm/examples.yml'),
       })
     }, 'FiltersForm'),

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export default class NavigationItem extends React.Component {
@@ -14,8 +15,12 @@ export default class NavigationItem extends React.Component {
   }
 
   static defaultProps = {
+    children: null,
     component: 'a',
     containerProps: {},
+    isActive: false,
+    icon: null,
+    label: null,
   }
 
   static contextTypes = {

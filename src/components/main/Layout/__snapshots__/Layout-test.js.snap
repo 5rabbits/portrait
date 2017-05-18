@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Layout should render with minimum props 1`] = `
-<Layout>
+<Layout
+  header={null}
+  main={null}
+  navigation={null}
+>
   <section
     className="layout-wrapper"
     id="block-app"

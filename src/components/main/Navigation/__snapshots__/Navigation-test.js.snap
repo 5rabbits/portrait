@@ -4,6 +4,8 @@ exports[`Navigation should render the brand if specified 1`] = `
 <Navigation
   align="center"
   brand="TEST"
+  className={null}
+  navigationOptions={null}
   theme="default"
 >
   <div
@@ -67,6 +69,9 @@ exports[`Navigation should render the brand if specified 1`] = `
 exports[`Navigation should render with minimum props 1`] = `
 <Navigation
   align="center"
+  brand={null}
+  className={null}
+  navigationOptions={null}
   theme="default"
 >
   <div

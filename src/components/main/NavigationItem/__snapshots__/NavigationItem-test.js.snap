@@ -5,6 +5,8 @@ exports[`NavigationItem should allow to define an icon 1`] = `
   component="a"
   containerProps={Object {}}
   icon="test"
+  isActive={false}
+  label={null}
 >
   <li
     className="navigation-item--top-level"
@@ -27,6 +29,9 @@ exports[`NavigationItem should render nested NavigationItem as a dropdown 1`] = 
 <NavigationItem
   component="a"
   containerProps={Object {}}
+  icon={null}
+  isActive={false}
+  label={null}
 >
   <li
     className="dropdown navigation-item--top-level"
@@ -47,6 +52,9 @@ exports[`NavigationItem should render nested NavigationItem as a dropdown 1`] = 
       <NavigationItem
         component="a"
         containerProps={Object {}}
+        icon={null}
+        isActive={false}
+        label={null}
       >
         <li
           className=""
@@ -61,6 +69,9 @@ exports[`NavigationItem should render nested NavigationItem as a dropdown 1`] = 
       <NavigationItem
         component="a"
         containerProps={Object {}}
+        icon={null}
+        isActive={false}
+        label={null}
       >
         <li
           className=""
@@ -81,6 +92,9 @@ exports[`NavigationItem should render with minimum props 1`] = `
 <NavigationItem
   component="a"
   containerProps={Object {}}
+  icon={null}
+  isActive={false}
+  label={null}
 >
   <li
     className="navigation-item--top-level"

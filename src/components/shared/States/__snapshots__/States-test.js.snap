@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`States should render with minimum props 1`] = `
-<States>
+<States
+  content={null}
+  empty={null}
+>
   <div
     className="section-states"
   >

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Example from './Example'
 import PropsTable from './PropsTable'
 import markdown from '../helpers/markdown'
@@ -71,7 +72,7 @@ export default class ComponentDoc extends Component {
 
         {examples.map((example, index) =>
           <Example
-            key={index}
+            key={index} // eslint-disable-line react/no-array-index-key
             componentName={name}
             {...example}
           />,

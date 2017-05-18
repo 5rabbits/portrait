@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const RoundButton = props =>
   <a href="#" className="btn btn-outline-primary btn-sm block-rounded">
@@ -9,6 +10,11 @@ const RoundButton = props =>
 RoundButton.propTypes = {
   icon: PropTypes.string,
   label: PropTypes.string,
+}
+
+RoundButton.defaultProps = {
+  icon: null,
+  label: null,
 }
 
 export default RoundButton
