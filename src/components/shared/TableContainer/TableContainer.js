@@ -7,27 +7,26 @@ import './TableContainer.scss'
 export class TableContainer extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    // downloadFormats: PropTypes.arrayOf(PropTypes.string),
+    downloadFormat: PropTypes.oneOf([
+      'csv', 'excel', 'pdf', 'word',
+    ]),
     filters: PropTypes.node,
+    onDownload: PropTypes.func,
     onFiltersToggle: PropTypes.func.isRequired,
     showFilters: PropTypes.bool.isRequired,
     totals: PropTypes.node,
   }
 
   static defaultProps = {
-    downloadFormats: [],
+    downloadFormat: null,
     filters: null,
+    onDownload: null,
     showFilters: false,
     totals: null,
   }
 
   state = {
     filtersPosition: null,
-  }
-
-  handleFiltersToggle = event => {
-    event.preventDefault()
-    this.props.onFiltersToggle(!this.props.showFilters)
   }
 
   filtersRef = filters => {
@@ -41,8 +40,35 @@ export class TableContainer extends PureComponent {
     }
   }
 
+  getDownloadIcon = () => {
+    switch (this.props.downloadFormat) {
+      case 'csv':
+      case 'excel':
+        return <i className="fa fa-file-excel-o" />
+
+      case 'pdf':
+        return <i className="fa fa-file-pdf-o" />
+
+      case 'word':
+        return <i className="fa fa-file-excel-o" />
+
+      default:
+        return null
+    }
+  }
+
+  handleDownload = event => {
+    event.preventDefault()
+    this.props.onDownload(this.props.downloadFormat)
+  }
+
+  handleFiltersToggle = event => {
+    event.preventDefault()
+    this.props.onFiltersToggle(!this.props.showFilters)
+  }
+
   render() {
-    const { children, filters, showFilters, totals } = this.props
+    const { children, downloadFormat, filters, showFilters, totals } = this.props
     const { filtersPosition } = this.state
 
     return (
@@ -81,12 +107,15 @@ export class TableContainer extends PureComponent {
               {totals}
             </div>
             <div className="TableContainer__toolbar__downloads">
-              <a
-                className="TableContainer__link"
-                href="#"
-                >
-                Descargar
-              </a>
+              {downloadFormat &&
+                <a
+                  className="TableContainer__link"
+                  href="#"
+                  onClick={this.handleDownload}
+                  >
+                  Descargar {this.getDownloadIcon()}
+                </a>
+              }
             </div>
           </Grid>
         </Container>

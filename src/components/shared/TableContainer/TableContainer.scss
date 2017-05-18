@@ -55,6 +55,7 @@ $transition-duration: 200ms;
   transition: padding $transition-duration ease-out, background $transition-duration ease-out;
   font-size: $font-size-footnote;
   line-height: $line-height-footnote;
+  white-space: nowrap;
 
   &.TableContainer__link--active,
   &:hover {

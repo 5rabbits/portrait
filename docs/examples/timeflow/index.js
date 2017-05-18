@@ -26,7 +26,7 @@ export default class App extends Component {
       }
       >
       <TableContainer
-        downloadFormats={['xls']}
+        downloadFormat="excel"
         filters={<PanelFilters />}
         totals="16 Proyectos"
         >
