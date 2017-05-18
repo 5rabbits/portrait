@@ -10,28 +10,12 @@ const Content = () =>
           <div className="col-xs-6">
             <ul className="pl-md">
               <li className="pb-xs type-title">
-                <a href="#badges" className="type-subhead">Badges</a>
-                <ul className="pl-md type-body">
-                  <li>Variant</li>
-                </ul>
-              </li>
-              <li className="pb-xs type-title">
                 <a href="#border-radius" className="type-subhead">Border-radius</a>
-              </li>
-              <li className="pb-xs type-title">
-                <a href="#buttons" className="type-subhead">Buttons</a>
-                <ul className="pl-md type-body">
-                  <li>Variant</li>
-                  <li>Outline variant</li>
-                  <li>Inverse variant</li>
-                  <li>Size</li>
-                </ul>
               </li>
               <li className="pb-xs type-title">
                 <a href="#colors" className="type-subhead">Colors</a>
                 <ul className="pl-md type-body">
                   <li>Generic colors</li>
-                  <li>Brand colors</li>
                   <li>Theme colors</li>
                   <li>Others</li>
                 </ul>
@@ -69,21 +53,6 @@ const Content = () =>
                 </ul>
               </li>
               <li className="pb-xs type-title">
-                <a href="#list-group" className="type-subhead">List-group</a>
-                <ul className="pl-md type-body">
-                  <li>Variant</li>
-                </ul>
-              </li>
-              <li className="pb-xs type-title">
-                <a href="#navbar" className="type-subhead">Navbar</a>
-                <ul className="pl-md type-body">
-                  <li>Inverted navbar</li>
-                  <li>Inverted navbar links</li>
-                  <li>Inverted navbar brand label</li>
-                  <li>Inverted navbar toggle</li>
-                </ul>
-              </li>
-              <li className="pb-xs type-title">
                 <a href="#media-queries-breakpoints" className="type-subhead">Media queries breakpoints</a>
                 <ul className="pl-md type-body">
                   <li>Extra small screen (phone)</li>
@@ -97,13 +66,6 @@ const Content = () =>
                 <a href="#screen-sizes" className="type-subhead">Screen sizes</a>
               </li>
               <li className="pb-xs type-title">
-                <a href="#themes" className="type-subhead">Themes</a>
-                <ul className="pl-md type-body">
-                  <li>Base</li>
-                  <li>Classes</li>
-                </ul>
-              </li>
-              <li className="pb-xs type-title">
                 <a href="#typography" className="type-subhead">Typography</a>
                 <ul className="pl-md type-body">
                   <li>Type</li>
@@ -113,20 +75,6 @@ const Content = () =>
                 <a href="#z-index" className="type-subhead">z-index</a>
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="index-items" id="badges">
-      <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong">Badges</p>
-      </div>
-      <div className="block-item pa-md">
-        <div>
-          <p className="type-body font-strong mb-nn">Variant <code className="font-normal">@mixin label-variant($color)</code></p>
-          <div className="pt-sm">
-            <p className="type-footnote mb-nn">Example: </p><pre className="mb-nn">.badge-success &#123;@include label-variant ($label-success-bg);&#125;</pre>
           </div>
         </div>
       </div>
@@ -153,41 +101,6 @@ const Content = () =>
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-
-    <div className="index-items" id="buttons">
-      <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong mb-nn">Buttons</p>
-      </div>
-      <div className="block-item pa-md">
-        <div>
-          <p className="type-body mb-nn font-strong">Variant <code className="font-normal">@mixin button-variant($color, $background, $border)</code></p>
-          <div className="py-sm">
-            <p className="type-footnote mb-nn">Example: </p><pre className="mb-nn">.btn-default &#123;@include button-variant ($btn-default-color, $btn-default-bg, $btn-default-border);&#125;</pre>
-          </div>
-        </div>
-        <hr className="color-divider" />
-        <div>
-          <p className="type-body font-strong mb-nn mt-sm">Outline variant <code className="font-normal">@mixin button-outline-variant($color)</code></p>
-          <div className="py-sm">
-            <p className="type-footnote mb-nn">Example: </p><pre className="mb-nn">.btn-outline-primary &#123;@include button-outline-variant ($btn-primary-bg);&#125;</pre>
-          </div>
-        </div>
-        <hr className="color-divider" />
-        <div>
-          <p className="type-body font-strong mb-nn mt-sm">Inverse variant <code className="font-normal">@mixin button-inverse-variant($color)</code></p>
-          <div className="py-sm">
-            <p className="type-footnote mb-nn">Example: </p><pre className="mb-nn">.btn-inverse-secondary &#123;@include button-inverse-variant ($btn-secondary-bg);&#125;</pre>
-          </div>
-        </div>
-        <hr className="color-divider" />
-        <div>
-          <p className="type-body font-strong mb-nn mt-sm">Size <code className="font-normal">@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius)</code></p>
-          <div className="pt-sm">
-            <p className="type-footnote mb-nn">Example: </p><pre className="mb-nn">.btn-xs &#123;@include button-size ($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);&#125;</pre>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -263,33 +176,6 @@ const Content = () =>
               <td><div className="danger-color pa-sm pull-left" /></td>
               <td><code>$color-danger</code></td>
               <td>#d9534f</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className="block-item pa-md">
-        <p className="type-title font-strong mb-md">Brand colors</p>
-        <table className="table mb-nn table-width">
-          <tbody>
-            <tr>
-              <td><code>$brand-primary</code></td>
-              <td><code>$color-primary</code></td>
-            </tr>
-            <tr>
-              <td><code>$brand-success</code></td>
-              <td><code>$color-success</code></td>
-            </tr>
-            <tr>
-              <td><code>$brand-info</code></td>
-              <td><code>$color-info</code></td>
-            </tr>
-            <tr>
-              <td><code>$brand-warning</code></td>
-              <td><code>$color-warning</code></td>
-            </tr>
-            <tr>
-              <td><code>$brand-danger</code></td>
-              <td><code>$color-danger</code></td>
             </tr>
           </tbody>
         </table>
@@ -406,10 +292,6 @@ const Content = () =>
             <tr>
               <td><code>$tone-color</code></td>
               <td>gray</td>
-            </tr>
-            <tr>
-              <td><code>$base-background</code></td>
-              <td>#F9F9F9</td>
             </tr>
           </tbody>
         </table>
@@ -720,124 +602,6 @@ const Content = () =>
       </div>
     </div>
 
-    <div className="index-items" id="list-group">
-      <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong mb-nn">List-group</p>
-      </div>
-      <div className="block-item pa-md">
-        <div>
-          <p className="type-body font-strong mb-nn">Variant <code className="font-normal">@mixin list-group-item-variant($state, $background, $color)</code></p>
-          <div className="pt-sm">
-            <p className="type-footnote mb-nn">Example: </p><pre className="mb-nn">.list-group-item-success &#123;@include list-group-item-variant (info, $state-info-bg, $state-info-text);&#125;</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="index-items" id="navbar">
-      <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong mb-nn">Navbar</p>
-      </div>
-      <div className="block-item pa-md">
-        <table className="table table-width">
-          <tbody>
-            <tr>
-              <td><code>$navbar-height</code></td>
-              <td>48px</td>
-            </tr>
-          </tbody>
-        </table>
-        <p className="type-body font-strong mb-sm">Inverted navbar</p>
-        <table className="table table-width">
-          <tbody>
-            <tr>
-              <td><code>$navbar-inverse-color</code></td>
-              <td>#fff</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-bg</code></td>
-              <td>shade(<code>$color-brand</code>,65%)</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-border</code></td>
-              <td>transparent</td>
-            </tr>
-          </tbody>
-        </table>
-        <p className="type-body font-strong mb-sm">Inverted navbar links</p>
-        <table className="table table-width">
-          <tbody>
-            <tr>
-              <td><code>$navbar-inverse-link-color</code></td>
-              <td>rgba(#fff,.6)</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-link-hover-color</code></td>
-              <td>#fff</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-link-hover-bg</code></td>
-              <td>transparent</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-link-active-color</code></td>
-              <td>#fff</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-link-active-bg</code></td>
-              <td>transparent</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-link-disabled-color</code></td>
-              <td>#444</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-link-disabled-bg</code></td>
-              <td>transparent</td>
-            </tr>
-          </tbody>
-        </table>
-        <p className="type-body font-strong mb-sm">Inverted navbar brand label</p>
-        <table className="table table-width">
-          <tbody>
-            <tr>
-              <td><code>$navbar-inverse-brand-color</code></td>
-              <td><code>$navbar-inverse-link-color</code></td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-brand-hover-color</code></td>
-              <td>#fff</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-brand-hover-bg</code></td>
-              <td>transparent</td>
-            </tr>
-          </tbody>
-        </table>
-        <p className="type-body font-strong mb-sm">Inverted navbar toggle</p>
-        <table className="table table-width">
-          <tbody>
-            <tr>
-              <td><code>$navbar-inverse-toggle-bg</code></td>
-              <td>darken(<code>$navbar-inverse-bg</code>,5%)</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-toggle-hover-bg</code></td>
-              <td>darken(<code>$navbar-inverse-bg</code>,5%)</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-toggle-icon-bar-bg</code></td>
-              <td>#fff</td>
-            </tr>
-            <tr>
-              <td><code>$navbar-inverse-toggle-border-color</code></td>
-              <td>darken(<code>$navbar-inverse-bg</code>,5%)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
     <div className="index-items" id="media-queries-breakpoints">
       <div className="block-item pa-md mt-sm">
         <p className="type-headline font-strong mb-nn">Media queries breakpoints</p>
@@ -973,22 +737,6 @@ const Content = () =>
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-
-    <div className="index-items" id="themes">
-      <div className="block-item pa-md mt-sm">
-        <p className="type-headline font-strong mb-nn">Themes</p>
-      </div>
-      <div className="block-item pa-md">
-        <div>
-          <p className="type-body font-strong mb-nn">Base <code className="font-normal">@mixin color-theme-base($theme: dark)</code></p>
-          <p className="type-body font-strong mb-nn">Classes <code className="font-normal">@mixin color-theme-classes($theme: dark)</code></p>
-          <div className="pt-sm">
-            <p className="type-footnote mb-nn">Example: </p><pre className="mb-nn">.theme-default &#123;@include color-theme-base(dark);
-            @include color-theme-classes(dark);&#125;</pre>
-          </div>
-        </div>
       </div>
     </div>
 
