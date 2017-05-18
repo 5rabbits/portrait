@@ -26,6 +26,7 @@ exports[`TableContainer getDownloadIcon() if props.downloadFormat is word should
 
 exports[`TableContainer if props.filters is defined if not props.showFilters should render the right link 1`] = `
 <TableContainer
+  defaultShowFilters={false}
   downloadFormat={null}
   filters={
     <div>
@@ -33,7 +34,7 @@ exports[`TableContainer if props.filters is defined if not props.showFilters sho
     </div>
   }
   onDownload={null}
-  onFiltersToggle={[Function]}
+  onFiltersToggle={null}
   showFilters={false}
   totals={null}
 >
@@ -138,6 +139,7 @@ exports[`TableContainer if props.filters is defined if not props.showFilters sho
 
 exports[`TableContainer if props.filters is defined if props.showFilters should render the right link 1`] = `
 <TableContainer
+  defaultShowFilters={false}
   downloadFormat={null}
   filters={
     <div>
@@ -145,7 +147,7 @@ exports[`TableContainer if props.filters is defined if props.showFilters should 
     </div>
   }
   onDownload={null}
-  onFiltersToggle={[Function]}
+  onFiltersToggle={null}
   showFilters={true}
   totals={null}
 >
@@ -250,11 +252,12 @@ exports[`TableContainer if props.filters is defined if props.showFilters should 
 
 exports[`TableContainer should render with minimum props 1`] = `
 <TableContainer
+  defaultShowFilters={false}
   downloadFormat={null}
   filters={null}
   onDownload={null}
-  onFiltersToggle={[Function]}
-  showFilters={false}
+  onFiltersToggle={null}
+  showFilters={null}
   totals={null}
 >
   <div

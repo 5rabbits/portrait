@@ -1,13 +1,10 @@
 import { React, toJSON, mount } from 'test/helper'
-import { TableContainer } from 'shared/TableContainer'
+import TableContainer from 'shared/TableContainer'
 
 describe('TableContainer', () => {
   it('should render with minimum props', () => {
     const component = mount(
-      <TableContainer
-        onFiltersToggle={() => {}}
-        showFilters={false}
-        >
+      <TableContainer>
         Test
       </TableContainer>,
     )
@@ -20,7 +17,6 @@ describe('TableContainer', () => {
       it('should render the right link', () => {
         const component = mount(
           <TableContainer
-            onFiltersToggle={() => {}}
             filters={<div>Some filters</div>}
             showFilters
             >
@@ -36,7 +32,6 @@ describe('TableContainer', () => {
       it('should render the right link', () => {
         const component = mount(
           <TableContainer
-            onFiltersToggle={() => {}}
             filters={<div>Some filters</div>}
             showFilters={false}
             >
@@ -49,15 +44,43 @@ describe('TableContainer', () => {
     })
   })
 
+  describe('componentWillReceiveProps(nextProps)', () => {
+    describe('if props.showFilters changes', () => {
+      it('should assign the new value to state.showFilters', () => {
+        const component = mount(
+          <TableContainer showFilters={false}>
+            Test
+          </TableContainer>,
+        )
+
+        component.setProps({ showFilters: true })
+
+        expect(component.state('showFilters')).toBe(true)
+      })
+    })
+
+    describe('if props.showFilters do not changes', () => {
+      it('should not change the state', () => {
+        const component = mount(
+          <TableContainer showFilters={false}>
+            Test
+          </TableContainer>,
+        )
+        const instance = component.instance()
+
+        instance.setState = jest.fn()
+        component.setProps({ showFilters: false })
+
+        expect(instance.setState).not.toHaveBeenCalled()
+      })
+    })
+  })
+
   describe('getDownloadIcon()', () => {
     describe('if props.downloadFormat is csv', () => {
       it('should return a fa-file-excel-o icon', () => {
         const component = mount(
-          <TableContainer
-            downloadFormat="csv"
-            onFiltersToggle={() => {}}
-            showFilters={false}
-            >
+          <TableContainer downloadFormat="csv">
             Test
           </TableContainer>,
         )
@@ -71,11 +94,7 @@ describe('TableContainer', () => {
     describe('if props.downloadFormat is excel', () => {
       it('should return a fa-file-excel-o icon', () => {
         const component = mount(
-          <TableContainer
-            downloadFormat="excel"
-            onFiltersToggle={() => {}}
-            showFilters={false}
-            >
+          <TableContainer downloadFormat="excel">
             Test
           </TableContainer>,
         )
@@ -89,11 +108,7 @@ describe('TableContainer', () => {
     describe('if props.downloadFormat is pdf', () => {
       it('should return a fa-file-pdf-o icon', () => {
         const component = mount(
-          <TableContainer
-            downloadFormat="pdf"
-            onFiltersToggle={() => {}}
-            showFilters={false}
-            >
+          <TableContainer downloadFormat="pdf">
             Test
           </TableContainer>,
         )
@@ -107,11 +122,7 @@ describe('TableContainer', () => {
     describe('if props.downloadFormat is word', () => {
       it('should return a fa-file-word-o icon', () => {
         const component = mount(
-          <TableContainer
-            downloadFormat="word"
-            onFiltersToggle={() => {}}
-            showFilters={false}
-            >
+          <TableContainer downloadFormat="word">
             Test
           </TableContainer>,
         )
@@ -125,11 +136,7 @@ describe('TableContainer', () => {
     describe('if props.downloadFormat is other format', () => {
       it('should return null', () => {
         const component = mount(
-          <TableContainer
-            downloadFormat={null}
-            onFiltersToggle={() => {}}
-            showFilters={false}
-            >
+          <TableContainer downloadFormat={null}>
             Test
           </TableContainer>,
         )
@@ -145,10 +152,7 @@ describe('TableContainer', () => {
     describe('if filters is mounting and state.filtersPosition is undefined', () => {
       it('should set the top and bottom position of the filters', () => {
         const component = mount(
-          <TableContainer
-            onFiltersToggle={() => {}}
-            showFilters={false}
-            >
+          <TableContainer>
             Test
           </TableContainer>,
         )
@@ -170,10 +174,7 @@ describe('TableContainer', () => {
     describe('if filters is unmounting', () => {
       it('should not change the state', () => {
         const component = mount(
-          <TableContainer
-            onFiltersToggle={() => {}}
-            showFilters={false}
-            >
+          <TableContainer>
             Test
           </TableContainer>,
         )
@@ -192,10 +193,7 @@ describe('TableContainer', () => {
     it('should prevent the event default action', () => {
       const event = { preventDefault: jest.fn() }
       const component = mount(
-        <TableContainer
-          onFiltersToggle={() => {}}
-          showFilters={false}
-          >
+        <TableContainer>
           Test
         </TableContainer>,
       )
@@ -212,8 +210,6 @@ describe('TableContainer', () => {
         const handleDownload = jest.fn()
         const component = mount(
           <TableContainer
-            onFiltersToggle={() => {}}
-            showFilters={false}
             onDownload={handleDownload}
             downloadFormat="excel"
             >
@@ -233,10 +229,7 @@ describe('TableContainer', () => {
       it('should not fail', () => {
         const event = { preventDefault: jest.fn() }
         const component = mount(
-          <TableContainer
-            onFiltersToggle={() => {}}
-            showFilters={false}
-            >
+          <TableContainer>
             Test
           </TableContainer>,
         )
@@ -253,10 +246,7 @@ describe('TableContainer', () => {
     it('should prevent the event default action', () => {
       const event = { preventDefault: jest.fn() }
       const component = mount(
-        <TableContainer
-          onFiltersToggle={() => {}}
-          showFilters={false}
-          >
+        <TableContainer>
           Test
         </TableContainer>,
       )
@@ -267,7 +257,24 @@ describe('TableContainer', () => {
       expect(event.preventDefault).toHaveBeenCalledTimes(1)
     })
 
-    it('should call props.onFiltersToggle passing the opposite of props.showFilters', () => {
+    describe('if props.showFilters is defined', () => {
+      it('should not try to change the state', () => {
+        const event = { preventDefault: jest.fn() }
+        const component = mount(
+          <TableContainer showFilters={false}>
+            Test
+          </TableContainer>,
+        )
+        const instance = component.instance()
+
+        instance.setState = jest.fn()
+        instance.handleFiltersToggle(event)
+
+        expect(instance.setState).not.toHaveBeenCalled()
+      })
+    })
+
+    it('should call props.onFiltersToggle passing the opposite of state.showFilters', () => {
       const event = { preventDefault: jest.fn() }
       const handleFiltersToggle = jest.fn()
       const component = mount(

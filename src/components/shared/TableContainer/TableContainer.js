@@ -1,19 +1,23 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Container, Grid } from 'shared'
-import uncontrollable from 'uncontrollable/batching'
 import cx from 'classnames'
 import './TableContainer.scss'
 
 /**
  * Section layout for a table list module.
  */
-export class TableContainer extends PureComponent {
+export default class TableContainer extends PureComponent {
   static propTypes = {
     /**
      * The table to be displayed.
      */
     children: PropTypes.node.isRequired,
+
+    /**
+     * Indicates if the filters should start visible or not.
+     */
+    defaultShowFilters: PropTypes.bool,
 
     /**
      * The download format available.
@@ -39,13 +43,13 @@ export class TableContainer extends PureComponent {
      * The first argument is a boolean that indicates if the filters are now visible (`true`) or
      * hidden (`false`).
      */
-    onFiltersToggle: PropTypes.func.isRequired,
+    onFiltersToggle: PropTypes.func,
 
     /**
      * Indicates if the filters should be visible or not. Note that this prop is controllable,
      * meaning that you should use `defaultShowFilters` to allow an uncontrolled behaviour.
      */
-    showFilters: PropTypes.bool.isRequired,
+    showFilters: PropTypes.bool,
 
     /**
      * Summary information to be displayed on top of the table.
@@ -54,15 +58,28 @@ export class TableContainer extends PureComponent {
   }
 
   static defaultProps = {
+    defaultShowFilters: false,
     downloadFormat: null,
     filters: null,
+    onFiltersToggle: null,
     onDownload: null,
-    showFilters: false,
+    showFilters: null,
     totals: null,
   }
 
   state = {
     filtersPosition: null,
+    showFilters: this.props.showFilters == null
+      ? this.props.defaultShowFilters
+      : this.props.showFilters,
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.showFilters !== nextProps.showFilters) {
+      this.setState({
+        showFilters: nextProps.showFilters,
+      })
+    }
   }
 
   getDownloadIcon = () => {
@@ -103,12 +120,21 @@ export class TableContainer extends PureComponent {
 
   handleFiltersToggle = event => {
     event.preventDefault()
-    this.props.onFiltersToggle(!this.props.showFilters)
+
+    const showFilters = !this.state.showFilters
+
+    if (this.props.showFilters == null) {
+      this.setState({ showFilters })
+    }
+
+    if (this.props.onFiltersToggle) {
+      this.props.onFiltersToggle(showFilters)
+    }
   }
 
   render() {
-    const { children, downloadFormat, filters, showFilters, totals } = this.props
-    const { filtersPosition } = this.state
+    const { children, downloadFormat, filters, totals } = this.props
+    const { filtersPosition, showFilters } = this.state
 
     return (
       <div
@@ -178,7 +204,3 @@ export class TableContainer extends PureComponent {
     )
   }
 }
-
-export default uncontrollable(TableContainer, {
-  showFilters: 'onFiltersToggle',
-})
