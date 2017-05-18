@@ -15,6 +15,11 @@ export default class TableContainer extends PureComponent {
     children: PropTypes.node.isRequired,
 
     /**
+     * CSS class assigned to the container.
+     */
+    className: PropTypes.string,
+
+    /**
      * Indicates if the filters should start visible or not.
      */
     defaultShowFilters: PropTypes.bool,
@@ -58,6 +63,7 @@ export default class TableContainer extends PureComponent {
   }
 
   static defaultProps = {
+    className: null,
     defaultShowFilters: false,
     downloadFormat: null,
     filters: null,
@@ -133,12 +139,18 @@ export default class TableContainer extends PureComponent {
   }
 
   render() {
-    const { children, downloadFormat, filters, totals } = this.props
+    const { children, className, downloadFormat, filters, totals, ...other } = this.props
     const { filtersPosition, showFilters } = this.state
+
+    delete other.defaultShowFilters
+    delete other.onFiltersToggle
+    delete other.onDownload
+    delete other.showFilters
 
     return (
       <div
-        className={cx('TableContainer', {
+        {...other}
+        className={cx('TableContainer', className, {
           'TableContainer--filters-visible': showFilters,
         })}
         >

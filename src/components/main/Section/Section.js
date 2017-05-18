@@ -6,19 +6,22 @@ import './Section.scss'
 export default class Section extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     toolbar: PropTypes.node,
   }
 
   static defaultProps = {
+    className: null,
     toolbar: null,
   }
 
   render() {
-    const { children, toolbar } = this.props
+    const { children, className, toolbar, ...others } = this.props
 
     return (
       <section
-        className={cx('Section', {
+        {...others}
+        className={cx('Section', className, {
           'Section--with-toolbar': toolbar,
         })}
         >

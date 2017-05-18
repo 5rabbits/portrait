@@ -2,6 +2,7 @@
 
 exports[`Section should allow to render a toolbar if specified 1`] = `
 <Section
+  className={null}
   toolbar="TOOLBAR"
 >
   <section
@@ -23,6 +24,7 @@ exports[`Section should allow to render a toolbar if specified 1`] = `
 
 exports[`Section should render with minimum props 1`] = `
 <Section
+  className={null}
   toolbar={null}
 >
   <section

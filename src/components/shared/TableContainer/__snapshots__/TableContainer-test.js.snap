@@ -26,6 +26,7 @@ exports[`TableContainer getDownloadIcon() if props.downloadFormat is word should
 
 exports[`TableContainer if props.filters is defined if not props.showFilters should render the right link 1`] = `
 <TableContainer
+  className={null}
   defaultShowFilters={false}
   downloadFormat={null}
   filters={
@@ -139,6 +140,7 @@ exports[`TableContainer if props.filters is defined if not props.showFilters sho
 
 exports[`TableContainer if props.filters is defined if props.showFilters should render the right link 1`] = `
 <TableContainer
+  className={null}
   defaultShowFilters={false}
   downloadFormat={null}
   filters={
@@ -252,6 +254,7 @@ exports[`TableContainer if props.filters is defined if props.showFilters should 
 
 exports[`TableContainer should render with minimum props 1`] = `
 <TableContainer
+  className={null}
   defaultShowFilters={false}
   downloadFormat={null}
   filters={null}
