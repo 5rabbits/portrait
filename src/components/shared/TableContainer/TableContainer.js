@@ -4,16 +4,51 @@ import uncontrollable from 'uncontrollable/batching'
 import cx from 'classnames'
 import './TableContainer.scss'
 
+/**
+ * Section layout for a table list module.
+ */
 export class TableContainer extends PureComponent {
   static propTypes = {
+    /**
+     * The table to be displayed.
+     */
     children: PropTypes.node.isRequired,
+
+    /**
+     * The download format available.
+     */
     downloadFormat: PropTypes.oneOf([
       'csv', 'excel', 'pdf', 'word',
     ]),
+
+    /**
+     * The form component used to filter the list. This should a be a
+     * [FiltersForm](/components/FiltersForm) component.
+     */
     filters: PropTypes.node,
+
+    /**
+     * Callback invoked when the user clicks the download button.
+     * The first argument is the selected download format.
+     */
     onDownload: PropTypes.func,
+
+    /**
+     * Callback invoked when the filters visilibity changes.
+     * The first argument is a boolean that indicates if the filters are now visible (`true`) or
+     * hidden (`false`).
+     */
     onFiltersToggle: PropTypes.func.isRequired,
+
+    /**
+     * Indicates if the filters should be visible or not. Note that this prop is controllable,
+     * meaning that you should use `defaultShowFilters` to allow an uncontrolled behaviour.
+     */
     showFilters: PropTypes.bool.isRequired,
+
+    /**
+     * Summary information to be displayed on top of the table.
+     */
     totals: PropTypes.node,
   }
 
@@ -91,20 +126,22 @@ export class TableContainer extends PureComponent {
             gutter={false}
             >
             <div className="TableContainer__toolbar__filters">
-              <a
-                className={cx('TableContainer__link', {
-                  'TableContainer__link--active': showFilters,
-                })}
-                href="#"
-                onClick={this.handleFiltersToggle}
-                >
-                {showFilters &&
-                  <span>Cerrar filtros <i className="fa fa-times" /></span>
-                }
-                {!showFilters &&
-                  <span>Filtros avanzados <i className="fa fa-filter" /></span>
-                }
-              </a>
+              {filters &&
+                <a
+                  className={cx('TableContainer__link', {
+                    'TableContainer__link--active': showFilters,
+                  })}
+                  href="#"
+                  onClick={this.handleFiltersToggle}
+                  >
+                  {showFilters &&
+                    <span>Cerrar filtros <i className="fa fa-times" /></span>
+                  }
+                  {!showFilters &&
+                    <span>Filtros avanzados <i className="fa fa-filter" /></span>
+                  }
+                </a>
+              }
             </div>
             <div className="TableContainer__toolbar__totals">
               {totals}
@@ -122,13 +159,15 @@ export class TableContainer extends PureComponent {
             </div>
           </Grid>
         </Container>
-        <div
-          className="TableContainer__filters"
-          ref={this.filtersRef}
-          style={filtersPosition}
-          >
-          {filters}
-        </div>
+        {filters &&
+          <div
+            className="TableContainer__filters"
+            ref={this.filtersRef}
+            style={filtersPosition}
+            >
+            {filters}
+          </div>
+        }
         <div className="TableContainer__contents">
           <Container>
             {children}

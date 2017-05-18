@@ -107,11 +107,13 @@ export default sortBy([
   {
     name: 'TableContainer',
     getComponent: callback => require.ensure([], require => {
+      require('shared/TableContainer/examples.scss')
+
       callback({
         source: require('!!docs!shared/TableContainer'),
         examples: require('shared/TableContainer/examples.yml'),
       })
-    }, 'Container'),
+    }, 'TableContainer'),
   },
   {
     name: 'EmptyBlock',

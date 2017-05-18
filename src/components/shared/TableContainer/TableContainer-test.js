@@ -15,18 +15,37 @@ describe('TableContainer', () => {
     expect(toJSON(component)).toMatchSnapshot()
   })
 
-  describe('if props.showFilters', () => {
-    it('should render correctly', () => {
-      const component = mount(
-        <TableContainer
-          onFiltersToggle={() => {}}
-          showFilters
-          >
-          Test
-        </TableContainer>,
-      )
+  describe('if props.filters is defined', () => {
+    describe('if props.showFilters', () => {
+      it('should render the right link', () => {
+        const component = mount(
+          <TableContainer
+            onFiltersToggle={() => {}}
+            filters={<div>Some filters</div>}
+            showFilters
+            >
+            Test
+          </TableContainer>,
+        )
 
-      expect(toJSON(component)).toMatchSnapshot()
+        expect(toJSON(component)).toMatchSnapshot()
+      })
+    })
+
+    describe('if not props.showFilters', () => {
+      it('should render the right link', () => {
+        const component = mount(
+          <TableContainer
+            onFiltersToggle={() => {}}
+            filters={<div>Some filters</div>}
+            showFilters={false}
+            >
+            Test
+          </TableContainer>,
+        )
+
+        expect(toJSON(component)).toMatchSnapshot()
+      })
     })
   })
 
