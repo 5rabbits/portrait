@@ -59,7 +59,10 @@ export class TableContainer extends PureComponent {
 
   handleDownload = event => {
     event.preventDefault()
-    this.props.onDownload(this.props.downloadFormat)
+
+    if (this.props.onDownload) {
+      this.props.onDownload(this.props.downloadFormat)
+    }
   }
 
   handleFiltersToggle = event => {

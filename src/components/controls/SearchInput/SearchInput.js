@@ -67,7 +67,7 @@ export default class SearchInput extends Component {
   handleClearClick = event => {
     event.preventDefault()
     this.setValue('')
-    this.input.focus()
+    this.focus()
 
     if (this.props.onClear) {
       this.props.onClear()

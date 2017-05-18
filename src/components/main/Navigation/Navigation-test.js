@@ -7,4 +7,10 @@ describe('Navigation', () => {
 
     expect(toJSON(component)).toMatchSnapshot()
   })
+
+  it('should render the brand if specified', () => {
+    const component = mount(<Navigation brand="TEST" />)
+
+    expect(toJSON(component)).toMatchSnapshot()
+  })
 })

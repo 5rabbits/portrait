@@ -11,4 +11,14 @@ describe('Section', () => {
 
     expect(toJSON(component)).toMatchSnapshot()
   })
+
+  it('should allow to render a toolbar if specified', () => {
+    const component = mount(
+      <Section toolbar="TOOLBAR">
+        Test
+      </Section>,
+    )
+
+    expect(toJSON(component)).toMatchSnapshot()
+  })
 })

@@ -1,5 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Grid it should allow to specify individual size 1`] = `
+<Grid
+  align="stretch"
+  direction="horizontal"
+  gutter="normal"
+  justify="start"
+  size={
+    Array [
+      "min",
+      "fill",
+    ]
+  }
+>
+  <div
+    className="grid-component grid-component--stretch-align grid-component--horizontal-direction grid-component--normal-gutter grid-component--start-justify"
+  >
+    <div
+      style={
+        Object {
+          "flex": "0 0 auto",
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    />
+  </div>
+</Grid>
+`;
+
+exports[`Grid it should assign normalized flex size to each grid item 1`] = `
+<Grid
+  align="stretch"
+  direction="horizontal"
+  gutter="normal"
+  justify="start"
+  size="fill"
+>
+  <div
+    className="grid-component grid-component--stretch-align grid-component--horizontal-direction grid-component--normal-gutter grid-component--start-justify"
+  >
+    <div
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    />
+  </div>
+</Grid>
+`;
+
 exports[`Grid should render with minimum props 1`] = `
 <Grid
   align="stretch"

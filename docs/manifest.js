@@ -93,15 +93,6 @@ export default sortBy([
       })
     }, 'Section'),
   },
-  {
-    name: 'SectionHeading',
-    getComponent: callback => require.ensure([], require => {
-      callback({
-        source: require('!!docs!main/SectionHeading'),
-        examples: require('main/SectionHeading/examples.yml'),
-      })
-    }, 'SectionHeading'),
-  },
 
   // Shared
   {
@@ -161,15 +152,6 @@ export default sortBy([
     }, 'Loader'),
   },
   {
-    name: 'Offscreen',
-    getComponent: callback => require.ensure([], require => {
-      callback({
-        source: require('!!docs!shared/Offscreen'),
-        examples: require('shared/Offscreen/examples.yml'),
-      })
-    }, 'Offscreen'),
-  },
-  {
     name: 'States',
     getComponent: callback => require.ensure([], require => {
       callback({
@@ -186,16 +168,5 @@ export default sortBy([
         examples: require('shared/FiltersForm/examples.yml'),
       })
     }, 'FiltersForm'),
-  },
-
-  // Templates
-  {
-    name: 'CommonSection',
-    getComponent: callback => require.ensure([], require => {
-      callback({
-        source: require('!!docs!templates/CommonSection'),
-        examples: require('templates/CommonSection/examples.yml'),
-      })
-    }, 'CommonSection'),
   },
 ], 'name')

@@ -7,4 +7,26 @@ describe('Grid', () => {
 
     expect(toJSON(component)).toMatchSnapshot()
   })
+
+  it('it should assign normalized flex size to each grid item', () => {
+    const component = mount(
+      <Grid size="fill">
+        <div />
+        <div />
+      </Grid>,
+    )
+
+    expect(toJSON(component)).toMatchSnapshot()
+  })
+
+  it('it should allow to specify individual size', () => {
+    const component = mount(
+      <Grid size={['min', 'fill']}>
+        <div />
+        <div />
+      </Grid>,
+    )
+
+    expect(toJSON(component)).toMatchSnapshot()
+  })
 })

@@ -1,5 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Navigation should render the brand if specified 1`] = `
+<Navigation
+  align="center"
+  brand="TEST"
+  theme="default"
+>
+  <div
+    className="navbar navbar-fixed-top navbar-default"
+  >
+    <div
+      className="container-max"
+    >
+      <div
+        className="navbar-header"
+      >
+        <button
+          aria-expanded="false"
+          className="navbar-toggle collapsed pull-left"
+          data-target="#bs-example-navbar-collapse-1"
+          data-toggle="collapse"
+          type="button"
+        >
+          <span
+            className="sr-only"
+          >
+            Toggle navigation
+          </span>
+          <i
+            className="fa fa-bars"
+          />
+        </button>
+        <button
+          aria-expanded="false"
+          className="navbar-toggle pull-right"
+          type="button"
+        >
+          <span
+            className="sr-only"
+          >
+            Toggle navigation
+          </span>
+          <i
+            className="fa fa-search"
+          />
+        </button>
+        <div
+          className="navbar-brand"
+        >
+          TEST
+        </div>
+      </div>
+      <div
+        className="collapse navbar-collapse"
+        id="bs-example-navbar-collapse-1"
+      >
+        <ul
+          className="nav navbar-nav"
+        />
+      </div>
+    </div>
+  </div>
+</Navigation>
+`;
+
 exports[`Navigation should render with minimum props 1`] = `
 <Navigation
   align="center"
