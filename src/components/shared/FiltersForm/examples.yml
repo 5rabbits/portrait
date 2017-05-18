@@ -1,2 +1,15 @@
 code: >
-  <FiltersForm />
+  <FiltersForm style={{ height: 240, width: 300 }}>
+    <div className="form-group">
+      <label>Field 1</label>
+      <input className="form-control" />
+    </div>
+    <div className="form-group">
+      <label>Field 2</label>
+      <input className="form-control" />
+    </div>
+    <div className="form-group">
+      <label>Field 3</label>
+      <input className="form-control" />
+    </div>
+  </FiltersForm>

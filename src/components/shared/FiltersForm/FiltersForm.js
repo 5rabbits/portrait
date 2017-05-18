@@ -3,9 +3,23 @@ import { Container } from 'shared'
 import cx from 'classnames'
 import './FiltersForm.scss'
 
+/**
+ * A component to be used as the advanced filters of
+ * [TableContainer](/components/TableContainer).
+ *
+ * The search button will be fixed at the bottom of the form
+ * and the filters will be placed on a scrollable container.
+ */
 export default class FiltersForm extends PureComponent {
   static propTypes = {
+    /**
+     * CSS class assigned to the form.
+     */
     className: PropTypes.string,
+
+    /**
+     * The filters fields.
+     */
     children: PropTypes.node.isRequired,
   }
 
