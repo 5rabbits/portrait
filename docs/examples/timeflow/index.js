@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-import { Layout, Navigation, NavigationItem, SectionOffscreen } from 'main'
-import Controls from './ControlsSection'
-import Content from './Content'
-import PanelFilters from './PanelFilters'
+import {
+  SectionToolbar, Layout, Navigation, NavigationItem, Section,
+} from 'main'
+import { Button, SearchInput } from 'controls'
+import { Container } from 'shared'
+import TimeEntry from './TimeEntry'
 
 export default class App extends Component {
-  buildNavigationItems = () =>
-    <NavigationItem
-      label="Styleguide"
-    />
-
   buildNavigation = () =>
     <Navigation brand="Timeflow example" theme="inverse">
       <NavigationItem label="Base" />
@@ -18,12 +15,37 @@ export default class App extends Component {
     </Navigation>
 
   buildMain = () =>
-    <SectionOffscreen
-      controls={<Controls />}
-      panel={<PanelFilters />}
-      content={<Content />}
-      empty={<hr />}
-    />
+    <Section
+      toolbar={
+        <SectionToolbar
+          title={<h4>Gastos</h4>}
+          search={<SearchInput placeholder="Escribe algo para buscar un proyecto" />}
+          actions={<Button label="Nuevo Proyecto" />}
+        />
+      }
+      >
+      <Container>
+        <div className="block-group">
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+          <TimeEntry />
+        </div>
+      </Container>
+    </Section>
 
   render() {
     return (

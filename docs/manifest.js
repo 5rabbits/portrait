@@ -102,15 +102,6 @@ export default sortBy([
       })
     }, 'SectionHeading'),
   },
-  {
-    name: 'SectionOffscreen',
-    getComponent: callback => require.ensure([], require => {
-      callback({
-        source: require('!!docs!main/SectionOffscreen'),
-        examples: require('main/SectionOffscreen/examples.yml'),
-      })
-    }, 'SectionOffscreen'),
-  },
 
   // Shared
   {

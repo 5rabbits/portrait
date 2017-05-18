@@ -1,0 +1,9 @@
+@import '~styles/core';
+
+.Section__toolbar {
+  border-bottom: $default-divider-color solid 1px;
+}
+
+.Section__contents {
+  margin-top: $spacing-base * 4;
+}
