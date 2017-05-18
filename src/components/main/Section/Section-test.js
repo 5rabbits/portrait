@@ -3,7 +3,11 @@ import Section from 'main/Section'
 
 describe('Section', () => {
   it('should render with minimum props', () => {
-    const component = mount(<Section />)
+    const component = mount(
+      <Section>
+        Test
+      </Section>,
+    )
 
     expect(component).to.be.ok
   })

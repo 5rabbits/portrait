@@ -11,12 +11,12 @@ export default class SectionToolbar extends PureComponent {
     /**
      * One or more buttons that will be rendered on the right edge of the screen.
      */
-    actions: PropTypes.node.isRequired,
+    actions: PropTypes.node,
 
     /**
      * Input primary intented as a full text search field for the section resources.
      */
-    search: PropTypes.node.isRequired,
+    search: PropTypes.node,
 
     /**
      * Section name for context purpose.

@@ -13,9 +13,10 @@ const Grid = ({ align, children, className, direction, gutter, justify, size, ..
 
   for (let i = 0; i < childrenArray.length; i += 1) {
     columns.push(React.cloneElement(childrenArray[i], {
-      style: Object.assign({}, (childrenArray[i].props.style || {}), {
+      style: {
+        ...(childrenArray[i].props.style || {}),
         flex: normalizeSize(size instanceof Array ? size[i] : size),
-      }),
+      },
     }))
   }
 

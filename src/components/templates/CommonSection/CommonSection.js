@@ -36,9 +36,10 @@ export default class CommonSection extends PureComponent {
   render() {
     return (
       <Section
-        controls={this.props.controls}
-        content={this.buildContent()}
-      />
+        toolbar={this.props.controls}
+        >
+        {this.buildContent()}
+      </Section>
     )
   }
 }

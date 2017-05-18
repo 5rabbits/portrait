@@ -3,7 +3,11 @@ import TableContainer from 'shared/TableContainer'
 
 describe('TableContainer', () => {
   it('should render with minimum props', () => {
-    const component = mount(<TableContainer />)
+    const component = mount(
+      <TableContainer>
+        Test
+      </TableContainer>,
+    )
 
     expect(component).to.be.ok
   })

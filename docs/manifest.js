@@ -114,6 +114,15 @@ export default sortBy([
     }, 'Container'),
   },
   {
+    name: 'TableContainer',
+    getComponent: callback => require.ensure([], require => {
+      callback({
+        source: require('!!docs!shared/TableContainer'),
+        examples: require('shared/TableContainer/examples.yml'),
+      })
+    }, 'Container'),
+  },
+  {
     name: 'EmptyBlock',
     getComponent: callback => require.ensure([], require => {
       callback({
