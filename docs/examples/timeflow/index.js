@@ -3,8 +3,9 @@ import {
   SectionToolbar, Layout, Navigation, NavigationItem, Section,
 } from 'main'
 import { Button, SearchInput } from 'controls'
-import { Container } from 'shared'
+import { TableContainer } from 'shared'
 import TimeEntry from './TimeEntry'
+import PanelFilters from './PanelFilters'
 
 export default class App extends Component {
   buildNavigation = () =>
@@ -24,7 +25,11 @@ export default class App extends Component {
         />
       }
       >
-      <Container>
+      <TableContainer
+        downloadFormats={['xls']}
+        filters={<PanelFilters />}
+        totals="16 Proyectos"
+        >
         <div className="block-group">
           <TimeEntry />
           <TimeEntry />
@@ -42,9 +47,8 @@ export default class App extends Component {
           <TimeEntry />
           <TimeEntry />
           <TimeEntry />
-          <TimeEntry />
         </div>
-      </Container>
+      </TableContainer>
     </Section>
 
   render() {

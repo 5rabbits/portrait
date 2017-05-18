@@ -20,9 +20,6 @@ export default class ActionPanel extends PureComponent {
     return (
       <div className="flex-container flex-vertical">
         <div className="flex-content scrollable">
-          <div className="flex-close">
-            <a href="#" onClick={this.handleCloseClick} className="link link-badge type-footnote"><i className="fa fa-close" /><span className="ml-xs hidden-xs">Cerrar filtros</span></a>
-          </div>
           {this.props.content}
         </div>
         <div className="pt-xs pr-sm pb-md pl-sm fade-bottom-base">

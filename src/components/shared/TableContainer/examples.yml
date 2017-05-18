@@ -1,0 +1,4 @@
+code: >
+  <TableContainer style={{ background: '#fff' }}>
+    Some content
+  </TableContainer>

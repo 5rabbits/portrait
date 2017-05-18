@@ -1,4 +1,5 @@
 export Container from './Container'
+export TableContainer from './TableContainer'
 export EmptyBlock from './EmptyBlock'
 export EmptyView from './EmptyView'
 export Grid from './Grid'
