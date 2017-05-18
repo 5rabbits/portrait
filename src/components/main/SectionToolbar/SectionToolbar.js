@@ -4,7 +4,7 @@ import { Container, Grid } from 'shared'
 import './SectionToolbar.scss'
 
 /**
- * This toolbar gives the user inmediate access to the most commonly used section actions:
+ * This toolbar gives the user immediate access to the most commonly used section actions:
  * searching and creating resources.
  */
 export default class SectionToolbar extends PureComponent {
