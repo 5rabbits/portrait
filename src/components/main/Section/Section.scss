@@ -2,8 +2,18 @@
 
 .Section__toolbar {
   border-bottom: $default-divider-color solid 1px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .Section__contents {
-  margin-top: $spacing-base * 4;
+  padding-top: $spacing-base * 4;
+}
+
+.Section--with-toolbar {
+  .Section__contents {
+    padding-top: $section-toolbar-height + $spacing-base * 4;
+  }
 }

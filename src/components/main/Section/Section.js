@@ -1,4 +1,5 @@
 import React, { PureComponent, PropTypes } from 'react'
+import cx from 'classnames'
 import './Section.scss'
 
 export default class Section extends PureComponent {
@@ -15,7 +16,11 @@ export default class Section extends PureComponent {
     const { children, toolbar } = this.props
 
     return (
-      <section className="Section">
+      <section
+        className={cx('Section', {
+          'Section--with-toolbar': toolbar,
+        })}
+        >
         {toolbar &&
           <header className="Section__toolbar">
             {toolbar}
