@@ -29,17 +29,6 @@ export class TableContainer extends PureComponent {
     filtersPosition: null,
   }
 
-  filtersRef = filters => {
-    if (filters && !this.state.filtersPosition) {
-      this.setState({
-        filtersPosition: {
-          top: filters.getBoundingClientRect().top,
-          bottom: 0,
-        },
-      })
-    }
-  }
-
   getDownloadIcon = () => {
     switch (this.props.downloadFormat) {
       case 'csv':
@@ -54,6 +43,17 @@ export class TableContainer extends PureComponent {
 
       default:
         return null
+    }
+  }
+
+  filtersRef = filters => {
+    if (filters && !this.state.filtersPosition) {
+      this.setState({
+        filtersPosition: {
+          top: filters.getBoundingClientRect().top,
+          bottom: 0,
+        },
+      })
     }
   }
 
