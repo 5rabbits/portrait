@@ -170,13 +170,13 @@ export default sortBy([
     }, 'States'),
   },
   {
-    name: 'ActionPanel',
+    name: 'FiltersForm',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs!shared/ActionPanel'),
-        examples: require('shared/ActionPanel/examples.yml'),
+        source: require('!!docs!shared/FiltersForm'),
+        examples: require('shared/FiltersForm/examples.yml'),
       })
-    }, 'ActionPanel'),
+    }, 'FiltersForm'),
   },
 
   // Templates
