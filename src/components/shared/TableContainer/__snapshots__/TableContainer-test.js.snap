@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableContainer should render with minimum props 1`] = `
+<Uncontrolled(TableContainer)>
+  <TableContainer
+    downloadFormat={null}
+    filters={null}
+    onDownload={null}
+    onFiltersToggle={[Function]}
+    showFilters={false}
+    totals={null}
+  >
+    <div
+      className="TableContainer"
+    >
+      <Container
+        className="TableContainer__toolbar"
+        size="fluid"
+      >
+        <div
+          className="Container--fluid TableContainer__toolbar"
+        >
+          <Grid
+            align="center"
+            className="TableContainer__toolbar__grid"
+            direction="horizontal"
+            gutter={false}
+            justify="start"
+            size={
+              Array [
+                "0 0 100px",
+                "fill",
+                "0 0 100px",
+              ]
+            }
+          >
+            <div
+              className="grid-component TableContainer__toolbar__grid grid-component--center-align grid-component--horizontal-direction grid-component--start-justify"
+            >
+              <div
+                className="TableContainer__toolbar__filters"
+                style={
+                  Object {
+                    "flex": "0 0 100px",
+                  }
+                }
+              >
+                <a
+                  className="TableContainer__link"
+                  href="#"
+                  onClick={[Function]}
+                >
+                  <span>
+                    Filtros avanzados 
+                    <i
+                      className="fa fa-filter"
+                    />
+                  </span>
+                </a>
+              </div>
+              <div
+                className="TableContainer__toolbar__totals"
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />
+              <div
+                className="TableContainer__toolbar__downloads"
+                style={
+                  Object {
+                    "flex": "0 0 100px",
+                  }
+                }
+              />
+            </div>
+          </Grid>
+        </div>
+      </Container>
+      <div
+        className="TableContainer__filters"
+        style={
+          Object {
+            "bottom": 0,
+            "top": 0,
+          }
+        }
+      />
+      <div
+        className="TableContainer__contents"
+      >
+        <Container
+          className={null}
+          size="normal"
+        >
+          <div
+            className="Container--normal"
+          >
+            Test
+          </div>
+        </Container>
+      </div>
+    </div>
+  </TableContainer>
+</Uncontrolled(TableContainer)>
+`;

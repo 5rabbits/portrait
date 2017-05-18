@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TypeCaption should render with minimum props 1`] = `
+<TypeCaption>
+  <span
+    className="type-caption"
+  />
+</TypeCaption>
+`;

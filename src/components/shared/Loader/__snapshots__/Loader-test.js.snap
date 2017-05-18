@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader should render with minimum props 1`] = `
+<Loader>
+  <EmptyView>
+    <div
+      className="empty-view"
+    >
+      <div
+        className="empty-container"
+      >
+        <div
+          className="empty-dialog"
+        >
+          <i
+            className="fa fa-circle-o-notch fa-5x color-soft fa-spin"
+          />
+        </div>
+      </div>
+    </div>
+  </EmptyView>
+</Loader>
+`;

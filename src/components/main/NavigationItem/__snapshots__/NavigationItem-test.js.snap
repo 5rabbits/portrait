@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationItem should render with minimum props 1`] = `
+<NavigationItem
+  component="a"
+  containerProps={Object {}}
+>
+  <li
+    className="navigation-item--top-level"
+  >
+    <a>
+      <span
+        className="hidden-sm"
+      />
+    </a>
+  </li>
+</NavigationItem>
+`;

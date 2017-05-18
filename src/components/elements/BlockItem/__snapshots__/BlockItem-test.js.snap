@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlockItem should render with minimum props 1`] = `
+<BlockItem>
+  <div
+    className="block-item"
+  >
+    <label
+      className="switch mini pull-right"
+    >
+      <input
+        type="checkbox"
+      />
+      <span />
+    </label>
+    <strong>
+      App movil
+    </strong>
+    <span
+      className="type-caption color-secondary ml-xs"
+    >
+      Sosafe
+    </span>
+  </div>
+</BlockItem>
+`;

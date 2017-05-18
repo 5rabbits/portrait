@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container should render with minimum props 1`] = `
+<Container
+  className={null}
+  size="normal"
+>
+  <div
+    className="Container--normal"
+  >
+    Test
+  </div>
+</Container>
+`;

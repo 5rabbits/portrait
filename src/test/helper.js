@@ -1,12 +1,6 @@
 import React from 'react'
-import chai, { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
-import chaiEnzyme from 'chai-enzyme'
-import sinon from 'sinon'
-import sinonChai from 'sinon-chai'
-
-chai.use(sinonChai)
-chai.use(chaiEnzyme())
+import toJSON from 'enzyme-to-json'
 
 beforeEach(() => {
   let sandbox = document.getElementById('sandbox')
@@ -23,8 +17,7 @@ beforeEach(() => {
 
 export {
   React,
-  expect,
-  sinon,
   shallow,
   mount,
+  toJSON,
 }

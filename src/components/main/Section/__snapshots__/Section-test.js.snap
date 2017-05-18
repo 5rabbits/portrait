@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section should render with minimum props 1`] = `
+<Section
+  toolbar={null}
+>
+  <section
+    className="Section"
+  >
+    <section
+      className="Section__contents"
+    >
+      Test
+    </section>
+  </section>
+</Section>
+`;

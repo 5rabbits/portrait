@@ -1,4 +1,4 @@
-import { React, expect, mount } from 'test/helper'
+import { React, toJSON, mount } from 'test/helper'
 import Section from 'main/Section'
 
 describe('Section', () => {
@@ -9,6 +9,6 @@ describe('Section', () => {
       </Section>,
     )
 
-    expect(component).to.be.ok
+    expect(toJSON(component)).toMatchSnapshot()
   })
 })
