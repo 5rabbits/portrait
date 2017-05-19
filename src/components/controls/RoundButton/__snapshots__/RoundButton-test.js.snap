@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoundButton should render with minimum props 1`] = `
+<RoundButton
+  icon={null}
+  label={null}
+>
+  <a
+    className="btn btn-outline-primary btn-sm block-rounded"
+    href="#"
+  >
+    <i
+      className="fa fa-fw fa-btn fa-null"
+    />
+  </a>
+</RoundButton>
+`;

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FiltersForm should render with minimum props 1`] = `
+<FiltersForm
+  className={null}
+>
+  <form
+    className="FiltersForm"
+  >
+    <Container
+      className="FiltersForm__contents"
+      size="normal"
+    >
+      <div
+        className="Container--normal FiltersForm__contents"
+      >
+        <h4
+          className="type-subhead mb-sm"
+        >
+          Filtrar resultados
+        </h4>
+        Test
+      </div>
+    </Container>
+    <Container
+      className="FiltersForm__submit"
+      size="normal"
+    >
+      <div
+        className="Container--normal FiltersForm__submit"
+      >
+        <button
+          className="btn btn-block btn-primary"
+          type="submit"
+        >
+          Buscar
+        </button>
+      </div>
+    </Container>
+  </form>
+</FiltersForm>
+`;

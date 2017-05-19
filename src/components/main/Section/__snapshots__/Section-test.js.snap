@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section should allow to render a toolbar if specified 1`] = `
+<Section
+  className={null}
+  toolbar="TOOLBAR"
+>
+  <section
+    className="Section Section--with-toolbar"
+  >
+    <header
+      className="Section__toolbar"
+    >
+      TOOLBAR
+    </header>
+    <section
+      className="Section__contents"
+    >
+      Test
+    </section>
+  </section>
+</Section>
+`;
+
+exports[`Section should render with minimum props 1`] = `
+<Section
+  className={null}
+  toolbar={null}
+>
+  <section
+    className="Section"
+  >
+    <section
+      className="Section__contents"
+    >
+      Test
+    </section>
+  </section>
+</Section>
+`;

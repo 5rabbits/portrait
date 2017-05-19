@@ -1,0 +1,93 @@
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/material';
+@import '~styles/utils';
+@import '~core/variables';
+
+.playground {
+  display: flex;
+  flex-direction: column;
+}
+
+.CodeMirror {
+  height: auto;
+  padding: $spacing-base * 2;
+  border-top-left-radius: $border-radius-medium-component;
+  border-top-right-radius: $border-radius-medium-component;
+  font-size: $font-size-body;
+  line-height: 1.2em;
+}
+
+.CodeMirror-scroll {
+  overflow: visible !important;
+}
+
+.playgroundCode {
+  order: 2;
+}
+
+.playgroundPreview {
+  order: 3;
+  padding: $spacing-base * 2;
+  border-bottom-left-radius: $border-radius-medium-component;
+  border-bottom-right-radius: $border-radius-medium-component;
+  background-color: $default-divider-color;
+}
+
+.previewArea {
+  display: flex;
+  justify-content: center;
+}
+
+.playground.collapsableCode {
+  .playgroundToggleCodeLink {
+    display: inline-block;
+    background: $primary-color;
+    color: #fff;
+    height: $spacing-base * 4;
+    line-height: $spacing-base * 4;
+    padding: 0 $spacing-base;
+    border-radius: $border-radius-medium-component;
+    cursor: pointer;
+  }
+
+  .playgroundToggleCodeBar {
+    margin-bottom: $spacing-base;
+    order: 1;
+  }
+
+  .playgroundCode:not(.expandedCode) {
+    height: 0;
+    overflow: hidden;
+
+    .playgroundToggleCodeLink {
+      position: absolute;
+    }
+  }
+}
+
+// Props table
+.props-table {
+  td p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Component example
+.component-example {
+  .playgroundPreview {
+    position: relative;
+  }
+}
+
+.component-example + .component-example {
+  margin-top: $spacing-base * 10;
+}
+
+// Examples
+.example {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

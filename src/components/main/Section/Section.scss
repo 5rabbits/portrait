@@ -1,0 +1,19 @@
+@import '~styles/core';
+
+.Section__toolbar {
+  border-bottom: #DBE1E6 solid 1px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.Section__contents {
+  padding-top: $spacing-base * 4;
+}
+
+.Section--with-toolbar {
+  .Section__contents {
+    padding-top: $section-toolbar-height;
+  }
+}

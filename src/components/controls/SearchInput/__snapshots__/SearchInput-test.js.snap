@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput should render with minimum props 1`] = `
+<SearchInput
+  className={null}
+  onChange={null}
+  onClear={null}
+  onSubmit={null}
+  theme="default"
+>
+  <div
+    className="SearchInput SearchInput--default"
+  >
+    <i
+      className="fa fa-search SearchInput__icon"
+    />
+    <input
+      className="form-control SearchInput__input"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      type="text"
+      value=""
+    />
+    <a
+      className="SearchInput__clear"
+      href="#"
+      onClick={[Function]}
+    >
+      ×
+    </a>
+  </div>
+</SearchInput>
+`;

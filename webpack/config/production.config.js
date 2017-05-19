@@ -6,14 +6,34 @@ var Config = require('webpack-config').default
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'source-map',
+  output: {
+    publicPath: '../',
+  },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.s(c|a)ss$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css!sass?sourceMap=true'),
+        test: /\.(css|sass|scss)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use:[
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
       },
     ],
   },
@@ -33,5 +53,9 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
         to: 'scss',
       },
     ]),
+    new HtmlWebpackPlugin({
+      template: path.resolve('docs/index.html'),
+      filename: 'docs/index.html',
+    }),
   ],
 })
