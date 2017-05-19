@@ -1,6 +1,7 @@
 @import '~core/variables';
 
 body {
+  background-color: $body-color;
   color: $default-text-color;
   font-size: $font-size-body;
   line-height: $line-height-body;

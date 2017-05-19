@@ -20,4 +20,10 @@ Layout.propTypes = {
   navigation: childrenPropType,
 }
 
+Layout.defaultProps = {
+  header: null,
+  main: null,
+  navigation: null,
+}
+
 export default Layout

@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationItem should allow to define an icon 1`] = `
+<NavigationItem
+  component="a"
+  containerProps={Object {}}
+  icon="test"
+  isActive={false}
+  label={null}
+>
+  <li
+    className="navigation-item--top-level"
+  >
+    <a>
+      <span
+        className="mr-xs navigation-item__icon"
+      >
+        test
+      </span>
+      <span
+        className="hidden-sm"
+      />
+    </a>
+  </li>
+</NavigationItem>
+`;
+
+exports[`NavigationItem should render nested NavigationItem as a dropdown 1`] = `
+<NavigationItem
+  component="a"
+  containerProps={Object {}}
+  icon={null}
+  isActive={false}
+  label={null}
+>
+  <li
+    className="dropdown navigation-item--top-level"
+  >
+    <a
+      data-toggle="dropdown"
+    >
+      <span
+        className="hidden-sm"
+      />
+      <span
+        className="caret navigation-item__caret"
+      />
+    </a>
+    <ul
+      className="dropdown-menu"
+    >
+      <NavigationItem
+        component="a"
+        containerProps={Object {}}
+        icon={null}
+        isActive={false}
+        label={null}
+      >
+        <li
+          className=""
+        >
+          <a>
+            <span
+              className=""
+            />
+          </a>
+        </li>
+      </NavigationItem>
+      <NavigationItem
+        component="a"
+        containerProps={Object {}}
+        icon={null}
+        isActive={false}
+        label={null}
+      >
+        <li
+          className=""
+        >
+          <a>
+            <span
+              className=""
+            />
+          </a>
+        </li>
+      </NavigationItem>
+    </ul>
+  </li>
+</NavigationItem>
+`;
+
+exports[`NavigationItem should render with minimum props 1`] = `
+<NavigationItem
+  component="a"
+  containerProps={Object {}}
+  icon={null}
+  isActive={false}
+  label={null}
+>
+  <li
+    className="navigation-item--top-level"
+  >
+    <a>
+      <span
+        className="hidden-sm"
+      />
+    </a>
+  </li>
+</NavigationItem>
+`;

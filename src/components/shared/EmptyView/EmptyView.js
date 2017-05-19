@@ -14,4 +14,8 @@ EmptyView.propTypes = {
   children: childrenPropType,
 }
 
+EmptyView.defaultProps = {
+  children: null,
+}
+
 export default EmptyView

@@ -14,10 +14,26 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
     publicPath: '../',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(css|sass|scss)$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css!sass?sourceMap=true'),
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use:[
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
       },
     ],
   },

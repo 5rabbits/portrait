@@ -1,0 +1,15 @@
+code: >
+  <TableContainer
+    downloadFormat="pdf"
+    filters={
+      <FiltersForm>
+        <div className="form-group">
+          <label>Field 1</label>
+          <input className="form-control" />
+        </div>
+      </FiltersForm>
+    }
+    totals="16 Projects"
+    >
+    Some contents
+  </TableContainer>

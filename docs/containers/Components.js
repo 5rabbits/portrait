@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Container } from 'shared'
 import find from 'lodash/find'
 import ComponentDoc from '../components/ComponentDoc'

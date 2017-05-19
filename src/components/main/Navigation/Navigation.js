@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import childrenPropType from 'propTypes/children'
 import classNames from 'classnames'
 
@@ -75,6 +76,10 @@ Navigation.propTypes = {
 
 Navigation.defaultProps = {
   align: 'center',
+  brand: null,
+  children: null,
+  className: null,
+  navigationOptions: null,
   theme: 'default',
 }
 

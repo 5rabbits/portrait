@@ -1,4 +1,5 @@
-import React, { PropTypes, Children } from 'react'
+import React, { Children } from 'react'
+import PropTypes from 'prop-types'
 import childrenPropType from 'propTypes/children'
 import cx from 'classnames'
 import './Grid.scss'
@@ -13,9 +14,10 @@ const Grid = ({ align, children, className, direction, gutter, justify, size, ..
 
   for (let i = 0; i < childrenArray.length; i += 1) {
     columns.push(React.cloneElement(childrenArray[i], {
-      style: Object.assign({}, (childrenArray[i].props.style || {}), {
+      style: {
+        ...(childrenArray[i].props.style || {}),
         flex: normalizeSize(size instanceof Array ? size[i] : size),
-      }),
+      },
     }))
   }
 
@@ -97,6 +99,8 @@ Grid.propTypes = {
 
 Grid.defaultProps = {
   align: 'stretch',
+  children: null,
+  className: null,
   direction: 'horizontal',
   gutter: 'normal',
   justify: 'start',

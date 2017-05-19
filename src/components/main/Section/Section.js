@@ -1,23 +1,39 @@
-import React from 'react'
-import childrenPropType from 'propTypes/children'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import './Section.scss'
 
-const Section = props =>
-  <section className="section-wrapper" id="block-section">
-    <header className="section-controls" id="block-controls">
-      <div className="container-max">
-        {props.controls}
-      </div>
-    </header>
-    <section className="section-content" id="block-content">
-      <div className="container-max">
-        {props.content}
-      </div>
-    </section>
-  </section>
+export default class Section extends PureComponent {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    toolbar: PropTypes.node,
+  }
 
-Section.propTypes = {
-  content: childrenPropType,
-  controls: childrenPropType,
+  static defaultProps = {
+    className: null,
+    toolbar: null,
+  }
+
+  render() {
+    const { children, className, toolbar, ...others } = this.props
+
+    return (
+      <section
+        {...others}
+        className={cx('Section', className, {
+          'Section--with-toolbar': toolbar,
+        })}
+        >
+        {toolbar &&
+          <header className="Section__toolbar">
+            {toolbar}
+          </header>
+        }
+        <section className="Section__contents">
+          {children}
+        </section>
+      </section>
+    )
+  }
 }
-
-export default Section

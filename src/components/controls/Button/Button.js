@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Button = props =>
   <a href={props.href} className="btn btn-primary">
@@ -8,6 +9,11 @@ const Button = props =>
 Button.propTypes = {
   href: PropTypes.string,
   label: PropTypes.string,
+}
+
+Button.defaultProps = {
+  href: null,
+  label: null,
 }
 
 export default Button

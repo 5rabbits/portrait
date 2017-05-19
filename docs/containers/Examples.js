@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Examples = ({ children }) =>
   <div className="example">
@@ -7,6 +8,10 @@ const Examples = ({ children }) =>
 
 Examples.propTypes = {
   children: PropTypes.node,
+}
+
+Examples.defaultProps = {
+  children: null,
 }
 
 export default Examples

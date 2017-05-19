@@ -1,6 +1,8 @@
 export default size => {
   switch (size) {
     case null:
+      return undefined
+
     case undefined:
       return undefined
 

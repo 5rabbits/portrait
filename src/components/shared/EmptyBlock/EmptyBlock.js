@@ -14,4 +14,8 @@ EmptyBlock.propTypes = {
   children: childrenPropType,
 }
 
+EmptyBlock.defaultProps = {
+  children: null,
+}
+
 export default EmptyBlock

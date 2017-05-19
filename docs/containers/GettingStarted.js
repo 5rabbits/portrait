@@ -8,7 +8,7 @@ const GettingStarted = () =>
   <Container>
     <div
       dangerouslySetInnerHTML={{
-        __html: markdown.render(require('raw!../pages/getting-started.md')),
+        __html: markdown.render(require('raw-loader!../pages/getting-started.md')),
       }}
     />
   </Container>

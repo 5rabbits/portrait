@@ -9,8 +9,8 @@ $container-max-width:     1400px !default; // $unit * 175
   @include clearfix;
   margin-right: auto;
   margin-left: auto;
-  padding-left:  $gutter-sm;
-  padding-right: $gutter-sm;
+  padding-left:  $gutter;
+  padding-right: $gutter;
   height: 100%;
 }
 
