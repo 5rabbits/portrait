@@ -76,12 +76,12 @@ exports[`TableContainer if props.filters is defined should render the toggle fil
             >
               <LayoutLink
                 active={false}
-                className={null}
+                className="TableContainer__filters-toggle"
                 href="#"
                 onClick={[Function]}
               >
                 <a
-                  className="LayoutLink"
+                  className="LayoutLink TableContainer__filters-toggle"
                   href="#"
                   onClick={[Function]}
                 >

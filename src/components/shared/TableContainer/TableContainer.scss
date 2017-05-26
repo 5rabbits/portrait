@@ -34,6 +34,11 @@ $transition-duration: 200ms;
   transition: margin-left $transition-duration ease-out;
 }
 
+.TableContainer__filters-toggle {
+  opacity: 1;
+  transition: opacity $transition-duration ease-out;
+}
+
 .TableContainer--filters-visible {
   .TableContainer__toolbar__filters {
     position: fixed;
@@ -45,5 +50,9 @@ $transition-duration: 200ms;
 
   .TableContainer__contents {
     margin-left: $filters-width - $gutter;
+  }
+
+  .TableContainer__filters-toggle {
+    opacity: 0;
   }
 }

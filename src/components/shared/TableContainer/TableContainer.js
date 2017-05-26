@@ -185,7 +185,10 @@ export default class TableContainer extends PureComponent {
             >
             <div className="TableContainer__toolbar__filters">
               {filters &&
-                <LayoutLink onClick={this.handleFiltersToggle}>
+                <LayoutLink
+                  className="TableContainer__filters-toggle"
+                  onClick={this.handleFiltersToggle}
+                  >
                   <span>
                     {i18n.t('TableContainer.showFilters')}
                     {' '}
