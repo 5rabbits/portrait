@@ -1,11 +1,10 @@
 @import '~styles/core';
 
 $filters-width: 320px;
-$toolbar-height: 60px;
 $transition-duration: 200ms;
 
 .TableContainer__toolbar__grid {
-  height: $toolbar-height;
+  height: $table-section-toolbar-height;
 }
 
 .TableContainer__toolbar__filters {
@@ -35,6 +34,11 @@ $transition-duration: 200ms;
   transition: margin-left $transition-duration ease-out;
 }
 
+.TableContainer__filters-toggle {
+  opacity: 1;
+  transition: opacity $transition-duration ease-out;
+}
+
 .TableContainer--filters-visible {
   .TableContainer__toolbar__filters {
     position: fixed;
@@ -47,20 +51,8 @@ $transition-duration: 200ms;
   .TableContainer__contents {
     margin-left: $filters-width - $gutter;
   }
-}
 
-.TableContainer__link {
-  border-radius: 20px;
-  padding: 4px;
-  transition: padding $transition-duration ease-out, background $transition-duration ease-out;
-  font-size: $font-size-footnote;
-  line-height: $line-height-footnote;
-  white-space: nowrap;
-
-  &.TableContainer__link--active,
-  &:hover {
-    background: rgba($primary-color, 0.1);
-    padding: 4px 10px;
-    text-decoration: none;
+  .TableContainer__filters-toggle {
+    opacity: 0;
   }
 }

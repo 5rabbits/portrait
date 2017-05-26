@@ -46,7 +46,8 @@ export default class ComponentDoc extends Component {
 
     if (!examples) {
       examples = []
-    } else if (!(examples instanceof Array)) {
+    }
+    else if (!(examples instanceof Array)) {
       examples = [examples]
     }
 

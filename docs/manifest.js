@@ -171,4 +171,13 @@ export default sortBy([
       })
     }, 'FiltersForm'),
   },
+  {
+    name: 'ScrollLock',
+    getComponent: callback => require.ensure([], require => {
+      callback({
+        source: require('!!docs-loader!shared/ScrollLock'),
+        examples: require('shared/ScrollLock/examples.yml'),
+      })
+    }, 'ScrollLock'),
+  },
 ], 'name')

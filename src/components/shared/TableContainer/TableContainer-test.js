@@ -13,34 +13,16 @@ describe('TableContainer', () => {
   })
 
   describe('if props.filters is defined', () => {
-    describe('if props.showFilters', () => {
-      it('should render the right link', () => {
-        const component = mount(
-          <TableContainer
-            filters={<div>Some filters</div>}
-            showFilters
-            >
-            Test
-          </TableContainer>,
-        )
+    it('should render the toggle filters link', () => {
+      const component = mount(
+        <TableContainer
+          filters={<div>Some filters</div>}
+          >
+          Test
+        </TableContainer>,
+      )
 
-        expect(toJSON(component)).toMatchSnapshot()
-      })
-    })
-
-    describe('if not props.showFilters', () => {
-      it('should render the right link', () => {
-        const component = mount(
-          <TableContainer
-            filters={<div>Some filters</div>}
-            showFilters={false}
-            >
-            Test
-          </TableContainer>,
-        )
-
-        expect(toJSON(component)).toMatchSnapshot()
-      })
+      expect(toJSON(component)).toMatchSnapshot()
     })
   })
 
@@ -148,8 +130,8 @@ describe('TableContainer', () => {
     })
   })
 
-  describe('filtersRef(filters)', () => {
-    describe('if filters is mounting and state.filtersPosition is undefined', () => {
+  describe('containerRef(container)', () => {
+    describe('if container is mounting', () => {
       it('should set the top and bottom position of the filters', () => {
         const component = mount(
           <TableContainer>
@@ -157,12 +139,12 @@ describe('TableContainer', () => {
           </TableContainer>,
         )
         const instance = component.instance()
-        const filters = {
+        const container = {
           getBoundingClientRect: () => ({ top: 20 }),
         }
 
         component.setState({ filtersPosition: null })
-        instance.filtersRef(filters)
+        instance.containerRef(container)
 
         expect(component.state('filtersPosition')).toEqual({
           top: 20,
@@ -171,7 +153,7 @@ describe('TableContainer', () => {
       })
     })
 
-    describe('if filters is unmounting', () => {
+    describe('if container is unmounting', () => {
       it('should not change the state', () => {
         const component = mount(
           <TableContainer>
@@ -182,7 +164,7 @@ describe('TableContainer', () => {
         const spy = jest.fn()
 
         component.setState = spy
-        instance.filtersRef(null)
+        instance.containerRef(null)
 
         expect(spy).not.toHaveBeenCalled()
       })
@@ -242,24 +224,9 @@ describe('TableContainer', () => {
     })
   })
 
-  describe('handleFiltersToggle(event)', () => {
-    it('should prevent the event default action', () => {
-      const event = { preventDefault: jest.fn() }
-      const component = mount(
-        <TableContainer>
-          Test
-        </TableContainer>,
-      )
-      const instance = component.instance()
-
-      instance.handleFiltersToggle(event)
-
-      expect(event.preventDefault).toHaveBeenCalledTimes(1)
-    })
-
+  describe('toggleFilters()', () => {
     describe('if props.showFilters is defined', () => {
       it('should not try to change the state', () => {
-        const event = { preventDefault: jest.fn() }
         const component = mount(
           <TableContainer showFilters={false}>
             Test
@@ -268,14 +235,62 @@ describe('TableContainer', () => {
         const instance = component.instance()
 
         instance.setState = jest.fn()
-        instance.handleFiltersToggle(event)
+        instance.toggleFilters()
 
         expect(instance.setState).not.toHaveBeenCalled()
       })
     })
 
+    describe('if props.showFilters is undefined', () => {
+      describe('if state.showFilters is true', () => {
+        it('should set state.showFilters to false', () => {
+          const component = mount(
+            <TableContainer showFilters={null}>
+              Test
+            </TableContainer>,
+          )
+          const instance = component.instance()
+
+          component.setState({ showFilters: true })
+          instance.toggleFilters()
+
+          expect(component.state('showFilters')).toBe(false)
+        })
+
+        it('should move the page scroll to the top', () => {
+          const component = mount(
+            <TableContainer showFilters={null}>
+              Test
+            </TableContainer>,
+          )
+          const instance = component.instance()
+
+          document.body.scrollTop = 10
+          component.setState({ showFilters: true })
+          instance.toggleFilters()
+
+          expect(document.body.scrollTop).toBe(0)
+        })
+      })
+
+      describe('if state.showFilters is false', () => {
+        it('should set state.showFilters to true', () => {
+          const component = mount(
+            <TableContainer showFilters={null}>
+              Test
+            </TableContainer>,
+          )
+          const instance = component.instance()
+
+          component.setState({ showFilters: false })
+          instance.toggleFilters()
+
+          expect(component.state('showFilters')).toBe(true)
+        })
+      })
+    })
+
     it('should call props.onFiltersToggle passing the opposite of state.showFilters', () => {
-      const event = { preventDefault: jest.fn() }
       const handleFiltersToggle = jest.fn()
       const component = mount(
         <TableContainer
@@ -287,10 +302,26 @@ describe('TableContainer', () => {
       )
       const instance = component.instance()
 
-      instance.handleFiltersToggle(event)
+      instance.toggleFilters()
 
       expect(handleFiltersToggle).toHaveBeenCalledTimes(1)
       expect(handleFiltersToggle).toHaveBeenCalledWith(true)
+    })
+  })
+
+  describe('handleFiltersToggle(event)', () => {
+    it('should invoke toggleFilters', () => {
+      const component = mount(
+        <TableContainer>
+          Test
+        </TableContainer>,
+      )
+      const instance = component.instance()
+
+      instance.toggleFilters = jest.fn()
+      instance.handleFiltersToggle()
+
+      expect(instance.toggleFilters).toHaveBeenCalledTimes(1)
     })
   })
 })
