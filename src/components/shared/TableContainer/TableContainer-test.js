@@ -242,18 +242,51 @@ describe('TableContainer', () => {
     })
 
     describe('if props.showFilters is undefined', () => {
-      it('should revert state.showFilters', () => {
-        const component = mount(
-          <TableContainer showFilters={null}>
-            Test
-          </TableContainer>,
-        )
-        const instance = component.instance()
+      describe('if state.showFilters is true', () => {
+        it('should set state.showFilters to false', () => {
+          const component = mount(
+            <TableContainer showFilters={null}>
+              Test
+            </TableContainer>,
+          )
+          const instance = component.instance()
 
-        component.setState({ showFilters: false })
-        instance.toggleFilters()
+          component.setState({ showFilters: true })
+          instance.toggleFilters()
 
-        expect(component.state('showFilters')).toBe(true)
+          expect(component.state('showFilters')).toBe(false)
+        })
+
+        it('should move the page scroll to the top', () => {
+          const component = mount(
+            <TableContainer showFilters={null}>
+              Test
+            </TableContainer>,
+          )
+          const instance = component.instance()
+
+          document.body.scrollTop = 10
+          component.setState({ showFilters: true })
+          instance.toggleFilters()
+
+          expect(document.body.scrollTop).toBe(0)
+        })
+      })
+
+      describe('if state.showFilters is false', () => {
+        it('should set state.showFilters to true', () => {
+          const component = mount(
+            <TableContainer showFilters={null}>
+              Test
+            </TableContainer>,
+          )
+          const instance = component.instance()
+
+          component.setState({ showFilters: false })
+          instance.toggleFilters()
+
+          expect(component.state('showFilters')).toBe(true)
+        })
       })
     })
 

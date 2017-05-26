@@ -121,6 +121,10 @@ export default class TableContainer extends PureComponent {
 
     if (this.props.showFilters == null) {
       this.setState({ showFilters })
+
+      if (!showFilters) {
+        document.body.scrollTop = 0
+      }
     }
 
     if (this.props.onFiltersToggle) {
