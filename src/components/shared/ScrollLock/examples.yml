@@ -1,0 +1,39 @@
+-
+  description: >
+    Without scroll locking the mouse wheel event propagates to the document.
+
+    This document page must have scroll for this example to work.
+  code: >
+    <div style={{ height: 100, width: 240, overflow: 'auto' }}>
+      <div style={{ height: 120, padding: 8, backgroundColor: '#fff' }}>
+        Scroll with the mouse wheel.
+      </div>
+    </div>
+
+-
+  description: With scroll locking the mouse wheel event doesn't propagate to the document.
+  code: >
+    <ScrollLock>
+      <div style={{ height: 100, width: 240, overflow: 'auto' }}>
+        <div style={{ height: 120, padding: 8, backgroundColor: '#fff' }}>
+          Scroll with the mouse wheel.
+        </div>
+      </div>
+    </ScrollLock>
+
+-
+  description: You can lock the scroll of an inner element.
+  code: >
+    <ScrollLock selector="#scrollable">
+      <div>
+        This is part of the container
+        <div
+          id="scrollable"
+          style={{ height: 100, width: 240, marginTop: 8, overflow: 'auto' }}
+          >
+          <div style={{ height: 120, padding: 8, backgroundColor: '#fff' }}>
+            Scroll with the mouse wheel.
+          </div>
+        </div>
+      </div>
+    </ScrollLock>

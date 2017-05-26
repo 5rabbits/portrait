@@ -10,6 +10,7 @@
   },
   "rules": {
     "arrow-parens": [0],
+    "brace-style": [2, "stroustrup", { "allowSingleLine": false }],
     "import/extensions": [0],
     "import/no-extraneous-dependencies": [0],
     "import/no-unresolved": [0],

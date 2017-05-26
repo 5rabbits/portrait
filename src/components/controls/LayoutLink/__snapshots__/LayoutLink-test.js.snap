@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LayoutLink should render with minimum props 1`] = `
+<LayoutLink
+  active={false}
+  className={null}
+  href="#"
+  onClick={null}
+>
+  <a
+    className="LayoutLink"
+    href="#"
+    onClick={[Function]}
+  >
+    test
+  </a>
+</LayoutLink>
+`;

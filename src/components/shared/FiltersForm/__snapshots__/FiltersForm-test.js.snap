@@ -1,27 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FiltersForm should render with minimum props 1`] = `
+exports[`FiltersForm if context.toggleFilters is defined should render the close filters link 1`] = `
 <FiltersForm
   className={null}
 >
   <form
     className="FiltersForm"
   >
-    <Container
-      className="FiltersForm__contents"
-      size="normal"
+    <ScrollLock
+      selector={null}
     >
-      <div
-        className="Container--normal FiltersForm__contents"
+      <Container
+        className="FiltersForm__contents"
+        size="normal"
       >
-        <h4
-          className="type-subhead mb-sm"
+        <div
+          className="Container--normal FiltersForm__contents"
         >
-          Filtrar resultados
-        </h4>
-        Test
-      </div>
-    </Container>
+          <div
+            className="FiltersForm__filters-toggle"
+          >
+            <LayoutLink
+              active={false}
+              className={null}
+              href="#"
+              onClick={[Function]}
+            >
+              <a
+                className="LayoutLink"
+                href="#"
+                onClick={[Function]}
+              >
+                <span>
+                  Close filters
+                   
+                  <i
+                    className="fa fa-times"
+                  />
+                </span>
+              </a>
+            </LayoutLink>
+          </div>
+          <h4
+            className="type-subhead mb-sm"
+          >
+            Filter results
+          </h4>
+          Test
+        </div>
+      </Container>
+    </ScrollLock>
     <Container
       className="FiltersForm__submit"
       size="normal"
@@ -33,7 +61,52 @@ exports[`FiltersForm should render with minimum props 1`] = `
           className="btn btn-block btn-primary"
           type="submit"
         >
-          Buscar
+          Search
+        </button>
+      </div>
+    </Container>
+  </form>
+</FiltersForm>
+`;
+
+exports[`FiltersForm should render with minimum props 1`] = `
+<FiltersForm
+  className={null}
+>
+  <form
+    className="FiltersForm"
+  >
+    <ScrollLock
+      selector={null}
+    >
+      <Container
+        className="FiltersForm__contents"
+        size="normal"
+      >
+        <div
+          className="Container--normal FiltersForm__contents"
+        >
+          <h4
+            className="type-subhead mb-sm"
+          >
+            Filter results
+          </h4>
+          Test
+        </div>
+      </Container>
+    </ScrollLock>
+    <Container
+      className="FiltersForm__submit"
+      size="normal"
+    >
+      <div
+        className="Container--normal FiltersForm__submit"
+      >
+        <button
+          className="btn btn-block btn-primary"
+          type="submit"
+        >
+          Search
         </button>
       </div>
     </Container>

@@ -24,7 +24,7 @@ exports[`TableContainer getDownloadIcon() if props.downloadFormat is word should
 />
 `;
 
-exports[`TableContainer if props.filters is defined if not props.showFilters should render the right link 1`] = `
+exports[`TableContainer if props.filters is defined should render the toggle filters link 1`] = `
 <TableContainer
   className={null}
   defaultShowFilters={false}
@@ -36,7 +36,7 @@ exports[`TableContainer if props.filters is defined if not props.showFilters sho
   }
   onDownload={null}
   onFiltersToggle={null}
-  showFilters={false}
+  showFilters={null}
   totals={null}
 >
   <div
@@ -74,132 +74,26 @@ exports[`TableContainer if props.filters is defined if not props.showFilters sho
                 }
               }
             >
-              <a
-                className="TableContainer__link"
+              <LayoutLink
+                active={false}
+                className="TableContainer__filters-toggle"
                 href="#"
                 onClick={[Function]}
               >
-                <span>
-                  Filtros avanzados 
-                  <i
-                    className="fa fa-filter"
-                  />
-                </span>
-              </a>
-            </div>
-            <div
-              className="TableContainer__toolbar__totals"
-              style={
-                Object {
-                  "flex": 1,
-                }
-              }
-            />
-            <div
-              className="TableContainer__toolbar__downloads"
-              style={
-                Object {
-                  "flex": "0 0 100px",
-                }
-              }
-            />
-          </div>
-        </Grid>
-      </div>
-    </Container>
-    <div
-      className="TableContainer__filters"
-      style={
-        Object {
-          "bottom": 0,
-          "top": 0,
-        }
-      }
-    >
-      <div>
-        Some filters
-      </div>
-    </div>
-    <div
-      className="TableContainer__contents"
-    >
-      <Container
-        className={null}
-        size="normal"
-      >
-        <div
-          className="Container--normal"
-        >
-          Test
-        </div>
-      </Container>
-    </div>
-  </div>
-</TableContainer>
-`;
-
-exports[`TableContainer if props.filters is defined if props.showFilters should render the right link 1`] = `
-<TableContainer
-  className={null}
-  defaultShowFilters={false}
-  downloadFormat={null}
-  filters={
-    <div>
-      Some filters
-    </div>
-  }
-  onDownload={null}
-  onFiltersToggle={null}
-  showFilters={true}
-  totals={null}
->
-  <div
-    className="TableContainer TableContainer--filters-visible"
-  >
-    <Container
-      className="TableContainer__toolbar"
-      size="fluid"
-    >
-      <div
-        className="Container--fluid TableContainer__toolbar"
-      >
-        <Grid
-          align="center"
-          className="TableContainer__toolbar__grid"
-          direction="horizontal"
-          gutter={false}
-          justify="start"
-          size={
-            Array [
-              "0 0 100px",
-              "fill",
-              "0 0 100px",
-            ]
-          }
-        >
-          <div
-            className="grid-component TableContainer__toolbar__grid grid-component--center-align grid-component--horizontal-direction grid-component--start-justify"
-          >
-            <div
-              className="TableContainer__toolbar__filters"
-              style={
-                Object {
-                  "flex": "0 0 100px",
-                }
-              }
-            >
-              <a
-                className="TableContainer__link TableContainer__link--active"
-                href="#"
-                onClick={[Function]}
-              >
-                <span>
-                  Cerrar filtros 
-                  <i
-                    className="fa fa-times"
-                  />
-                </span>
-              </a>
+                <a
+                  className="LayoutLink TableContainer__filters-toggle"
+                  href="#"
+                  onClick={[Function]}
+                >
+                  <span>
+                    Advanced filters
+                     
+                    <i
+                      className="fa fa-filter"
+                    />
+                  </span>
+                </a>
+              </LayoutLink>
             </div>
             <div
               className="TableContainer__toolbar__totals"
