@@ -1,3 +1,8 @@
+//
+// Typography
+// --------------------------------------------------
+
+
 // Headings
 // -------------------------
 
@@ -87,6 +92,34 @@ mark,
   background-color: $state-warning-bg;
   padding: .2em;
 }
+
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+
+.font-sans           { font-family: $font-family-sans-serif; }
+.font-serif          { font-family: $font-family-serif; }
+.font-mono           { font-family: $font-family-monospace; }
+
+.font-strong         { font-weight: bold; }
+.font-medium         { font-weight: medium; }
+.font-normal         { font-weight: normal; }
+
+.font-italic         { font-style: italic; }
+
+.line-height-small   { line-height: 1.0; }
+.line-height-medium  { line-height: 1.5; }
+.line-height-large   { line-height: 2.0; }
+
+.font-size-normal    { font-size: $font-size-base !important; }
 
 // Contextual colors
 .text-muted {
