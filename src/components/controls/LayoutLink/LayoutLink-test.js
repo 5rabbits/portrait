@@ -4,7 +4,7 @@ import LayoutLink from 'controls/LayoutLink'
 describe('LayoutLink', () => {
   it('should render with minimum props', () => {
     const component = mount(
-      <LayoutLink>test</LayoutLink>
+      <LayoutLink>test</LayoutLink>,
     )
 
     expect(toJSON(component)).toMatchSnapshot()
@@ -13,7 +13,7 @@ describe('LayoutLink', () => {
   describe('handleClick(event)', () => {
     it('should prevent default', () => {
       const component = mount(
-        <LayoutLink>test</LayoutLink>
+        <LayoutLink>test</LayoutLink>,
       )
       const instance = component.instance()
       const event = { preventDefault: jest.fn() }
@@ -27,7 +27,7 @@ describe('LayoutLink', () => {
       it('should invoke props.onClick passing the event', () => {
         const handleClick = jest.fn()
         const component = mount(
-          <LayoutLink onClick={handleClick}>test</LayoutLink>
+          <LayoutLink onClick={handleClick}>test</LayoutLink>,
         )
         const instance = component.instance()
         const event = { preventDefault: jest.fn() }
@@ -43,7 +43,7 @@ describe('LayoutLink', () => {
   describe('if props.href is "#"', () => {
     it('should assign this.handleClick to the underlying anchor', () => {
       const component = mount(
-        <LayoutLink href="#">test</LayoutLink>
+        <LayoutLink href="#">test</LayoutLink>,
       )
       const instance = component.instance()
 
@@ -60,9 +60,8 @@ describe('LayoutLink', () => {
           onClick={handleClick}
           >
           test
-        </LayoutLink>
+        </LayoutLink>,
       )
-      const instance = component.instance()
 
       expect(component.find('a').prop('onClick')).toBe(handleClick)
     })
