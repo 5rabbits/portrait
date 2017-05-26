@@ -32,7 +32,8 @@ exports[`FiltersForm if context.toggleFilters is defined should render the close
                 onClick={[Function]}
               >
                 <span>
-                  Cerrar filtros 
+                  Close filters
+                   
                   <i
                     className="fa fa-times"
                   />
@@ -43,7 +44,7 @@ exports[`FiltersForm if context.toggleFilters is defined should render the close
           <h4
             className="type-subhead mb-sm"
           >
-            Filtrar resultados
+            Filter results
           </h4>
           Test
         </div>
@@ -60,7 +61,7 @@ exports[`FiltersForm if context.toggleFilters is defined should render the close
           className="btn btn-block btn-primary"
           type="submit"
         >
-          Buscar
+          Search
         </button>
       </div>
     </Container>
@@ -88,7 +89,7 @@ exports[`FiltersForm should render with minimum props 1`] = `
           <h4
             className="type-subhead mb-sm"
           >
-            Filtrar resultados
+            Filter results
           </h4>
           Test
         </div>
@@ -105,7 +106,7 @@ exports[`FiltersForm should render with minimum props 1`] = `
           className="btn btn-block btn-primary"
           type="submit"
         >
-          Buscar
+          Search
         </button>
       </div>
     </Container>

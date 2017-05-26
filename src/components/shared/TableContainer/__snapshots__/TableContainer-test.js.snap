@@ -86,7 +86,8 @@ exports[`TableContainer if props.filters is defined should render the toggle fil
                   onClick={[Function]}
                 >
                   <span>
-                    Filtros avanzados 
+                    Advanced filters
+                     
                     <i
                       className="fa fa-filter"
                     />

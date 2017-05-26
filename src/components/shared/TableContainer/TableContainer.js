@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Container, Grid } from 'shared'
 import { LayoutLink } from 'controls'
 import cx from 'classnames'
+import i18n from 'helpers/i18n'
 import './TableContainer.scss'
 
 /**
@@ -185,7 +186,11 @@ export default class TableContainer extends PureComponent {
             <div className="TableContainer__toolbar__filters">
               {filters &&
                 <LayoutLink onClick={this.handleFiltersToggle}>
-                  <span>Filtros avanzados <i className="fa fa-filter" /></span>
+                  <span>
+                    {i18n.t('TableContainer.showFilters')}
+                    {' '}
+                    <i className="fa fa-filter" />
+                  </span>
                 </LayoutLink>
               }
             </div>
@@ -195,7 +200,7 @@ export default class TableContainer extends PureComponent {
             <div className="TableContainer__toolbar__downloads">
               {downloadFormat &&
                 <LayoutLink onClick={this.handleDownload}>
-                  Descargar {this.getDownloadIcon()}
+                  {i18n.t('TableContainer.download')} {this.getDownloadIcon()}
                 </LayoutLink>
               }
             </div>
