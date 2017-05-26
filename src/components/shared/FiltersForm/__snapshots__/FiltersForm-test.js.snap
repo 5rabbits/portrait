@@ -1,5 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`FiltersForm if context.toggleFilters is defined should render the close filters link 1`] = `
+<Wrapper>
+  <FiltersForm
+    className={null}
+  >
+    <form
+      className="FiltersForm"
+    >
+      <Container
+        className="FiltersForm__contents"
+        size="normal"
+      >
+        <div
+          className="Container--normal FiltersForm__contents"
+        >
+          <div
+            className="FiltersForm__filters-toggle"
+          >
+            <LayoutLink
+              active={false}
+              className={null}
+              href="#"
+              onClick={[Function]}
+            >
+              <a
+                className="LayoutLink"
+                href="#"
+                onClick={[Function]}
+              >
+                <span>
+                  Cerrar filtros 
+                  <i
+                    className="fa fa-times"
+                  />
+                </span>
+              </a>
+            </LayoutLink>
+          </div>
+          <h4
+            className="type-subhead mb-sm"
+          >
+            Filtrar resultados
+          </h4>
+          Test
+        </div>
+      </Container>
+      <Container
+        className="FiltersForm__submit"
+        size="normal"
+      >
+        <div
+          className="Container--normal FiltersForm__submit"
+        >
+          <button
+            className="btn btn-block btn-primary"
+            type="submit"
+          >
+            Buscar
+          </button>
+        </div>
+      </Container>
+    </form>
+  </FiltersForm>
+</Wrapper>
+`;
+
 exports[`FiltersForm should render with minimum props 1`] = `
 <FiltersForm
   className={null}

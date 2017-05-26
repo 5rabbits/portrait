@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Container, Grid } from 'shared'
+import { LayoutLink } from 'controls'
 import cx from 'classnames'
 import './TableContainer.scss'
 
@@ -73,11 +74,21 @@ export default class TableContainer extends PureComponent {
     totals: null,
   }
 
+  static childContextTypes = {
+    toggleFilters: PropTypes.func,
+  }
+
   state = {
     filtersPosition: null,
     showFilters: this.props.showFilters == null
       ? this.props.defaultShowFilters
       : this.props.showFilters,
+  }
+
+  getChildContext() {
+    return {
+      toggleFilters: this.toggleFilters,
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -105,11 +116,23 @@ export default class TableContainer extends PureComponent {
     }
   }
 
-  filtersRef = filters => {
-    if (filters && !this.state.filtersPosition) {
+  toggleFilters = () => {
+    const showFilters = !this.state.showFilters
+
+    if (this.props.showFilters == null) {
+      this.setState({ showFilters })
+    }
+
+    if (this.props.onFiltersToggle) {
+      this.props.onFiltersToggle(showFilters)
+    }
+  }
+
+  containerRef = container => {
+    if (container) {
       this.setState({
         filtersPosition: {
-          top: filters.getBoundingClientRect().top,
+          top: container.getBoundingClientRect().top,
           bottom: 0,
         },
       })
@@ -124,18 +147,8 @@ export default class TableContainer extends PureComponent {
     }
   }
 
-  handleFiltersToggle = event => {
-    event.preventDefault()
-
-    const showFilters = !this.state.showFilters
-
-    if (this.props.showFilters == null) {
-      this.setState({ showFilters })
-    }
-
-    if (this.props.onFiltersToggle) {
-      this.props.onFiltersToggle(showFilters)
-    }
+  handleFiltersToggle = () => {
+    this.toggleFilters()
   }
 
   render() {
@@ -153,6 +166,7 @@ export default class TableContainer extends PureComponent {
         className={cx('TableContainer', className, {
           'TableContainer--filters-visible': showFilters,
         })}
+        ref={this.containerRef}
         >
         <Container
           className="TableContainer__toolbar"
@@ -166,20 +180,9 @@ export default class TableContainer extends PureComponent {
             >
             <div className="TableContainer__toolbar__filters">
               {filters &&
-                <a
-                  className={cx('TableContainer__link', {
-                    'TableContainer__link--active': showFilters,
-                  })}
-                  href="#"
-                  onClick={this.handleFiltersToggle}
-                  >
-                  {showFilters &&
-                    <span>Cerrar filtros <i className="fa fa-times" /></span>
-                  }
-                  {!showFilters &&
-                    <span>Filtros avanzados <i className="fa fa-filter" /></span>
-                  }
-                </a>
+                <LayoutLink onClick={this.handleFiltersToggle}>
+                  <span>Filtros avanzados <i className="fa fa-filter" /></span>
+                </LayoutLink>
               }
             </div>
             <div className="TableContainer__toolbar__totals">
@@ -187,13 +190,9 @@ export default class TableContainer extends PureComponent {
             </div>
             <div className="TableContainer__toolbar__downloads">
               {downloadFormat &&
-                <a
-                  className="TableContainer__link"
-                  href="#"
-                  onClick={this.handleDownload}
-                  >
+                <LayoutLink onClick={this.handleDownload}>
                   Descargar {this.getDownloadIcon()}
-                </a>
+                </LayoutLink>
               }
             </div>
           </Grid>
