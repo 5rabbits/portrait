@@ -14,29 +14,19 @@ describe('FiltersForm', () => {
   })
 
   describe('if context.toggleFilters is defined', () => {
-    class Wrapper extends React.Component {
-      static childContextTypes = {
-        toggleFilters: PropTypes.func,
-      }
-
-      getChildContext() {
-        return {
-          toggleFilters: () => {},
-        }
-      }
-
-      render() {
-        return this.props.children
-      }
-    }
-
     it('should render the close filters link', () => {
       const component = mount(
-        <Wrapper>
-          <FiltersForm>
-            Test
-          </FiltersForm>
-        </Wrapper>,
+        <FiltersForm>
+          Test
+        </FiltersForm>,
+        {
+          context: {
+            toggleFilters: () => {},
+          },
+          childContextTypes: {
+            toggleFilters: PropTypes.func,
+          },
+        },
       )
 
       expect(toJSON(component)).toMatchSnapshot()

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { LayoutLink } from 'controls'
-import { Container } from 'shared'
+import { Container, ScrollLock } from 'shared'
 import cx from 'classnames'
 import './FiltersForm.scss'
 
@@ -42,18 +42,20 @@ export default class FiltersForm extends PureComponent {
         {...other}
         className={cx('FiltersForm', className)}
         >
-        <Container className="FiltersForm__contents">
-          {toggleFilters &&
-            <div className="FiltersForm__filters-toggle">
-              <LayoutLink onClick={toggleFilters}>
-                <span>Cerrar filtros <i className="fa fa-times" /></span>
-              </LayoutLink>
-            </div>
-          }
+        <ScrollLock>
+          <Container className="FiltersForm__contents">
+            {toggleFilters &&
+              <div className="FiltersForm__filters-toggle">
+                <LayoutLink onClick={toggleFilters}>
+                  <span>Cerrar filtros <i className="fa fa-times" /></span>
+                </LayoutLink>
+              </div>
+            }
 
-          <h4 className="type-subhead mb-sm">Filtrar resultados</h4>
-          {children}
-        </Container>
+            <h4 className="type-subhead mb-sm">Filtrar resultados</h4>
+            {children}
+          </Container>
+        </ScrollLock>
         <Container className="FiltersForm__submit">
           <button
             className="btn btn-block btn-primary"

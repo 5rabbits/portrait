@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FiltersForm if context.toggleFilters is defined should render the close filters link 1`] = `
-<Wrapper>
-  <FiltersForm
-    className={null}
+<FiltersForm
+  className={null}
+>
+  <form
+    className="FiltersForm"
   >
-    <form
-      className="FiltersForm"
+    <ScrollLock
+      selector={null}
     >
       <Container
         className="FiltersForm__contents"
@@ -46,24 +48,24 @@ exports[`FiltersForm if context.toggleFilters is defined should render the close
           Test
         </div>
       </Container>
-      <Container
-        className="FiltersForm__submit"
-        size="normal"
+    </ScrollLock>
+    <Container
+      className="FiltersForm__submit"
+      size="normal"
+    >
+      <div
+        className="Container--normal FiltersForm__submit"
       >
-        <div
-          className="Container--normal FiltersForm__submit"
+        <button
+          className="btn btn-block btn-primary"
+          type="submit"
         >
-          <button
-            className="btn btn-block btn-primary"
-            type="submit"
-          >
-            Buscar
-          </button>
-        </div>
-      </Container>
-    </form>
-  </FiltersForm>
-</Wrapper>
+          Buscar
+        </button>
+      </div>
+    </Container>
+  </form>
+</FiltersForm>
 `;
 
 exports[`FiltersForm should render with minimum props 1`] = `
@@ -73,21 +75,25 @@ exports[`FiltersForm should render with minimum props 1`] = `
   <form
     className="FiltersForm"
   >
-    <Container
-      className="FiltersForm__contents"
-      size="normal"
+    <ScrollLock
+      selector={null}
     >
-      <div
-        className="Container--normal FiltersForm__contents"
+      <Container
+        className="FiltersForm__contents"
+        size="normal"
       >
-        <h4
-          className="type-subhead mb-sm"
+        <div
+          className="Container--normal FiltersForm__contents"
         >
-          Filtrar resultados
-        </h4>
-        Test
-      </div>
-    </Container>
+          <h4
+            className="type-subhead mb-sm"
+          >
+            Filtrar resultados
+          </h4>
+          Test
+        </div>
+      </Container>
+    </ScrollLock>
     <Container
       className="FiltersForm__submit"
       size="normal"
