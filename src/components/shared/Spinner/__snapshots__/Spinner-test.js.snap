@@ -3,6 +3,7 @@
 exports[`Spinner if props.backgroundColor is defined but props.color is not should add the class "Spinner--force-color" 1`] = `
 <Spinner
   backgroundColor="#f00"
+  className={null}
   color={null}
   ringSize={null}
   size={null}
@@ -25,6 +26,7 @@ exports[`Spinner if props.backgroundColor is defined but props.color is not shou
 exports[`Spinner should render with minimum props 1`] = `
 <Spinner
   backgroundColor={null}
+  className={null}
   color={null}
   ringSize={null}
   size={null}

@@ -6,6 +6,7 @@ import './Spinner.scss'
 export default class Spinner extends PureComponent {
   static propTypes = {
     backgroundColor: PropTypes.string,
+    className: PropTypes.string,
     color: PropTypes.string,
     ringSize: PropTypes.oneOf([
       PropTypes.number, PropTypes.string,
@@ -17,17 +18,18 @@ export default class Spinner extends PureComponent {
 
   static defaultProps = {
     backgroundColor: null,
+    className: null,
     color: null,
     size: null,
     ringSize: null,
   }
 
   render() {
-    const { backgroundColor, color, ringSize, size } = this.props
+    const { backgroundColor, className, color, ringSize, size } = this.props
 
     return (
       <div
-        className={cx('Spinner', {
+        className={cx('Spinner', className, {
           'Spinner--force-color': backgroundColor && !color,
         })}
         style={{
