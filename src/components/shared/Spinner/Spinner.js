@@ -8,10 +8,10 @@ export default class Spinner extends PureComponent {
     backgroundColor: PropTypes.string,
     className: PropTypes.string,
     color: PropTypes.string,
-    ringSize: PropTypes.oneOf([
+    ringSize: PropTypes.oneOfType([
       PropTypes.number, PropTypes.string,
     ]),
-    size: PropTypes.oneOf([
+    size: PropTypes.oneOfType([
       PropTypes.number, PropTypes.string,
     ]),
   }
