@@ -5,7 +5,9 @@ $transition-duration: 200ms;
 .LayoutLink {
   border-radius: 20px;
   padding: 4px;
-  transition: padding $transition-duration ease-out, background $transition-duration ease-out;
+  transition: opacity $transition-duration ease-out,
+    padding $transition-duration ease-out,
+    background $transition-duration ease-out;
   font-size: $font-size-footnote;
   line-height: $line-height-footnote;
   white-space: nowrap;

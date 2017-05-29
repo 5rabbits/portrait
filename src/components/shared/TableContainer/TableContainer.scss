@@ -36,7 +36,6 @@ $transition-duration: 200ms;
 
 .TableContainer__filters-toggle {
   opacity: 1;
-  transition: opacity $transition-duration ease-out;
 }
 
 .TableContainer--filters-visible {
