@@ -113,17 +113,12 @@ export default class TableContainer extends PureComponent {
     if (loading) {
       return (
         <LoadingScreen
-          className="TableContainer__LoadingScreen"
           text={i18n.t('TableContainer.searching')}
         />
       )
     }
 
-    return (
-      <Container>
-        {children}
-      </Container>
-    )
+    return children
   }
 
   getDownloadIcon = () => {
@@ -250,7 +245,9 @@ export default class TableContainer extends PureComponent {
           </div>
         }
         <div className="TableContainer__contents">
-          {this.getContents()}
+          <Container className="TableContainer__Container">
+            {this.getContents()}
+          </Container>
         </div>
       </div>
     )

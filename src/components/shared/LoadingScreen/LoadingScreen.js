@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Container, Spinner } from 'shared'
+import { Spinner } from 'shared'
 import cx from 'classnames'
 import './LoadingScreen.scss'
 
@@ -19,7 +19,7 @@ export default class LoadingScreen extends PureComponent {
     const { className, text } = this.props
 
     return (
-      <Container
+      <div
         className={cx('LoadingScreen', className)}
         >
         <Spinner
@@ -31,7 +31,7 @@ export default class LoadingScreen extends PureComponent {
             {text}
           </div>
         }
-      </Container>
+      </div>
     )
   }
 }

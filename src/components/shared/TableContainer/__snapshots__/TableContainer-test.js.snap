@@ -70,45 +70,49 @@ exports[`TableContainer getContents() if props.loading should display a LoadingS
     <div
       className="TableContainer__contents"
     >
-      <LoadingScreen
-        className="TableContainer__LoadingScreen"
-        text="Searching"
+      <Container
+        className="TableContainer__Container"
+        size="normal"
       >
-        <Container
-          className="LoadingScreen TableContainer__LoadingScreen"
-          size="normal"
+        <div
+          className="Container Container--normal TableContainer__Container"
         >
-          <div
-            className="Container--normal LoadingScreen TableContainer__LoadingScreen"
+          <LoadingScreen
+            className={null}
+            text="Searching"
           >
-            <Spinner
-              backgroundColor={null}
-              className={null}
-              color={null}
-              ringSize={4}
-              size="5em"
-            >
-              <div
-                className="Spinner"
-                style={
-                  Object {
-                    "borderColor": null,
-                    "borderLeftColor": null,
-                    "borderWidth": 4,
-                    "height": "5em",
-                    "width": "5em",
-                  }
-                }
-              />
-            </Spinner>
             <div
-              className="LoadingScreen__text"
+              className="LoadingScreen"
             >
-              Searching
+              <Spinner
+                backgroundColor={null}
+                className={null}
+                color={null}
+                ringSize={4}
+                size="5em"
+              >
+                <div
+                  className="Spinner"
+                  style={
+                    Object {
+                      "borderColor": null,
+                      "borderLeftColor": null,
+                      "borderWidth": 4,
+                      "height": "5em",
+                      "width": "5em",
+                    }
+                  }
+                />
+              </Spinner>
+              <div
+                className="LoadingScreen__text"
+              >
+                Searching
+              </div>
             </div>
-          </div>
-        </Container>
-      </LoadingScreen>
+          </LoadingScreen>
+        </div>
+      </Container>
     </div>
   </div>
 </TableContainer>
