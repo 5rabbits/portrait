@@ -14,6 +14,15 @@ export default sortBy([
     }, 'Button'),
   },
   {
+    name: 'LayoutLink',
+    getComponent: callback => require.ensure([], require => {
+      callback({
+        source: require('!!docs-loader!controls/LayoutLink'),
+        examples: require('controls/LayoutLink/examples.yml'),
+      })
+    }, 'LayoutLink'),
+  },
+  {
     name: 'RoundButton',
     getComponent: callback => require.ensure([], require => {
       callback({
@@ -44,17 +53,6 @@ export default sortBy([
   },
 
   // Main
-  {
-    name: 'SectionToolbar',
-    getComponent: callback => require.ensure([], require => {
-      require('main/SectionToolbar/examples.scss')
-
-      callback({
-        source: require('!!docs-loader!main/SectionToolbar'),
-        examples: require('main/SectionToolbar/examples.yml'),
-      })
-    }, 'SectionToolbar'),
-  },
   {
     name: 'Layout',
     getComponent: callback => require.ensure([], require => {
@@ -93,6 +91,17 @@ export default sortBy([
       })
     }, 'Section'),
   },
+  {
+    name: 'SectionToolbar',
+    getComponent: callback => require.ensure([], require => {
+      require('main/SectionToolbar/examples.scss')
+
+      callback({
+        source: require('!!docs-loader!main/SectionToolbar'),
+        examples: require('main/SectionToolbar/examples.yml'),
+      })
+    }, 'SectionToolbar'),
+  },
 
   // Shared
   {
@@ -105,15 +114,22 @@ export default sortBy([
     }, 'Container'),
   },
   {
-    name: 'TableContainer',
+    name: 'EmptyView',
     getComponent: callback => require.ensure([], require => {
-      require('shared/TableContainer/examples.scss')
-
       callback({
-        source: require('!!docs-loader!shared/TableContainer'),
-        examples: require('shared/TableContainer/examples.yml'),
+        source: require('!!docs-loader!shared/EmptyView'),
+        examples: require('shared/EmptyView/examples.yml'),
       })
-    }, 'TableContainer'),
+    }, 'EmptyView'),
+  },
+  {
+    name: 'FiltersForm',
+    getComponent: callback => require.ensure([], require => {
+      callback({
+        source: require('!!docs-loader!shared/FiltersForm'),
+        examples: require('shared/FiltersForm/examples.yml'),
+      })
+    }, 'FiltersForm'),
   },
   {
     name: 'Grid',
@@ -127,13 +143,13 @@ export default sortBy([
     }, 'Grid'),
   },
   {
-    name: 'FiltersForm',
+    name: 'LoadingScreen',
     getComponent: callback => require.ensure([], require => {
       callback({
-        source: require('!!docs-loader!shared/FiltersForm'),
-        examples: require('shared/FiltersForm/examples.yml'),
+        source: require('!!docs-loader!shared/LoadingScreen'),
+        examples: require('shared/LoadingScreen/examples.yml'),
       })
-    }, 'FiltersForm'),
+    }, 'LoadingScreen'),
   },
   {
     name: 'ScrollLock',
@@ -143,5 +159,25 @@ export default sortBy([
         examples: require('shared/ScrollLock/examples.yml'),
       })
     }, 'ScrollLock'),
+  },
+  {
+    name: 'Spinner',
+    getComponent: callback => require.ensure([], require => {
+      callback({
+        source: require('!!docs-loader!shared/Spinner'),
+        examples: require('shared/Spinner/examples.yml'),
+      })
+    }, 'Spinner'),
+  },
+  {
+    name: 'TableContainer',
+    getComponent: callback => require.ensure([], require => {
+      require('shared/TableContainer/examples.scss')
+
+      callback({
+        source: require('!!docs-loader!shared/TableContainer'),
+        examples: require('shared/TableContainer/examples.yml'),
+      })
+    }, 'TableContainer'),
   },
 ], 'name')
