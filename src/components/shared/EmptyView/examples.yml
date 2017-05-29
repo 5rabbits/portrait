@@ -1,0 +1,22 @@
+-
+  description: With default props.
+  code: >
+    <div style={{ height: 400 }}>
+      <EmptyView />
+    </div>
+
+-
+  description: With custom props.
+  code: >
+    <div style={{ height: 400 }}>
+      <EmptyView
+        title="No projects found"
+        text="Try changing the selected filters"
+        icon={<i className="fa fa-filter" />}
+        action={
+          <button type="button" className="btn btn-primary btn-lg">
+            Reset filters
+          </button>
+        }
+      />
+    </div>

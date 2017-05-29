@@ -5,12 +5,34 @@ import cx from 'classnames'
 import i18n from 'helpers/i18n'
 import './EmptyView.scss'
 
+/**
+ * Used to display an empty results page on a filtered list.
+ */
 export default class EmptyView extends PureComponent {
   static propTypes = {
+    /**
+     * CSS class assigned to the container.
+     */
     className: PropTypes.string,
+
+    /**
+     * Icon to be displayed.
+     */
     icon: PropTypes.node,
+
+    /**
+     * Title to be displayed.
+     */
     title: PropTypes.string,
+
+    /**
+     * Text to be displayed.
+     */
     text: PropTypes.string,
+
+    /**
+     * Action to be displayed.
+     */
     action: PropTypes.node,
   }
 
