@@ -14,9 +14,14 @@
   color: $default-disabled-color;
 
   svg {
-    height: 1em;
+    height: 1em !important;
+    width: auto !important;
+    fill: $default-disabled-color !important;
     display: block;
-    fill: $default-disabled-color;
+  }
+
+  path {
+    fill: inherit !important;
   }
 }
 
