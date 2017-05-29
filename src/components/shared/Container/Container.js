@@ -41,7 +41,7 @@ export default class Container extends PureComponent {
     return (
       <div
         {...other}
-        className={cx(`Container--${size}`, className)}
+        className={cx('Container', `Container--${size}`, className)}
         >
         {children}
       </div>

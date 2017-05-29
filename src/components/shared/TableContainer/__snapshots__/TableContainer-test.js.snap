@@ -20,7 +20,7 @@ exports[`TableContainer getContents() if props.loading should display a LoadingS
       size="fluid"
     >
       <div
-        className="Container--fluid TableContainer__toolbar"
+        className="Container Container--fluid TableContainer__toolbar"
       >
         <Grid
           align="center"
@@ -162,7 +162,7 @@ exports[`TableContainer if props.filters is defined should render the toggle fil
       size="fluid"
     >
       <div
-        className="Container--fluid TableContainer__toolbar"
+        className="Container Container--fluid TableContainer__toolbar"
       >
         <Grid
           align="center"
@@ -247,11 +247,11 @@ exports[`TableContainer if props.filters is defined should render the toggle fil
       className="TableContainer__contents"
     >
       <Container
-        className={null}
+        className="TableContainer__Container"
         size="normal"
       >
         <div
-          className="Container--normal"
+          className="Container Container--normal TableContainer__Container"
         >
           Test
         </div>
@@ -281,7 +281,7 @@ exports[`TableContainer should render with minimum props 1`] = `
       size="fluid"
     >
       <div
-        className="Container--fluid TableContainer__toolbar"
+        className="Container Container--fluid TableContainer__toolbar"
       >
         <Grid
           align="center"
@@ -332,11 +332,11 @@ exports[`TableContainer should render with minimum props 1`] = `
       className="TableContainer__contents"
     >
       <Container
-        className={null}
+        className="TableContainer__Container"
         size="normal"
       >
         <div
-          className="Container--normal"
+          className="Container Container--normal TableContainer__Container"
         >
           Test
         </div>
