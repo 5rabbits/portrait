@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Container, Grid } from 'shared'
+import { Container, Grid, LoadingScreen } from 'shared'
 import { LayoutLink } from 'controls'
 import cx from 'classnames'
 import i18n from 'helpers/i18n'
@@ -40,6 +40,11 @@ export default class TableContainer extends PureComponent {
     filters: PropTypes.node,
 
     /**
+     * Indicates if the loading screen should be visible or not.
+     */
+    loading: PropTypes.bool,
+
+    /**
      * Callback invoked when the user clicks the download button.
      * The first argument is the selected download format.
      */
@@ -69,6 +74,7 @@ export default class TableContainer extends PureComponent {
     defaultShowFilters: false,
     downloadFormat: null,
     filters: null,
+    loading: false,
     onFiltersToggle: null,
     onDownload: null,
     showFilters: null,
@@ -98,6 +104,25 @@ export default class TableContainer extends PureComponent {
         showFilters: nextProps.showFilters,
       })
     }
+  }
+
+  getContents = () => {
+    const { children, loading } = this.props
+
+    if (loading) {
+      return (
+        <LoadingScreen
+          className="TableContainer__LoadingScreen"
+          text={i18n.t('TableContainer.searching')}
+        />
+      )
+    }
+
+    return (
+      <Container>
+        {children}
+      </Container>
+    )
   }
 
   getDownloadIcon = () => {
@@ -157,7 +182,7 @@ export default class TableContainer extends PureComponent {
   }
 
   render() {
-    const { children, className, downloadFormat, filters, totals, ...other } = this.props
+    const { children, className, downloadFormat, filters, loading, totals, ...other } = this.props
     const { filtersPosition, showFilters } = this.state
 
     delete other.defaultShowFilters
@@ -170,6 +195,7 @@ export default class TableContainer extends PureComponent {
         {...other}
         className={cx('TableContainer', className, {
           'TableContainer--filters-visible': showFilters,
+          'TableContainer--loading': loading,
         })}
         ref={this.containerRef}
         >
@@ -202,7 +228,10 @@ export default class TableContainer extends PureComponent {
             </div>
             <div className="TableContainer__toolbar__downloads">
               {downloadFormat &&
-                <LayoutLink onClick={this.handleDownload}>
+                <LayoutLink
+                  className="TableContainer__download"
+                  onClick={this.handleDownload}
+                  >
                   {i18n.t('TableContainer.download')} {this.getDownloadIcon()}
                 </LayoutLink>
               }
@@ -219,9 +248,7 @@ export default class TableContainer extends PureComponent {
           </div>
         }
         <div className="TableContainer__contents">
-          <Container>
-            {children}
-          </Container>
+          {this.getContents()}
         </div>
       </div>
     )

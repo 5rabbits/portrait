@@ -20,6 +20,17 @@ $transition-duration: 200ms;
   flex: 1;
 }
 
+.TableContainer {
+  .LoadingScreen {
+    position: absolute;
+    top: -$table-section-toolbar-height;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+  }
+}
+
 .TableContainer__toolbar__grid {
   height: $table-section-toolbar-height;
 }
@@ -34,6 +45,7 @@ $transition-duration: 200ms;
   line-height: $line-height-subhead;
   text-align: center;
   margin-left: 100px;
+  transition: opacity $transition-duration ease-out;
 }
 
 .TableContainer__toolbar__downloads {
@@ -65,6 +77,13 @@ $transition-duration: 200ms;
   }
 
   .TableContainer__filters-toggle {
+    opacity: 0;
+  }
+}
+
+.TableContainer--loading {
+  .TableContainer__toolbar__totals,
+  .TableContainer__download {
     opacity: 0;
   }
 }

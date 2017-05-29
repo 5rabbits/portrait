@@ -4,6 +4,7 @@ export default {
       TableContainer: {
         showFilters: 'Advanced filters',
         download: 'Download',
+        searching: 'Searching',
       },
       FiltersForm: {
         hideFilters: 'Close filters',

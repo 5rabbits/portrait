@@ -224,6 +224,20 @@ describe('TableContainer', () => {
     })
   })
 
+  describe('getContents()', () => {
+    describe('if props.loading', () => {
+      it('should display a LoadingScreen', () => {
+        const component = mount(
+          <TableContainer loading>
+            Test
+          </TableContainer>,
+        )
+
+        expect(toJSON(component)).toMatchSnapshot()
+      })
+    })
+  })
+
   describe('toggleFilters()', () => {
     describe('if props.showFilters is defined', () => {
       it('should not try to change the state', () => {
