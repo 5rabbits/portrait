@@ -1,6 +1,7 @@
 export Container from './Container'
 export TableContainer from './TableContainer'
 export Grid from './Grid'
+export EmptyView from './EmptyView'
 export LoadingScreen from './LoadingScreen'
 export FiltersForm from './FiltersForm'
 export ScrollLock from './ScrollLock'
