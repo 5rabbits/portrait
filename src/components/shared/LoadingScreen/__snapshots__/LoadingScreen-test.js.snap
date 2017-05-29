@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingScreen if props.text is defined should display the text container 1`] = `
+<LoadingScreen
+  className={null}
+  text="test"
+>
+  <Container
+    className="LoadingScreen"
+    size="normal"
+  >
+    <div
+      className="Container--normal LoadingScreen"
+    >
+      <Spinner
+        backgroundColor={null}
+        className={null}
+        color={null}
+        ringSize={4}
+        size="5em"
+      >
+        <div
+          className="Spinner"
+          style={
+            Object {
+              "borderColor": null,
+              "borderLeftColor": null,
+              "borderWidth": 4,
+              "height": "5em",
+              "width": "5em",
+            }
+          }
+        />
+      </Spinner>
+      <div
+        className="LoadingScreen__text"
+      >
+        test
+      </div>
+    </div>
+  </Container>
+</LoadingScreen>
+`;
+
+exports[`LoadingScreen should render with minimum props 1`] = `
+<LoadingScreen
+  className={null}
+  text={null}
+>
+  <Container
+    className="LoadingScreen"
+    size="normal"
+  >
+    <div
+      className="Container--normal LoadingScreen"
+    >
+      <Spinner
+        backgroundColor={null}
+        className={null}
+        color={null}
+        ringSize={4}
+        size="5em"
+      >
+        <div
+          className="Spinner"
+          style={
+            Object {
+              "borderColor": null,
+              "borderLeftColor": null,
+              "borderWidth": 4,
+              "height": "5em",
+              "width": "5em",
+            }
+          }
+        />
+      </Spinner>
+    </div>
+  </Container>
+</LoadingScreen>
+`;
