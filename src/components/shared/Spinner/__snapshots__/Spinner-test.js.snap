@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner if props.backgroundColor is defined but props.color is not should add the class "Spinner--force-color" 1`] = `
+<Spinner
+  backgroundColor="#f00"
+  color={null}
+  ringSize={null}
+  size={null}
+>
+  <div
+    className="Spinner Spinner--force-color"
+    style={
+      Object {
+        "borderColor": "#f00",
+        "borderLeftColor": null,
+        "borderWidth": null,
+        "height": null,
+        "width": null,
+      }
+    }
+  />
+</Spinner>
+`;
+
+exports[`Spinner should render with minimum props 1`] = `
+<Spinner
+  backgroundColor={null}
+  color={null}
+  ringSize={null}
+  size={null}
+>
+  <div
+    className="Spinner"
+    style={
+      Object {
+        "borderColor": null,
+        "borderLeftColor": null,
+        "borderWidth": null,
+        "height": null,
+        "width": null,
+      }
+    }
+  />
+</Spinner>
+`;
