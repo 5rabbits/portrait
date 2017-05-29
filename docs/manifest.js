@@ -116,24 +116,6 @@ export default sortBy([
     }, 'TableContainer'),
   },
   {
-    name: 'EmptyBlock',
-    getComponent: callback => require.ensure([], require => {
-      callback({
-        source: require('!!docs-loader!shared/EmptyBlock'),
-        examples: require('shared/EmptyBlock/examples.yml'),
-      })
-    }, 'EmptyBlock'),
-  },
-  {
-    name: 'EmptyView',
-    getComponent: callback => require.ensure([], require => {
-      callback({
-        source: require('!!docs-loader!shared/EmptyView'),
-        examples: require('shared/EmptyView/examples.yml'),
-      })
-    }, 'EmptyView'),
-  },
-  {
     name: 'Grid',
     getComponent: callback => require.ensure([], require => {
       require('shared/Grid/examples.scss')
@@ -143,24 +125,6 @@ export default sortBy([
         examples: require('shared/Grid/examples.yml'),
       })
     }, 'Grid'),
-  },
-  {
-    name: 'Loader',
-    getComponent: callback => require.ensure([], require => {
-      callback({
-        source: require('!!docs-loader!shared/Loader'),
-        examples: require('shared/Loader/examples.yml'),
-      })
-    }, 'Loader'),
-  },
-  {
-    name: 'States',
-    getComponent: callback => require.ensure([], require => {
-      callback({
-        source: require('!!docs-loader!shared/States'),
-        examples: require('shared/States/examples.yml'),
-      })
-    }, 'States'),
   },
   {
     name: 'FiltersForm',
