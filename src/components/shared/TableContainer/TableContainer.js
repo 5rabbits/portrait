@@ -50,6 +50,26 @@ export default class TableContainer extends PureComponent {
     noResults: PropTypes.bool,
 
     /**
+     * `action` prop passed to EmptyView.
+     */
+    noResultsAction: PropTypes.node,
+
+    /**
+     * `icon` prop passed to EmptyView.
+     */
+    noResultsIcon: PropTypes.node,
+
+    /**
+     * `text` prop passed to EmptyView.
+     */
+    noResultsText: PropTypes.string,
+
+    /**
+     * `title` prop passed to EmptyView.
+     */
+    noResultsTitle: PropTypes.string,
+
+    /**
      * Callback invoked when the user clicks the download button.
      * The first argument is the selected download format.
      */
@@ -82,6 +102,10 @@ export default class TableContainer extends PureComponent {
     filters: null,
     loading: false,
     noResults: false,
+    noResultsAction: null,
+    noResultsIcon: null,
+    noResultsText: null,
+    noResultsTitle: null,
     onFiltersToggle: null,
     onDownload: null,
     showFilters: null,
@@ -114,7 +138,9 @@ export default class TableContainer extends PureComponent {
   }
 
   getContents = () => {
-    const { children, loading, noResults } = this.props
+    const {
+      children, loading, noResults, noResultsAction, noResultsIcon, noResultsText, noResultsTitle,
+    } = this.props
 
     if (loading) {
       return (
@@ -126,7 +152,12 @@ export default class TableContainer extends PureComponent {
 
     if (noResults) {
       return (
-        <EmptyView />
+        <EmptyView
+          action={noResultsAction}
+          icon={noResultsIcon}
+          text={noResultsText}
+          title={noResultsTitle}
+        />
       )
     }
 
@@ -195,6 +226,10 @@ export default class TableContainer extends PureComponent {
 
     delete other.children
     delete other.defaultShowFilters
+    delete other.noResultsAction
+    delete other.noResultsIcon
+    delete other.noResultsText
+    delete other.noResultsTitle
     delete other.onFiltersToggle
     delete other.onDownload
     delete other.showFilters
