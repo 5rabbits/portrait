@@ -49,7 +49,7 @@ $transition-duration: 200ms;
   }
 
   .TableContainer__contents {
-    margin-left: $filters-width - $gutter;
+    margin-left: $filters-width;
   }
 
   .TableContainer__filters-toggle {
