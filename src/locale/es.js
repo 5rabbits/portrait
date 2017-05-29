@@ -7,7 +7,7 @@ export default {
       },
       FiltersForm: {
         hideFilters: 'Cerrar filtros',
-        title: 'Filtrar resultados',
+        title: 'Filtros',
         submit: 'Buscar',
       },
     },

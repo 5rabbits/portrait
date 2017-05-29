@@ -32,19 +32,19 @@ exports[`FiltersForm if context.toggleFilters is defined should render the close
                 onClick={[Function]}
               >
                 <span>
-                  Close filters
-                   
                   <i
                     className="fa fa-times"
                   />
+                   
+                  Close filters
                 </span>
               </a>
             </LayoutLink>
           </div>
           <h4
-            className="type-subhead mb-sm"
+            className="FiltersForm__title"
           >
-            Filter results
+            Filters
           </h4>
           Test
         </div>
@@ -87,9 +87,9 @@ exports[`FiltersForm should render with minimum props 1`] = `
           className="Container--normal FiltersForm__contents"
         >
           <h4
-            className="type-subhead mb-sm"
+            className="FiltersForm__title"
           >
-            Filter results
+            Filters
           </h4>
           Test
         </div>

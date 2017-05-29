@@ -49,15 +49,15 @@ export default class FiltersForm extends PureComponent {
               <div className="FiltersForm__filters-toggle">
                 <LayoutLink onClick={toggleFilters}>
                   <span>
-                    {i18n.t('FiltersForm.hideFilters')}
-                    {' '}
                     <i className="fa fa-times" />
+                    {' '}
+                    {i18n.t('FiltersForm.hideFilters')}
                   </span>
                 </LayoutLink>
               </div>
             }
 
-            <h4 className="type-subhead mb-sm">
+            <h4 className="FiltersForm__title">
               {i18n.t('FiltersForm.title')}
             </h4>
             {children}
