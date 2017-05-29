@@ -14,7 +14,7 @@ export default class Container extends PureComponent {
     /**
      * The contents to be displayed.
      */
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
 
     /**
      * CSS class assigned to the container.
@@ -30,6 +30,7 @@ export default class Container extends PureComponent {
   }
 
   static defaultProps = {
+    children: null,
     className: null,
     size: 'normal',
   }

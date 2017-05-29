@@ -14,7 +14,7 @@ export default class TableContainer extends PureComponent {
     /**
      * The table to be displayed.
      */
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
 
     /**
      * CSS class assigned to the container.
@@ -70,6 +70,7 @@ export default class TableContainer extends PureComponent {
   }
 
   static defaultProps = {
+    children: null,
     className: null,
     defaultShowFilters: false,
     downloadFormat: null,
@@ -182,9 +183,10 @@ export default class TableContainer extends PureComponent {
   }
 
   render() {
-    const { children, className, downloadFormat, filters, loading, totals, ...other } = this.props
+    const { className, downloadFormat, filters, loading, totals, ...other } = this.props
     const { filtersPosition, showFilters } = this.state
 
+    delete other.children
     delete other.defaultShowFilters
     delete other.onFiltersToggle
     delete other.onDownload
