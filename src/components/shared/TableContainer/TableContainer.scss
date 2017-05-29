@@ -12,6 +12,8 @@ $transition-duration: 200ms;
 .TableContainer__toolbar {
   flex-shrink: 0;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .TableContainer__contents {
@@ -20,7 +22,12 @@ $transition-duration: 200ms;
   flex: 1;
 }
 
+.TableContainer__Container {
+  height: 100%;
+}
+
 .TableContainer {
+  .EmptyView,
   .LoadingScreen {
     position: absolute;
     top: -$table-section-toolbar-height;
@@ -81,6 +88,7 @@ $transition-duration: 200ms;
   }
 }
 
+.TableContainer--no-results,
 .TableContainer--loading {
   .TableContainer__toolbar__totals,
   .TableContainer__download {

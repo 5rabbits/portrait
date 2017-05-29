@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Container, Grid, LoadingScreen } from 'shared'
+import { Container, Grid, LoadingScreen, EmptyView } from 'shared'
 import { LayoutLink } from 'controls'
 import cx from 'classnames'
 import i18n from 'helpers/i18n'
@@ -45,6 +45,11 @@ export default class TableContainer extends PureComponent {
     loading: PropTypes.bool,
 
     /**
+     * Indicates if the "no result" screen should be visible or not.
+     */
+    noResults: PropTypes.bool,
+
+    /**
      * Callback invoked when the user clicks the download button.
      * The first argument is the selected download format.
      */
@@ -76,6 +81,7 @@ export default class TableContainer extends PureComponent {
     downloadFormat: null,
     filters: null,
     loading: false,
+    noResults: false,
     onFiltersToggle: null,
     onDownload: null,
     showFilters: null,
@@ -108,13 +114,19 @@ export default class TableContainer extends PureComponent {
   }
 
   getContents = () => {
-    const { children, loading } = this.props
+    const { children, loading, noResults } = this.props
 
     if (loading) {
       return (
         <LoadingScreen
           text={i18n.t('TableContainer.searching')}
         />
+      )
+    }
+
+    if (noResults) {
+      return (
+        <EmptyView />
       )
     }
 
@@ -178,7 +190,7 @@ export default class TableContainer extends PureComponent {
   }
 
   render() {
-    const { className, downloadFormat, filters, loading, totals, ...other } = this.props
+    const { className, downloadFormat, filters, loading, noResults, totals, ...other } = this.props
     const { filtersPosition, showFilters } = this.state
 
     delete other.children
@@ -193,6 +205,7 @@ export default class TableContainer extends PureComponent {
         className={cx('TableContainer', className, {
           'TableContainer--filters-visible': showFilters,
           'TableContainer--loading': loading,
+          'TableContainer--no-results': noResults,
         })}
         ref={this.containerRef}
         >

@@ -236,6 +236,18 @@ describe('TableContainer', () => {
         expect(toJSON(component)).toMatchSnapshot()
       })
     })
+
+    describe('if props.noResults', () => {
+      it('should display an EmptyView', () => {
+        const component = mount(
+          <TableContainer noResults>
+            Test
+          </TableContainer>,
+        )
+
+        expect(toJSON(component)).toMatchSnapshot()
+      })
+    })
   })
 
   describe('toggleFilters()', () => {

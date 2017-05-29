@@ -107,6 +107,7 @@ export default class App extends Component {
           downloadFormat="excel"
           filters={this.buildFilters()}
           loading={loading}
+          noResults={data && data.length === 0}
           totals={data && `${data.length} Registros`}
           >
           {data && data.map(item =>
