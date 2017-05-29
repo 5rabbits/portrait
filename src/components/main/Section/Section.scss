@@ -1,15 +1,23 @@
 @import '~styles/core';
 
+.Section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .Section__toolbar {
   border-bottom: #DBE1E6 solid 1px;
   position: fixed;
   right: 0;
   left: 0;
   z-index: 1;
+  flex-shrink: 0;
 }
 
 .Section__contents {
   padding-top: $spacing-base * 4;
+  flex: 1;
 }
 
 .Section--with-toolbar {

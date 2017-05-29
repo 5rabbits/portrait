@@ -3,6 +3,23 @@
 $filters-width: 320px;
 $transition-duration: 200ms;
 
+.TableContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.TableContainer__toolbar {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.TableContainer__contents {
+  position: relative;
+  transition: margin-left $transition-duration ease-out;
+  flex: 1;
+}
+
 .TableContainer__toolbar__grid {
   height: $table-section-toolbar-height;
 }
@@ -28,10 +45,6 @@ $transition-duration: 200ms;
   left: -$filters-width;
   width: $filters-width;
   transition: left $transition-duration ease-out;
-}
-
-.TableContainer__contents {
-  transition: margin-left $transition-duration ease-out;
 }
 
 .TableContainer__filters-toggle {
