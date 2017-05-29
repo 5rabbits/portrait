@@ -4,9 +4,19 @@ import { Spinner } from 'shared'
 import cx from 'classnames'
 import './LoadingScreen.scss'
 
+/**
+ * Used to display a page wide loading indicator.
+ */
 export default class LoadingScreen extends PureComponent {
   static propTypes = {
+    /**
+     * CSS class assigned to the container.
+     */
     className: PropTypes.string,
+
+    /**
+     * Text to be displayed under the spinner.
+     */
     text: PropTypes.string,
   }
 
