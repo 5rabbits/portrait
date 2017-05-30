@@ -1,9 +1,11 @@
 import { React, toJSON, mount } from 'test/helper'
-import Loader from 'shared/Loader'
+import Search from 'icons/Search'
 
-describe('Loader', () => {
+describe('Search', () => {
   it('should render with minimum props', () => {
-    const component = mount(<Loader />)
+    const component = mount(
+      <Search />,
+    )
 
     expect(toJSON(component)).toMatchSnapshot()
   })

@@ -4,6 +4,24 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  .control-label {
+    text-transform: uppercase;
+    color: #94A3B1;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .Select-control,
+  .form-control {
+    @include transparentInput();
+  }
+}
+
+.FiltersForm__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
 .FiltersForm__contents,
@@ -32,6 +50,11 @@
     left: 0;
     right: 12px;
     background-image: linear-gradient(-180deg, rgba($body-color, 0) 0%, $body-color 80%);
+  }
+
+  .btn {
+    @include filtersButton();
+    position: relative;
   }
 }
 

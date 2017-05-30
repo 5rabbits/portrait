@@ -11,7 +11,7 @@ exports[`SectionToolbar should render with minimum props 1`] = `
     size="fluid"
   >
     <div
-      className="Container--fluid SectionToolbar"
+      className="Container Container--fluid SectionToolbar"
     >
       <Grid
         align="center"

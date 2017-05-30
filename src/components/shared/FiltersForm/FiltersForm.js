@@ -49,15 +49,15 @@ export default class FiltersForm extends PureComponent {
               <div className="FiltersForm__filters-toggle">
                 <LayoutLink onClick={toggleFilters}>
                   <span>
-                    {i18n.t('FiltersForm.hideFilters')}
-                    {' '}
                     <i className="fa fa-times" />
+                    {' '}
+                    {i18n.t('FiltersForm.hideFilters')}
                   </span>
                 </LayoutLink>
               </div>
             }
 
-            <h4 className="type-subhead mb-sm">
+            <h4 className="FiltersForm__title">
               {i18n.t('FiltersForm.title')}
             </h4>
             {children}
@@ -65,7 +65,7 @@ export default class FiltersForm extends PureComponent {
         </ScrollLock>
         <Container className="FiltersForm__submit">
           <button
-            className="btn btn-block btn-primary"
+            className="btn btn-block btn-lg"
             type="submit"
             >
             {i18n.t('FiltersForm.submit')}
