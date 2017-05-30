@@ -54,6 +54,7 @@
 
   .btn {
     @include filtersButton();
+    position: relative;
   }
 }
 
