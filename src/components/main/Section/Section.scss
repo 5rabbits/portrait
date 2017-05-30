@@ -18,6 +18,9 @@
 .Section__contents {
   padding-top: $spacing-base * 4;
   flex: 1;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
 }
 
 .Section--with-toolbar {

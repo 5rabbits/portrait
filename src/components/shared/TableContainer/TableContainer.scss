@@ -4,6 +4,7 @@ $filters-width: 280px;
 $transition-duration: 200ms;
 
 .TableContainer {
+  flex: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
