@@ -2,6 +2,7 @@
 // Utility classes
 // --------------------------------------------------
 
+
 // Floats
 // -------------------------
 
@@ -53,6 +54,13 @@
   position: fixed;
 }
 
+
+
+
+
+
+
+
 .no-float        { float: none !important; }
 .inline          { float: none !important; display: inline !important; }
 .inline-block    { float: none !important; display: inline-block !important; }
@@ -64,6 +72,10 @@
 .align-top       { vertical-align: top !important; }
 .align-middle    { vertical-align: middle !important; }
 .align-bottom    { vertical-align: bottom !important; }
+
+
+
+
 
 @mixin spacing($type, $direction:false) {
   @if $direction == "x" {

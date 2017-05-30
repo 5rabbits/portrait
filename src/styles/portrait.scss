@@ -2,7 +2,9 @@
 
 //$color-brand: #ff9800;
 
+@import 'settings';
 @import 'tools';
+@import 'base';
 
 @import 'core';
 @import 'bootstrap';

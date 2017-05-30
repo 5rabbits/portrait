@@ -22,6 +22,7 @@ h1, h2, h3, h4, h5, h6,
   color: $headings-color;
   margin-top: 0;
   margin-bottom: 0;
+
   small,
   .small {
     font-weight: normal;
@@ -29,11 +30,13 @@ h1, h2, h3, h4, h5, h6,
     color: $headings-small-color;
   }
 }
+
 h1, .h1,
 h2, .h2,
 h3, .h3 {
   margin-top: $line-height-computed;
   margin-bottom: ($line-height-computed / 2);
+
   small,
   .small {
     font-size: 65%;
@@ -44,11 +47,13 @@ h5, .h5,
 h6, .h6 {
   margin-top: ($line-height-computed / 2);
   margin-bottom: ($line-height-computed / 2);
+
   small,
   .small {
     font-size: 75%;
   }
 }
+
 */
 
 h1, .h1 { font-size: $font-size-h1; }
@@ -120,6 +125,7 @@ mark,
 .line-height-large   { line-height: 2.0; }
 
 .font-size-normal    { font-size: $font-size-base !important; }
+
 
 // Contextual colors
 .text-muted {
