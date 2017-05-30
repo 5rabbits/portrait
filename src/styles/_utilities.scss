@@ -3,7 +3,7 @@
 .block-rounded {  border-radius: 100px !important; }
 .block-rect    {  border-radius:   0px !important; }
 
-// Alignment		 +@import "utilities/theme";
+// Alignment
 
 .text-justify        { text-align: justify !important; }
 .text-nowrap         { white-space: nowrap !important; }
@@ -35,7 +35,7 @@
   @return scale-color($name, $lightness: 80%);
 }
 @function dark-color($name) {
-  @return scale-color($name, $lightness: -80%);
+  @return scale-color($name, $lightness: -40%);
 }
 
 .bg-brand      { background-color: $color-brand;}

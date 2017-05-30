@@ -17,3 +17,18 @@ $typography: (
   $properties: map-get($typography,$name);
   @include expose-map($properties);
 }
+
+body           { @include typography(body); line-height: 1; }
+
+.type-mega     { @include typography(mega);     }
+.type-jumbo    { @include typography(jumbo);    }
+.type-display  { @include typography(display);  }
+
+.type-headline { @include typography(headline); }
+.type-title    { @include typography(title);    }
+.type-subhead  { @include typography(subhead);  }
+
+.type-body     { @include typography(body);     }
+.type-footnote { @include typography(footnote); }
+.type-caption  { @include typography(caption);  }
+.type-small    { @include typography(small);    }

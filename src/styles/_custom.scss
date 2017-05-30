@@ -5,6 +5,8 @@ $brand-info:            $color-info;
 $brand-warning:         $color-warning;
 $brand-danger:          $color-danger;
 
+
+
 $zindex-tooltip:           1070 !default;
 $zindex-popover:           1060 !default;
 $zindex-modal:             1050 !default;
@@ -13,12 +15,18 @@ $zindex-navbar-fixed:      1030 !default;
 $zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
 
+
+
+
+
 $border-radius-base:    3px;
 $border-radius-large:   $border-radius-base;
 $border-radius-small:   $border-radius-base;
 
 $navbar-height:             48px;
 //$navbar-padding-horizontal: 0;
+
+
 
 //=== Inverted navbar
 // Reset inverted navbar basics
@@ -46,4 +54,4 @@ $navbar-inverse-toggle-bg:                  darken($navbar-inverse-bg,5%);
 $navbar-inverse-toggle-hover-bg:            darken($navbar-inverse-bg,5%);
 $navbar-inverse-toggle-icon-bar-bg:         #fff;
 $navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg,5%);
-/*$navbar-inverse-toggle-border-color:        transparent;*/
+$navbar-inverse-toggle-border-color:        transparent;
