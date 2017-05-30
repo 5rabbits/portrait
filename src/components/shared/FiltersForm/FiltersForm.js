@@ -65,7 +65,7 @@ export default class FiltersForm extends PureComponent {
         </ScrollLock>
         <Container className="FiltersForm__submit">
           <button
-            className="btn btn-block btn-primary"
+            className="btn btn-block btn-lg"
             type="submit"
             >
             {i18n.t('FiltersForm.submit')}

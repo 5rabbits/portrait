@@ -65,8 +65,8 @@ export default class App extends Component {
 
   buildFilters = () =>
     <FiltersForm onSubmit={this.handleFiltersSubmit}>
-      <div className="form-group form-input">
-        <label className="form-label">Show results</label>
+      <div className="form-group">
+        <label className="control-label">Show results</label>
         <select
           className="form-control"
           defaultValue={this.state.showResults.toString()}
@@ -76,16 +76,16 @@ export default class App extends Component {
           <option value="false">Simulate no results</option>
         </select>
       </div>
-      <div className="form-group form-input">
-        <label className="form-label">Other filter 1</label>
+      <div className="form-group">
+        <label className="control-label">Other filter 1</label>
         <input type="text" className="form-control" placeholder="Other filter 1" />
       </div>
-      <div className="form-group form-input">
-        <label className="form-label">Other filter 2</label>
+      <div className="form-group">
+        <label className="control-label">Other filter 2</label>
         <input type="text" className="form-control" placeholder="Other filter 2" />
       </div>
-      <div className="form-group form-input">
-        <label className="form-label">Other filter 3</label>
+      <div className="form-group">
+        <label className="control-label">Other filter 3</label>
         <input type="text" className="form-control" placeholder="Other filter 3" />
       </div>
     </FiltersForm>

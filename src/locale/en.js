@@ -13,7 +13,7 @@ export default {
       FiltersForm: {
         hideFilters: 'Close filters',
         title: 'Filters',
-        submit: 'Search',
+        submit: 'Filter',
       },
     },
   },
