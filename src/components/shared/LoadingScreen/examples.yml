@@ -1,0 +1,14 @@
+-
+  description: With default props.
+  code: >
+    <div style={{ height: 300 }}>
+      <LoadingScreen />
+    </div>
+
+-
+  description: With custom text.
+  code: >
+    <div style={{ height: 300 }}>
+      <LoadingScreen text="Loading data..." />
+    </div>
+

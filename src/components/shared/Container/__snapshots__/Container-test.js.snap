@@ -6,7 +6,7 @@ exports[`Container should render with minimum props 1`] = `
   size="normal"
 >
   <div
-    className="Container--normal"
+    className="Container Container--normal"
   >
     Test
   </div>

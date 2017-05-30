@@ -1,0 +1,28 @@
+-
+  description: A simple spinner.
+  code: >
+    <Spinner />
+
+-
+  description: Spinner with text.
+  code: >
+    <span>
+      <Spinner /> Some text
+    </span>
+
+-
+  description: The spinner scales with the font size by default.
+  code: >
+    <span style={{ fontSize: 100 }}>
+      <Spinner /> Some text
+    </span>
+
+-
+  description: Custom colors and sizes.
+  code: >
+    <Spinner
+      backgroundColor="#000"
+      color="#FF5370"
+      ringSize={2}
+      size={100}
+    />

@@ -1,0 +1,41 @@
+@import '~styles/core';
+
+.EmptyView {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.EmptyView__icon {
+  font-size: 7em;
+  margin-bottom: 24px;
+  color: $default-disabled-color;
+
+  svg {
+    height: 1em !important;
+    width: auto !important;
+    fill: $default-disabled-color !important;
+    display: block;
+  }
+
+  path {
+    fill: inherit !important;
+  }
+}
+
+.EmptyView__title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.EmptyView__text {
+  margin-top: 16px;
+  font-size: 16px;
+  color: $default-secondary-text-color;
+}
+
+.EmptyView__action {
+  margin-top: 32px;
+}
