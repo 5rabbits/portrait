@@ -58,10 +58,10 @@ exports[`FiltersForm if context.toggleFilters is defined should render the close
         className="Container Container--normal FiltersForm__submit"
       >
         <button
-          className="btn btn-block btn-primary"
+          className="btn btn-block btn-lg"
           type="submit"
         >
-          Search
+          Filter
         </button>
       </div>
     </Container>
@@ -103,10 +103,10 @@ exports[`FiltersForm should render with minimum props 1`] = `
         className="Container Container--normal FiltersForm__submit"
       >
         <button
-          className="btn btn-block btn-primary"
+          className="btn btn-block btn-lg"
           type="submit"
         >
-          Search
+          Filter
         </button>
       </div>
     </Container>
