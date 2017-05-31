@@ -1,8 +1,7 @@
 //
-// Labels and badge
+// Badge
 // --------------------------------------------------
 
-.label,
 .badge {
   display: inline;
   padding: .2em .6em .3em;
@@ -30,7 +29,7 @@
 }
 
 // Add hover effects, but only for links
-a.label {
+a.badge {
   &:hover,
   &:focus {
     color: $label-link-hover-color;
@@ -42,32 +41,26 @@ a.label {
 // Colors
 // Contextual variations (linked labels get darker on :hover)
 
-.label-default,
-.badge-default, {
+.badge-default {
   @include label-variant($label-default-bg);
 }
 
-.label-primary,
 .badge-primary {
   @include label-variant($label-primary-bg);
 }
 
-.label-success,
 .badge-success {
   @include label-variant($label-success-bg);
 }
 
-.label-info,
 .badge-info {
   @include label-variant($label-info-bg);
 }
 
-.label-warning,
 .badge-warning {
   @include label-variant($label-warning-bg);
 }
 
-.label-danger,
 .badge-danger {
   @include label-variant($label-danger-bg);
 }
