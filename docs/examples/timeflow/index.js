@@ -61,8 +61,8 @@ export default class App extends Component {
     <Navigation
       brand="Timeflow example"
       navigationOptions={
-        <ul className="nav navbar-nav navbar-right user-menu">
-          <li className="dropdown navigation-item--top-level">
+        <ul className="nav navbar-nav navbar-right">
+          <li>
             <a>
               <img
                 alt="Current user"
