@@ -9,7 +9,7 @@ import classNames from 'classnames'
 const Navigation = props =>
   <div
     className={classNames('navbar', 'navbar-fixed-top',
-      `navbar-${props.theme}`, props.className,
+      `navbar-${props.theme}`, 'container-scroll', props.className,
     )}
     >
     <div className="container-max">
@@ -31,7 +31,7 @@ const Navigation = props =>
 
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul
-          className={classNames('nav navbar-nav', {
+          className={classNames('nav navbar-nav', 'scroll-inline', {
             'navbar-nav--align-left': props.align === 'left',
           })}
           >

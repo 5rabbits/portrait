@@ -11,3 +11,14 @@
     margin-right: 0 !important;
   }
 }
+
+@media (min-width: $screen-md-min) {
+  .container-scroll {
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+
+  .scroll-inline {
+    display: inline-flex!important;
+  }
+}

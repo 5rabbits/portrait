@@ -58,9 +58,19 @@ export default class App extends Component {
 
   buildNavigation = () =>
     <Navigation brand="Timeflow example" theme="inverse">
-      <NavigationItem label="Base" />
-      <NavigationItem label="Layout" />
-      <NavigationItem label="Components" />
+      <NavigationItem label="Calendario" />
+      <NavigationItem label="Trabajos" />
+      <NavigationItem label="Pre-liquidaciones" />
+      <NavigationItem label="Liquidaciones" />
+      <NavigationItem label="Administración">
+        <NavigationItem label="Proyectos" />
+        <NavigationItem label="Clientes" />
+        <NavigationItem label="Usuarios" />
+        <NavigationItem label="Tarifas" />
+      </NavigationItem>
+      <NavigationItem label="Signo más" />
+      <NavigationItem label="Contacto" />
+      <NavigationItem label="Icono user" />
     </Navigation>
 
   buildFilters = () =>
