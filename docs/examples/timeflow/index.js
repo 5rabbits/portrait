@@ -4,6 +4,7 @@ import {
 } from 'main'
 import { Button, SearchInput } from 'controls'
 import { TableContainer, FiltersForm } from 'shared'
+import userImageSrc from './user-profile.jpg'
 import TimeEntry from './TimeEntry'
 
 export default class App extends Component {
@@ -57,7 +58,23 @@ export default class App extends Component {
   }
 
   buildNavigation = () =>
-    <Navigation brand="Timeflow example" theme="inverse">
+    <Navigation
+      brand="Timeflow example"
+      navigationOptions={
+        <ul className="nav navbar-nav navbar-right user-menu">
+          <li className="dropdown navigation-item--top-level">
+            <a>
+              <img
+                alt="Current user"
+                src={userImageSrc}
+                width={40}
+              />
+            </a>
+          </li>
+        </ul>
+      }
+      theme="inverse"
+      >
       <NavigationItem label="Calendario" />
       <NavigationItem label="Trabajos" />
       <NavigationItem label="Pre-liquidaciones" />
