@@ -7,9 +7,7 @@ exports[`FiltersForm if context.toggleFilters is defined should render the close
   <form
     className="FiltersForm"
   >
-    <ScrollLock
-      selector={null}
-    >
+    <ScrollLock>
       <Container
         className="FiltersForm__contents"
         size="normal"
@@ -76,9 +74,7 @@ exports[`FiltersForm should render with minimum props 1`] = `
   <form
     className="FiltersForm"
   >
-    <ScrollLock
-      selector={null}
-    >
+    <ScrollLock>
       <Container
         className="FiltersForm__contents"
         size="normal"

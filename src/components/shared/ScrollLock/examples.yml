@@ -22,18 +22,24 @@
     </ScrollLock>
 
 -
-  description: You can lock the scroll of an inner element.
+  description: Independent locking on nested scrollable elements.
   code: >
-    <ScrollLock selector="#scrollable">
-      <div>
-        This is part of the container
-        <div
-          id="scrollable"
-          style={{ height: 100, width: 240, marginTop: 8, overflow: 'auto' }}
-          >
-          <div style={{ height: 120, padding: 8, backgroundColor: '#fff' }}>
-            Scroll with the mouse wheel.
+    <ScrollLock>
+      <div
+        style={{ height: 120, width: 400, marginTop: 8, overflow: 'auto' }}
+        >
+        <div style={{ height: 140, padding: 8, backgroundColor: '#fff' }}>
+          Scroll on the container.
+
+          <div
+            id="scrollable"
+            style={{ height: 80, width: 200, margin: '8px auto 0 auto', overflow: 'auto' }}
+            >
+            <div style={{ height: 100, padding: 8, backgroundColor: '#f00' }}>
+              You can scroll on this element too.
+            </div>
           </div>
         </div>
       </div>
     </ScrollLock>
+

@@ -7,26 +7,15 @@ import ReactDOM from 'react-dom'
 /**
  * This component allows to stop the scroll propagation while using the mouse wheel on an
  * element with overflow.
+ *
+ * **Note:** This behaviour affects the entire child tree.
  */
 export default class ScrollLock extends PureComponent {
   static propTypes = {
     /**
-     * The element that needs scroll locking. You can use the `selector` prop to change the
-     * target to a nested element.
+     * The element that needs scroll locking.
      */
     children: PropTypes.node.isRequired,
-
-    /**
-     * A [query](https://developer.mozilla.org/es/docs/Web/API/Document/querySelector) for the
-     * element that needs scroll locking.
-     *
-     * If `null`, the direct children of ScrollLock will be used as the target element.
-     */
-    selector: PropTypes.string,
-  }
-
-  static defaultProps = {
-    selector: null,
   }
 
   componentDidMount() {
@@ -46,16 +35,7 @@ export default class ScrollLock extends PureComponent {
   }
 
   onScrollHandler = (event) => {
-    let domNode = ReactDOM.findDOMNode(this)
-
-    if (this.props.selector) {
-      domNode = domNode.querySelector(this.props.selector)
-    }
-
-    if (!domNode) {
-      return true
-    }
-
+    const domNode = event.target.parentNode
     const { scrollTop, scrollHeight, clientHeight } = this.getNodeMeasures(domNode)
     const wheelDelta = event.deltaY
     const isDeltaPositive = wheelDelta > 0

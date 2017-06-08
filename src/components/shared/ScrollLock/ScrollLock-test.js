@@ -85,7 +85,9 @@ describe('ScrollLock', () => {
       it('should return true', () => {
         const component = mount(
           <ScrollLock>
-            <div />
+            <div>
+              <div id="scrollable-contents" />
+            </div>
           </ScrollLock>,
         )
         const instance = component.instance()
@@ -96,7 +98,9 @@ describe('ScrollLock', () => {
           clientHeight: 10,
         }))
 
-        const event = {}
+        const event = {
+          target: component.find('#scrollable-contents').getDOMNode(),
+        }
         const returnValue = instance.onScrollHandler(event)
 
         expect(returnValue).toBe(true)
@@ -108,12 +112,17 @@ describe('ScrollLock', () => {
         it('should keep the scroll at the bottom', () => {
           const component = mount(
             <ScrollLock>
-              <div />
+              <div>
+                <div id="scrollable-contents" />
+              </div>
             </ScrollLock>,
           )
           const instance = component.instance()
           const node = component.getDOMNode()
-          const event = { deltaY: 1 }
+          const event = {
+            deltaY: 1,
+            target: component.find('#scrollable-contents').getDOMNode(),
+          }
 
           instance.getNodeMeasures = jest.fn(() => ({
             scrollTop: 12,
@@ -130,11 +139,16 @@ describe('ScrollLock', () => {
         it('should invoke cancelScrollEvent passing the event', () => {
           const component = mount(
             <ScrollLock>
-              <div />
+              <div>
+                <div id="scrollable-contents" />
+              </div>
             </ScrollLock>,
           )
           const instance = component.instance()
-          const event = { deltaY: 1 }
+          const event = {
+            deltaY: 1,
+            target: component.find('#scrollable-contents').getDOMNode(),
+          }
 
           instance.getNodeMeasures = jest.fn(() => ({
             scrollTop: 12,
@@ -154,12 +168,17 @@ describe('ScrollLock', () => {
         it('should keep the scroll at the top', () => {
           const component = mount(
             <ScrollLock>
-              <div />
+              <div>
+                <div id="scrollable-contents" />
+              </div>
             </ScrollLock>,
           )
           const instance = component.instance()
           const node = component.getDOMNode()
-          const event = { deltaY: -1 }
+          const event = {
+            deltaY: -1,
+            target: component.find('#scrollable-contents').getDOMNode(),
+          }
 
           instance.getNodeMeasures = jest.fn(() => ({
             scrollTop: 0,
@@ -176,11 +195,16 @@ describe('ScrollLock', () => {
         it('should invoke cancelScrollEvent passing the event', () => {
           const component = mount(
             <ScrollLock>
-              <div />
+              <div>
+                <div id="scrollable-contents" />
+              </div>
             </ScrollLock>,
           )
           const instance = component.instance()
-          const event = { deltaY: -1 }
+          const event = {
+            deltaY: -1,
+            target: component.find('#scrollable-contents').getDOMNode(),
+          }
 
           instance.getNodeMeasures = jest.fn(() => ({
             scrollTop: 0,
@@ -200,11 +224,16 @@ describe('ScrollLock', () => {
         it('should return true', () => {
           const component = mount(
             <ScrollLock>
-              <div />
+              <div>
+                <div id="scrollable-contents" />
+              </div>
             </ScrollLock>,
           )
           const instance = component.instance()
-          const event = { deltaY: 1 }
+          const event = {
+            deltaY: 1,
+            target: component.find('#scrollable-contents').getDOMNode(),
+          }
 
           instance.getNodeMeasures = jest.fn(() => ({
             scrollTop: 0,
@@ -213,22 +242,6 @@ describe('ScrollLock', () => {
           }))
 
           expect(instance.onScrollHandler(event)).toBe(true)
-        })
-      })
-    })
-
-    describe('if props.selector', () => {
-      describe('if the selector query does not find anything', () => {
-        it('should return true', () => {
-          const component = mount(
-            <ScrollLock selector=".test">
-              <div />
-            </ScrollLock>,
-          )
-          const instance = component.instance()
-          const returnValue = instance.onScrollHandler()
-
-          expect(returnValue).toBe(true)
         })
       })
     })
