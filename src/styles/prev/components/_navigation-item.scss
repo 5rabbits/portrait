@@ -12,13 +12,26 @@
   }
 }
 
-@media (min-width: $screen-md-min) {
+@media (min-width: $screen-sm-min) {
   .container-scroll {
     white-space: nowrap;
-    overflow-x: auto;
+
+    .navbar-collapse {
+      display: flex!important;
+    }
   }
 
   .scroll-inline {
-    display: inline-flex!important;
+    display: flex!important;
+    margin-right: auto;
+    margin-left: auto;
   }
+}
+
+.navbar-collapse {
+  max-height: 100%!important;
+}
+
+.header-button {
+  margin-left: 15px;
 }

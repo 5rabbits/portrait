@@ -91,3 +91,53 @@
   bottom: 0;
   left: 0;
 }
+
+//TimeFlow
+.header-button {
+  width: 74px;
+  text-align: center;
+}
+
+.header-help-button {
+  text-align: center;
+  font-size: 20px;
+
+  p {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    font-size: 16px;
+  }
+}
+
+.add-time-entry,
+.add-time-entry:hover {
+  font-size: 32px;
+  background-color: #0F82F5!important;
+  color: #FFFFFF!important;
+  justify-content: center;
+  line-height: 46px;
+  width: 74px;
+  height: 48px;
+
+  .fa {
+    font-size: 24px;
+
+  }
+}
+
+.add-time-entry.with-icon {
+  padding-bottom: 13px;
+}
+
+.navbar-brand img {
+  margin: 0 auto;
+}
+
+.same-color {
+  color: #fff!important;
+}
+
+.menu-left {
+  left: auto!important;
+  right: 0!important;
+}
