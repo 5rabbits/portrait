@@ -14,11 +14,11 @@ const Navigation = props =>
     >
     <div className="container-max">
       <div className="navbar-header">
-        <button type="button" className="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" className="navbar-toggle collapsed pull-left align-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span className="sr-only">Toggle navigation</span>
           <i className="fa fa-bars" />
         </button>
-        <button type="button" className="navbar-toggle pull-right" aria-expanded="false">
+        <button type="button" className="navbar-toggle pull-right align-right" aria-expanded="false">
           <span className="sr-only">Toggle navigation</span>
           <i className="fa fa-search" />
         </button>

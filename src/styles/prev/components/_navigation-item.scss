@@ -28,6 +28,19 @@
   }
 }
 
+@media (max-width: $screen-xs-max){
+  .container-max {
+    margin-left: -32px;
+    margin-right: -32px;
+  }
+  .align-left {
+    margin-left: 5px!important;
+  }
+  .align-right {
+    margin-right: 5px!important;
+  }
+}
+
 .navbar-collapse {
   max-height: 100%!important;
 }
