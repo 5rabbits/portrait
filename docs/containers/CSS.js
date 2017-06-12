@@ -9,4 +9,8 @@ CSS.propTypes = {
   children: PropTypes.node,
 }
 
+CSS.defaultProps = {
+  children: null,
+}
+
 export default CSS
