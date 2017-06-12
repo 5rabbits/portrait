@@ -3,12 +3,12 @@
 var path = require('path')
 var webpack = require('webpack')
 var Config = require('webpack-config').default
-var DirectoryNamedWebpackPlugin = require('../plugins/directory-named')
+var DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin')
 
 module.exports = new Config().merge({
   cache: true,
   entry: {
-    portrait: path.resolve('src/index.js'),
+    portrait: path.resolve('src/components/index.js'),
     'docs/index': [
       'bootstrap-sass/assets/javascripts/bootstrap',
       'font-awesome/css/font-awesome.css',
@@ -25,42 +25,55 @@ module.exports = new Config().merge({
     pathinfo: true,
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: require.resolve('bootstrap-sass/assets/javascripts/bootstrap'),
         loader: 'imports-loader?jQuery=jquery,$=jquery',
       },
       {
-        test: /\.jsx?$/,
-        loader: 'babel?cacheDirectory=true',
+        test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
+        options: {
+          cacheDirectory: true,
+        },
       },
       {
         test: /\.(eot|ttf|woff|woff2|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?&name=docs/fonts/[name].[ext]',
-      },
-      {
-        test: /\.json$/,
-        loader: 'json',
+        loader: 'file-loader',
+        options: {
+          name: 'docs/fonts/[name].[ext]',
+        },
       },
       {
         test: /\.yml/,
-        loaders: ['json', 'yaml'],
+        use: ['json-loader', 'yaml-loader'],
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    root: path.resolve('src'),
-    extensions: ['', '.js', '.jsx'],
+    modules: [
+      path.resolve('src'),
+      path.resolve('src/components'),
+      path.resolve('src/styles'),
+      path.resolve('node_modules'),
+    ],
+    plugins: [
+      new DirectoryNamedWebpackPlugin({
+        honorIndex: true,
+        honorPackage: true,
+      }),
+    ],
   },
   resolveLoader: {
-    fallback: [
+    modules: [
       path.resolve('webpack/loaders'),
       path.resolve('node_modules'),
     ],
   },
-  plugins: [
-    new webpack.ResolverPlugin(new DirectoryNamedWebpackPlugin(true)),
-  ],
+  node: {
+    fs: 'empty',
+    net: 'empty',
+  },
 })

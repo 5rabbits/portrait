@@ -1,0 +1,23 @@
+@import '~styles/core';
+
+.Container--normal,
+.Container--large,
+.Container--fluid {
+  @include clearfix;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+.Container--normal {
+  max-width: $container-normal-width;
+}
+
+.Container--large {
+  max-width: $container-large-width;
+}
+
+.Container--fluid {
+  max-width: 100%;
+}

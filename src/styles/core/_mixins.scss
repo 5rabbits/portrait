@@ -1,0 +1,44 @@
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin transparentInput() {
+  background-color: #E4E9ED;
+  border: solid 1px #C6D0D6;
+  box-shadow: inset #B3C0C8 0 1px 1px;
+}
+
+@mixin filtersButton() {
+  background-color: #9BAEB7;
+  border-color: #9BAEB7;
+  color: rgba(#fff, 0.75);
+  text-transform: uppercase;
+  font-size: 14px;
+
+  &:hover {
+    outline: none;
+    background-color: darken(#9BAEB7, 10%);
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: darken(#66afe9, 10%);
+    box-shadow: #66afe9 0 0 4px;
+    color: #fff;
+  }
+
+  &:active,
+  &:active:focus {
+    outline: none;
+    box-shadow: inset darken(#9BAEB7, 25%) 0 2px 4px;
+    border-color: #9BAEB7;
+  }
+}

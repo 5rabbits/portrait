@@ -6,10 +6,11 @@
     "browser": true,
     "es6": true,
     "node": true,
-    "mocha": true,
+    "jest": true
   },
   "rules": {
     "arrow-parens": [0],
+    "brace-style": [2, "stroustrup", { "allowSingleLine": false }],
     "import/extensions": [0],
     "import/no-extraneous-dependencies": [0],
     "import/no-unresolved": [0],
@@ -19,8 +20,10 @@
     "react/jsx-closing-bracket-location": [2, { "nonEmpty": "props-aligned", "selfClosing": "tag-aligned" }],
     "react/jsx-curly-spacing": [2, "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-wrap-multilines": [2, { "declaration": true, "assignment": true, "return": true, "arrow": false }],
+    "react/prefer-stateless-function": [0],
     "react/prop-types": [1],
     "react/forbid-prop-types": [0],
-    "semi": [2, "never"],
-  },
+    "semi": [2, "never"]
+  }
 }

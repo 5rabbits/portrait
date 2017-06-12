@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FiltersForm if context.toggleFilters is defined should render the close filters link 1`] = `
+<FiltersForm
+  className={null}
+>
+  <form
+    className="FiltersForm"
+  >
+    <ScrollLock
+      selector={null}
+    >
+      <Container
+        className="FiltersForm__contents"
+        size="normal"
+      >
+        <div
+          className="Container Container--normal FiltersForm__contents"
+        >
+          <div
+            className="FiltersForm__filters-toggle"
+          >
+            <LayoutLink
+              active={false}
+              className={null}
+              href="#"
+              onClick={[Function]}
+            >
+              <a
+                className="LayoutLink"
+                href="#"
+                onClick={[Function]}
+              >
+                <span>
+                  <i
+                    className="fa fa-times"
+                  />
+                   
+                  Close filters
+                </span>
+              </a>
+            </LayoutLink>
+          </div>
+          <h4
+            className="FiltersForm__title"
+          >
+            Filters
+          </h4>
+          Test
+        </div>
+      </Container>
+    </ScrollLock>
+    <Container
+      className="FiltersForm__submit"
+      size="normal"
+    >
+      <div
+        className="Container Container--normal FiltersForm__submit"
+      >
+        <button
+          className="btn btn-block btn-lg"
+          type="submit"
+        >
+          Filter
+        </button>
+      </div>
+    </Container>
+  </form>
+</FiltersForm>
+`;
+
+exports[`FiltersForm should render with minimum props 1`] = `
+<FiltersForm
+  className={null}
+>
+  <form
+    className="FiltersForm"
+  >
+    <ScrollLock
+      selector={null}
+    >
+      <Container
+        className="FiltersForm__contents"
+        size="normal"
+      >
+        <div
+          className="Container Container--normal FiltersForm__contents"
+        >
+          <h4
+            className="FiltersForm__title"
+          >
+            Filters
+          </h4>
+          Test
+        </div>
+      </Container>
+    </ScrollLock>
+    <Container
+      className="FiltersForm__submit"
+      size="normal"
+    >
+      <div
+        className="Container Container--normal FiltersForm__submit"
+      >
+        <button
+          className="btn btn-block btn-lg"
+          type="submit"
+        >
+          Filter
+        </button>
+      </div>
+    </Container>
+  </form>
+</FiltersForm>
+`;

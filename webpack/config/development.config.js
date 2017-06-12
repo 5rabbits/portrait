@@ -15,17 +15,30 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
     publicPath: '/',
   },
   module: {
-    preLoaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'eslint',
+        test: /\.js$/,
+        loader: 'eslint-loader',
         exclude: /node_modules/,
+        enforce: 'pre',
       },
-    ],
-    loaders: [
       {
         test: /\.(css|sass|scss)$/,
-        loaders: ['style', 'css', 'sass?sourceMap=true'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
       },
     ],
   },

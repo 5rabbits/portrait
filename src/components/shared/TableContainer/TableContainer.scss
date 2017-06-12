@@ -1,0 +1,98 @@
+@import '~styles/core';
+
+$filters-width: 280px;
+$transition-duration: 200ms;
+
+.TableContainer {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.TableContainer__toolbar {
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.TableContainer__contents {
+  position: relative;
+  transition: margin-left $transition-duration ease-out;
+  flex: 1;
+}
+
+.TableContainer__Container {
+  height: 100%;
+}
+
+.TableContainer {
+  .EmptyView,
+  .LoadingScreen {
+    position: absolute;
+    top: -$table-section-toolbar-height;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+  }
+}
+
+.TableContainer__toolbar__grid {
+  height: $table-section-toolbar-height;
+}
+
+.TableContainer__toolbar__filters {
+  position: absolute;
+}
+
+.TableContainer__toolbar__totals {
+  color: $default-color;
+  font-size: $font-size-subhead;
+  line-height: $line-height-subhead;
+  text-align: center;
+  margin-left: 100px;
+  transition: opacity $transition-duration ease-out;
+}
+
+.TableContainer__toolbar__downloads {
+  text-align: right;
+}
+
+.TableContainer__filters {
+  position: fixed;
+  left: -$filters-width;
+  width: $filters-width;
+  transition: left $transition-duration ease-out;
+}
+
+.TableContainer__filters-toggle {
+  opacity: 1;
+}
+
+.TableContainer--filters-visible {
+  .TableContainer__toolbar__filters {
+    position: fixed;
+  }
+
+  .TableContainer__filters {
+    left: 0;
+  }
+
+  .TableContainer__contents {
+    margin-left: $filters-width;
+  }
+
+  .TableContainer__filters-toggle {
+    opacity: 0;
+  }
+}
+
+.TableContainer--no-results,
+.TableContainer--loading {
+  .TableContainer__toolbar__totals,
+  .TableContainer__download {
+    opacity: 0;
+  }
+}

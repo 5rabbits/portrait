@@ -1,0 +1,163 @@
+-
+  description: |
+    This example shows multiple Grid uses to build a calendar with time entries.
+
+    **Note:** All `className` props are merely for styling, you can safely remove them to see only
+    the layout placement.
+
+  inline: false
+  code: >
+    const Calendar = () =>
+      <Grid
+        className="calendar"
+        gutter={false}
+        >
+        <CalendarDay date="Monday 24" time="2h 25m">
+          <TimeEntry height={65} />
+          <TimeEntry height={100} />
+        </CalendarDay>
+        <CalendarDay date="Tuesday 25" time="0h 00m" />
+        <CalendarDay date="Wednesday 26" time="3h 00m">
+          <TimeEntry height={220} />
+        </CalendarDay>
+        <CalendarDay date="Thursday 27" time="0h 00m" />
+        <CalendarDay date="Friday 28" time="0h 00m" />
+      </Grid>
+
+    const CalendarDay = ({ children, date, time, ...other }) =>
+      <Grid
+        {...other}
+        className="calendar-day"
+        direction="vertical"
+        size={['min', 'fill']}
+        gutter="small"
+        >
+        <Grid
+          className="calendar-day__head"
+          size={['fill', 'min']}
+          >
+          <div className="calendar-day__date">{date}</div>
+          <div className="calendar-day__duration">{time}</div>
+        </Grid>
+        <Grid
+          className="calendar-day__body"
+          direction="vertical"
+          gutter="small"
+          size="min"
+          >
+          {children}
+        </Grid>
+      </Grid>
+
+    const TimeEntry = ({ height }) =>
+      <Grid
+        className="time-entry"
+        direction="vertical"
+        gutter="small"
+        size={['min', 'fill', 'min']}
+        style={{ height }}
+        >
+        <div>Project</div>
+        <div className="overflow-hidden">
+          Aliqua culpa consequat mollit sint duis ullamco deserunt duis. Irure consequat velit est officia anim tempor.
+        </div>
+        <Grid
+          align="center"
+          size={['fill', 'min']}
+          >
+          <div>00h 00m</div>
+          <i className="fa fa-lock" />
+        </Grid>
+      </Grid>
+
+    ReactDOM.render(<Calendar />, mountNode)
+
+-
+  description: Properties playground.
+  inline: false
+  collapsible: true
+  expanded: false
+  code: >
+    class Example extends React.Component {
+      state = {
+        align: 'center',
+        direction: 'horizontal',
+        gutter: 'normal',
+        justify: 'center',
+        size: 'min',
+      }
+
+      handleChange = (field, event) => {
+        this.setState({
+          [field]: event.target.value,
+        })
+      }
+
+      render() {
+        return (
+          <div className="properties-playground">
+            <form>
+              <Grid size="min">
+                <div>
+                  <label>Align:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'align')} value={this.state.align}>
+                    <option value="start">Start</option>
+                    <option value="center">Center</option>
+                    <option value="end">End</option>
+                    <option value="stretch">Stretch</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Direction:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'direction')} value={this.state.direction}>
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Gutter:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'gutter')} value={this.state.gutter}>
+                    <option value={false}>None</option>
+                    <option value="small">Small</option>
+                    <option value="normal">Normal</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Size:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'size')} value={this.state.size}>
+                    <option value="fill">Fill</option>
+                    <option value="min">Min</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Justify:</label>
+                  {' '}
+                  <select onChange={this.handleChange.bind(null, 'justify')} value={this.state.justify}>
+                    <option value="start">Start</option>
+                    <option value="center">Center</option>
+                    <option value="end">End</option>
+                    <option value="around">Around</option>
+                    <option value="between">Between</option>
+                  </select>
+                </div>
+              </Grid>
+            </form>
+
+            <Grid {...this.state} className="properties-playground__grid">
+              <div style={{ minHeight: 60 }}>1</div>
+              <div style={{ minHeight: 40 }}>2</div>
+              <div style={{ minHeight: 50 }}>3</div>
+              <div style={{ minHeight: 70 }}>4</div>
+              <div style={{ minHeight: 40 }}>5</div>
+            </Grid>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Example />, mountNode)

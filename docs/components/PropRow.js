@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 
-import React, { PropTypes, Component } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import markdown from '../helpers/markdown'
 
 export default class PropRow extends Component {
@@ -19,7 +20,8 @@ export default class PropRow extends Component {
 
           // For anything else
           PropTypes.arrayOf(PropTypes.shape({
-            value: PropTypes.string,
+            value: PropTypes.any,
+            name: PropTypes.string,
             computed: PropTypes.bool,
           })),
         ]),
@@ -34,20 +36,22 @@ export default class PropRow extends Component {
     name: PropTypes.string.isRequired,
   }
 
-  getType = () => {
-    const { definition } = this.props
-
-    switch (definition.type.name) {
+  getType = (type) => {
+    switch (type.name) {
       case 'custom':
-        return `<i>${definition.type.raw}</i>`
+        return `<i>${type.raw}</i>`
 
       case 'enum':
-        return definition.type.value
-          .map(value => `<code>${value.value}</code>`)
-          .join(' or ')
+        return type.value.map(value => `<code>${value.value}</code>`).join(' or ')
+
+      case 'union':
+        return type.value.map(value => this.getType(value)).join(' or ')
+
+      case 'arrayOf':
+        return `array(${this.getType(type.value)})`
 
       default:
-        return definition.type.name
+        return type.name
     }
   }
 
@@ -68,7 +72,7 @@ export default class PropRow extends Component {
     return (
       <tr>
         <td>{name}</td>
-        <td dangerouslySetInnerHTML={{ __html: this.getType() }} />
+        <td dangerouslySetInnerHTML={{ __html: this.getType(definition.type) }} />
         <td>
           {defaultValue &&
             <code>{defaultValue}</code>

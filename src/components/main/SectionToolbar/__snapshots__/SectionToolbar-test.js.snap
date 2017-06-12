@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionToolbar should render with minimum props 1`] = `
+<SectionToolbar
+  actions={null}
+  search={null}
+  title="Test"
+>
+  <Container
+    className="SectionToolbar"
+    size="fluid"
+  >
+    <div
+      className="Container Container--fluid SectionToolbar"
+    >
+      <Grid
+        align="center"
+        className="SectionToolbar__grid"
+        direction="horizontal"
+        gutter="normal"
+        justify="start"
+        size={
+          Array [
+            1,
+            "0 1 480px",
+            1,
+          ]
+        }
+      >
+        <div
+          className="grid-component SectionToolbar__grid grid-component--center-align grid-component--horizontal-direction grid-component--normal-gutter grid-component--start-justify"
+        >
+          <div
+            className="SectionToolbar__title"
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            Test
+          </div>
+          <div
+            className="SectionToolbar__search"
+            style={
+              Object {
+                "flex": "0 1 480px",
+              }
+            }
+          />
+          <div
+            className="SectionToolbar__actions"
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          />
+        </div>
+      </Grid>
+    </div>
+  </Container>
+</SectionToolbar>
+`;

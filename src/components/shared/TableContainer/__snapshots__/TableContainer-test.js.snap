@@ -1,0 +1,477 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableContainer getContents() if props.loading should display a LoadingScreen 1`] = `
+<TableContainer
+  className={null}
+  defaultShowFilters={false}
+  downloadFormat={null}
+  filters={null}
+  loading={true}
+  noResults={false}
+  onDownload={null}
+  onFiltersToggle={null}
+  showFilters={null}
+  totals={null}
+>
+  <div
+    className="TableContainer TableContainer--loading"
+  >
+    <Container
+      className="TableContainer__toolbar"
+      size="fluid"
+    >
+      <div
+        className="Container Container--fluid TableContainer__toolbar"
+      >
+        <Grid
+          align="center"
+          className="TableContainer__toolbar__grid"
+          direction="horizontal"
+          gutter={false}
+          justify="start"
+          size={
+            Array [
+              "0 0 100px",
+              "fill",
+              "0 0 100px",
+            ]
+          }
+        >
+          <div
+            className="grid-component TableContainer__toolbar__grid grid-component--center-align grid-component--horizontal-direction grid-component--start-justify"
+          >
+            <div
+              className="TableContainer__toolbar__filters"
+              style={
+                Object {
+                  "flex": "0 0 100px",
+                }
+              }
+            />
+            <div
+              className="TableContainer__toolbar__totals"
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <div
+              className="TableContainer__toolbar__downloads"
+              style={
+                Object {
+                  "flex": "0 0 100px",
+                }
+              }
+            />
+          </div>
+        </Grid>
+      </div>
+    </Container>
+    <div
+      className="TableContainer__contents"
+    >
+      <Container
+        className="TableContainer__Container"
+        size="normal"
+      >
+        <div
+          className="Container Container--normal TableContainer__Container"
+        >
+          <LoadingScreen
+            className={null}
+            text="Searching"
+          >
+            <div
+              className="LoadingScreen"
+            >
+              <Spinner
+                backgroundColor={null}
+                className={null}
+                color={null}
+                ringSize={4}
+                size="5em"
+              >
+                <div
+                  className="Spinner"
+                  style={
+                    Object {
+                      "borderColor": null,
+                      "borderLeftColor": null,
+                      "borderWidth": 4,
+                      "height": "5em",
+                      "width": "5em",
+                    }
+                  }
+                />
+              </Spinner>
+              <div
+                className="LoadingScreen__text"
+              >
+                Searching
+              </div>
+            </div>
+          </LoadingScreen>
+        </div>
+      </Container>
+    </div>
+  </div>
+</TableContainer>
+`;
+
+exports[`TableContainer getContents() if props.noResults should display an EmptyView 1`] = `
+<TableContainer
+  className={null}
+  defaultShowFilters={false}
+  downloadFormat={null}
+  filters={null}
+  loading={false}
+  noResults={true}
+  onDownload={null}
+  onFiltersToggle={null}
+  showFilters={null}
+  totals={null}
+>
+  <div
+    className="TableContainer TableContainer--no-results"
+  >
+    <Container
+      className="TableContainer__toolbar"
+      size="fluid"
+    >
+      <div
+        className="Container Container--fluid TableContainer__toolbar"
+      >
+        <Grid
+          align="center"
+          className="TableContainer__toolbar__grid"
+          direction="horizontal"
+          gutter={false}
+          justify="start"
+          size={
+            Array [
+              "0 0 100px",
+              "fill",
+              "0 0 100px",
+            ]
+          }
+        >
+          <div
+            className="grid-component TableContainer__toolbar__grid grid-component--center-align grid-component--horizontal-direction grid-component--start-justify"
+          >
+            <div
+              className="TableContainer__toolbar__filters"
+              style={
+                Object {
+                  "flex": "0 0 100px",
+                }
+              }
+            />
+            <div
+              className="TableContainer__toolbar__totals"
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <div
+              className="TableContainer__toolbar__downloads"
+              style={
+                Object {
+                  "flex": "0 0 100px",
+                }
+              }
+            />
+          </div>
+        </Grid>
+      </div>
+    </Container>
+    <div
+      className="TableContainer__contents"
+    >
+      <Container
+        className="TableContainer__Container"
+        size="normal"
+      >
+        <div
+          className="Container Container--normal TableContainer__Container"
+        >
+          <EmptyView
+            action={null}
+            className={null}
+            icon={<Search />}
+            text={null}
+            title={null}
+          >
+            <div
+              className="EmptyView"
+            >
+              <div
+                className="EmptyView__icon"
+              >
+                <Search>
+                  <svg
+                    fill="#000"
+                    height="1em"
+                    viewBox="0 0 53.6 53.6"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M53.6 49.4L37.8 33.6C40.4 30 42 25.7 42 21 42 9.4 32.6 0 21 0S0 9.4 0 21s9.4 21 21 21c4.7 0 9-1.6 12.6-4.2l15.8 15.8L53.6 49.4zM2 21C2 10.5 10.5 2 21 2s19 8.5 19 19 -8.5 19-19 19S2 31.5 2 21z"
+                    />
+                  </svg>
+                </Search>
+              </div>
+              <div
+                className="EmptyView__title"
+              >
+                No results
+              </div>
+              <div
+                className="EmptyView__text"
+              >
+                Try changing the search filters
+              </div>
+            </div>
+          </EmptyView>
+        </div>
+      </Container>
+    </div>
+  </div>
+</TableContainer>
+`;
+
+exports[`TableContainer getDownloadIcon() if props.downloadFormat is csv should return a fa-file-excel-o icon 1`] = `
+<i
+  className="fa fa-file-excel-o"
+/>
+`;
+
+exports[`TableContainer getDownloadIcon() if props.downloadFormat is excel should return a fa-file-excel-o icon 1`] = `
+<i
+  className="fa fa-file-excel-o"
+/>
+`;
+
+exports[`TableContainer getDownloadIcon() if props.downloadFormat is pdf should return a fa-file-pdf-o icon 1`] = `
+<i
+  className="fa fa-file-pdf-o"
+/>
+`;
+
+exports[`TableContainer getDownloadIcon() if props.downloadFormat is word should return a fa-file-word-o icon 1`] = `
+<i
+  className="fa fa-file-excel-o"
+/>
+`;
+
+exports[`TableContainer if props.filters is defined should render the toggle filters link 1`] = `
+<TableContainer
+  className={null}
+  defaultShowFilters={false}
+  downloadFormat={null}
+  filters={
+    <div>
+      Some filters
+    </div>
+  }
+  loading={false}
+  noResults={false}
+  onDownload={null}
+  onFiltersToggle={null}
+  showFilters={null}
+  totals={null}
+>
+  <div
+    className="TableContainer"
+  >
+    <Container
+      className="TableContainer__toolbar"
+      size="fluid"
+    >
+      <div
+        className="Container Container--fluid TableContainer__toolbar"
+      >
+        <Grid
+          align="center"
+          className="TableContainer__toolbar__grid"
+          direction="horizontal"
+          gutter={false}
+          justify="start"
+          size={
+            Array [
+              "0 0 100px",
+              "fill",
+              "0 0 100px",
+            ]
+          }
+        >
+          <div
+            className="grid-component TableContainer__toolbar__grid grid-component--center-align grid-component--horizontal-direction grid-component--start-justify"
+          >
+            <div
+              className="TableContainer__toolbar__filters"
+              style={
+                Object {
+                  "flex": "0 0 100px",
+                }
+              }
+            >
+              <LayoutLink
+                active={false}
+                className="TableContainer__filters-toggle"
+                href="#"
+                onClick={[Function]}
+              >
+                <a
+                  className="LayoutLink TableContainer__filters-toggle"
+                  href="#"
+                  onClick={[Function]}
+                >
+                  <span>
+                    Advanced filters
+                     
+                    <i
+                      className="fa fa-filter"
+                    />
+                  </span>
+                </a>
+              </LayoutLink>
+            </div>
+            <div
+              className="TableContainer__toolbar__totals"
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <div
+              className="TableContainer__toolbar__downloads"
+              style={
+                Object {
+                  "flex": "0 0 100px",
+                }
+              }
+            />
+          </div>
+        </Grid>
+      </div>
+    </Container>
+    <div
+      className="TableContainer__filters"
+      style={
+        Object {
+          "bottom": 0,
+          "top": 0,
+        }
+      }
+    >
+      <div>
+        Some filters
+      </div>
+    </div>
+    <div
+      className="TableContainer__contents"
+    >
+      <Container
+        className="TableContainer__Container"
+        size="normal"
+      >
+        <div
+          className="Container Container--normal TableContainer__Container"
+        >
+          Test
+        </div>
+      </Container>
+    </div>
+  </div>
+</TableContainer>
+`;
+
+exports[`TableContainer should render with minimum props 1`] = `
+<TableContainer
+  className={null}
+  defaultShowFilters={false}
+  downloadFormat={null}
+  filters={null}
+  loading={false}
+  noResults={false}
+  onDownload={null}
+  onFiltersToggle={null}
+  showFilters={null}
+  totals={null}
+>
+  <div
+    className="TableContainer"
+  >
+    <Container
+      className="TableContainer__toolbar"
+      size="fluid"
+    >
+      <div
+        className="Container Container--fluid TableContainer__toolbar"
+      >
+        <Grid
+          align="center"
+          className="TableContainer__toolbar__grid"
+          direction="horizontal"
+          gutter={false}
+          justify="start"
+          size={
+            Array [
+              "0 0 100px",
+              "fill",
+              "0 0 100px",
+            ]
+          }
+        >
+          <div
+            className="grid-component TableContainer__toolbar__grid grid-component--center-align grid-component--horizontal-direction grid-component--start-justify"
+          >
+            <div
+              className="TableContainer__toolbar__filters"
+              style={
+                Object {
+                  "flex": "0 0 100px",
+                }
+              }
+            />
+            <div
+              className="TableContainer__toolbar__totals"
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <div
+              className="TableContainer__toolbar__downloads"
+              style={
+                Object {
+                  "flex": "0 0 100px",
+                }
+              }
+            />
+          </div>
+        </Grid>
+      </div>
+    </Container>
+    <div
+      className="TableContainer__contents"
+    >
+      <Container
+        className="TableContainer__Container"
+        size="normal"
+      >
+        <div
+          className="Container Container--normal TableContainer__Container"
+        >
+          Test
+        </div>
+      </Container>
+    </div>
+  </div>
+</TableContainer>
+`;

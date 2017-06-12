@@ -1,0 +1,49 @@
+$container-default-width: 1120px !default; // $unit * 140
+$container-page-width:    1120px !default; // $unit * 140
+$container-max-width:     1400px !default; // $unit * 175
+
+.container,
+.container-max,
+.container-fluid,
+.container-page {
+  @include clearfix;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  $gutter;
+  padding-right: $gutter;
+  height: 100%;
+}
+
+.container       { max-width: $container-default-width; }
+.container-page  { max-width: $container-page-width; }
+.container-max   { max-width: $container-max-width; }
+.container-fluid { max-width: 100%; }
+
+.container-page {
+  height: auto;
+  padding-top: $gutter * 2;
+  padding-bottom: $gutter * 2;
+}
+
+@include response(to mobile) {
+  .container-page {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@include response(from mobile) {
+  .container-page {
+    padding-top: $gutter * 2;
+    padding-bottom: $gutter * 2;
+  }
+}
+
+@include response(from desktop) {
+  .container-page {
+    padding-top: $gutter * 3;
+    padding-bottom: $gutter * 3;
+  }
+}
+
+

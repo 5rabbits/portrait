@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Layout, Navigation, NavigationItem } from 'main'
 import { Link } from 'react-router'
 import manifest from '../manifest'
@@ -105,7 +106,11 @@ const App = ({ children, router }) => {
 
 App.propTypes = {
   children: PropTypes.node,
-  router: PropTypes.object,
+  router: PropTypes.object.isRequired,
+}
+
+App.defaultProps = {
+  children: null,
 }
 
 export default App

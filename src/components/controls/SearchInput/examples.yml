@@ -1,0 +1,29 @@
+-
+  description: Using `onChange` for real time search.
+  code: >
+    <SearchInput
+      onChange={value => console.log(value)}
+      placeholder="Write to search"
+      style={{ width: '400px' }}
+    />
+
+-
+  description: Using `onSubmit` and `onClear` to search when the user presses ENTER.
+  code: >
+    <SearchInput
+      onClear={value => console.log('cleared')}
+      onSubmit={value => console.log('submited:', value)}
+      placeholder="Write to search"
+      style={{ width: '400px' }}
+    />
+
+-
+  description: Alternate theme.
+  code: >
+    <div style={{ padding: 16, background: '#fff' }}>
+      <SearchInput
+        placeholder="Write to search"
+        style={{ width: '400px' }}
+        theme="alternate"
+      />
+    </div>
