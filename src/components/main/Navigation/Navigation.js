@@ -9,16 +9,16 @@ import classNames from 'classnames'
 const Navigation = props =>
   <div
     className={classNames('navbar', 'navbar-fixed-top',
-      `navbar-${props.theme}`, props.className,
+      `navbar-${props.theme}`, 'container-scroll', props.className,
     )}
     >
     <div className="container-max">
       <div className="navbar-header">
-        <button type="button" className="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" className="navbar-toggle collapsed pull-left align-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span className="sr-only">Toggle navigation</span>
           <i className="fa fa-bars" />
         </button>
-        <button type="button" className="navbar-toggle pull-right" aria-expanded="false">
+        <button type="button" className="navbar-toggle pull-right align-right" aria-expanded="false">
           <span className="sr-only">Toggle navigation</span>
           <i className="fa fa-search" />
         </button>
@@ -31,7 +31,7 @@ const Navigation = props =>
 
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul
-          className={classNames('nav navbar-nav', {
+          className={classNames('nav navbar-nav', 'scroll-inline', {
             'navbar-nav--align-left': props.align === 'left',
           })}
           >

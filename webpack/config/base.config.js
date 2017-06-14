@@ -46,6 +46,13 @@ module.exports = new Config().merge({
         },
       },
       {
+        test: /\.(png|jpe?g|gif)?$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'docs/images/[name].[ext]',
+        },
+      },
+      {
         test: /\.yml/,
         use: ['json-loader', 'yaml-loader'],
         exclude: /node_modules/,
