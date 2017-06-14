@@ -10,10 +10,10 @@
 
 .link-border {
   & {
-    border-bottom: 1px solid dark-color(divider);
+    border-bottom: 1px solid dark-text-color(divider);
   }
   &:hover {
-    border-color: dark-color(hint);
+    border-color: dark-text-color(hint);
   }
 }
 

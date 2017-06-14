@@ -1,0 +1,125 @@
+.docs-theme-default-solid      { background-color: $color-dark-solid; }
+.docs-theme-default-icon       { background-color: $color-dark-icon; }
+.docs-theme-default-primary    { background-color: $color-dark-primary; }
+.docs-theme-default-secondary  { background-color: $color-dark-secondary; }
+.docs-theme-default-disabled   { background-color: $color-dark-disabled; }
+.docs-theme-default-hint       { background-color: $color-dark-hint; }
+.docs-theme-default-divider    { background-color: $color-dark-divider; }
+
+.docs-theme-inverse-solid      { background-color: $color-light-solid; }
+.docs-theme-inverse-icon       { background-color: $color-light-icon; }
+.docs-theme-inverse-primary    { background-color: $color-light-primary; }
+.docs-theme-inverse-secondary  { background-color: $color-light-secondary; }
+.docs-theme-inverse-disabled   { background-color: $color-light-disabled; }
+.docs-theme-inverse-hint       { background-color: $color-light-hint; }
+.docs-theme-inverse-divider    { background-color: $color-light-divider; }
+
+//Schema
+.swatch-color-lg {
+  padding-bottom: 60%;
+}
+
+.swatch-color-sm {
+  padding-bottom: 20%;
+}
+
+
+//Para variables generic colors
+
+.brand-color {
+  background-color: $color-brand;
+}
+
+.highlight-color {
+  background-color: $color-highlight;
+}
+
+.accent-color {
+  background-color: $color-accent;
+}
+
+.primary-color {
+  background-color: $color-primary;
+}
+
+.secondary-color {
+  background-color: $color-secondary;
+}
+
+.base-color {
+  background-color: $color-base;
+}
+
+.block-color {
+  background-color: $color-block;
+}
+
+.text-color {
+  background-color: $color-text;
+}
+
+.inverse-color {
+  background-color: $color-inverse;
+}
+
+.success-color {
+  background-color: $color-success;
+}
+
+.info-color {
+  background-color: $color-info;
+}
+
+.warning-color {
+  background-color: $color-warning;
+}
+
+.danger-color {
+  background-color: $color-danger;
+}
+
+//Others
+
+.flex-height {
+  height: 50px;
+}
+
+.table-width {
+  table-layout: fixed;
+}
+
+.to-align {
+  height: 50px;
+}
+
+.btn-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  background-color: #052e56;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+#contents:before {
+  display: block;
+  content: " ";
+  margin-top: -200px;
+  height: 200px;
+  visibility: hidden;
+}
+
+.index-items:before {
+  display: block;
+  content: " ";
+  margin-top: -30px;
+  height: 30px;
+  visibility: hidden;
+}
+
+code {
+  line-height: 1.5;
+}
