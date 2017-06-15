@@ -1,6 +1,6 @@
 {
   "name": "portrait",
-  "version": "0.5.0-beta.3",
+  "version": "0.5.0-beta.4",
   "description": "Base design for all 5Rabbits products",
   "keywords": [
     "commonjs",
@@ -18,7 +18,8 @@
   "contributors": [
     "Cristian Ferrari <cferrari@lemontech.cl>",
     "Daniel Ochoa <dochoa@lemontech.cl>",
-    "Rodrigo Díaz <rdiaz@lemontech.cl>"
+    "Rodrigo Díaz <rdiaz@lemontech.cl>",
+    "Tamara Luque <tluque@lemontech.cl>"
   ],
   "files": [
     "lib"

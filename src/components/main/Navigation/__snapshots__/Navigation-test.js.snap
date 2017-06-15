@@ -9,7 +9,7 @@ exports[`Navigation should render the brand if specified 1`] = `
   theme="default"
 >
   <div
-    className="navbar navbar-fixed-top navbar-default"
+    className="navbar navbar-fixed-top navbar-default container-scroll"
   >
     <div
       className="container-max"
@@ -19,7 +19,7 @@ exports[`Navigation should render the brand if specified 1`] = `
       >
         <button
           aria-expanded="false"
-          className="navbar-toggle collapsed pull-left"
+          className="navbar-toggle collapsed pull-left align-left"
           data-target="#bs-example-navbar-collapse-1"
           data-toggle="collapse"
           type="button"
@@ -35,7 +35,7 @@ exports[`Navigation should render the brand if specified 1`] = `
         </button>
         <button
           aria-expanded="false"
-          className="navbar-toggle pull-right"
+          className="navbar-toggle pull-right align-right"
           type="button"
         >
           <span
@@ -58,7 +58,7 @@ exports[`Navigation should render the brand if specified 1`] = `
         id="bs-example-navbar-collapse-1"
       >
         <ul
-          className="nav navbar-nav"
+          className="nav navbar-nav scroll-inline"
         />
       </div>
     </div>
@@ -75,7 +75,7 @@ exports[`Navigation should render with minimum props 1`] = `
   theme="default"
 >
   <div
-    className="navbar navbar-fixed-top navbar-default"
+    className="navbar navbar-fixed-top navbar-default container-scroll"
   >
     <div
       className="container-max"
@@ -85,7 +85,7 @@ exports[`Navigation should render with minimum props 1`] = `
       >
         <button
           aria-expanded="false"
-          className="navbar-toggle collapsed pull-left"
+          className="navbar-toggle collapsed pull-left align-left"
           data-target="#bs-example-navbar-collapse-1"
           data-toggle="collapse"
           type="button"
@@ -101,7 +101,7 @@ exports[`Navigation should render with minimum props 1`] = `
         </button>
         <button
           aria-expanded="false"
-          className="navbar-toggle pull-right"
+          className="navbar-toggle pull-right align-right"
           type="button"
         >
           <span
@@ -119,7 +119,7 @@ exports[`Navigation should render with minimum props 1`] = `
         id="bs-example-navbar-collapse-1"
       >
         <ul
-          className="nav navbar-nav"
+          className="nav navbar-nav scroll-inline"
         />
       </div>
     </div>

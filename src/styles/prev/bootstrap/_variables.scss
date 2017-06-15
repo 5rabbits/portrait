@@ -149,7 +149,7 @@ $table-bg-accent:                 #f9f9f9 !default; // [4]
 $table-bg-hover:                  #f5f5f5 !default;  // [5]
 $table-bg-active:                 $table-bg-hover !default;
 
-$table-border-color:              dark-color(.05) !default; // [6]
+$table-border-color:              dark-text-color(.05) !default; // [6]
 
 
 //== Buttons
@@ -172,9 +172,9 @@ $btn-inverse-background:         #fff !default;
 
 
 
-$btn-default-color:              dark-color(primary) !default;
+$btn-default-color:              dark-text-color(primary) !default;
 $btn-default-bg:                 #fff !default;
-$btn-default-border:             solidify(dark-color(.2)) !default;
+$btn-default-border:             solidify(dark-text-color(.2)) !default;
 
 
 $btn-secondary-color:            #fff !default;
