@@ -35,7 +35,7 @@
   @return scale-color($name, $lightness: 80%);
 }
 @function dark-color($name) {
-  @return scale-color($name, $lightness: -80%);
+  @return scale-color($name, $lightness: -40%);
 }
 
 .bg-brand      { background-color: $color-brand;}

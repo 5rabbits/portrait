@@ -23,9 +23,45 @@ const App = ({ children, router }) => {
           <NavigationItem
             component={Link}
             label="CSS"
-            isActive={router.isActive('/css', true)}
-            to="/css"
-          />
+            isActive={router.isActive('/css')}
+            >
+            <NavigationItem
+              component={Link}
+              label="Tools"
+              isActive={router.isActive('/css/tools', true)}
+              to="/css/tools"
+            />
+            <NavigationItem
+              component={Link}
+              label="Core"
+              isActive={router.isActive('/css/core', true)}
+              to="/css/core"
+            />
+            <NavigationItem
+              component={Link}
+              label="Common"
+              isActive={router.isActive('/css/common', true)}
+              to="/css/common"
+            />
+            <NavigationItem
+              component={Link}
+              label="Layouts"
+              isActive={router.isActive('/css/layouts', true)}
+              to="/css/layouts"
+            />
+            <NavigationItem
+              component={Link}
+              label="Utils"
+              isActive={router.isActive('/css/utils', true)}
+              to="/css/utils"
+            />
+            <NavigationItem
+              component={Link}
+              label="Components"
+              isActive={router.isActive('/css/components', true)}
+              to="/css/components"
+            />
+          </NavigationItem>
 
           <NavigationItem
             isActive={router.isActive('/components')}
