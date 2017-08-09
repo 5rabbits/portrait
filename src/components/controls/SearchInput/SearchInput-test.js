@@ -32,6 +32,23 @@ describe('SearchInput', () => {
         }).not.toThrow()
       })
     })
+
+    describe('if props.value is != ""', () => {
+      it('should not call to onChange', () => {
+        const onClick = jest.fn()
+        const component = mount(
+          <SearchInput
+            value="test"
+            onChange={onClick}
+          />,
+        )
+        const instance = component.instance()
+
+        instance.setValue('aa')
+
+        expect(onClick).not.toHaveBeenCalled()
+      })
+    })
   })
 
   describe('focus()', () => {
