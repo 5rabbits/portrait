@@ -46,7 +46,8 @@ describe('SearchInput', () => {
 
         instance.setValue('aa')
 
-        expect(onClick).not.toHaveBeenCalled()
+        expect(onClick).toHaveBeenCalled()
+        expect(instance.state.value).toBe('test')
       })
     })
   })
