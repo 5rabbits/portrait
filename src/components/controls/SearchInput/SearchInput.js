@@ -52,7 +52,9 @@ export default class SearchInput extends Component {
   }
 
   state = {
-    value: this.props.value || this.props.defaultValue,
+    value: this.props.value === undefined
+      ? this.props.defaultValue
+      : this.props.value,
   }
 
   setValue = value => {
