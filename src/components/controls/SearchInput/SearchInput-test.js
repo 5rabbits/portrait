@@ -9,7 +9,7 @@ describe('SearchInput', () => {
   })
 
   describe('componentWillReceiveProps', () => {
-    it('show update state with new values', () => {
+    it('should update state with new values', () => {
       const component = mount(<SearchInput value="test" />)
       const instance = component.instance()
 
@@ -18,6 +18,17 @@ describe('SearchInput', () => {
       })
 
       expect(instance.state.value).toBe('search')
+    })
+
+    it('should not update state when props have the same value', () => {
+      const component = mount(<SearchInput value="test" />)
+      const instance = component.instance()
+
+      component.setProps({
+        value: 'test',
+      })
+
+      expect(instance.state.value).toBe('test')
     })
   })
 
