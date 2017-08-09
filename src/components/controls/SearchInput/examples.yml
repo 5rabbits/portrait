@@ -27,3 +27,15 @@
         theme="alternate"
       />
     </div>
+
+-
+  description: Alternate theme.
+  code: >
+    <div style={{ padding: 16, background: '#fff' }}>
+      <SearchInput
+        placeholder="Write to search"
+        style={{ width: '400px' }}
+        theme="alternate"
+        value='test'
+      />
+    </div>

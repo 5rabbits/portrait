@@ -14,6 +14,8 @@ export default class SearchInput extends Component {
      */
     className: PropTypes.string,
 
+    defaultValue: PropTypes.string,
+
     /**
      * Invoked when the input text changes, either by writing or by clicking the clear button.
      * The first argument is the current text.
@@ -35,6 +37,8 @@ export default class SearchInput extends Component {
      * `alternate` for popovers.
      */
     theme: PropTypes.oneOf(['default', 'alternate']).isRequired,
+
+    value: PropTypes.string,
   }
 
   static defaultProps = {
@@ -43,13 +47,19 @@ export default class SearchInput extends Component {
     onClear: null,
     onSubmit: null,
     theme: 'default',
-  }
-
-  state = {
+    defaultValue: '',
     value: '',
   }
 
+  state = {
+    value: this.props.value || this.props.defaultValue,
+  }
+
   setValue = value => {
+    if (this.props.value !== '') {
+      return
+    }
+
     this.setState({ value })
 
     if (this.props.onChange) {
