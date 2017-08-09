@@ -27,3 +27,45 @@
         theme="alternate"
       />
     </div>
+
+-
+  description: With default value.
+  code: >
+    <div style={{ padding: 16, background: '#fff' }}>
+      <SearchInput
+        placeholder="Write to search"
+        style={{ width: '400px' }}
+        defaultValue="Some default value"
+      />
+    </div>
+
+-
+  description: Controlled input.
+  inline: false
+  code: >
+    class Example extends React.Component {
+      state = {
+        search: '',
+      }
+
+      handleSearchChange = search => {
+        this.setState({ search })
+      }
+
+      render() {
+        return (
+          <div style={{ padding: 16, background: '#fff' }}>
+            <SearchInput
+              placeholder="Write to search"
+              onChange={this.handleSearchChange}
+              style={{ width: '400px' }}
+              value={this.state.search}
+            />
+            <br />
+            The current search is: {this.state.search}
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Example />, mountNode)
