@@ -8,6 +8,19 @@ describe('SearchInput', () => {
     expect(toJSON(component)).toMatchSnapshot()
   })
 
+  describe('componentWillReceiveProps', () => {
+    it('show update state with new values', () => {
+      const component = mount(<SearchInput value="test" />)
+      const instance = component.instance()
+
+      component.setProps({
+        value: 'search',
+      })
+
+      expect(instance.state.value).toBe('search')
+    })
+  })
+
   describe('setValue(value)', () => {
     describe('if props.onChange is defined', () => {
       it('should call props.onChange passing the new value', () => {
