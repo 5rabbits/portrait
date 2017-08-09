@@ -57,12 +57,16 @@ export default class SearchInput extends Component {
       : this.props.value,
   }
 
-  setValue = value => {
-    if (this.props.value !== undefined) {
-      return
+  componentWillReceiveProps(nextProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({ value: nextProps.value })
     }
+  }
 
-    this.setState({ value })
+  setValue = value => {
+    if (this.props.value === undefined) {
+      this.setState({ value })
+    }
 
     if (this.props.onChange) {
       this.props.onChange(value)
