@@ -48,7 +48,7 @@ export default class SearchInput extends Component {
     onSubmit: null,
     theme: 'default',
     defaultValue: '',
-    value: '',
+    value: undefined,
   }
 
   state = {
@@ -56,7 +56,7 @@ export default class SearchInput extends Component {
   }
 
   setValue = value => {
-    if (this.props.value !== '') {
+    if (this.props.value !== undefined) {
       return
     }
 
