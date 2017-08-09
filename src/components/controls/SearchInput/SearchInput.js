@@ -14,6 +14,9 @@ export default class SearchInput extends Component {
      */
     className: PropTypes.string,
 
+    /**
+     * Initial search value for an uncontrolled input.
+     */
     defaultValue: PropTypes.string,
 
     /**
@@ -38,6 +41,10 @@ export default class SearchInput extends Component {
      */
     theme: PropTypes.oneOf(['default', 'alternate']).isRequired,
 
+    /**
+     * Controlled value for the input. Use the `onChange` callback to update
+     * the value from the parent component.
+     */
     value: PropTypes.string,
   }
 
