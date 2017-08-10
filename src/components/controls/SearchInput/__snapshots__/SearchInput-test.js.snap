@@ -3,6 +3,7 @@
 exports[`SearchInput should render with minimum props 1`] = `
 <SearchInput
   className={null}
+  defaultValue=""
   onChange={null}
   onClear={null}
   onSubmit={null}
@@ -16,6 +17,7 @@ exports[`SearchInput should render with minimum props 1`] = `
     />
     <input
       className="form-control SearchInput__input"
+      defaultValue=""
       onChange={[Function]}
       onKeyDown={[Function]}
       type="text"

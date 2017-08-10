@@ -15,6 +15,11 @@ export default class SearchInput extends Component {
     className: PropTypes.string,
 
     /**
+     * Initial search value for an uncontrolled input.
+     */
+    defaultValue: PropTypes.string,
+
+    /**
      * Invoked when the input text changes, either by writing or by clicking the clear button.
      * The first argument is the current text.
      */
@@ -35,6 +40,12 @@ export default class SearchInput extends Component {
      * `alternate` for popovers.
      */
     theme: PropTypes.oneOf(['default', 'alternate']).isRequired,
+
+    /**
+     * Controlled value for the input. Use the `onChange` callback to update
+     * the value from the parent component.
+     */
+    value: PropTypes.string,
   }
 
   static defaultProps = {
@@ -43,14 +54,26 @@ export default class SearchInput extends Component {
     onClear: null,
     onSubmit: null,
     theme: 'default',
+    defaultValue: '',
+    value: undefined,
   }
 
   state = {
-    value: '',
+    value: this.props.value === undefined
+      ? this.props.defaultValue
+      : this.props.value,
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.value !== nextProps.value) {
+      this.setState({ value: nextProps.value })
+    }
   }
 
   setValue = value => {
-    this.setState({ value })
+    if (this.props.value === undefined) {
+      this.setState({ value })
+    }
 
     if (this.props.onChange) {
       this.props.onChange(value)

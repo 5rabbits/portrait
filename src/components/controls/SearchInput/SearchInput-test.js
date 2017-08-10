@@ -8,6 +8,30 @@ describe('SearchInput', () => {
     expect(toJSON(component)).toMatchSnapshot()
   })
 
+  describe('componentWillReceiveProps', () => {
+    it('should update state with new values', () => {
+      const component = mount(<SearchInput value="test" />)
+      const instance = component.instance()
+
+      component.setProps({
+        value: 'search',
+      })
+
+      expect(instance.state.value).toBe('search')
+    })
+
+    it('should not update state when props have the same value', () => {
+      const component = mount(<SearchInput value="test" />)
+      const instance = component.instance()
+
+      component.setProps({
+        value: 'test',
+      })
+
+      expect(instance.state.value).toBe('test')
+    })
+  })
+
   describe('setValue(value)', () => {
     describe('if props.onChange is defined', () => {
       it('should call props.onChange passing the new value', () => {
@@ -30,6 +54,24 @@ describe('SearchInput', () => {
         expect(() => {
           instance.setValue('test')
         }).not.toThrow()
+      })
+    })
+
+    describe('if props.value is != ""', () => {
+      it('should not call to onChange', () => {
+        const onClick = jest.fn()
+        const component = mount(
+          <SearchInput
+            value="test"
+            onChange={onClick}
+          />,
+        )
+        const instance = component.instance()
+
+        instance.setValue('aa')
+
+        expect(onClick).toHaveBeenCalled()
+        expect(instance.state.value).toBe('test')
       })
     })
   })

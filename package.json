@@ -1,6 +1,6 @@
 {
   "name": "portrait",
-  "version": "0.5.0-beta.4",
+  "version": "0.5.0",
   "description": "Base design for all 5Rabbits products",
   "keywords": [
     "commonjs",
@@ -36,7 +36,7 @@
     "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js --hot --inline --content-base lib/docs",
     "lint": "eslint --color --ext .js src docs",
     "prepublish": "npm run build",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --ci",
     "test-watch": "NODE_ENV=test jest --watch",
     "preversion": "npm run lint && SINGLE_RUN=true npm test"
   },
@@ -118,7 +118,8 @@
     "coverageDirectory": "coverage",
     "coverageReporters": [
       "html",
-      "text-summary"
+      "text-summary",
+      "lcov"
     ]
   }
 }
