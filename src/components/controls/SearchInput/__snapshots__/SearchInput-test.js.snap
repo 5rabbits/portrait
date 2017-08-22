@@ -17,7 +17,6 @@ exports[`SearchInput should render with minimum props 1`] = `
     />
     <input
       className="form-control SearchInput__input"
-      defaultValue=""
       onChange={[Function]}
       onKeyDown={[Function]}
       type="text"
