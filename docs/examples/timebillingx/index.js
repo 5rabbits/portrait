@@ -4,7 +4,7 @@ import {
 } from 'main'
 import { Button, SearchInput } from 'controls'
 import { TableContainer, FiltersForm } from 'shared'
-import timeBillingXLogo from './timebillingx-solid-inverse.png'
+import timeBillingXLogo from './logo-timebilling-x.svg'
 import TimeEntry from './TimeEntry'
 
 export default class App extends Component {
