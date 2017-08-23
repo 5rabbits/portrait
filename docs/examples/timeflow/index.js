@@ -4,7 +4,7 @@ import {
 } from 'main'
 import { Button, SearchInput } from 'controls'
 import { TableContainer, FiltersForm } from 'shared'
-import timeFlowLogo from './timeflow-solid-inverse_small.png'
+import timeBillingXLogo from './timebillingx-solid-inverse.png'
 import TimeEntry from './TimeEntry'
 
 export default class App extends Component {
@@ -62,7 +62,7 @@ export default class App extends Component {
       brand={
         <img
           alt="Timeflow-logo"
-          src={timeFlowLogo}
+          src={timeBillingXLogo}
           className="pull-left"
           width={127}
         />
