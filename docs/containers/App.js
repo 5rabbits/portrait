@@ -85,9 +85,9 @@ const App = ({ children, router }) => {
             >
             <NavigationItem
               component={Link}
-              label="Timeflow"
-              isActive={router.isActive('/examples/timeflow', true)}
-              to="/examples/timeflow"
+              label="TimeBilling X"
+              isActive={router.isActive('/examples/timebillingx', true)}
+              to="/examples/timebillingx"
             />
           </NavigationItem>
 
