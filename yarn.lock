@@ -4978,7 +4978,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.5.10, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@15.5.10, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -5116,14 +5116,16 @@ react-dom@15.5.4, react-dom@^15.4.2:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-react-router@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-3.0.2.tgz#5a19156678810e01d81901f9c0fef63284b8a514"
+react-router@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-3.0.4.tgz#25ce0a50dc07bc6ebaeabfd902cad5064da10f22"
   dependencies:
+    create-react-class "^15.5.1"
     history "^3.0.0"
     hoist-non-react-statics "^1.2.0"
     invariant "^2.2.1"
     loose-envify "^1.2.0"
+    prop-types "^15.5.6"
     warning "^3.0.0"
 
 react-test-renderer@15.5.4:

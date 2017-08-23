@@ -114,6 +114,7 @@ export default class SearchInput extends Component {
 
     delete other.onClear
     delete other.onSubmit
+    delete other.defaultValue
 
     return (
       <div
