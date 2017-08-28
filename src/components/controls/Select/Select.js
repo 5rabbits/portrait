@@ -776,7 +776,9 @@ export default class Select extends PureComponent {
 
     return (
       <div
-        className="Select"
+        className={cx('Select', {
+          'Select--open': isOpen,
+        })}
         ref={this.wrapperRef}
         >
         <button
