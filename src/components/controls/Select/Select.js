@@ -547,25 +547,33 @@ export default class Select extends PureComponent {
 
     switch (position) {
       case 'top':
-        node.scrollIntoView(true)
+        this.scrollToOptionFromTop(node)
         break
 
       case 'bottom':
-        node.scrollIntoView(false)
+        this.scrollToOptionFromBottom(node)
         break
 
       default:
         viewportInfo = this.isOptionInViewport(value)
 
         if (!viewportInfo.visibleFromBottom) {
-          node.scrollIntoView(false)
+          this.scrollToOptionFromBottom(node)
         }
         else if (!viewportInfo.visibleFromTop) {
-          node.scrollIntoView(true)
+          this.scrollToOptionFromTop(node)
         }
 
         break
     }
+  }
+
+  scrollToOptionFromBottom = node => {
+    this.menu.scrollTop = node.offsetTop - (this.menu.offsetHeight - node.offsetHeight)
+  }
+
+  scrollToOptionFromTop = node => {
+    this.menu.scrollTop = node.offsetTop
   }
 
   isOptionInViewport(value) {
