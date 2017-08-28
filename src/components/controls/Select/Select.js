@@ -255,7 +255,7 @@ export default class Select extends PureComponent {
     autoFocus: false,
     canCreate: false,
     clearable: false,
-    clearText: 'Leave without option',
+    clearText: 'Leave without value',
     clearValue: null,
     clearOptionRenderer: defaultClearOptionRenderer,
     createOptionLabel: 'Create new option',
