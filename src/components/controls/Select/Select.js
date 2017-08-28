@@ -654,7 +654,12 @@ export default class Select extends PureComponent {
             break
 
           case 'bottom-control':
-            this.handleCreateOptionClick()
+            if (this.props.canCreate && this.state.input.trim()) {
+              this.handleCreateOptionClick()
+            }
+            else {
+              this.handleClearOptionClick()
+            }
             break
 
           default:
