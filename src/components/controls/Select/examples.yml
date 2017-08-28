@@ -174,3 +174,26 @@
         <ProjectSelect onChange={console.log} />
       </div>
     , mountNode)
+
+-
+  description: Render performance.
+
+  inline: false
+  code: >
+    const optionsToCreate = 10000
+
+    const options = []
+
+    for (let i = 1; i <= optionsToCreate; i++) {
+      options.push({
+        label: `Option ${i}`,
+        value: i,
+      })
+    }
+
+    ReactDOM.render(
+      <div style={{ width: 320 }}>
+        <Select options={options} />
+      </div>
+    , mountNode)
+
