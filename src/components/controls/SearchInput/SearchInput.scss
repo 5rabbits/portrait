@@ -1,3 +1,5 @@
+@import '~core/variables';
+
 .SearchInput {
   position: relative;
 }
@@ -41,14 +43,14 @@
 .SearchInput--default {
   .SearchInput__input.form-control {
     background-color: #fff;
-    border-color: #CDD4DB;
+    border-color: $default-input-border-color;
     height: 36px;
     border-radius: 18px;
     padding-right: 40px;
     padding-left: 40px;
 
     &::placeholder {
-      color: #B3BDC7;
+      color: $placeholder-color;
     }
 
     &:focus {
