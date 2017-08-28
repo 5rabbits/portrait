@@ -27,6 +27,7 @@
 .Select__value {
   @include text-ellipsis;
   margin-right: 16px;
+  line-height: 1.25em;
 }
 
 .Select__placeholder {
@@ -169,12 +170,13 @@
 .Select__createOption__label {
   font-size: 10px;
   font-weight: 300;
+  line-height: 1.25em;
 }
 
 .Select__createOption__value {
   @include text-ellipsis;
   font-weight: 500;
-  margin-top: 2px;
+  line-height: 1.25em;
 }
 
 .Select__clearOption--focused,
