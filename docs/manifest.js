@@ -40,6 +40,15 @@ export default sortBy([
       })
     }, 'SearchInput'),
   },
+  {
+    name: 'Select',
+    getComponent: callback => require.ensure([], require => {
+      callback({
+        source: require('!!docs-loader!controls/Select'),
+        examples: require('controls/Select/examples.yml'),
+      })
+    }, 'Select'),
+  },
 
   // Elements
   {
