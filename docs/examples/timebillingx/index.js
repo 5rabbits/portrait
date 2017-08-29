@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
   SectionToolbar, Layout, Navigation, NavigationItem, Section,
 } from 'main'
-import { Button, SearchInput } from 'controls'
+import { Button, SearchInput, Select } from 'controls'
 import { TableContainer, FiltersForm } from 'shared'
 import timeBillingXLogo from './logo-timebilling-x.svg'
 import TimeEntry from './TimeEntry'
@@ -46,10 +46,8 @@ export default class App extends Component {
     }, 3000)
   }
 
-  handleShowResultsChange = event => {
-    this.setState({
-      showResults: event.target.value === 'true',
-    })
+  handleShowResultsChange = value => {
+    this.setState({ showResults: value })
   }
 
   handleFiltersSubmit = event => {
@@ -260,14 +258,16 @@ export default class App extends Component {
     <FiltersForm onSubmit={this.handleFiltersSubmit}>
       <div className="form-group">
         <label className="control-label">Show results</label>
-        <select
+        <Select
           className="form-control"
-          defaultValue={this.state.showResults.toString()}
           onChange={this.handleShowResultsChange}
-          >
-          <option value="true">Show results</option>
-          <option value="false">Simulate no results</option>
-        </select>
+          options={[
+            { value: true, label: 'Show results' },
+            { value: false, label: 'Simulate no results' },
+          ]}
+          searchable={false}
+          value={this.state.showResults}
+        />
       </div>
       <div className="form-group">
         <label className="control-label">Other filter 1</label>
