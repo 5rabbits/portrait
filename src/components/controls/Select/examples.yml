@@ -134,13 +134,51 @@
     // Probably this would be injected by some global state handler.
 
     const PROJECTS = [
-      { label: 'Project 1', value: 1, code: '1' },
-      { label: 'Project 2', value: 2, code: '2' },
-      { label: 'Project 3', value: 3, code: '3' },
-      { label: 'Project 4', value: 4, code: '4' },
-      { label: 'Project 5', value: 5, code: '5' },
-      { label: 'Project 6', value: 6, code: '6' },
-      { label: 'No Project', value: 123456, code: 'UNASSIGNED' },
+      {
+        label: 'Client 1, Project 1',
+        value: 1,
+        model: {
+          code: '1',
+          name: 'Project 1',
+          clientName: 'Client 1',
+        }
+      },
+      {
+        label: 'Client 2, Project 2',
+        value: 2,
+        model: {
+          code: '2',
+          name: 'Project 2',
+          clientName: 'Client 2',
+        }
+      },
+      {
+        label: 'Client 3, Project 3',
+        value: 3,
+        model: {
+          code: '3',
+          name: 'Project 3',
+          clientName: 'Client 3',
+        }
+      },
+      {
+        label: 'Client 4, Project 4',
+        value: 4,
+        model: {
+          code: '4',
+          name: 'Project 4',
+          clientName: 'Client 4',
+        }
+      },
+      {
+        label: 'No Client, No Project',
+        value: 123456,
+        model: {
+          code: 'UNASSIGNED',
+          name: 'No Project',
+          clientName: 'No Client',
+        }
+      },
     ]
 
     class ProjectSelect extends React.PureComponent {
@@ -185,10 +223,98 @@
         )
       }
 
+      // Complex option rendering. It gives independent styles to
+      // the project and client name while keeping the search
+      // highlighting.
+      optionRenderer = ({
+        cleanDiacritics,
+        option,
+        search,
+        optionSearchTerms,
+      }) => {
+        if (search) {
+          const terms = optionSearchTerms({ cleanDiacritics, option, search })
+          const text = []
+          const projectIndex = option.model.clientName.length + 1 // for ", "
+
+          terms.forEach(term => {
+            const wrappedTerms = []
+
+            // Between client and project
+            if (
+              term.fromIndex < projectIndex &&
+              term.toIndex >= projectIndex
+            ) {
+              wrappedTerms.push(
+                <span key={1} style={{ opacity: 0.5 }}>
+                  {option.label.substring(term.fromIndex, projectIndex)}
+                </span>
+              )
+              wrappedTerms.push(
+                <span key={2}>
+                  {option.label.substring(projectIndex, term.toIndex)}
+                </span>
+              )
+            }
+
+            // Client
+            else if (term.toIndex <= projectIndex) {
+              wrappedTerms.push(
+                <span key={1} style={{ opacity: 0.5 }}>{term.text}</span>
+              )
+            }
+
+            // Project
+            else if (term.fromIndex >= projectIndex) {
+              wrappedTerms.push(
+                <span key={1}>{term.text}</span>
+              )
+            }
+
+            if (term.matches) {
+              text.push(
+                <span
+                  className="Select__searchHighlight"
+                  key={term.fromIndex}
+                  >
+                  {wrappedTerms}
+                </span>
+              )
+            }
+            else {
+              text.push(
+                <span key={term.fromIndex}>
+                  {wrappedTerms}
+                </span>
+              )
+            }
+          })
+
+          return (
+            <div>
+              {text}
+            </div>
+          )
+        }
+
+        return (
+          <div>
+            <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
+            <span>{option.model.name}</span>
+          </div>
+        )
+      }
+
+      valueRenderer = option =>
+        <div className="Select__value">
+          <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
+          <span>{option.model.name}</span>
+        </div>
+
       render() {
         // Custom clear logic
         const unassignOption = PROJECTS.find(option =>
-          option.code === 'UNASSIGNED'
+          option.model.code === 'UNASSIGNED'
         )
         const isClearable = !!unassignOption
 
@@ -201,8 +327,10 @@
             createOptionLabel="Create new project"
             emptyRenderer={this.emptyRenderer}
             inputPlaceholder="Write to search or create projects"
+            optionRenderer={this.optionRenderer}
             options={PROJECTS}
             placeholder="Select a project"
+            valueRenderer={this.valueRenderer}
             {...this.props}
           />
         )
