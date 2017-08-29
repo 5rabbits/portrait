@@ -18,6 +18,19 @@
     </div>
 
 -
+  description: Diacritics sorting and filtering.
+  code: >
+    <div style={{ width: 240 }}>
+      <Select
+        options={[
+          { label: 'Ôption 2', value: 2 },
+          { label: 'optìÓn 3', value: 3 },
+          { label: 'öptíon 1', value: 1 },
+        ]}
+      />
+    </div>
+
+-
   description: Creating options
   code: >
     <div style={{ width: 240 }}>

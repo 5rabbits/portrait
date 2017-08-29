@@ -220,7 +220,7 @@ const defaultClearOptionRenderer = ({
   </div>
 
 const defaultSort = options =>
-  sortBy(options, option => option.label.toLowerCase())
+  sortBy(options, option => deburr(option.label.toLowerCase()))
 
 export default class Select extends PureComponent {
   static propTypes = {
