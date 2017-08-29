@@ -3,7 +3,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
-import uniq from 'lodash/uniq'
 import sortBy from 'lodash/sortBy'
 import isFunction from 'lodash/isFunction'
 import deburr from 'lodash/deburr'
@@ -14,16 +13,16 @@ import './Select.scss'
 
 export const NEW_VALUE = '$NEW_SELECT_VALUE$'
 
-const defaultOptionRenderer = ({ option, search }) => {
+const defaultOptionRenderer = ({ cleanDiacritics, option, search }) => {
   if (search) {
-    const words = uniq(deburr(search.trim()).split(/\s+/))
+    const words = cleanDiacritics(search.trim()).split(/\s+/)
     const pattern = `(${words.join('|')})`
     const regexp = new RegExp(pattern, 'ig')
     let currentIndex = 0
 
     return (
       <div>
-        {deburr(option.label).split(regexp).map((term, index) => {
+        {cleanDiacritics(option.label).split(regexp).map((term, index) => {
           const fromIndex = currentIndex
           const toIndex = currentIndex + term.length
           const termText = option.label.substring(fromIndex, toIndex)
@@ -124,16 +123,16 @@ const defaultInputRenderer = ({
     }
   </div>
 
-const defaultOptionsFilter = (options, search) => {
+const defaultOptionsFilter = ({ cleanDiacritics, options, search }) => {
   if (!search.trim()) {
     return options
   }
 
-  const words = uniq(deburr(search.trim()).split(/\s+/))
+  const words = cleanDiacritics(search.trim()).split(/\s+/)
   const pattern = words.map(word => `(?=.*${word})`).join('')
   const regexp = new RegExp(pattern, 'i')
 
-  return options.filter(option => regexp.test(deburr(option.label)))
+  return options.filter(option => regexp.test(cleanDiacritics(option.label)))
 }
 
 const defaultEmptyRenderer = ({ search }) => {
@@ -219,8 +218,8 @@ const defaultClearOptionRenderer = ({
     {clearText}
   </div>
 
-const defaultSort = options =>
-  sortBy(options, option => deburr(option.label.toLowerCase()))
+const defaultSort = ({ cleanDiacritics, options }) =>
+  sortBy(options, option => cleanDiacritics(option.label.toLowerCase()))
 
 export default class Select extends PureComponent {
   static propTypes = {
@@ -348,7 +347,13 @@ export default class Select extends PureComponent {
   }
 
   getFilteredOptions(options, search) {
-    const filtered = [...this.props.optionsFilter(options, search)]
+    const filtered = [
+      ...this.props.optionsFilter({
+        cleanDiacritics: deburr,
+        options,
+        search,
+      })
+    ]
 
     if (this.props.clearValue) {
       const index = filtered.findIndex(option =>
@@ -372,7 +377,7 @@ export default class Select extends PureComponent {
 
     const callback = sort === true ? defaultSort : sort
 
-    return callback(options)
+    return callback({ cleanDiacritics: deburr, options })
   }
 
   setFocused(focused) {

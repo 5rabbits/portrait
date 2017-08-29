@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import deburr from 'lodash/deburr'
 import uniq from 'lodash/uniq'
 import Option from './Option'
 
@@ -80,7 +81,7 @@ export default class DefaultMenuRenderer extends PureComponent {
           width: '100%',
         }}
         >
-        {optionRenderer({ option, search })}
+        {optionRenderer({ cleanDiacritics: deburr, option, search })}
       </Option>
     )
   }
