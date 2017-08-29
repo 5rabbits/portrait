@@ -816,6 +816,7 @@ export default class Select extends PureComponent {
       <div
         className={cx('Select', {
           'Select--open': isOpen,
+          'Select--disabled': disabled,
         })}
         ref={this.wrapperRef}
         >
@@ -835,7 +836,7 @@ export default class Select extends PureComponent {
             ? valueRenderer(selected)
             : placeholderRenderer(placeholderText)
           }
-          {!disabled && arrowRenderer(isOpen)}
+          {arrowRenderer(isOpen)}
         </button>
         {isOpen &&
           <div className="Select__dropdown">
