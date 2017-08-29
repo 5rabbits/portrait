@@ -21,6 +21,7 @@
   background-color: #fff;
   border: $default-input-border-color solid 1px;
   border-radius: $border-radius-medium-component;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
 .Select__placeholder,
