@@ -7,6 +7,7 @@ import uniq from 'lodash/uniq'
 import sortBy from 'lodash/sortBy'
 import isFunction from 'lodash/isFunction'
 import keyboard from 'utils/keyboard'
+import ScrollLock from 'shared/ScrollLock'
 import DefaultMenuRenderer from './DefaultMenuRenderer'
 import './Select.scss'
 
@@ -829,18 +830,20 @@ export default class Select extends PureComponent {
               emptyRenderer({ search: input.trim() })
             }
             {filtered.length > 0 &&
-              <MenuRenderer
-                color={color}
-                focusedElement={focusedElement}
-                menuRef={this.menuRef}
-                onOptionClick={this.handleOptionClick}
-                onOptionMouseEnter={this.handleOptionMouseEnter}
-                options={filtered}
-                optionRef={this.optionRef}
-                optionRenderer={optionRenderer}
-                search={input.trim()}
-                value={value}
-              />
+              <ScrollLock>
+                <MenuRenderer
+                  color={color}
+                  focusedElement={focusedElement}
+                  menuRef={this.menuRef}
+                  onOptionClick={this.handleOptionClick}
+                  onOptionMouseEnter={this.handleOptionMouseEnter}
+                  options={filtered}
+                  optionRef={this.optionRef}
+                  optionRenderer={optionRenderer}
+                  search={input.trim()}
+                  value={value}
+                />
+              </ScrollLock>
             }
             {showCreateOption &&
               createOptionRenderer({
