@@ -6,6 +6,7 @@ import cx from 'classnames'
 import uniq from 'lodash/uniq'
 import sortBy from 'lodash/sortBy'
 import isFunction from 'lodash/isFunction'
+import deburr from 'lodash/deburr'
 import keyboard from 'utils/keyboard'
 import ScrollLock from 'shared/ScrollLock'
 import DefaultMenuRenderer from './DefaultMenuRenderer'
@@ -15,25 +16,32 @@ export const NEW_VALUE = '$NEW_SELECT_VALUE$'
 
 const defaultOptionRenderer = ({ option, search }) => {
   if (search) {
-    const words = uniq(search.trim().toLowerCase().split(/\s+/))
+    const words = uniq(deburr(search.trim()).split(/\s+/))
     const pattern = `(${words.join('|')})`
     const regexp = new RegExp(pattern, 'ig')
+    let currentIndex = 0
 
     return (
       <div>
-        {option.label.split(regexp).map((term, index) => {
+        {deburr(option.label).split(regexp).map((term, index) => {
+          const fromIndex = currentIndex
+          const toIndex = currentIndex + term.length
+          const termText = option.label.substring(fromIndex, toIndex)
+
+          currentIndex = toIndex
+
           if (regexp.test(term)) {
             return (
               <span
                 className="Select__searchHighlight"
                 key={index}
                 >
-                {term}
+                {termText}
               </span>
             )
           }
 
-          return term
+          return termText
         })}
       </div>
     )
@@ -121,11 +129,11 @@ const defaultOptionsFilter = (options, search) => {
     return options
   }
 
-  const words = uniq(search.trim().toLowerCase().split(/\s+/))
+  const words = uniq(deburr(search.trim()).split(/\s+/))
   const pattern = words.map(word => `(?=.*${word})`).join('')
   const regexp = new RegExp(pattern, 'i')
 
-  return options.filter(option => regexp.test(option.label))
+  return options.filter(option => regexp.test(deburr(option.label)))
 }
 
 const defaultEmptyRenderer = ({ search }) => {
