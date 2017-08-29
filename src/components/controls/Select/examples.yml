@@ -235,7 +235,9 @@
         if (search) {
           const terms = optionSearchTerms({ cleanDiacritics, option, search })
           const text = []
-          const projectIndex = option.model.clientName.length + 1 // for ", "
+          const projectIndex = option.model.clientName
+            ? option.model.clientName.length + 1 // for ", "
+            : 0
 
           terms.forEach(term => {
             const wrappedTerms = []
@@ -299,7 +301,9 @@
 
         return (
           <div>
-            <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
+            {option.model.clientName &&
+              <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
+            }
             <span>{option.model.name}</span>
           </div>
         )
@@ -307,9 +311,21 @@
 
       valueRenderer = option =>
         <div className="Select__value">
-          <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
+          {option.model.clientName &&
+            <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
+          }
           <span>{option.model.name}</span>
         </div>
+
+      newOptionBuilder = ({ label, value }) => ({
+        label,
+        value,
+        model: {
+          code: value,
+          name: label,
+          clientName: null,
+        }
+      })
 
       render() {
         // Custom clear logic
@@ -327,6 +343,7 @@
             createOptionLabel="Create new project"
             emptyRenderer={this.emptyRenderer}
             inputPlaceholder="Write to search or create projects"
+            newOptionBuilder={this.newOptionBuilder}
             optionRenderer={this.optionRenderer}
             options={PROJECTS}
             placeholder="Select a project"

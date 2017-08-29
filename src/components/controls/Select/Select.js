@@ -206,9 +206,9 @@ const defaultCreateOptionRenderer = ({
     </div>
   </div>
 
-const defaultNewOptionBuilder = value => ({
-  label: value,
-  value: NEW_VALUE,
+const defaultNewOptionBuilder = ({ label, value }) => ({
+  label,
+  value,
 })
 
 const defaultPlaceholder = ({ canCreate }) => {
@@ -326,7 +326,10 @@ export default class Select extends PureComponent {
     let options = this.props.options
 
     if (this.props.value === NEW_VALUE) {
-      newOption = this.props.newOptionBuilder(this.props.defaultNewOptionLabel)
+      newOption = this.props.newOptionBuilder({
+        label: this.props.defaultNewOptionLabel,
+        value: NEW_VALUE,
+      })
       options = [...options, newOption]
     }
 
@@ -752,7 +755,10 @@ export default class Select extends PureComponent {
   }
 
   handleCreateOptionClick = () => {
-    const newOption = this.props.newOptionBuilder(this.state.input)
+    const newOption = this.props.newOptionBuilder({
+      label: this.state.input,
+      value: NEW_VALUE,
+    })
     const options = this.getSortedOptions([...this.props.options, newOption])
     const newState = {
       newOption,
