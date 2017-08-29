@@ -658,7 +658,11 @@ export default class Select extends PureComponent {
   }
 
   handleControlKeyDown = event => {
-    if (event.keyCode !== keyboard.TAB && event.keyCode !== keyboard.ESCAPE) {
+    if (
+      event.keyCode !== keyboard.TAB &&
+      event.keyCode !== keyboard.ESCAPE &&
+      !keyboard.isModifier(event.keyCode)
+    ) {
       this.openMenu()
     }
   }
