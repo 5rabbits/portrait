@@ -13,34 +13,71 @@ import './Select.scss'
 
 export const NEW_VALUE = '$NEW_SELECT_VALUE$'
 
-const defaultOptionRenderer = ({ cleanDiacritics, option, search }) => {
+const defaultOptionsFilter = ({ cleanDiacritics, options, search }) => {
+  if (!search.trim()) {
+    return options
+  }
+
+  const words = cleanDiacritics(search.trim()).split(/\s+/)
+  const pattern = words.map(word => `(?=.*${word})`).join('')
+  const regexp = new RegExp(pattern, 'ig')
+
+  return options.filter(option => regexp.test(cleanDiacritics(option.label)))
+}
+
+const defaultOptionSearchTerms = ({ cleanDiacritics, option, search }) => {
+  const pattern = `(${cleanDiacritics(search.trim()).split(/\s+/).join('|')})`
+  const regexp = new RegExp(pattern, 'ig')
+  const terms = []
+  let currentIndex = 0
+
+  cleanDiacritics(option.label).split(regexp).map(term => {
+    if (term === '') {
+      return
+    }
+
+    const fromIndex = currentIndex
+    const toIndex = currentIndex + term.length
+    const termText = option.label.substring(fromIndex, toIndex)
+    const matches = !!term.match(regexp)
+
+    currentIndex = toIndex
+
+    terms.push({
+      text: termText,
+      matches,
+      fromIndex,
+      toIndex,
+    })
+  })
+
+  return terms
+}
+
+const defaultOptionRenderer = ({
+  cleanDiacritics,
+  option,
+  search,
+  optionSearchTerms,
+}) => {
   if (search) {
-    const words = cleanDiacritics(search.trim()).split(/\s+/)
-    const pattern = `(${words.join('|')})`
-    const regexp = new RegExp(pattern, 'ig')
-    let currentIndex = 0
+    const terms = optionSearchTerms({ cleanDiacritics, option, search })
 
     return (
       <div>
-        {cleanDiacritics(option.label).split(regexp).map((term, index) => {
-          const fromIndex = currentIndex
-          const toIndex = currentIndex + term.length
-          const termText = option.label.substring(fromIndex, toIndex)
-
-          currentIndex = toIndex
-
-          if (regexp.test(term)) {
+        {terms.map(term => {
+          if (term.matches) {
             return (
               <span
                 className="Select__searchHighlight"
-                key={index}
+                key={term.fromIndex}
                 >
-                {termText}
+                {term.text}
               </span>
             )
           }
 
-          return termText
+          return term.text
         })}
       </div>
     )
@@ -122,18 +159,6 @@ const defaultInputRenderer = ({
       </div>
     }
   </div>
-
-const defaultOptionsFilter = ({ cleanDiacritics, options, search }) => {
-  if (!search.trim()) {
-    return options
-  }
-
-  const words = cleanDiacritics(search.trim()).split(/\s+/)
-  const pattern = words.map(word => `(?=.*${word})`).join('')
-  const regexp = new RegExp(pattern, 'i')
-
-  return options.filter(option => regexp.test(cleanDiacritics(option.label)))
-}
 
 const defaultEmptyRenderer = ({ search }) => {
   if (search) {
@@ -248,6 +273,7 @@ export default class Select extends PureComponent {
       value: PropTypes.any,
     })).isRequired,
     optionsFilter: PropTypes.func,
+    optionSearchTerms: PropTypes.func,
     onBlur: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     onFocus: PropTypes.func,
@@ -284,6 +310,7 @@ export default class Select extends PureComponent {
     newOptionBuilder: defaultNewOptionBuilder,
     onChange: () => {},
     optionsFilter: defaultOptionsFilter,
+    optionSearchTerms: defaultOptionSearchTerms,
     optionRenderer: defaultOptionRenderer,
     placeholder: defaultPlaceholder,
     placeholderRenderer: defaultPlaceholderRenderer,
@@ -802,6 +829,7 @@ export default class Select extends PureComponent {
       inputRenderer,
       menuRenderer,
       optionRenderer,
+      optionSearchTerms,
       placeholder,
       placeholderRenderer,
       searchable,
@@ -875,6 +903,7 @@ export default class Select extends PureComponent {
                   options={filtered}
                   optionRef={this.optionRef}
                   optionRenderer={optionRenderer}
+                  optionSearchTerms={optionSearchTerms}
                   search={input.trim()}
                   value={value}
                 />

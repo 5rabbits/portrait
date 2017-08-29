@@ -18,6 +18,7 @@ export default class DefaultMenuRenderer extends PureComponent {
     onOptionMouseEnter: PropTypes.func.isRequired,
     optionRef: PropTypes.func.isRequired,
     optionRenderer: PropTypes.func.isRequired,
+    optionSearchTerms: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.shape({
       label: PropTypes.string,
       value: PropTypes.any,
@@ -58,6 +59,7 @@ export default class DefaultMenuRenderer extends PureComponent {
       onOptionMouseEnter,
       optionRef,
       optionRenderer,
+      optionSearchTerms,
       options,
       search,
       value,
@@ -81,7 +83,12 @@ export default class DefaultMenuRenderer extends PureComponent {
           width: '100%',
         }}
         >
-        {optionRenderer({ cleanDiacritics: deburr, option, search })}
+        {optionRenderer({
+          cleanDiacritics: deburr,
+          option,
+          search,
+          optionSearchTerms,
+        })}
       </Option>
     )
   }
