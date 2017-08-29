@@ -59,6 +59,7 @@ export default class Option extends PureComponent {
       <div
         className={cx('Select__option', {
           'Select__option--focused': focused,
+          'Select__option--selected': selected,
         })}
         onClick={this.handleClick}
         onMouseEnter={this.handleMouseEnter}
