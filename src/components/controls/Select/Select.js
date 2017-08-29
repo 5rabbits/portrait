@@ -1,250 +1,29 @@
-/* eslint-disable */
+/* eslint-disable jsx-a11y/no-autofocus */
 
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
-import sortBy from 'lodash/sortBy'
 import isFunction from 'lodash/isFunction'
 import deburr from 'lodash/deburr'
 import keyboard from 'utils/keyboard'
 import ScrollLock from 'shared/ScrollLock'
-import DefaultMenuRenderer from './DefaultMenuRenderer'
+import defaultArrowRenderer from './defaults/arrowRenderer'
+import defaultClearOptionRenderer from './defaults/clearOptionRenderer'
+import defaultCreateOptionRenderer from './defaults/createOptionRenderer'
+import defaultEmptyRenderer from './defaults/emptyRenderer'
+import defaultInputPlaceholder from './defaults/inputPlaceholder'
+import defaultInputRenderer from './defaults/inputRenderer'
+import defaultMenuRenderer from './defaults/menuRenderer'
+import defaultNewOptionBuilder from './defaults/newOptionBuilder'
+import defaultOptionRenderer from './defaults/optionRenderer'
+import defaultOptionSearchTerms from './defaults/optionSearchTerms'
+import defaultOptionsFilter from './defaults/optionsFilter'
+import defaultPlaceholder from './defaults/placeholder'
+import defaultPlaceholderRenderer from './defaults/placeholderRenderer'
+import defaultSort from './defaults/sort'
+import defaultValueRenderer from './defaults/valueRenderer'
+import NEW_VALUE from './newValue'
 import './Select.scss'
-
-export const NEW_VALUE = '$NEW_SELECT_VALUE$'
-
-const defaultOptionsFilter = ({ cleanDiacritics, options, search }) => {
-  if (!search.trim()) {
-    return options
-  }
-
-  const words = cleanDiacritics(search.trim()).split(/\s+/)
-  const pattern = words.map(word => `(?=.*${word})`).join('')
-  const regexp = new RegExp(pattern, 'ig')
-
-  return options.filter(option => regexp.test(cleanDiacritics(option.label)))
-}
-
-const defaultOptionSearchTerms = ({ cleanDiacritics, option, search }) => {
-  const pattern = `(${cleanDiacritics(search.trim()).split(/\s+/).join('|')})`
-  const regexp = new RegExp(pattern, 'ig')
-  const terms = []
-  let currentIndex = 0
-
-  cleanDiacritics(option.label).split(regexp).map(term => {
-    if (term === '') {
-      return
-    }
-
-    const fromIndex = currentIndex
-    const toIndex = currentIndex + term.length
-    const termText = option.label.substring(fromIndex, toIndex)
-    const matches = !!term.match(regexp)
-
-    currentIndex = toIndex
-
-    terms.push({
-      text: termText,
-      matches,
-      fromIndex,
-      toIndex,
-    })
-  })
-
-  return terms
-}
-
-const defaultOptionRenderer = ({
-  cleanDiacritics,
-  option,
-  search,
-  optionSearchTerms,
-}) => {
-  if (search) {
-    const terms = optionSearchTerms({ cleanDiacritics, option, search })
-
-    return (
-      <div>
-        {terms.map(term => {
-          if (term.matches) {
-            return (
-              <span
-                className="Select__searchHighlight"
-                key={term.fromIndex}
-                >
-                {term.text}
-              </span>
-            )
-          }
-
-          return term.text
-        })}
-      </div>
-    )
-  }
-
-  return option.label
-}
-
-const defaultValueRenderer = option =>
-  <div className="Select__value">
-    {option.label}
-  </div>
-
-const defaultPlaceholderRenderer = placeholder =>
-  <div className="Select__placeholder">
-    {placeholder}
-  </div>
-
-const defaultArrowRenderer = isOpen => {
-  let arrow
-
-  if (isOpen) {
-    arrow = (
-      <svg viewBox="0 0 400 400">
-        <path d="M396.375 289.11l-2.25-2.627-170-195.727c-5.75-6.63-14.375-10.756-24-10.756s-18.25 4.252-24 10.756L6.25 286.106l-2.875 3.253C1.25 292.485 0 296.237 0 300.24 0 311.12 9.25 320 20.75 320h358.5c11.5 0 20.75-8.88 20.75-19.76 0-4.127-1.375-8.004-3.625-11.13z" />
-      </svg>
-    )
-  }
-  else {
-    arrow = (
-      <svg viewBox="0 0 400 400">
-        <path d="M3.625 110.875l2.25 2.625 170 195.625c5.75 6.625 14.375 10.75 24 10.75s18.25-4.25 24-10.75l169.875-195.25 2.875-3.25C398.75 107.5 400 103.75 400 99.75 400 88.875 390.75 80 379.25 80H20.75C9.25 80 0 88.875 0 99.75c0 4.125 1.375 8 3.625 11.125z" />
-      </svg>
-    )
-  }
-
-  return (
-    <div className="Select__arrow">
-      {arrow}
-    </div>
-  )
-}
-
-const defaultInputRenderer = ({
-  canCreate,
-  hasResults,
-  inputPlaceholder,
-  onChange,
-  onKeyDown,
-  onNewOptionClick,
-  value,
-}) =>
-  <div className="Select__input">
-    <input
-      autoFocus
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-      placeholder={inputPlaceholder}
-      type="text"
-      value={value}
-    />
-    {canCreate && value != null && !hasResults &&
-      <button
-        className="Select__input__icon Select__input__icon--clickable"
-        onClick={onNewOptionClick}
-        type="button"
-        >
-        <svg viewBox="0 0 400 400">
-          <path d="M200 0C89.52 0 0 89.52 0 200s89.52 200 200 200 200-89.52 200-200S310.48 0 200 0zm0 383.365c-101.058 0-183.365-82.21-183.365-183.365C16.635 98.846 98.942 16.635 200 16.635S383.365 98.942 383.365 200 301.058 383.365 200 383.365z" />
-          <path d="M207.784 77H191.64v115.216H77v16.144h114.64V323h16.144V208.36H323v-16.144H207.784" />
-        </svg>
-      </button>
-    }
-    {(!canCreate || value == null || hasResults) &&
-      <div className="Select__input__icon">
-        <svg viewBox="0 0 400 400">
-          <path d="M292.188 243.75c15.625-24.583 24.79-53.75 24.79-85.104C316.98 71.042 246.043 0 158.543 0 70.937 0 0 71.042 0 158.646c0 87.604 70.938 158.646 158.438 158.646 31.77 0 61.354-9.375 86.145-25.417l7.188-5L364.897 400 400 364.27 286.98 251.147l5.207-7.396zM247.29 70c23.645 23.646 36.666 55.104 36.666 88.542 0 33.437-13.02 64.895-36.666 88.54-23.646 23.647-55.105 36.668-88.542 36.668-33.438 0-64.896-13.02-88.542-36.667-23.645-23.645-36.666-55.104-36.666-88.54 0-33.44 13.02-64.897 36.666-88.543 23.646-23.646 55.105-36.667 88.542-36.667 33.438 0 64.896 13.02 88.542 36.667z" />
-        </svg>
-      </div>
-    }
-  </div>
-
-const defaultEmptyRenderer = ({ search }) => {
-  if (search) {
-    return (
-      <div className="Select__emptyView">
-        No results
-      </div>
-    )
-  }
-
-  return (
-    <div className="Select__emptyView">
-      No options available
-    </div>
-  )
-}
-
-const defaultCreateOptionRenderer = ({
-  createOptionLabel,
-  focused,
-  onClick,
-  onMouseEnter,
-  value,
-}) =>
-  <div
-    className={cx('Select__createOption', {
-      'Select__createOption--focused': focused,
-    })}
-    onClick={onClick}
-    onMouseEnter={onMouseEnter}
-    >
-    <div className="Select__createOption__icon">
-      <svg viewBox="0 0 400 400">
-        <path d="M200 0C89.52 0 0 89.52 0 200s89.52 200 200 200 200-89.52 200-200S310.48 0 200 0zm0 383.365c-101.058 0-183.365-82.21-183.365-183.365C16.635 98.846 98.942 16.635 200 16.635S383.365 98.942 383.365 200 301.058 383.365 200 383.365z" />
-        <path d="M207.784 77H191.64v115.216H77v16.144h114.64V323h16.144V208.36H323v-16.144H207.784" />
-      </svg>
-    </div>
-    <div className="Select__createOption__textWrapper">
-      <div className="Select__createOption__label">
-        {createOptionLabel}
-      </div>
-      <div className="Select__createOption__value">
-        {value}
-      </div>
-    </div>
-  </div>
-
-const defaultNewOptionBuilder = ({ label, value }) => ({
-  label,
-  value,
-})
-
-const defaultPlaceholder = ({ canCreate }) => {
-  if (canCreate) {
-    return 'Select or create an option'
-  }
-
-  return 'Select an option'
-}
-
-const defaultInputPlaceholder = ({ canCreate }) => {
-  if (canCreate) {
-    return 'Write to search or create'
-  }
-
-  return 'Write to search'
-}
-
-const defaultClearOptionRenderer = ({
-  clearText,
-  focused,
-  onClick,
-  onMouseEnter,
-}) =>
-  <div
-    className={cx('Select__clearOption', {
-      'Select__clearOption--focused': focused,
-    })}
-    onClick={onClick}
-    onMouseEnter={onMouseEnter}
-    >
-    {clearText}
-  </div>
-
-const defaultSort = ({ cleanDiacritics, options }) =>
-  sortBy(options, option => cleanDiacritics(option.label.toLowerCase()))
 
 export default class Select extends PureComponent {
   static propTypes = {
@@ -298,6 +77,7 @@ export default class Select extends PureComponent {
     clearText: 'Leave without value',
     clearValue: null,
     clearOptionRenderer: defaultClearOptionRenderer,
+    color: undefined,
     createOptionLabel: 'Create new option',
     createOptionRenderer: defaultCreateOptionRenderer,
     defaultNewOptionLabel: '',
@@ -306,9 +86,11 @@ export default class Select extends PureComponent {
     emptyRenderer: defaultEmptyRenderer,
     inputPlaceholder: defaultInputPlaceholder,
     inputRenderer: defaultInputRenderer,
-    menuRenderer: DefaultMenuRenderer,
+    menuRenderer: defaultMenuRenderer,
     newOptionBuilder: defaultNewOptionBuilder,
+    onBlur: undefined,
     onChange: () => {},
+    onFocus: undefined,
     optionsFilter: defaultOptionsFilter,
     optionSearchTerms: defaultOptionSearchTerms,
     optionRenderer: defaultOptionRenderer,
@@ -317,6 +99,7 @@ export default class Select extends PureComponent {
     searchable: true,
     sort: defaultSort,
     valueRenderer: defaultValueRenderer,
+    value: undefined,
   }
 
   constructor(props) {
@@ -382,12 +165,12 @@ export default class Select extends PureComponent {
         cleanDiacritics: deburr,
         options,
         search,
-      })
+      }),
     ]
 
     if (this.props.clearValue) {
       const index = filtered.findIndex(option =>
-        option.value === this.props.clearValue
+        option.value === this.props.clearValue,
       )
 
       if (index !== -1) {
@@ -401,7 +184,7 @@ export default class Select extends PureComponent {
   getSortedOptions = options => {
     const { sort } = this.props
 
-    if (sort === false || !sort) {
+    if (sort === false || !sort) {
       return options
     }
 
@@ -428,7 +211,7 @@ export default class Select extends PureComponent {
     }
 
     return this.state.options.find(option =>
-      option.value === this.state.value
+      option.value === this.state.value,
     )
   }
 
@@ -481,7 +264,7 @@ export default class Select extends PureComponent {
 
     if (selected) {
       index = this.state.filtered.findIndex(option =>
-        option.value === selected.value
+        option.value === selected.value,
       )
     }
 
@@ -779,7 +562,7 @@ export default class Select extends PureComponent {
 
   handleClearOptionClick = () => {
     const clearOption = this.state.options.find(option =>
-      option.value === this.props.clearValue
+      option.value === this.props.clearValue,
     )
 
     this.setValue(clearOption)
@@ -877,10 +660,10 @@ export default class Select extends PureComponent {
           type="button"
           >
           {selected
-            ? valueRenderer(selected)
-            : placeholderRenderer(placeholderText)
+            ? valueRenderer({ option: selected })
+            : placeholderRenderer({ placeholder: placeholderText })
           }
-          {arrowRenderer(isOpen)}
+          {arrowRenderer({ isOpen })}
         </button>
         {isOpen &&
           <div className="Select__dropdown">

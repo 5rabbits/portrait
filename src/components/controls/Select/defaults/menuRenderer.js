@@ -1,10 +1,8 @@
-/* eslint-disable */
-
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
 import uniq from 'lodash/uniq'
-import Option from './Option'
+import Option from '../Option'
 
 export default class DefaultMenuRenderer extends PureComponent {
   static propTypes = {
@@ -25,6 +23,12 @@ export default class DefaultMenuRenderer extends PureComponent {
     })).isRequired,
     search: PropTypes.string.isRequired,
     value: PropTypes.any,
+  }
+
+  static defaultProps = {
+    color: undefined,
+    focusedElement: undefined,
+    value: undefined,
   }
 
   state = {

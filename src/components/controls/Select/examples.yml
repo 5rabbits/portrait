@@ -309,7 +309,7 @@
         )
       }
 
-      valueRenderer = option =>
+      valueRenderer = ({ option }) =>
         <div className="Select__value">
           {option.model.clientName &&
             <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
