@@ -211,6 +211,9 @@ const defaultClearOptionRenderer = ({
     {clearText}
   </div>
 
+const defaultSort = options =>
+  sortBy(options, option => option.label.toLowerCase())
+
 export default class Select extends PureComponent {
   static propTypes = {
     arrowRenderer: PropTypes.func.isRequired,
@@ -247,6 +250,9 @@ export default class Select extends PureComponent {
     ]),
     placeholderRenderer: PropTypes.func.isRequired,
     searchable: PropTypes.bool,
+    sort: PropTypes.oneOfType([
+      PropTypes.bool, PropTypes.func,
+    ]),
     value: PropTypes.any,
     valueRenderer: PropTypes.func.isRequired,
   }
@@ -275,6 +281,7 @@ export default class Select extends PureComponent {
     placeholder: defaultPlaceholder,
     placeholderRenderer: defaultPlaceholderRenderer,
     searchable: true,
+    sort: defaultSort,
     valueRenderer: defaultValueRenderer,
   }
 
@@ -348,8 +355,17 @@ export default class Select extends PureComponent {
     return filtered
   }
 
-  getSortedOptions = options =>
-    sortBy(options, option => option.label.toLowerCase())
+  getSortedOptions = options => {
+    const { sort } = this.props
+
+    if (sort === false || !sort) {
+      return options
+    }
+
+    const callback = sort === true ? defaultSort : sort
+
+    return callback(options)
+  }
 
   setFocused(focused) {
     this.setState({ focusedElement: focused }, () => {
