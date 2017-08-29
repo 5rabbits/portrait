@@ -200,6 +200,12 @@
   }
 }
 
+.Select--focused:not(.Select--open) {
+  .Select__control {
+    @include focus-control;
+  }
+}
+
 .Select--open {
   .Select__control {
     border-bottom-left-radius: 0;

@@ -798,7 +798,7 @@ export default class Select extends PureComponent {
       searchable,
       valueRenderer,
     } = this.props
-    const { filtered, focusedElement, input, isOpen, value } = this.state
+    const { filtered, focusedElement, input, isFocused, isOpen, value } = this.state
     const selected = this.getSelectedOption()
     const MenuRenderer = menuRenderer
 
@@ -817,6 +817,7 @@ export default class Select extends PureComponent {
         className={cx('Select', {
           'Select--open': isOpen,
           'Select--disabled': disabled,
+          'Select--focused': isFocused,
         })}
         ref={this.wrapperRef}
         >

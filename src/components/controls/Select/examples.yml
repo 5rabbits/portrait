@@ -80,6 +80,51 @@
     </div>
 
 -
+  description: Focusable
+  inline: false
+  code: >
+    class Example extends React.PureComponent {
+      handleFocusClick = () => {
+        this.select.focus()
+      }
+
+      selectRef = select => {
+        this.select = select
+      }
+
+      render() {
+        return (
+          <div style={{ width: 320 }}>
+            <button
+              onClick={this.handleFocusClick}
+              type="button"
+              >
+              Focus
+            </button>
+
+            <br />
+            <br />
+
+            <Select
+              options={[
+                { label: 'Option 1', value: 1 },
+                { label: 'Option 2', value: 2 },
+                { label: 'Option 3', value: 3 },
+                { label: 'Option 4', value: 4 },
+                { label: 'Option 5', value: 5 },
+                { label: 'Option 6', value: 6 },
+              ]}
+              ref={this.selectRef}
+              value={2}
+            />
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Example />, mountNode)
+
+-
   description: |
     Fully customizable selector. Try emptying the `PROJECTS` array
     or removing the `UNASSIGNED` option.

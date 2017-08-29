@@ -66,3 +66,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin focus-control {
+  border-color: rgba(102, 175, 233, .4);
+  box-shadow: 0 0 8px rgba(102, 175, 233, .6);
+}
