@@ -118,6 +118,12 @@
                   </div>
 
                   <div className="e1-options-list">
+                    {options.length === 0 &&
+                      <div className="e1-no-results">
+                        No results
+                      </div>
+                    }
+
                     {options.map((option, index) =>
                       <button
                         key={option.value}
@@ -203,6 +209,10 @@
 
             .e1-clear-search {
               flex-shrink: 0;
+            }
+
+            .e1-no-results {
+              padding: 16px;
             }
 
             .e1-options-list {
@@ -341,7 +351,6 @@
                 >
                 <input
                   checked={value.length === options.length}
-                  indeterminate={true}
                   onChange={event => {
                     if (event.target.checked) {
                       setValue(options.map(option => option.value))
@@ -359,6 +368,11 @@
                 className="e2-options-list"
                 onMouseLeave={() => setFocusedOptionIndex(null)}
                 >
+                {options.length === 0 &&
+                  <div className="e2-no-results">
+                    No results
+                  </div>
+                }
                 {options.map((option, index) =>
                   <label
                     key={option.value}
@@ -429,6 +443,10 @@
 
             .e2-clear-search {
               flex-shrink: 0;
+            }
+
+            .e2-no-results {
+              padding: 16px;
             }
 
             .e2-options-list {
