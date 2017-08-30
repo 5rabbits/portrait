@@ -1,6 +1,7 @@
 import { React, toJSON, mount, shallow } from 'test/helper'
 import deburr from 'lodash/deburr'
 import keyboard from 'utils/keyboard'
+import tinycolor from 'tinycolor2'
 import Select from './Select'
 import Option from './Option'
 import defaultArrowRenderer from './defaults/arrowRenderer'
@@ -1336,6 +1337,77 @@ describe('Select', () => {
       instance.openMenu()
 
       expect(component.find('input').prop('placeholder')).toBe('Some placeholder')
+    })
+  })
+
+  describe('if the select has a color', () => {
+    it('should give the selected option the specified color', () => {
+      const component = mount(
+        <Select
+          color="rgb(255, 0, 0)"
+          options={[
+            { label: 'Option 1', value: 1 },
+          ]}
+          value={1}
+        />,
+      )
+      const instance = component.instance()
+
+      instance.openMenu()
+
+      expect(component.find(Option).getDOMNode().style['background-color']).toBe('rgb(255, 0, 0)')
+    })
+
+    it('should give the focused option a lighter version of specified color', () => {
+      const component = mount(
+        <Select
+          color="rgb(255, 0, 0)"
+          options={[
+            { label: 'Option 1 ASD', value: 1 },
+          ]}
+        />,
+      )
+      const instance = component.instance()
+
+      instance.openMenu()
+      component.setState({ focusedElement: 0 })
+
+      expect(component.find(Option).getDOMNode().style['background-color']).toBe(
+        tinycolor('rgb(255, 0, 0)').lighten(35).toRgbString(),
+      )
+    })
+  })
+
+  describe('bottom control visibility', () => {
+    describe('if can create and there is a search', () => {
+      it('should report a visible control', () => {
+        const component = mount(<Select canCreate options={[]} />)
+        const instance = component.instance()
+
+        component.setState({ input: 'Some search' })
+
+        expect(instance.isBottomControlVisible()).toBe(true)
+      })
+    })
+
+    describe('if can create and there is no search', () => {
+      it('should report a hidden control', () => {
+        const component = mount(<Select canCreate options={[]} />)
+        const instance = component.instance()
+
+        component.setState({ input: '' })
+
+        expect(instance.isBottomControlVisible()).toBe(false)
+      })
+    })
+
+    describe('if is clearable', () => {
+      it('should report a visible control', () => {
+        const component = mount(<Select clearable options={[]} />)
+        const instance = component.instance()
+
+        expect(instance.isBottomControlVisible()).toBe(true)
+      })
     })
   })
 

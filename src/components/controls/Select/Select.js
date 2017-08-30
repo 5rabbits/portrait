@@ -582,7 +582,7 @@ export default class Select extends PureComponent {
   }
 
   isBottomControlVisible() {
-    return (
+    return !!(
       (this.props.canCreate && this.state.input.trim()) ||
       this.props.clearable
     )
