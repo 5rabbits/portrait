@@ -1,6 +1,7 @@
 import { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
+import sortBy from 'lodash/sortBy'
 
 export default class Selectable extends PureComponent {
   static propTypes = {
@@ -11,21 +12,28 @@ export default class Selectable extends PureComponent {
     value: PropTypes.any,
   }
 
-  state = {
-    filtered: this.props.options,
-    focusedOptionIndex: null,
-    isFocused: false,
-    search: '',
-    selectedOption: null,
-    value: this.props.value === undefined
-      ? this.props.defaultValue
-      : this.props.value,
+  constructor(props) {
+    super(props)
+
+    const sortedOptions = this.sortOptions(this.props.options)
+
+    this.state = {
+      focusedOptionIndex: null,
+      isFocused: false,
+      options: sortedOptions,
+      search: '',
+      selectedOption: null,
+      sortedOptions,
+      value: this.props.value === undefined
+        ? this.props.defaultValue
+        : this.props.value,
+    }
   }
 
   setSearch = search => {
     this.setState({
-      filtered: this.filterOptions({
-        options: this.props.options,
+      options: this.filterOptions({
+        options: this.state.sortedOptions,
         search,
       }),
       focusedOptionIndex: null,
@@ -56,16 +64,13 @@ export default class Selectable extends PureComponent {
   }
 
   setFocusedOptionIndex = index => {
-    let normalizedIndex = index
+    const optionsCount = this.state.options.length
 
-    if (index >= this.state.filtered.length) {
-      normalizedIndex = index % this.state.filtered.length
-    }
-    else if (index < 0) {
-      normalizedIndex = (this.state.filtered.length + index) % this.state.filtered.length
-    }
-
-    this.setState({ focusedOptionIndex: normalizedIndex })
+    this.setState({
+      focusedOptionIndex: index < 0
+        ? (optionsCount + index) % optionsCount
+        : index % optionsCount,
+    })
   }
 
   filterOptions = ({ options, search }) => {
@@ -120,14 +125,18 @@ export default class Selectable extends PureComponent {
     return terms
   }
 
+  sortOptions = options => (
+    sortBy(options, option => deburr(option.label.toLowerCase()))
+  )
+
   render() {
-    const { filtered, focusedOptionIndex, isFocused, search, selectedOption, value } = this.state
+    const { focusedOptionIndex, isFocused, options, search, selectedOption, value } = this.state
 
     return this.props.renderer({
       focusedOptionIndex,
       getSearchMatches: this.searchMatches,
       isFocused,
-      options: filtered,
+      options,
       search,
       selectedOption,
       setFocused: this.setFocused,

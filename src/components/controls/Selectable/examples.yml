@@ -34,11 +34,11 @@
     <div>
       <Selectable
         options={[
-          { label: 'Abraham Barrera', value: 1 },
           { label: 'Daniel Espinoza', value: 2 },
-          { label: 'Rodrigo Díaz', value: 3 },
-          { label: 'Tamara Luque', value: 4 },
           { label: 'Víctor Sánchez', value: 5 },
+          { label: 'Tamara Luque', value: 4 },
+          { label: 'Abraham Barrera', value: 1 },
+          { label: 'Rodrigo Díaz', value: 3 },
         ]}
         renderer={
           ({
@@ -257,11 +257,11 @@
     <div>
       <Selectable
         options={[
-          { label: 'Abraham Barrera', value: 1 },
           { label: 'Daniel Espinoza', value: 2 },
-          { label: 'Rodrigo Díaz', value: 3 },
-          { label: 'Tamara Luque', value: 4 },
           { label: 'Víctor Sánchez', value: 5 },
+          { label: 'Tamara Luque', value: 4 },
+          { label: 'Abraham Barrera', value: 1 },
+          { label: 'Rodrigo Díaz', value: 3 },
         ]}
         renderer={
           ({
