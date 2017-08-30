@@ -188,7 +188,6 @@ exports[`Select should render with minimum props 1`] = `
   inputRenderer={[Function]}
   menuRenderer={[Function]}
   newOptionBuilder={[Function]}
-  onChange={[Function]}
   optionRenderer={[Function]}
   optionSearchTerms={[Function]}
   options={Array []}

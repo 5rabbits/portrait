@@ -54,7 +54,7 @@ export default class Select extends PureComponent {
     optionsFilter: PropTypes.func,
     optionSearchTerms: PropTypes.func,
     onBlur: PropTypes.func,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     onFocus: PropTypes.func,
     optionRenderer: PropTypes.func.isRequired,
     placeholder: PropTypes.oneOfType([
@@ -89,7 +89,7 @@ export default class Select extends PureComponent {
     menuRenderer: defaultMenuRenderer,
     newOptionBuilder: defaultNewOptionBuilder,
     onBlur: undefined,
-    onChange: () => {},
+    onChange: undefined,
     onFocus: undefined,
     optionsFilter: defaultOptionsFilter,
     optionSearchTerms: defaultOptionSearchTerms,
@@ -245,7 +245,10 @@ export default class Select extends PureComponent {
     }
 
     this.setState(newState, () => {
-      this.props.onChange(value, option)
+      if (this.props.onChange) {
+        this.props.onChange(value, option)
+      }
+
       this.closeMenu()
       this.focus()
     })
@@ -352,6 +355,9 @@ export default class Select extends PureComponent {
         }
         else if (options.length > 0) {
           prev = options.length - 1
+        }
+        else {
+          return
         }
 
         break
@@ -517,6 +523,9 @@ export default class Select extends PureComponent {
         break
 
       case keyboard.ESCAPE:
+        this.closeMenu()
+        break
+
       case keyboard.TAB:
         this.closeMenu()
         this.blur()
@@ -530,9 +539,6 @@ export default class Select extends PureComponent {
       case keyboard.ARROW_UP:
         event.preventDefault()
         this.focusPrev()
-        break
-
-      default:
         break
     }
   }
@@ -556,7 +562,10 @@ export default class Select extends PureComponent {
     this.setState(newState, () => {
       this.closeMenu()
       this.focus()
-      this.props.onChange(newOption.value, newOption)
+
+      if (this.props.onChange) {
+        this.props.onChange(newOption.value, newOption)
+      }
     })
   }
 

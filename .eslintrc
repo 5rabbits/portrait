@@ -11,6 +11,7 @@
   "rules": {
     "arrow-parens": [0],
     "brace-style": [2, "stroustrup", { "allowSingleLine": false }],
+    "default-case": [0],
     "import/extensions": [0],
     "import/no-extraneous-dependencies": [0],
     "import/no-unresolved": [0],
