@@ -1,5 +1,7 @@
+import i18n from 'helpers/i18n'
+
 export default ({ canCreate }) => (
   canCreate
-    ? 'Select or create an option'
-    : 'Select an option'
+    ? i18n.t('Select.placeholder.canCreate')
+    : i18n.t('Select.placeholder.cantCreate')
 )

@@ -15,6 +15,22 @@ export default {
         title: 'Filtros',
         submit: 'Filtrar',
       },
+      Select: {
+        clearText: 'Dejar sin valor',
+        createOption: 'Crear nueva opción',
+        emptyView: {
+          noOptions: 'No hay opciones disponibles',
+          noResults: 'No hay resultados',
+        },
+        inputPlaceholder: {
+          canCreate: 'Escribe para buscar o crear',
+          cantCreate: 'Escribe para buscar',
+        },
+        placeholder: {
+          canCreate: 'Selecciona o crea una opción',
+          cantCreate: 'Selecciona una opción',
+        },
+      },
     },
   },
 }

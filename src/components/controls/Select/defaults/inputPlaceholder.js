@@ -1,5 +1,7 @@
+import i18n from 'helpers/i18n'
+
 export default ({ canCreate }) => (
   canCreate
-    ? 'Write to search or create'
-    : 'Write to search'
+    ? i18n.t('Select.inputPlaceholder.canCreate')
+    : i18n.t('Select.inputPlaceholder.cantCreate')
 )

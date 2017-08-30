@@ -7,6 +7,7 @@ import isFunction from 'lodash/isFunction'
 import deburr from 'lodash/deburr'
 import keyboard from 'utils/keyboard'
 import ScrollLock from 'shared/ScrollLock'
+import i18n from 'helpers/i18n'
 import defaultArrowRenderer from './defaults/arrowRenderer'
 import defaultClearOptionRenderer from './defaults/clearOptionRenderer'
 import defaultCreateOptionRenderer from './defaults/createOptionRenderer'
@@ -206,10 +207,10 @@ export default class Select extends PureComponent {
     autoFocus: false,
     canCreate: false,
     clearable: false,
-    clearText: 'Leave without value',
+    clearText: i18n.t('Select.clearText'),
     clearValue: null,
     clearOptionRenderer: defaultClearOptionRenderer,
-    createOptionLabel: 'Create new option',
+    createOptionLabel: i18n.t('Select.createOption'),
     createOptionRenderer: defaultCreateOptionRenderer,
     defaultNewOptionLabel: '',
     defaultValue: null,
