@@ -25,47 +25,179 @@ import defaultValueRenderer from './defaults/valueRenderer'
 import NEW_VALUE from './newValue'
 import './Select.scss'
 
+/**
+ * A component to replace native `select` controls.
+ *
+ * For deep customization, open the source `Select/defaults` folder to see the
+ * default implementations as reference.
+ */
 export default class Select extends PureComponent {
   static propTypes = {
+    /**
+     * Function that returns the arrow icon the select.
+     */
     arrowRenderer: PropTypes.func.isRequired,
+
+    /**
+     * Specifies if the select should gain focus automatically or not.
+     */
     autoFocus: PropTypes.bool,
+
+    /**
+     * Specifies if the user can create options on the fly or not.
+     */
     canCreate: PropTypes.bool,
+
+    /**
+     * Specifies if the user can clear the select value after a selection as beign made.
+     */
     clearable: PropTypes.bool,
+
+    /**
+     * Text to be displayed on the clear button, if `clearable`.
+     */
     clearText: PropTypes.string,
+
+    /**
+     * Value to be assigned when the user clicks the clear button, if `clearable`.
+     */
     clearValue: PropTypes.any,
+
+    /**
+     * Function that returns the clear button, if `clearable`.
+     */
     clearOptionRenderer: PropTypes.func.isRequired,
+
+    /**
+     * Text to be displayed as the hint of the create option button, if `canCreate`.
+     */
     createOptionLabel: PropTypes.string,
+
+    /**
+     * Function that returns the create option button, if `canCreate`.
+     */
     createOptionRenderer: PropTypes.func,
+
+    /**
+     * A color to theme the options focus and selected styles.
+     */
     color: PropTypes.string,
+
+    /**
+     * Text to be displayed on a select that initially has a transient option.
+     */
     defaultNewOptionLabel: PropTypes.string,
+
+    /**
+     * Initial search value for an uncontrolled select.
+     */
     defaultValue: PropTypes.any,
+
+    /**
+     * Specifies if the select is interactable or not.
+     */
     disabled: PropTypes.bool,
+
+    /**
+     * Function that returns the view displayed when there are no options to show.
+     */
     emptyRenderer: PropTypes.func,
+
+    /**
+     * Function or string that represents the placeholder to assign to the search input.
+     */
     inputPlaceholder: PropTypes.oneOfType([
       PropTypes.string, PropTypes.func,
     ]),
+
+    /**
+     * Function that returns the search input.
+     */
     inputRenderer: PropTypes.func.isRequired,
+
+    /**
+     * Function that returns the options list.
+     */
     menuRenderer: PropTypes.func.isRequired,
+
+    /**
+     * Function that returns a new option structure based on what the user wrote.
+     */
     newOptionBuilder: PropTypes.func,
+
+    /**
+     * Array of options to display in the select.
+     */
     options: PropTypes.arrayOf(PropTypes.shape({
       label: PropTypes.string,
       value: PropTypes.any,
     })).isRequired,
+
+    /**
+     * Function that returns a subset of the available options based on the current search.
+     */
     optionsFilter: PropTypes.func,
+
+    /**
+     * Function that returns the text matches of an option based on the current search, useful
+     * for highlighting.
+     */
     optionSearchTerms: PropTypes.func,
+
+    /**
+     * Invoked when the select loses focus.
+     */
     onBlur: PropTypes.func,
+
+    /**
+     * Invoked when the selection changes. The first argument is the current value and the
+     * second one is the full option object.
+     */
     onChange: PropTypes.func,
+
+    /**
+     * Invoked when the select gains focus.
+     */
     onFocus: PropTypes.func,
+
+    /**
+     * Function that returns the view to display an option in the list.
+     */
     optionRenderer: PropTypes.func.isRequired,
+
+    /**
+     * Function or string that represents the placeholder to assign to select.
+     */
     placeholder: PropTypes.oneOfType([
       PropTypes.string, PropTypes.func,
     ]),
+
+    /**
+     * Function that returns the select placeholder view.
+     */
     placeholderRenderer: PropTypes.func.isRequired,
+
+    /**
+     * Specifies if the select should display a search input when the menu is opened.
+     */
     searchable: PropTypes.bool,
+
+    /**
+     * Function that sorts the options before displaying them.
+     */
     sort: PropTypes.oneOfType([
       PropTypes.bool, PropTypes.func,
     ]),
+
+    /**
+     * Controlled value for the select. Use the `onChange` callback to update
+     * the value from the parent component.
+     */
     value: PropTypes.any,
+
+    /**
+     * Function that returns a view to display the selected option.
+     */
     valueRenderer: PropTypes.func.isRequired,
   }
 
@@ -77,7 +209,6 @@ export default class Select extends PureComponent {
     clearText: 'Leave without value',
     clearValue: null,
     clearOptionRenderer: defaultClearOptionRenderer,
-    color: undefined,
     createOptionLabel: 'Create new option',
     createOptionRenderer: defaultCreateOptionRenderer,
     defaultNewOptionLabel: '',
@@ -88,9 +219,6 @@ export default class Select extends PureComponent {
     inputRenderer: defaultInputRenderer,
     menuRenderer: defaultMenuRenderer,
     newOptionBuilder: defaultNewOptionBuilder,
-    onBlur: undefined,
-    onChange: undefined,
-    onFocus: undefined,
     optionsFilter: defaultOptionsFilter,
     optionSearchTerms: defaultOptionSearchTerms,
     optionRenderer: defaultOptionRenderer,
@@ -99,7 +227,6 @@ export default class Select extends PureComponent {
     searchable: true,
     sort: defaultSort,
     valueRenderer: defaultValueRenderer,
-    value: undefined,
   }
 
   constructor(props) {
