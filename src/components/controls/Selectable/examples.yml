@@ -1,0 +1,483 @@
+-
+  description: Basic usage
+  code: >
+    <Selectable
+      options={[
+        { label: 'Option 1', value: 1 },
+        { label: 'Option 2', value: 2 },
+        { label: 'Option 3', value: 3 },
+        { label: 'Option 4', value: 4 },
+        { label: 'Option 5', value: 5 },
+      ]}
+      renderer={
+        ({ setValue, options, value }) =>
+          <div>
+            {options.map((option, index) =>
+              <button
+                key={option.value}
+                onClick={() => setValue(option.value)}
+                style={{
+                  color: value === option.value ? 'red' : undefined,
+                }}
+                type="button"
+                >
+                {option.label}
+              </button>
+            )}
+          </div>
+      }
+    />
+
+-
+  description: Dropdown select
+  code: >
+    <div>
+      <Selectable
+        options={[
+          { label: 'Abraham Barrera', value: 1 },
+          { label: 'Daniel Espinoza', value: 2 },
+          { label: 'Rodrigo Díaz', value: 3 },
+          { label: 'Tamara Luque', value: 4 },
+          { label: 'Víctor Sánchez', value: 5 },
+        ]}
+        renderer={
+          ({
+            focusedOptionIndex,
+            getSearchMatches,
+            isFocused,
+            options,
+            search,
+            selectedOption,
+            setFocused,
+            setFocusedOptionIndex,
+            setSearch,
+            setValue,
+            value,
+          }) =>
+            <div
+              className={`
+                e1-select
+                ${value == null
+                  ? 'e1-select--without-value'
+                  : 'e1-select--with-value'
+                }
+              `}
+              >
+              <button
+                className="e1-control"
+                onClick={() => setFocused(!isFocused)}
+                type="button"
+                >
+                {selectedOption ? selectedOption.label : 'Select an option'}
+              </button>
+
+              {isFocused &&
+                <div className="e1-dropdown">
+                  <div className="e1-search-wrapper">
+                    <input
+                      autoFocus
+                      className="e1-search"
+                      onChange={event => setSearch(event.target.value)}
+                      onKeyDown={event => {
+                        switch (event.key) {
+                          case 'ArrowDown':
+                            event.preventDefault()
+                            setFocusedOptionIndex(
+                              focusedOptionIndex === null ? 0 : focusedOptionIndex + 1
+                            )
+                            break
+
+                          case 'ArrowUp':
+                            event.preventDefault()
+                            setFocusedOptionIndex(
+                              focusedOptionIndex === null ? 0 : focusedOptionIndex - 1
+                            )
+                            break
+
+                          case 'Enter':
+                            event.preventDefault()
+                            setValue(options[focusedOptionIndex].value)
+                            setFocused(false)
+                            break
+                        }
+                      }}
+                      placeholder="Write to search"
+                      type="text"
+                      value={search}
+                    />
+
+                    {search &&
+                      <button
+                        className="e1-clear-search"
+                        onClick={() => setSearch('')}
+                        type="button"
+                        >
+                        &times;
+                      </button>
+                    }
+                  </div>
+
+                  <div className="e1-options-list">
+                    {options.map((option, index) =>
+                      <button
+                        key={option.value}
+                        className={`
+                          e1-option
+                          ${option.value === value ? 'e1-option--selected' : ''}
+                          ${index === focusedOptionIndex ? 'e1-option--focused' : ''}
+                        `}
+                        onClick={() => {
+                          setValue(option.value)
+                          setFocused(false)
+                        }}
+                        onMouseEnter={() => setFocusedOptionIndex(index)}
+                        type="button"
+                        >
+                        {getSearchMatches(option.label).map(term =>
+                          term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                        )}
+                      </button>
+                    )}
+                  </div>
+                  <button
+                    className="e1-clear-option"
+                    onClick={() => {
+                      setValue(null)
+                      setFocused(false)
+                    }}
+                    type="button"
+                    >
+                    Leave without value
+                  </button>
+                </div>
+              }
+            </div>
+        }
+      />
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .e1-select {
+              width: 240px;
+              position: relative;
+            }
+
+            .e1-control {
+              width: 100%;
+              outline: none;
+              border: #cdd4db solid 1px;
+              outline: none;
+              text-align: left;
+              height: 32px;
+              background-color: #fff;
+              padding: 0 12px;
+              position: relative;
+              z-index: 1;
+              margin: 0;
+            }
+
+            .e1-dropdown {
+              position: absolute;
+              right: 0;
+              left: 0;
+              z-index: 99999;
+              background-color: #fff;
+              background-clip: padding-box;
+              box-shadow: rgba(0, 0, 0, 0.35) 0 8px 24px;
+              border: rgba(0, 0, 0, 0.1) solid 1px;
+              margin-top: -1px;
+            }
+
+            .e1-search-wrapper {
+              display: flex;
+              border-bottom: #cdd4db solid 1px;
+            }
+
+            .e1-search {
+              flex: 1;
+              height: 32px;
+              padding: 0 12px;
+              border: none;
+            }
+
+            .e1-clear-search {
+              flex-shrink: 0;
+            }
+
+            .e1-options-list {
+              max-height: 112px;
+              overflow-y: auto;
+            }
+
+            .e1-option {
+              height: 32px;
+              width: 100%;
+              background: none;
+              border: none;
+              outline: none;
+              text-align: left;
+              margin: 0;
+              padding: 0 12px;
+            }
+
+            .e1-option--focused {
+              background-color: #eee;
+            }
+
+            .e1-option--selected {
+              background-color: #1e85f2;
+              color: #fff;
+            }
+
+            .e1-clear-option {
+              height: 40px;
+              width: 100%;
+              background: none;
+              border: none;
+              outline: none;
+              text-align: left;
+              margin: 0;
+              padding: 0 12px;
+              border-top: #E7EAED solid 1px;
+              color: #B3BDC7;
+            }
+
+            .e1-select--without-value .e1-control {
+              color: #B3BDC7;
+            }
+          `
+        }}
+      />
+    </div>
+
+-
+  description: Inline multi-select
+  code: >
+    <div>
+      <Selectable
+        options={[
+          { label: 'Abraham Barrera', value: 1 },
+          { label: 'Daniel Espinoza', value: 2 },
+          { label: 'Rodrigo Díaz', value: 3 },
+          { label: 'Tamara Luque', value: 4 },
+          { label: 'Víctor Sánchez', value: 5 },
+        ]}
+        renderer={
+          ({
+            focusedOptionIndex,
+            getSearchMatches,
+            options,
+            search,
+            selectedOption,
+            setFocused,
+            setFocusedOptionIndex,
+            setSearch,
+            setValue,
+            value = [],
+          }) =>
+            <div className="e2-select">
+              <div className="e2-search-wrapper">
+                <input
+                  autoFocus
+                  className="e2-search"
+                  onChange={event => setSearch(event.target.value)}
+                  onKeyDown={event => {
+                    switch (event.key) {
+                      case 'ArrowDown':
+                        event.preventDefault()
+                        setFocusedOptionIndex(
+                          focusedOptionIndex === null ? 0 : focusedOptionIndex + 1
+                        )
+                        break
+
+                      case 'ArrowUp':
+                        event.preventDefault()
+                        setFocusedOptionIndex(
+                          focusedOptionIndex === null ? 0 : focusedOptionIndex - 1
+                        )
+                        break
+
+                      case 'Enter':
+                        event.preventDefault()
+                        const option = options[focusedOptionIndex]
+                        const index = value.indexOf(option.value)
+
+                        if (index === -1) {
+                          setValue([
+                            ...value,
+                            option.value,
+                          ])
+                        }
+                        else {
+                          setValue([
+                            ...value.slice(0, index),
+                            ...value.slice(index + 1),
+                          ])
+                        }
+
+                        break
+                    }
+                  }}
+                  placeholder="Write to search"
+                  type="text"
+                  value={search}
+                />
+
+                {search &&
+                  <button
+                    className="e2-clear-search"
+                    onClick={() => setSearch('')}
+                    type="button"
+                    >
+                    &times;
+                  </button>
+                }
+              </div>
+
+              <label
+                className="e2-option e2-option--all"
+                type="button"
+                >
+                <input
+                  checked={value.length === options.length}
+                  indeterminate={true}
+                  onChange={event => {
+                    if (event.target.checked) {
+                      setValue(options.map(option => option.value))
+                    }
+                    else {
+                      setValue([])
+                    }
+                  }}
+                  type="checkbox"
+                />
+                Select all
+              </label>
+
+              <div
+                className="e2-options-list"
+                onMouseLeave={() => setFocusedOptionIndex(null)}
+                >
+                {options.map((option, index) =>
+                  <label
+                    key={option.value}
+                    className={`
+                      e2-option
+                      ${index === focusedOptionIndex ? 'e2-option--focused' : ''}
+                    `}
+                    onMouseEnter={() => setFocusedOptionIndex(index)}
+                    type="button"
+                    >
+                    <input
+                      checked={value.indexOf(option.value) !== -1}
+                      onChange={() => {
+                        const index = value.indexOf(option.value)
+
+                        if (index === -1) {
+                          setValue([
+                            ...value,
+                            option.value,
+                          ])
+                        }
+                        else {
+                          setValue([
+                            ...value.slice(0, index),
+                            ...value.slice(index + 1),
+                          ])
+                        }
+                      }}
+                      type="checkbox"
+                    />
+                    <div>
+                      {getSearchMatches(option.label).map(term =>
+                        term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                      )}
+                    </div>
+                  </label>
+                )}
+              </div>
+            </div>
+        }
+      />
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .e2-select {
+              width: 240px;
+              background-color: #fff;
+            }
+
+            .e2-search-wrapper {
+              display: flex;
+              padding: 8px 8px 4px 8px;
+            }
+
+            .e2-search {
+              flex: 1;
+              height: 32px;
+              padding: 0 12px;
+              border: none;
+              background-color: #EEF1F3;
+              border-radius: 16px;
+            }
+
+            .e2-search::placeholder {
+              color: #A7B3BE;
+            }
+
+            .e2-clear-search {
+              flex-shrink: 0;
+            }
+
+            .e2-options-list {
+              border-top: #cdd4db solid 1px;
+            }
+
+            .e2-option {
+              height: 32px;
+              width: 100%;
+              background: none;
+              border: none;
+              outline: none;
+              text-align: left;
+              margin: 0;
+              padding: 0 12px;
+              display: flex;
+              align-items: center;
+            }
+
+            .e2-option input {
+              margin-right: 8px;
+            }
+
+            .e2-option--focused {
+              background-color: #eee;
+            }
+
+            .e2-option--selected {
+              background-color: #1e85f2;
+              color: #fff;
+            }
+
+            .e2-clear-option {
+              height: 40px;
+              width: 100%;
+              background: none;
+              border: none;
+              outline: none;
+              text-align: left;
+              margin: 0;
+              padding: 0 12px;
+              border-top: #E7EAED solid 1px;
+              color: #B3BDC7;
+            }
+
+            .e2-select--without-value .e2-control {
+              color: #B3BDC7;
+            }
+          `
+        }}
+      />
+    </div>
