@@ -64,6 +64,11 @@ export default class Selectable extends PureComponent {
   }
 
   setFocusedOptionIndex = index => {
+    if (index == null) {
+      this.setState({ focusedOptionIndex: null })
+      return
+    }
+
     const optionsCount = this.state.options.length
 
     this.setState({
