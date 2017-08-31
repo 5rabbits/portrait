@@ -93,7 +93,7 @@ export default class Selectable extends PureComponent {
     }
 
     defaults(options, {
-      realFocus: false,
+      virtual: true,
       scrollToViewport: false,
     })
 
@@ -116,7 +116,7 @@ export default class Selectable extends PureComponent {
 
     const node = this.focusableRefs[elementToFocus]
 
-    if (options.realFocus && node.focus) {
+    if (!options.virtual && node.focus) {
       node.focus()
     }
 
@@ -244,6 +244,14 @@ export default class Selectable extends PureComponent {
   overflowRef = () => (
     overflow => {
       this.overflow = overflow
+
+      if (
+        overflow &&
+        (!overflow.style.position || overflow.style.position === 'static')
+      ) {
+        // eslint-disable-next-line no-param-reassign
+        overflow.style.position = 'relative'
+      }
     }
   )
 

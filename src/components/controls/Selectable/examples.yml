@@ -1,5 +1,11 @@
 -
-  description: Selectable options list.
+  description: |
+    A simple selectable options list. It uses these minimum arguments:
+
+    - `options`: Sorted options array.
+    - `setValue(value)`: Changes the current value.
+    - `value`: The current value.
+
   code: >
     <Selectable
       options={[
@@ -38,7 +44,14 @@
     />
 
 -
-  description: Adds a search input.
+  description: |
+    Adds a search input using:
+
+    - `getSearchMatches(text)`: Returns a match analysis between the text and the current search.
+      Useful for highlighting.
+    - `search`: The current search.
+    - `setSearch(search)`: Changes the current search. `options` will be automatically filtered.
+
   code: >
     <Selectable
       options={[
@@ -104,7 +117,20 @@
     />
 
 -
-  description: Keyboard navigation.
+  description: |
+    Adds keyboard navigation:
+
+    - `focusableRef(id)`: Registers a focusable element. For focusable options it's recommended
+      to use their indices as `id` so that `setFocusedElement` can automatically handle options
+      cycling when implementing a "focus next" and "focus prev" (in this example using the arrows
+      down and up while the search input is focused). Pass `null` to remove the focus.
+    - `focusedElement`: The current focused element `id`.
+    - `setFocusedElement(id, { virtual: true })`: Changes the focused element. A _virtual focus_
+      it's useful to give a visual feedback while keeping the real focus on a text input
+      (for searching, autocomplete, etc) or any other element. You can pass `{ virtual: false }`
+      to change the real focus, for example, to give back the focus on the search input after
+      clicking its clear button or an option.
+
   code: >
     <Selectable
       options={[
@@ -164,7 +190,7 @@
                     className="selectable-dropdown__searchIcon"
                     onClick={() => {
                       setSearch('')
-                      setFocusedElement('input', { realFocus: true })
+                      setFocusedElement('input', { virtual: false })
                     }}
                     type="button"
                     >
@@ -183,7 +209,6 @@
                   onClick={() => {
                     setValue(option.value)
                     setSearch('')
-                    setFocusedElement('input', { realFocus: true })
                   }}
                   onMouseEnter={() => setFocusedElement(index)}
                   type="button"
@@ -202,7 +227,13 @@
     />
 
 -
-  description: Scrollable options list.
+  description: |
+    Defines an inner scrollable options list, very common for floating lists:
+
+    - `overflowRef()`: Registers the overflow container.
+    - `setFocusedElement(id, { scrollToViewport: false })`: Passing `{ scrollToViewport: true }` will
+      automatically scroll the overflow container if the focused element isn't in the current viewport.
+
   code: >
     <Selectable
       options={[
@@ -258,6 +289,7 @@
                     }
                   }}
                   placeholder="Write to search"
+                  ref={focusableRef('input')}
                   type="text"
                   value={search}
                 />
@@ -266,7 +298,7 @@
                     className="selectable-dropdown__searchIcon"
                     onClick={() => {
                       setSearch('')
-                      setFocusedElement('input', { realFocus: true })
+                      setFocusedElement('input', { virtual: false })
                     }}
                     type="button"
                     >
@@ -289,7 +321,7 @@
                     onClick={() => {
                       setValue(option.value)
                       setSearch('')
-                      setFocusedElement('input', { realFocus: true })
+                      setFocusedElement('input', { virtual: false })
                     }}
                     onMouseEnter={() => setFocusedElement(index)}
                     ref={focusableRef(index)}
@@ -301,6 +333,163 @@
                   </button>
                 )}
               </div>
+            </div>
+            <div className="current-value">
+              Current value: {value}
+            </div>
+          </div>
+      }
+    />
+
+-
+  description: |
+    Displays the options list on a dropdown when the control is focused.
+
+    - `overflowRef()`: Registers the overflow container.
+    - `setFocusedElement(id, { scrollToViewport: false })`: Passing `{ scrollToViewport: true }` will
+      automatically scroll the overflow container if the focused element isn't in the current viewport.
+
+  code: >
+    <Selectable
+      options={[
+        { label: 'Daniel Espinoza', value: 2 },
+        { label: 'Víctor Sánchez', value: 5 },
+        { label: 'Tamara Luque', value: 4 },
+        { label: 'Abraham Barrera', value: 1 },
+        { label: 'Rodrigo Díaz', value: 3 },
+      ]}
+      renderer={
+        ({
+          containerRef,
+          focusableRef,
+          focusedElement,
+          getSearchMatches,
+          isFocused,
+          options,
+          overflowRef,
+          search,
+          selectedOption,
+          setFocused,
+          setFocusedElement,
+          setSearch,
+          setValue,
+          value,
+        }) =>
+          <div>
+            <div
+              className={classNames('selectable-dropdown', {
+                'selectable-dropdown--with-value': value != null,
+                'selectable-dropdown--without-value': value == null,
+              })}
+              onMouseLeave={() => setFocusedElement(null)}
+              ref={containerRef()}
+              >
+              <button
+                className="selectable-dropdown__control"
+                onClick={() => {
+                  if (isFocused) {
+                    setFocused(false)
+                  }
+                  else {
+                    setFocused(true)
+
+                    // Execute after the next paint
+                    window.requestAnimationFrame(() =>
+                      setFocusedElement('input', { virtual: false })
+                    )
+                  }
+                }}
+                type="button"
+                >
+                {selectedOption ? selectedOption.label : 'Select an option'}
+              </button>
+              {isFocused &&
+                <div className="selectable-dropdown__menu">
+                  <div className="selectable-dropdown__searchWrapper">
+                    <input
+                      className="selectable-dropdown__searchInput"
+                      onChange={event => setSearch(event.target.value)}
+                      onKeyDown={event => {
+                        switch (event.key) {
+                          case 'ArrowDown':
+                            event.preventDefault()
+                            setFocusedElement(focusedElement === null ? 0 : focusedElement + 1, {
+                              scrollToViewport: true,
+                            })
+                            break
+
+                          case 'ArrowUp':
+                            event.preventDefault()
+                            setFocusedElement(focusedElement === null ? 0 : focusedElement - 1, {
+                              scrollToViewport: true,
+                            })
+                            break
+
+                          case 'Enter':
+                            event.preventDefault()
+                            setValue(options[focusedElement].value)
+                            setSearch('')
+                            setFocused(false)
+                            break
+                        }
+                      }}
+                      placeholder="Write to search"
+                      ref={focusableRef('input')}
+                      type="text"
+                      value={search}
+                    />
+                    {search &&
+                      <button
+                        className="selectable-dropdown__searchIcon"
+                        onClick={() => {
+                          setSearch('')
+                          setFocusedElement('input', { virtual: false })
+                        }}
+                        type="button"
+                        >
+                        &times;
+                      </button>
+                    }
+                  </div>
+
+                  <div
+                    className="selectable-dropdown__overflow"
+                    ref={overflowRef()}
+                    >
+                    {options.map((option, index) =>
+                      <button
+                        className={classNames('selectable-dropdown__option', {
+                          'selectable-dropdown__option--selected': value === option.value,
+                          'selectable-dropdown__option--focused': index === focusedElement,
+                        })}
+                        key={option.value}
+                        onClick={() => {
+                          setValue(option.value)
+                          setSearch('')
+                          setFocused(false)
+                        }}
+                        onMouseEnter={() => setFocusedElement(index)}
+                        ref={focusableRef(index)}
+                        type="button"
+                        >
+                        {getSearchMatches(option.label).map(term =>
+                          term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                        )}
+                      </button>
+                    )}
+                  </div>
+                  <button
+                    className="selectable-dropdown__bottomOption"
+                    onClick={() => {
+                      setValue(null)
+                      setFocused(false)
+                    }}
+                    type="button"
+                    >
+                    Leave without value
+                  </button>
+                </div>
+              }
             </div>
             <div className="current-value">
               Current value: {value}
