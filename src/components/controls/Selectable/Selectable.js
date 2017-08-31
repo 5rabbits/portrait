@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
+import defaults from 'lodash/defaults'
 
 export default class Selectable extends PureComponent {
   static propTypes = {
@@ -74,7 +75,11 @@ export default class Selectable extends PureComponent {
     })
   }
 
-  setFocusedElement = id => {
+  setFocusedElement = (id, options = {}) => {
+    defaults(options, {
+      scrollToViewport: false,
+    })
+
     if (id == null) {
       this.setState({ focusedElement: null })
       return
@@ -92,7 +97,7 @@ export default class Selectable extends PureComponent {
 
     this.setState({ focusedElement: elementToFocus })
 
-    if (this.overflow) {
+    if (this.overflow && options.scrollToViewport && elementToFocus != null) {
       const node = this.focusableRefs[elementToFocus]
       const viewportInfo = this.isNodeInViewport(node)
 

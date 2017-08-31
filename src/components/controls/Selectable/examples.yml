@@ -86,16 +86,16 @@
                         switch (event.key) {
                           case 'ArrowDown':
                             event.preventDefault()
-                            setFocusedElement(
-                              focusedElement === null ? 0 : focusedElement + 1
-                            )
+                            setFocusedElement(focusedElement === null ? 0 : focusedElement + 1, {
+                              scrollToViewport: true,
+                            })
                             break
 
                           case 'ArrowUp':
                             event.preventDefault()
-                            setFocusedElement(
-                              focusedElement === null ? 0 : focusedElement - 1
-                            )
+                            setFocusedElement(focusedElement === null ? 0 : focusedElement - 1, {
+                              scrollToViewport: true,
+                            })
                             break
 
                           case 'Enter':
@@ -353,7 +353,11 @@
               </div>
 
               <label
-                className="e2-option e2-option--all"
+                className={`
+                  e2-option
+                  e2-option--all
+                  ${focusedElement === 'select-all' ? 'e2-option--focused' : ''}
+                `}
                 type="button"
                 >
                 <input
