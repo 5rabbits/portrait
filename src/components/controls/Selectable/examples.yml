@@ -46,6 +46,7 @@
             getSearchMatches,
             isFocused,
             options,
+            ref,
             search,
             selectedOption,
             setFocused,
@@ -62,6 +63,7 @@
                   : 'e1-select--with-value'
                 }
               `}
+              ref={ref}
               >
               <button
                 className="e1-control"
@@ -289,7 +291,6 @@
             <div className="e2-select">
               <div className="e2-search-wrapper">
                 <input
-                  autoFocus
                   className="e2-search"
                   onChange={event => setSearch(event.target.value)}
                   onKeyDown={event => {

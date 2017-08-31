@@ -30,6 +30,14 @@ export default class Selectable extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    document.addEventListener('click', this.handleOutsideClick)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleOutsideClick)
+  }
+
   setSearch = search => {
     this.setState({
       options: this.filterOptions({
@@ -134,6 +142,21 @@ export default class Selectable extends PureComponent {
     sortBy(options, option => deburr(option.label.toLowerCase()))
   )
 
+  handleOutsideClick = event => {
+    if (
+      this.state.isFocused &&
+      this.container &&
+      !this.container.contains(event.target)
+      && event.target.parentNode
+    ) {
+      this.setState({ isFocused: false })
+    }
+  }
+
+  containerRef = container => {
+    this.container = container
+  }
+
   render() {
     const { focusedOptionIndex, isFocused, options, search, selectedOption, value } = this.state
 
@@ -142,6 +165,7 @@ export default class Selectable extends PureComponent {
       getSearchMatches: this.searchMatches,
       isFocused,
       options,
+      ref: this.containerRef,
       search,
       selectedOption,
       setFocused: this.setFocused,
