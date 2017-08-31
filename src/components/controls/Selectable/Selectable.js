@@ -43,6 +43,10 @@ export default class Selectable extends PureComponent {
   }
 
   setSearch = search => {
+    if (search === this.state.search) {
+      return
+    }
+
     this.setState({
       options: this.filterOptions({
         options: this.state.sortedOptions,
@@ -54,6 +58,10 @@ export default class Selectable extends PureComponent {
   }
 
   setValue = value => {
+    if (value === this.state.value) {
+      return
+    }
+
     if (this.props.value === undefined) {
       this.setState({
         selectedOption: value == null
@@ -69,6 +77,10 @@ export default class Selectable extends PureComponent {
   }
 
   setFocused = isFocused => {
+    if (isFocused === this.state.isFocused) {
+      return
+    }
+
     this.setState({
       isFocused,
       focusedElement: null,
@@ -76,6 +88,10 @@ export default class Selectable extends PureComponent {
   }
 
   setFocusedElement = (id, options = {}) => {
+    if (this.state.focusedElement === id) {
+      return
+    }
+
     defaults(options, {
       scrollToViewport: false,
     })
