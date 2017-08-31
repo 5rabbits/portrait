@@ -381,7 +381,6 @@
                 'selectable-dropdown--with-value': value != null,
                 'selectable-dropdown--without-value': value == null,
               })}
-              onMouseLeave={() => setFocusedElement('input')}
               ref={containerRef()}
               >
               <button
