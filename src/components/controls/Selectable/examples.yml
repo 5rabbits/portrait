@@ -381,7 +381,7 @@
                 'selectable-dropdown--with-value': value != null,
                 'selectable-dropdown--without-value': value == null,
               })}
-              onMouseLeave={() => setFocusedElement(null)}
+              onMouseLeave={() => setFocusedElement('input')}
               ref={containerRef()}
               >
               <button
@@ -413,21 +413,50 @@
                         switch (event.key) {
                           case 'ArrowDown':
                             event.preventDefault()
-                            setFocusedElement(focusedElement === null ? 0 : focusedElement + 1, {
-                              scrollToViewport: true,
-                            })
+
+                            if (focusedElement === 'clear' || focusedElement === 'input') {
+                              setFocusedElement(0, { scrollToViewport: true })
+                            }
+                            else if (focusedElement === options.length - 1) {
+                              setFocusedElement('clear')
+                            }
+                            else {
+                              setFocusedElement(focusedElement + 1, {
+                                scrollToViewport: true,
+                              })
+                            }
                             break
 
                           case 'ArrowUp':
                             event.preventDefault()
-                            setFocusedElement(focusedElement === null ? 0 : focusedElement - 1, {
-                              scrollToViewport: true,
-                            })
+
+                            if (focusedElement === 'input' || focusedElement === 0) {
+                              setFocusedElement('clear')
+                            }
+                            else if (focusedElement === 'clear') {
+                              setFocusedElement(options.length - 1, { scrollToViewport: true })
+                            }
+                            else {
+                              setFocusedElement(focusedElement - 1, {
+                                scrollToViewport: true,
+                              })
+                            }
                             break
 
                           case 'Enter':
                             event.preventDefault()
-                            setValue(options[focusedElement].value)
+
+                            if (focusedElement === 'input') {
+                              return
+                            }
+
+                            if (focusedElement === 'clear') {
+                              setValue(null)
+                            }
+                            else {
+                              setValue(options[focusedElement].value)
+                            }
+
                             setSearch('')
                             setFocused(false)
                             break
@@ -479,11 +508,15 @@
                     )}
                   </div>
                   <button
-                    className="selectable-dropdown__bottomOption"
+                    className={classNames('selectable-dropdown__bottomOption', {
+                      'selectable-dropdown__option--focused': focusedElement === 'clear',
+                    })}
                     onClick={() => {
                       setValue(null)
                       setFocused(false)
                     }}
+                    onMouseEnter={() => setFocusedElement('clear')}
+                    ref={focusableRef('clear')}
                     type="button"
                     >
                     Leave without value
@@ -497,247 +530,6 @@
           </div>
       }
     />
-
--
-  description: Dropdown select using all available options.
-  code: >
-    <div>
-      <Selectable
-        options={[
-          { label: 'Daniel Espinoza', value: 2 },
-          { label: 'Víctor Sánchez', value: 5 },
-          { label: 'Tamara Luque', value: 4 },
-          { label: 'Abraham Barrera', value: 1 },
-          { label: 'Rodrigo Díaz', value: 3 },
-        ]}
-        renderer={
-          ({
-            containerRef,      // Defines the container element to detect outside clicks
-            focusableRef,      // Defines a focusable element
-            focusedElement,    // The currently focused element
-            getSearchMatches,  // Gets the current search matches for a given text
-            isFocused,         // Specifies if the global control is focused or not
-            options,           // Sorted and filtered options array
-            overflowRef,       // Defines the inner list with overflow that contains the options
-            search,            // The current search
-            selectedOption,    // The currently selected option object
-            setFocused,        // Changes the global control focus status
-            setFocusedElement, // Changes the local focused element
-            setSearch,         // Changes the current search
-            setValue,          // Changes the current value
-            value,             // The current value
-          }) =>
-            <div
-              className={`
-                e1-select
-                ${value == null
-                  ? 'e1-select--without-value'
-                  : 'e1-select--with-value'
-                }
-              `}
-              ref={containerRef()}
-              >
-              <button
-                className="e1-control"
-                onClick={() => setFocused(!isFocused)}
-                type="button"
-                >
-                {selectedOption ? selectedOption.label : 'Select an option'}
-              </button>
-
-              {isFocused &&
-                <div className="e1-dropdown">
-                  <div className="e1-search-wrapper">
-                    <input
-                      autoFocus
-                      className="e1-search"
-                      onChange={event => setSearch(event.target.value)}
-                      onKeyDown={event => {
-                        switch (event.key) {
-                          case 'ArrowDown':
-                            event.preventDefault()
-                            setFocusedElement(focusedElement === null ? 0 : focusedElement + 1, {
-                              scrollToViewport: true,
-                            })
-                            break
-
-                          case 'ArrowUp':
-                            event.preventDefault()
-                            setFocusedElement(focusedElement === null ? 0 : focusedElement - 1, {
-                              scrollToViewport: true,
-                            })
-                            break
-
-                          case 'Enter':
-                            event.preventDefault()
-                            setValue(options[focusedElement].value)
-                            setFocused(false)
-                            break
-                        }
-                      }}
-                      placeholder="Write to search"
-                      type="text"
-                      value={search}
-                    />
-
-                    {search &&
-                      <button
-                        className="e1-clear-search"
-                        onClick={() => setSearch('')}
-                        type="button"
-                        >
-                        &times;
-                      </button>
-                    }
-                  </div>
-
-                  <div
-                    className="e1-options-list"
-                    ref={overflowRef()}
-                    >
-                    {options.length === 0 &&
-                      <div className="e1-no-results">
-                        No results
-                      </div>
-                    }
-
-                    {options.map((option, index) =>
-                      <button
-                        key={option.value}
-                        className={`
-                          e1-option
-                          ${option.value === value ? 'e1-option--selected' : ''}
-                          ${index === focusedElement ? 'e1-option--focused' : ''}
-                        `}
-                        onClick={() => {
-                          setValue(option.value)
-                          setFocused(false)
-                        }}
-                        onMouseEnter={() => setFocusedElement(index)}
-                        ref={focusableRef(index)}
-                        type="button"
-                        >
-                        {getSearchMatches(option.label).map(term =>
-                          term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                        )}
-                      </button>
-                    )}
-                  </div>
-                  <button
-                    className="e1-clear-option"
-                    onClick={() => {
-                      setValue(null)
-                      setFocused(false)
-                    }}
-                    type="button"
-                    >
-                    Leave without value
-                  </button>
-                </div>
-              }
-            </div>
-        }
-      />
-
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            .e1-select {
-              width: 240px;
-              position: relative;
-            }
-
-            .e1-control {
-              width: 100%;
-              outline: none;
-              border: #cdd4db solid 1px;
-              outline: none;
-              text-align: left;
-              height: 32px;
-              background-color: #fff;
-              padding: 0 12px;
-              position: relative;
-              z-index: 1;
-              margin: 0;
-            }
-
-            .e1-dropdown {
-              position: absolute;
-              right: 0;
-              left: 0;
-              z-index: 99999;
-              background-color: #fff;
-              background-clip: padding-box;
-              box-shadow: rgba(0, 0, 0, 0.35) 0 8px 24px;
-              border: rgba(0, 0, 0, 0.1) solid 1px;
-              margin-top: -1px;
-            }
-
-            .e1-search-wrapper {
-              display: flex;
-              border-bottom: #cdd4db solid 1px;
-            }
-
-            .e1-search {
-              flex: 1;
-              height: 32px;
-              padding: 0 12px;
-              border: none;
-            }
-
-            .e1-clear-search {
-              flex-shrink: 0;
-            }
-
-            .e1-no-results {
-              padding: 16px;
-            }
-
-            .e1-options-list {
-              max-height: 112px;
-              overflow-y: auto;
-            }
-
-            .e1-option {
-              height: 32px;
-              width: 100%;
-              background: none;
-              border: none;
-              outline: none;
-              text-align: left;
-              margin: 0;
-              padding: 0 12px;
-            }
-
-            .e1-option--focused {
-              background-color: #eee;
-            }
-
-            .e1-option--selected {
-              background-color: #1e85f2;
-              color: #fff;
-            }
-
-            .e1-clear-option {
-              height: 40px;
-              width: 100%;
-              background: none;
-              border: none;
-              outline: none;
-              text-align: left;
-              margin: 0;
-              padding: 0 12px;
-              border-top: #E7EAED solid 1px;
-              color: #B3BDC7;
-            }
-
-            .e1-select--without-value .e1-control {
-              color: #B3BDC7;
-            }
-          `
-        }}
-      />
-    </div>
 
 -
   description: Inline multi-select
