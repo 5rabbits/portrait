@@ -116,6 +116,7 @@
       ]}
       renderer={
         ({
+          focusableRef,
           focusedElement,
           getSearchMatches,
           options,
@@ -154,13 +155,17 @@
                     }
                   }}
                   placeholder="Write to search"
+                  ref={focusableRef('input')}
                   type="text"
                   value={search}
                 />
                 {search &&
                   <button
                     className="selectable-dropdown__searchIcon"
-                    onClick={() => setSearch('')}
+                    onClick={() => {
+                      setSearch('')
+                      setFocusedElement('input', { realFocus: true })
+                    }}
                     type="button"
                     >
                     &times;
@@ -196,7 +201,7 @@
     />
 
 -
-  description: Inner scrolling area.
+  description: Scrollable options list.
   code: >
     <Selectable
       options={[

@@ -93,6 +93,7 @@ export default class Selectable extends PureComponent {
     }
 
     defaults(options, {
+      realFocus: false,
       scrollToViewport: false,
     })
 
@@ -113,8 +114,13 @@ export default class Selectable extends PureComponent {
 
     this.setState({ focusedElement: elementToFocus })
 
+    const node = this.focusableRefs[elementToFocus]
+
+    if (options.realFocus && node.focus) {
+      node.focus()
+    }
+
     if (this.overflow && options.scrollToViewport && elementToFocus != null) {
-      const node = this.focusableRefs[elementToFocus]
       const viewportInfo = this.isNodeInViewport(node)
 
       if (!viewportInfo.visibleFromBottom) {
