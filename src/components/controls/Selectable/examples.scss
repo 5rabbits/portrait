@@ -1,0 +1,65 @@
+@import '~core/variables';
+
+.component-example--Selectable {
+  .selectable-dropdown {
+    background-color: #fff;
+  }
+
+  .selectable-dropdown__option {
+    height: 32px;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-align: left;
+    margin: 0;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  .selectable-dropdown__option--focused {
+    background-color: #eee;
+  }
+
+  .selectable-dropdown__option--selected {
+    background-color: $primary-color;
+    color: #fff;
+  }
+
+  .selectable-dropdown__searchWrapper {
+    position: relative;
+  }
+
+  .selectable-dropdown__searchIcon {
+    border: none;
+    outline: none;
+    background: none;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+  }
+
+  .selectable-dropdown__searchInput {
+    height: 32px;
+    padding: 0 32px 0 12px;
+    background-color: #FFF;
+    border: none;
+    border-bottom: $default-input-border-color solid 1px;
+
+    &::placeholder {
+      color: $placeholder-color;
+    }
+  }
+
+  .selectable-dropdown__overflow {
+    max-height: 112px;
+    overflow-y: auto;
+  }
+
+  .current-value {
+    margin-top: 16px;
+  }
+}

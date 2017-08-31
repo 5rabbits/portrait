@@ -227,12 +227,12 @@ export default class Selectable extends PureComponent {
     const { focusedElement, isFocused, options, search, selectedOption, value } = this.state
 
     return this.props.renderer({
+      containerRef: this.containerRef,
       focusableRef: this.focusableRef,
       focusedElement,
       getSearchMatches: this.searchMatches,
       isFocused,
       options,
-      containerRef: this.containerRef,
       overflowRef: this.overflowRef,
       search,
       selectedOption,
