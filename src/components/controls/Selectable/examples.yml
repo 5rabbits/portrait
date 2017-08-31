@@ -183,6 +183,7 @@
                   onClick={() => {
                     setValue(option.value)
                     setSearch('')
+                    setFocusedElement('input', { realFocus: true })
                   }}
                   onMouseEnter={() => setFocusedElement(index)}
                   type="button"
@@ -263,7 +264,10 @@
                 {search &&
                   <button
                     className="selectable-dropdown__searchIcon"
-                    onClick={() => setSearch('')}
+                    onClick={() => {
+                      setSearch('')
+                      setFocusedElement('input', { realFocus: true })
+                    }}
                     type="button"
                     >
                     &times;
@@ -285,6 +289,7 @@
                     onClick={() => {
                       setValue(option.value)
                       setSearch('')
+                      setFocusedElement('input', { realFocus: true })
                     }}
                     onMouseEnter={() => setFocusedElement(index)}
                     ref={focusableRef(index)}
