@@ -57,6 +57,7 @@
   .selectable-dropdown__overflow {
     max-height: 112px;
     overflow-y: auto;
+    position: relative;
   }
 
   .current-value {

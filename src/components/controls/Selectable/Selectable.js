@@ -120,7 +120,7 @@ export default class Selectable extends PureComponent {
     }
 
     const overflow = this.overflow
-    const nodeTop = node.offsetTop - overflow.offsetTop
+    const nodeTop = node.offsetTop
     const visibleFromTop = nodeTop >= overflow.scrollTop
     const visibleFromBottom = nodeTop + node.offsetHeight <=
       overflow.scrollTop + overflow.offsetHeight
@@ -133,9 +133,11 @@ export default class Selectable extends PureComponent {
   }
 
   scrollNodeToViewport = (node, fromDirection) => {
-    this.overflow.scrollTop = fromDirection === 'bottom'
-      ? node.offsetTop - this.overflow.offsetHeight
-      : node.offsetTop - node.offsetHeight
+    const scrollTop = fromDirection === 'bottom'
+      ? node.offsetTop - (this.overflow.offsetHeight - node.offsetHeight)
+      : node.offsetTop
+
+    this.overflow.scrollTop = scrollTop
   }
 
   filterOptions = ({ options, search }) => {
