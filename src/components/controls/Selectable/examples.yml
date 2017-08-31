@@ -42,15 +42,17 @@
         ]}
         renderer={
           ({
-            focusedOptionIndex,
+            containerRef,
+            focusableRef,
+            focusedElement,
             getSearchMatches,
             isFocused,
             options,
-            ref,
+            overflowRef,
             search,
             selectedOption,
             setFocused,
-            setFocusedOptionIndex,
+            setFocusedElement,
             setSearch,
             setValue,
             value,
@@ -63,7 +65,7 @@
                   : 'e1-select--with-value'
                 }
               `}
-              ref={ref}
+              ref={containerRef()}
               >
               <button
                 className="e1-control"
@@ -84,21 +86,21 @@
                         switch (event.key) {
                           case 'ArrowDown':
                             event.preventDefault()
-                            setFocusedOptionIndex(
-                              focusedOptionIndex === null ? 0 : focusedOptionIndex + 1
+                            setFocusedElement(
+                              focusedElement === null ? 0 : focusedElement + 1
                             )
                             break
 
                           case 'ArrowUp':
                             event.preventDefault()
-                            setFocusedOptionIndex(
-                              focusedOptionIndex === null ? 0 : focusedOptionIndex - 1
+                            setFocusedElement(
+                              focusedElement === null ? 0 : focusedElement - 1
                             )
                             break
 
                           case 'Enter':
                             event.preventDefault()
-                            setValue(options[focusedOptionIndex].value)
+                            setValue(options[focusedElement].value)
                             setFocused(false)
                             break
                         }
@@ -119,7 +121,10 @@
                     }
                   </div>
 
-                  <div className="e1-options-list">
+                  <div
+                    className="e1-options-list"
+                    ref={overflowRef()}
+                    >
                     {options.length === 0 &&
                       <div className="e1-no-results">
                         No results
@@ -132,13 +137,14 @@
                         className={`
                           e1-option
                           ${option.value === value ? 'e1-option--selected' : ''}
-                          ${index === focusedOptionIndex ? 'e1-option--focused' : ''}
+                          ${index === focusedElement ? 'e1-option--focused' : ''}
                         `}
                         onClick={() => {
                           setValue(option.value)
                           setFocused(false)
                         }}
-                        onMouseEnter={() => setFocusedOptionIndex(index)}
+                        onMouseEnter={() => setFocusedElement(index)}
+                        ref={focusableRef(index)}
                         type="button"
                         >
                         {getSearchMatches(option.label).map(term =>
@@ -277,13 +283,13 @@
         ]}
         renderer={
           ({
-            focusedOptionIndex,
+            focusedElement,
             getSearchMatches,
             options,
             search,
             selectedOption,
             setFocused,
-            setFocusedOptionIndex,
+            setFocusedElement,
             setSearch,
             setValue,
             value = [],
@@ -297,21 +303,21 @@
                     switch (event.key) {
                       case 'ArrowDown':
                         event.preventDefault()
-                        setFocusedOptionIndex(
-                          focusedOptionIndex === null ? 0 : focusedOptionIndex + 1
+                        setFocusedElement(
+                          focusedElement === null ? 0 : focusedElement + 1
                         )
                         break
 
                       case 'ArrowUp':
                         event.preventDefault()
-                        setFocusedOptionIndex(
-                          focusedOptionIndex === null ? 0 : focusedOptionIndex - 1
+                        setFocusedElement(
+                          focusedElement === null ? 0 : focusedElement - 1
                         )
                         break
 
                       case 'Enter':
                         event.preventDefault()
-                        const option = options[focusedOptionIndex]
+                        const option = options[focusedElement]
                         const index = value.indexOf(option.value)
 
                         if (index === -1) {
@@ -367,7 +373,7 @@
 
               <div
                 className="e2-options-list"
-                onMouseLeave={() => setFocusedOptionIndex(null)}
+                onMouseLeave={() => setFocusedElement(null)}
                 >
                 {options.length === 0 &&
                   <div className="e2-no-results">
@@ -379,9 +385,9 @@
                     key={option.value}
                     className={`
                       e2-option
-                      ${index === focusedOptionIndex ? 'e2-option--focused' : ''}
+                      ${index === focusedElement ? 'e2-option--focused' : ''}
                     `}
-                    onMouseEnter={() => setFocusedOptionIndex(index)}
+                    onMouseEnter={() => setFocusedElement(index)}
                     type="button"
                     >
                     <input
