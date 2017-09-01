@@ -5,11 +5,19 @@ import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
 import defaults from 'lodash/defaults'
+import controllable from 'helpers/controllable'
 
+@controllable({
+  value: 'onChange',
+})
 export default class Selectable extends PureComponent {
   static propTypes = {
+    // Handled by uncontrollable
+    /* eslint-disable react/no-unused-prop-types */
     defaultValue: PropTypes.any,
-    onChange: PropTypes.func,
+    /* eslint-enable react/no-unused-prop-types */
+
+    onChange: PropTypes.func.isRequired,
     onClickOutside: PropTypes.func,
     options: PropTypes.array.isRequired,
     renderer: PropTypes.func.isRequired,
@@ -20,14 +28,10 @@ export default class Selectable extends PureComponent {
     super(props)
 
     const sortedOptions = this.sortOptions(this.props.options)
-    const value = this.props.value === undefined
-      ? this.props.defaultValue
-      : this.props.value
-
     let selectedOption
 
-    if (value != null) {
-      selectedOption = sortedOptions.find(option => option.value === value)
+    if (this.props.value != null) {
+      selectedOption = sortedOptions.find(option => option.value === this.props.value)
     }
 
     this.state = {
@@ -37,7 +41,6 @@ export default class Selectable extends PureComponent {
       search: '',
       selectedOption,
       sortedOptions,
-      value,
     }
 
     this.focusableRefs = {}
@@ -63,15 +66,10 @@ export default class Selectable extends PureComponent {
     }
 
     if (this.props.value !== nextProps.value) {
-      let selectedOption
-
-      if (nextProps.value != null) {
-        selectedOption = nextProps.options.find(option => option.value === nextProps.value)
-      }
-
       this.setState({
-        selectedOption,
-        value: nextProps.value,
+        selectedOption: nextProps.value == null
+          ? null
+          : nextProps.options.find(option => option.value === nextProps.value),
       })
     }
   }
@@ -81,7 +79,8 @@ export default class Selectable extends PureComponent {
   }
 
   getRendererProps = () => {
-    const { focusedElement, isFocused, options, search, selectedOption, value } = this.state
+    const { value } = this.props
+    const { focusedElement, isFocused, options, search, selectedOption } = this.state
 
     return {
       focusableRef: this.focusableRef,
@@ -116,22 +115,11 @@ export default class Selectable extends PureComponent {
   }
 
   setValue = value => {
-    if (value === this.state.value) {
+    if (value === this.props.value) {
       return
     }
 
-    if (this.props.value === undefined) {
-      this.setState({
-        selectedOption: value == null
-          ? null
-          : this.props.options.find(option => option.value === value),
-        value,
-      })
-    }
-
-    if (this.props.onChange) {
-      this.props.onChange(value)
-    }
+    this.props.onChange(value)
   }
 
   setFocused = isFocused => {
