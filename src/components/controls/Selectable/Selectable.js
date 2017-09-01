@@ -303,25 +303,17 @@ export default class Selectable extends PureComponent {
     }
   }
 
-  focusableRef = id => (
-    node => {
-      this.focusableRefs[id] = node
-    }
-  )
+  focusableRef = id => node => {
+    this.focusableRefs[id] = node
+  }
 
-  overflowRef = () => (
-    overflow => {
-      this.overflow = overflow
+  overflowRef = () => overflow => {
+    this.overflow = overflow
 
-      if (
-        overflow &&
-        (!overflow.style.position || overflow.style.position === 'static')
-      ) {
-        // eslint-disable-next-line no-param-reassign
-        overflow.style.position = 'relative'
-      }
+    if (overflow && (!overflow.style.position || overflow.style.position === 'static')) {
+      overflow.style.position = 'relative' // eslint-disable-line no-param-reassign
     }
-  )
+  }
 
   render() {
     return this.props.renderer(this.getRendererProps())
