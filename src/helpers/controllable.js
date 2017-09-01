@@ -13,10 +13,15 @@ export default (propsMapping = {}, instanceMethods = []) => Component =>
       const state = {}
 
       Object.keys(propsMapping).forEach(prop => {
-        const defaultProp = getDefaultProps(prop)
+        const defaultPropName = getDefaultProps(prop)
+        let defaultValue = props[defaultPropName]
+
+        if (defaultValue === undefined && Component.defaultProps) {
+          defaultValue = Component.defaultProps[defaultPropName]
+        }
 
         state[prop] = props[prop] === undefined
-          ? props[defaultProp]
+          ? defaultValue
           : props[prop]
 
         this.controllableHandlers[prop] = value => {
