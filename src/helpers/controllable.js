@@ -25,7 +25,9 @@ export default (propsMapping = {}, instanceMethods = []) => Component =>
           : props[prop]
 
         this.controllableHandlers[prop] = value => {
-          this.setState({ [prop]: value })
+          if (props[prop] === undefined) {
+            this.setState({ [prop]: value })
+          }
 
           if (props[propsMapping[prop]]) {
             props[propsMapping[prop]](value)
@@ -38,6 +40,20 @@ export default (propsMapping = {}, instanceMethods = []) => Component =>
       instanceMethods.forEach(method => {
         this[method] = Component.prototype[method]
       })
+    }
+
+    componentWillReceiveProps(nextProps) {
+      const newState = {}
+
+      Object.keys(propsMapping).forEach(prop => {
+        if (this.props[prop] !== nextProps[prop]) {
+          newState[prop] = nextProps[prop]
+        }
+      })
+
+      if (Object.keys(newState).length > 0) {
+        this.setState(newState)
+      }
     }
 
     render() {
