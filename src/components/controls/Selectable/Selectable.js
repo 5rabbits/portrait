@@ -100,6 +100,15 @@ export default class Selectable extends PureComponent {
         focusedElement: null,
       })
     }
+
+    if (
+      this.props.search !== nextProps.search ||
+      this.props.focused !== nextProps.focused
+    ) {
+      this.setState({
+        focusedElement: null,
+      })
+    }
   }
 
   componentWillUnmount() {
@@ -119,28 +128,12 @@ export default class Selectable extends PureComponent {
       overflowRef: this.overflowRef,
       search,
       selectedOption,
-      setFocused: this.setFocused,
+      setFocused: this.props.onFocusedChange,
       setFocusedElement: this.setFocusedElement,
-      setSearch: this.setSearch,
-      setValue: this.setValue,
+      setSearch: this.props.onSearchChange,
+      setValue: this.props.onChange,
       value,
     }
-  }
-
-  setSearch = search => {
-    this.props.onSearchChange(search)
-  }
-
-  setValue = value => {
-    this.props.onChange(value)
-  }
-
-  setFocused = focused => {
-    this.props.onFocusedChange(focused)
-
-    this.setState({
-      focusedElement: null,
-    })
   }
 
   setFocusedElement = (id, options = {}) => {
