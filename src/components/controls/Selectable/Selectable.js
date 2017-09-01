@@ -128,26 +128,14 @@ export default class Selectable extends PureComponent {
   }
 
   setSearch = search => {
-    if (search === this.props.search) {
-      return
-    }
-
     this.props.onSearchChange(search)
   }
 
   setValue = value => {
-    if (value === this.props.value) {
-      return
-    }
-
     this.props.onChange(value)
   }
 
   setFocused = focused => {
-    if (focused === this.props.focused) {
-      return
-    }
-
     this.props.onFocusedChange(focused)
 
     this.setState({

@@ -25,6 +25,10 @@ export default (propsMapping = {}, instanceMethods = []) => Component =>
           : props[prop]
 
         this.controllableHandlers[prop] = value => {
+          if (this.state[prop] === value) {
+            return
+          }
+
           if (props[prop] === undefined) {
             this.setState({ [prop]: value })
           }
