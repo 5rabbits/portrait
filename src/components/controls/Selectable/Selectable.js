@@ -8,20 +8,28 @@ import defaults from 'lodash/defaults'
 import controllable from 'helpers/controllable'
 
 @controllable({
+  search: 'onSearchChange',
   value: 'onChange',
 })
 export default class Selectable extends PureComponent {
   static propTypes = {
     // Handled by uncontrollable
     /* eslint-disable react/no-unused-prop-types */
-    defaultValue: PropTypes.any,
+    defaultSearch: PropTypes.any,
+    defaultValue: PropTypes.string,
     /* eslint-enable react/no-unused-prop-types */
 
     onChange: PropTypes.func.isRequired,
     onClickOutside: PropTypes.func,
+    onSearchChange: PropTypes.func.isRequired,
     options: PropTypes.array.isRequired,
     renderer: PropTypes.func.isRequired,
+    search: PropTypes.string,
     value: PropTypes.any,
+  }
+
+  static defaultProps = {
+    defaultSearch: '',
   }
 
   constructor(props) {
@@ -37,8 +45,10 @@ export default class Selectable extends PureComponent {
     this.state = {
       focusedElement: null,
       isFocused: false,
-      options: sortedOptions,
-      search: '',
+      options: this.filterOptions({
+        options: sortedOptions,
+        search: this.props.search,
+      }),
       selectedOption,
       sortedOptions,
     }
@@ -52,16 +62,22 @@ export default class Selectable extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.options !== nextProps.options) {
-      const sortedOptions = this.sortOptions(nextProps.options)
-      const filteredOptions = this.filterOptions({
-        search: this.state.search,
-        sortedOptions,
-      })
+    let sortedOptions = this.state.sortedOptions
 
+    if (this.props.options !== nextProps.options) {
+      sortedOptions = this.sortOptions(nextProps.options)
+      this.setState({ sortedOptions })
+    }
+
+    if (
+      this.props.options !== nextProps.options ||
+      this.props.search !== nextProps.search
+    ) {
       this.setState({
-        options: filteredOptions,
-        sortedOptions,
+        options: this.filterOptions({
+          options: sortedOptions,
+          search: nextProps.search,
+        }),
       })
     }
 
@@ -72,6 +88,12 @@ export default class Selectable extends PureComponent {
           : nextProps.options.find(option => option.value === nextProps.value),
       })
     }
+
+    if (this.props.search !== nextProps.search) {
+      this.setState({
+        focusedElement: null,
+      })
+    }
   }
 
   componentWillUnmount() {
@@ -79,8 +101,8 @@ export default class Selectable extends PureComponent {
   }
 
   getRendererProps = () => {
-    const { value } = this.props
-    const { focusedElement, isFocused, options, search, selectedOption } = this.state
+    const { search, value } = this.props
+    const { focusedElement, isFocused, options, selectedOption } = this.state
 
     return {
       focusableRef: this.focusableRef,
@@ -100,18 +122,11 @@ export default class Selectable extends PureComponent {
   }
 
   setSearch = search => {
-    if (search === this.state.search) {
+    if (search === this.props.search) {
       return
     }
 
-    this.setState({
-      options: this.filterOptions({
-        options: this.state.sortedOptions,
-        search,
-      }),
-      focusedElement: null,
-      search,
-    })
+    this.props.onSearchChange(search)
   }
 
   setValue = value => {
@@ -221,7 +236,7 @@ export default class Selectable extends PureComponent {
   }
 
   searchMatches = text => {
-    const { search } = this.state
+    const { search } = this.props
 
     if (!search) {
       return [{
