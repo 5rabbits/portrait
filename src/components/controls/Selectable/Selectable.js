@@ -21,6 +21,7 @@ export default class Selectable extends PureComponent {
     defaultValue: PropTypes.string,
     /* eslint-enable react/no-unused-prop-types */
 
+    blurOnClickOutside: PropTypes.bool,
     focused: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     onClickOutside: PropTypes.func,
@@ -33,6 +34,7 @@ export default class Selectable extends PureComponent {
   }
 
   static defaultProps = {
+    blurOnClickOutside: true,
     defaultFocused: false,
     defaultSearch: '',
   }
@@ -292,7 +294,7 @@ export default class Selectable extends PureComponent {
       event.target.parentNode
     )
 
-    if (isOutside && this.props.focused) {
+    if (isOutside && this.props.blurOnClickOutside && this.props.focused) {
       this.props.onFocusedChange(false)
     }
 
