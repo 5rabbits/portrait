@@ -41,6 +41,21 @@ export default class Selectable extends PureComponent {
     document.addEventListener('click', this.handleOutsideClick)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.options !== nextProps.options) {
+      const sortedOptions = this.sortOptions(nextProps.options)
+      const filteredOptions = this.filterOptions({
+        search: this.state.search,
+        sortedOptions,
+      })
+
+      this.setState({
+        options: filteredOptions,
+        sortedOptions,
+      })
+    }
+  }
+
   componentWillUnmount() {
     document.removeEventListener('click', this.handleOutsideClick)
   }
