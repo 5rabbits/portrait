@@ -20,17 +20,24 @@ export default class Selectable extends PureComponent {
     super(props)
 
     const sortedOptions = this.sortOptions(this.props.options)
+    const value = this.props.value === undefined
+      ? this.props.defaultValue
+      : this.props.value
+
+    let selectedOption
+
+    if (value != null) {
+      selectedOption = sortedOptions.find(option => option.value === value)
+    }
 
     this.state = {
       focusedElement: null,
       isFocused: false,
       options: sortedOptions,
       search: '',
-      selectedOption: null,
+      selectedOption,
       sortedOptions,
-      value: this.props.value === undefined
-        ? this.props.defaultValue
-        : this.props.value,
+      value,
     }
 
     this.focusableRefs = {}
@@ -52,6 +59,19 @@ export default class Selectable extends PureComponent {
       this.setState({
         options: filteredOptions,
         sortedOptions,
+      })
+    }
+
+    if (this.props.value !== nextProps.value) {
+      let selectedOption
+
+      if (nextProps.value != null) {
+        selectedOption = nextProps.options.find(option => option.value === nextProps.value)
+      }
+
+      this.setState({
+        selectedOption,
+        value: nextProps.value,
       })
     }
   }
