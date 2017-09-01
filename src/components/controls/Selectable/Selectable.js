@@ -8,6 +8,7 @@ import defaults from 'lodash/defaults'
 import controllable from 'helpers/controllable'
 
 @controllable({
+  focused: 'onFocusedChange',
   search: 'onSearchChange',
   value: 'onChange',
 })
@@ -15,12 +16,15 @@ export default class Selectable extends PureComponent {
   static propTypes = {
     // Handled by uncontrollable
     /* eslint-disable react/no-unused-prop-types */
+    defaultFocused: PropTypes.bool,
     defaultSearch: PropTypes.any,
     defaultValue: PropTypes.string,
     /* eslint-enable react/no-unused-prop-types */
 
+    focused: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     onClickOutside: PropTypes.func,
+    onFocusedChange: PropTypes.func,
     onSearchChange: PropTypes.func.isRequired,
     options: PropTypes.array.isRequired,
     renderer: PropTypes.func.isRequired,
@@ -29,6 +33,7 @@ export default class Selectable extends PureComponent {
   }
 
   static defaultProps = {
+    defaultFocused: false,
     defaultSearch: '',
   }
 
@@ -44,7 +49,6 @@ export default class Selectable extends PureComponent {
 
     this.state = {
       focusedElement: null,
-      isFocused: false,
       options: this.filterOptions({
         options: sortedOptions,
         search: this.props.search,
@@ -101,14 +105,14 @@ export default class Selectable extends PureComponent {
   }
 
   getRendererProps = () => {
-    const { search, value } = this.props
-    const { focusedElement, isFocused, options, selectedOption } = this.state
+    const { focused, search, value } = this.props
+    const { focusedElement, options, selectedOption } = this.state
 
     return {
       focusableRef: this.focusableRef,
       focusedElement,
       getSearchMatches: this.searchMatches,
-      isFocused,
+      focused,
       options,
       overflowRef: this.overflowRef,
       search,
@@ -137,13 +141,14 @@ export default class Selectable extends PureComponent {
     this.props.onChange(value)
   }
 
-  setFocused = isFocused => {
-    if (isFocused === this.state.isFocused) {
+  setFocused = focused => {
+    if (focused === this.props.focused) {
       return
     }
 
+    this.props.onFocusedChange(focused)
+
     this.setState({
-      isFocused,
       focusedElement: null,
     })
   }
@@ -287,8 +292,8 @@ export default class Selectable extends PureComponent {
       event.target.parentNode
     )
 
-    if (isOutside && this.state.isFocused) {
-      this.setState({ isFocused: false })
+    if (isOutside && this.props.focused) {
+      this.props.onFocusedChange(false)
     }
 
     if (isOutside && this.props.onClickOutside) {
