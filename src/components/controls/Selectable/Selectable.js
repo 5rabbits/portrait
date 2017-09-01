@@ -1,4 +1,5 @@
 import { PureComponent } from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
@@ -9,6 +10,7 @@ export default class Selectable extends PureComponent {
   static propTypes = {
     defaultValue: PropTypes.any,
     onChange: PropTypes.func,
+    onClickOutside: PropTypes.func,
     options: PropTypes.array.isRequired,
     renderer: PropTypes.func.isRequired,
     value: PropTypes.any,
@@ -35,11 +37,32 @@ export default class Selectable extends PureComponent {
   }
 
   componentDidMount() {
+    this.container = ReactDOM.findDOMNode(this) // eslint-disable-line react/no-find-dom-node
     document.addEventListener('click', this.handleOutsideClick)
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleOutsideClick)
+  }
+
+  getRendererProps = () => {
+    const { focusedElement, isFocused, options, search, selectedOption, value } = this.state
+
+    return {
+      focusableRef: this.focusableRef,
+      focusedElement,
+      getSearchMatches: this.searchMatches,
+      isFocused,
+      options,
+      overflowRef: this.overflowRef,
+      search,
+      selectedOption,
+      setFocused: this.setFocused,
+      setFocusedElement: this.setFocusedElement,
+      setSearch: this.setSearch,
+      setValue: this.setValue,
+      value,
+    }
   }
 
   setSearch = search => {
@@ -219,21 +242,21 @@ export default class Selectable extends PureComponent {
   )
 
   handleOutsideClick = event => {
-    if (
-      this.state.isFocused &&
+    const isOutside = (
       this.container &&
-      !this.container.contains(event.target)
-      && event.target.parentNode
-    ) {
+      this.container !== event.target &&
+      !this.container.contains(event.target) &&
+      event.target.parentNode
+    )
+
+    if (isOutside && this.state.isFocused) {
       this.setState({ isFocused: false })
     }
-  }
 
-  containerRef = () => (
-    container => {
-      this.container = container
+    if (isOutside && this.props.onClickOutside) {
+      this.props.onClickOutside(this.getRendererProps())
     }
-  )
+  }
 
   focusableRef = id => (
     node => {
@@ -256,23 +279,6 @@ export default class Selectable extends PureComponent {
   )
 
   render() {
-    const { focusedElement, isFocused, options, search, selectedOption, value } = this.state
-
-    return this.props.renderer({
-      containerRef: this.containerRef,
-      focusableRef: this.focusableRef,
-      focusedElement,
-      getSearchMatches: this.searchMatches,
-      isFocused,
-      options,
-      overflowRef: this.overflowRef,
-      search,
-      selectedOption,
-      setFocused: this.setFocused,
-      setFocusedElement: this.setFocusedElement,
-      setSearch: this.setSearch,
-      setValue: this.setValue,
-      value,
-    })
+    return this.props.renderer(this.getRendererProps())
   }
 }

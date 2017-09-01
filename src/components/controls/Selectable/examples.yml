@@ -8,6 +8,7 @@
 
   code: >
     <Selectable
+      onChange={console.log}
       options={[
         { label: 'Daniel Espinoza', value: 2 },
         { label: 'Víctor Sánchez', value: 5 },
@@ -21,24 +22,19 @@
           setValue,
           value,
         }) =>
-          <div>
-            <div className="selectable-dropdown">
-              {options.map(option =>
-                <button
-                  className={classNames('selectable-dropdown__option', {
-                    'selectable-dropdown__option--selected': value === option.value,
-                  })}
-                  key={option.value}
-                  onClick={() => setValue(option.value)}
-                  type="button"
-                  >
-                  {option.label}
-                </button>
-              )}
-            </div>
-            <div className="current-value">
-              Current value: {value}
-            </div>
+          <div className="selectable-dropdown">
+            {options.map(option =>
+              <button
+                className={classNames('selectable-dropdown__option', {
+                  'selectable-dropdown__option--selected': value === option.value,
+                })}
+                key={option.value}
+                onClick={() => setValue(option.value)}
+                type="button"
+                >
+                {option.label}
+              </button>
+            )}
           </div>
       }
     />
@@ -54,6 +50,7 @@
 
   code: >
     <Selectable
+      onChange={console.log}
       options={[
         { label: 'Daniel Espinoza', value: 2 },
         { label: 'Víctor Sánchez', value: 5 },
@@ -70,48 +67,43 @@
           setValue,
           value,
         }) =>
-          <div>
-            <div className="selectable-dropdown">
-              <div className="selectable-dropdown__searchWrapper">
-                <input
-                  className="selectable-dropdown__searchInput"
-                  onChange={event => setSearch(event.target.value)}
-                  placeholder="Write to search"
-                  type="text"
-                  value={search}
-                />
-                {search &&
-                  <button
-                    className="selectable-dropdown__searchIcon"
-                    onClick={() => setSearch('')}
-                    type="button"
-                    >
-                    &times;
-                  </button>
-                }
-              </div>
-
-              {options.map(option =>
+          <div className="selectable-dropdown">
+            <div className="selectable-dropdown__searchWrapper">
+              <input
+                className="selectable-dropdown__searchInput"
+                onChange={event => setSearch(event.target.value)}
+                placeholder="Write to search"
+                type="text"
+                value={search}
+              />
+              {search &&
                 <button
-                  className={classNames('selectable-dropdown__option', {
-                    'selectable-dropdown__option--selected': value === option.value,
-                  })}
-                  key={option.value}
-                  onClick={() => {
-                    setValue(option.value)
-                    setSearch('')
-                  }}
+                  className="selectable-dropdown__searchIcon"
+                  onClick={() => setSearch('')}
                   type="button"
                   >
-                  {getSearchMatches(option.label).map(term =>
-                    term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                  )}
+                  &times;
                 </button>
-              )}
+              }
             </div>
-            <div className="current-value">
-              Current value: {value}
-            </div>
+
+            {options.map(option =>
+              <button
+                className={classNames('selectable-dropdown__option', {
+                  'selectable-dropdown__option--selected': value === option.value,
+                })}
+                key={option.value}
+                onClick={() => {
+                  setValue(option.value)
+                  setSearch('')
+                }}
+                type="button"
+                >
+                {getSearchMatches(option.label).map(term =>
+                  term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                )}
+              </button>
+            )}
           </div>
       }
     />
@@ -133,6 +125,7 @@
 
   code: >
     <Selectable
+      onChange={console.log}
       options={[
         { label: 'Daniel Espinoza', value: 2 },
         { label: 'Víctor Sánchez', value: 5 },
@@ -152,76 +145,71 @@
           setValue,
           value,
         }) =>
-          <div>
-            <div
-              className="selectable-dropdown"
-              onMouseLeave={() => setFocusedElement(null)}
-              >
-              <div className="selectable-dropdown__searchWrapper">
-                <input
-                  className="selectable-dropdown__searchInput"
-                  onChange={event => setSearch(event.target.value)}
-                  onKeyDown={event => {
-                    switch (event.key) {
-                      case 'ArrowDown':
-                        event.preventDefault()
-                        setFocusedElement(focusedElement === null ? 0 : focusedElement + 1)
-                        break
+          <div
+            className="selectable-dropdown"
+            onMouseLeave={() => setFocusedElement(null)}
+            >
+            <div className="selectable-dropdown__searchWrapper">
+              <input
+                className="selectable-dropdown__searchInput"
+                onChange={event => setSearch(event.target.value)}
+                onKeyDown={event => {
+                  switch (event.key) {
+                    case 'ArrowDown':
+                      event.preventDefault()
+                      setFocusedElement(focusedElement === null ? 0 : focusedElement + 1)
+                      break
 
-                      case 'ArrowUp':
-                        event.preventDefault()
-                        setFocusedElement(focusedElement === null ? 0 : focusedElement - 1)
-                        break
+                    case 'ArrowUp':
+                      event.preventDefault()
+                      setFocusedElement(focusedElement === null ? 0 : focusedElement - 1)
+                      break
 
-                      case 'Enter':
-                        event.preventDefault()
-                        setValue(options[focusedElement].value)
-                        setSearch('')
-                        break
-                    }
-                  }}
-                  placeholder="Write to search"
-                  ref={focusableRef('input')}
-                  type="text"
-                  value={search}
-                />
-                {search &&
-                  <button
-                    className="selectable-dropdown__searchIcon"
-                    onClick={() => {
+                    case 'Enter':
+                      event.preventDefault()
+                      setValue(options[focusedElement].value)
                       setSearch('')
-                      setFocusedElement('input', { virtual: false })
-                    }}
-                    type="button"
-                    >
-                    &times;
-                  </button>
-                }
-              </div>
-
-              {options.map((option, index) =>
+                      break
+                  }
+                }}
+                placeholder="Write to search"
+                ref={focusableRef('input')}
+                type="text"
+                value={search}
+              />
+              {search &&
                 <button
-                  className={classNames('selectable-dropdown__option', {
-                    'selectable-dropdown__option--selected': value === option.value,
-                    'selectable-dropdown__option--focused': index === focusedElement,
-                  })}
-                  key={option.value}
+                  className="selectable-dropdown__searchIcon"
                   onClick={() => {
-                    setValue(option.value)
                     setSearch('')
+                    setFocusedElement('input', { virtual: false })
                   }}
-                  onMouseEnter={() => setFocusedElement(index)}
                   type="button"
                   >
-                  {getSearchMatches(option.label).map(term =>
-                    term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                  )}
+                  &times;
                 </button>
-              )}
+              }
             </div>
-            <div className="current-value">
-              Current value: {value}
-            </div>
+
+            {options.map((option, index) =>
+              <button
+                className={classNames('selectable-dropdown__option', {
+                  'selectable-dropdown__option--selected': value === option.value,
+                  'selectable-dropdown__option--focused': index === focusedElement,
+                })}
+                key={option.value}
+                onClick={() => {
+                  setValue(option.value)
+                  setSearch('')
+                }}
+                onMouseEnter={() => setFocusedElement(index)}
+                type="button"
+                >
+                {getSearchMatches(option.label).map(term =>
+                  term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                )}
+              </button>
+            )}
           </div>
       }
     />
@@ -236,6 +224,7 @@
 
   code: >
     <Selectable
+      onChange={console.log}
       options={[
         { label: 'Daniel Espinoza', value: 2 },
         { label: 'Víctor Sánchez', value: 5 },
@@ -256,86 +245,81 @@
           setValue,
           value,
         }) =>
-          <div>
-            <div
-              className="selectable-dropdown"
-              onMouseLeave={() => setFocusedElement(null)}
-              >
-              <div className="selectable-dropdown__searchWrapper">
-                <input
-                  className="selectable-dropdown__searchInput"
-                  onChange={event => setSearch(event.target.value)}
-                  onKeyDown={event => {
-                    switch (event.key) {
-                      case 'ArrowDown':
-                        event.preventDefault()
-                        setFocusedElement(focusedElement === null ? 0 : focusedElement + 1, {
-                          scrollToViewport: true,
-                        })
-                        break
+          <div
+            className="selectable-dropdown"
+            onMouseLeave={() => setFocusedElement(null)}
+            >
+            <div className="selectable-dropdown__searchWrapper">
+              <input
+                className="selectable-dropdown__searchInput"
+                onChange={event => setSearch(event.target.value)}
+                onKeyDown={event => {
+                  switch (event.key) {
+                    case 'ArrowDown':
+                      event.preventDefault()
+                      setFocusedElement(focusedElement === null ? 0 : focusedElement + 1, {
+                        scrollToViewport: true,
+                      })
+                      break
 
-                      case 'ArrowUp':
-                        event.preventDefault()
-                        setFocusedElement(focusedElement === null ? 0 : focusedElement - 1, {
-                          scrollToViewport: true,
-                        })
-                        break
+                    case 'ArrowUp':
+                      event.preventDefault()
+                      setFocusedElement(focusedElement === null ? 0 : focusedElement - 1, {
+                        scrollToViewport: true,
+                      })
+                      break
 
-                      case 'Enter':
-                        event.preventDefault()
-                        setValue(options[focusedElement].value)
-                        setSearch('')
-                        break
-                    }
+                    case 'Enter':
+                      event.preventDefault()
+                      setValue(options[focusedElement].value)
+                      setSearch('')
+                      break
+                  }
+                }}
+                placeholder="Write to search"
+                ref={focusableRef('input')}
+                type="text"
+                value={search}
+              />
+              {search &&
+                <button
+                  className="selectable-dropdown__searchIcon"
+                  onClick={() => {
+                    setSearch('')
+                    setFocusedElement('input', { virtual: false })
                   }}
-                  placeholder="Write to search"
-                  ref={focusableRef('input')}
-                  type="text"
-                  value={search}
-                />
-                {search &&
-                  <button
-                    className="selectable-dropdown__searchIcon"
-                    onClick={() => {
-                      setSearch('')
-                      setFocusedElement('input', { virtual: false })
-                    }}
-                    type="button"
-                    >
-                    &times;
-                  </button>
-                }
-              </div>
-
-              <div
-                className="selectable-dropdown__overflow"
-                ref={overflowRef()}
-                >
-                {options.map((option, index) =>
-                  <button
-                    className={classNames('selectable-dropdown__option', {
-                      'selectable-dropdown__option--selected': value === option.value,
-                      'selectable-dropdown__option--focused': index === focusedElement,
-                    })}
-                    key={option.value}
-                    onClick={() => {
-                      setValue(option.value)
-                      setSearch('')
-                      setFocusedElement('input', { virtual: false })
-                    }}
-                    onMouseEnter={() => setFocusedElement(index)}
-                    ref={focusableRef(index)}
-                    type="button"
-                    >
-                    {getSearchMatches(option.label).map(term =>
-                      term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                    )}
-                  </button>
-                )}
-              </div>
+                  type="button"
+                  >
+                  &times;
+                </button>
+              }
             </div>
-            <div className="current-value">
-              Current value: {value}
+
+            <div
+              className="selectable-dropdown__overflow"
+              ref={overflowRef()}
+              >
+              {options.map((option, index) =>
+                <button
+                  className={classNames('selectable-dropdown__option', {
+                    'selectable-dropdown__option--selected': value === option.value,
+                    'selectable-dropdown__option--focused': index === focusedElement,
+                  })}
+                  key={option.value}
+                  onClick={() => {
+                    setValue(option.value)
+                    setSearch('')
+                    setFocusedElement('input', { virtual: false })
+                  }}
+                  onMouseEnter={() => setFocusedElement(index)}
+                  ref={focusableRef(index)}
+                  type="button"
+                  >
+                  {getSearchMatches(option.label).map(term =>
+                    term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                  )}
+                </button>
+              )}
             </div>
           </div>
       }
@@ -351,6 +335,8 @@
 
   code: >
     <Selectable
+      onChange={console.log}
+      onClickOutside={({ setSearch }) => setSearch('')}
       options={[
         { label: 'Daniel Espinoza', value: 2 },
         { label: 'Víctor Sánchez', value: 5 },
@@ -360,7 +346,6 @@
       ]}
       renderer={
         ({
-          containerRef,
           focusableRef,
           focusedElement,
           getSearchMatches,
@@ -375,157 +360,151 @@
           setValue,
           value,
         }) =>
-          <div>
-            <div
-              className={classNames('selectable-dropdown', {
-                'selectable-dropdown--with-value': value != null,
-                'selectable-dropdown--without-value': value == null,
-              })}
-              ref={containerRef()}
+          <div
+            className={classNames('selectable-dropdown', {
+              'selectable-dropdown--with-value': value != null,
+              'selectable-dropdown--without-value': value == null,
+            })}
+            >
+            <button
+              className="selectable-dropdown__control"
+              onClick={() => {
+                if (isFocused) {
+                  setFocused(false)
+                }
+                else {
+                  setFocused(true)
+
+                  // Execute after the next paint
+                  window.requestAnimationFrame(() =>
+                    setFocusedElement('input', { virtual: false })
+                  )
+                }
+              }}
+              type="button"
               >
-              <button
-                className="selectable-dropdown__control"
-                onClick={() => {
-                  if (isFocused) {
-                    setFocused(false)
-                  }
-                  else {
-                    setFocused(true)
+              {selectedOption ? selectedOption.label : 'Select an option'}
+            </button>
+            {isFocused &&
+              <div className="selectable-dropdown__menu">
+                <div className="selectable-dropdown__searchWrapper">
+                  <input
+                    className="selectable-dropdown__searchInput"
+                    onChange={event => setSearch(event.target.value)}
+                    onKeyDown={event => {
+                      switch (event.key) {
+                        case 'ArrowDown':
+                          event.preventDefault()
 
-                    // Execute after the next paint
-                    window.requestAnimationFrame(() =>
-                      setFocusedElement('input', { virtual: false })
-                    )
-                  }
-                }}
-                type="button"
-                >
-                {selectedOption ? selectedOption.label : 'Select an option'}
-              </button>
-              {isFocused &&
-                <div className="selectable-dropdown__menu">
-                  <div className="selectable-dropdown__searchWrapper">
-                    <input
-                      className="selectable-dropdown__searchInput"
-                      onChange={event => setSearch(event.target.value)}
-                      onKeyDown={event => {
-                        switch (event.key) {
-                          case 'ArrowDown':
-                            event.preventDefault()
+                          if (focusedElement === 'clear' || focusedElement === 'input') {
+                            setFocusedElement(0, { scrollToViewport: true })
+                          }
+                          else if (focusedElement === options.length - 1) {
+                            setFocusedElement('clear')
+                          }
+                          else {
+                            setFocusedElement(focusedElement + 1, {
+                              scrollToViewport: true,
+                            })
+                          }
+                          break
 
-                            if (focusedElement === 'clear' || focusedElement === 'input') {
-                              setFocusedElement(0, { scrollToViewport: true })
-                            }
-                            else if (focusedElement === options.length - 1) {
-                              setFocusedElement('clear')
-                            }
-                            else {
-                              setFocusedElement(focusedElement + 1, {
-                                scrollToViewport: true,
-                              })
-                            }
-                            break
+                        case 'ArrowUp':
+                          event.preventDefault()
 
-                          case 'ArrowUp':
-                            event.preventDefault()
+                          if (focusedElement === 'input' || focusedElement === 0) {
+                            setFocusedElement('clear')
+                          }
+                          else if (focusedElement === 'clear') {
+                            setFocusedElement(options.length - 1, { scrollToViewport: true })
+                          }
+                          else {
+                            setFocusedElement(focusedElement - 1, {
+                              scrollToViewport: true,
+                            })
+                          }
+                          break
 
-                            if (focusedElement === 'input' || focusedElement === 0) {
-                              setFocusedElement('clear')
-                            }
-                            else if (focusedElement === 'clear') {
-                              setFocusedElement(options.length - 1, { scrollToViewport: true })
-                            }
-                            else {
-                              setFocusedElement(focusedElement - 1, {
-                                scrollToViewport: true,
-                              })
-                            }
-                            break
+                        case 'Enter':
+                          event.preventDefault()
 
-                          case 'Enter':
-                            event.preventDefault()
+                          if (focusedElement === 'input') {
+                            return
+                          }
 
-                            if (focusedElement === 'input') {
-                              return
-                            }
+                          if (focusedElement === 'clear') {
+                            setValue(null)
+                          }
+                          else {
+                            setValue(options[focusedElement].value)
+                          }
 
-                            if (focusedElement === 'clear') {
-                              setValue(null)
-                            }
-                            else {
-                              setValue(options[focusedElement].value)
-                            }
-
-                            setSearch('')
-                            setFocused(false)
-                            break
-                        }
-                      }}
-                      placeholder="Write to search"
-                      ref={focusableRef('input')}
-                      type="text"
-                      value={search}
-                    />
-                    {search &&
-                      <button
-                        className="selectable-dropdown__searchIcon"
-                        onClick={() => {
-                          setSearch('')
-                          setFocusedElement('input', { virtual: false })
-                        }}
-                        type="button"
-                        >
-                        &times;
-                      </button>
-                    }
-                  </div>
-
-                  <div
-                    className="selectable-dropdown__overflow"
-                    ref={overflowRef()}
-                    >
-                    {options.map((option, index) =>
-                      <button
-                        className={classNames('selectable-dropdown__option', {
-                          'selectable-dropdown__option--selected': value === option.value,
-                          'selectable-dropdown__option--focused': index === focusedElement,
-                        })}
-                        key={option.value}
-                        onClick={() => {
-                          setValue(option.value)
                           setSearch('')
                           setFocused(false)
-                        }}
-                        onMouseEnter={() => setFocusedElement(index)}
-                        ref={focusableRef(index)}
-                        type="button"
-                        >
-                        {getSearchMatches(option.label).map(term =>
-                          term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                        )}
-                      </button>
-                    )}
-                  </div>
-                  <button
-                    className={classNames('selectable-dropdown__bottomOption', {
-                      'selectable-dropdown__option--focused': focusedElement === 'clear',
-                    })}
-                    onClick={() => {
-                      setValue(null)
-                      setFocused(false)
+                          break
+                      }
                     }}
-                    onMouseEnter={() => setFocusedElement('clear')}
-                    ref={focusableRef('clear')}
-                    type="button"
-                    >
-                    Leave without value
-                  </button>
+                    placeholder="Write to search"
+                    ref={focusableRef('input')}
+                    type="text"
+                    value={search}
+                  />
+                  {search &&
+                    <button
+                      className="selectable-dropdown__searchIcon"
+                      onClick={() => {
+                        setSearch('')
+                        setFocusedElement('input', { virtual: false })
+                      }}
+                      type="button"
+                      >
+                      &times;
+                    </button>
+                  }
                 </div>
-              }
-            </div>
-            <div className="current-value">
-              Current value: {value}
-            </div>
+
+                <div
+                  className="selectable-dropdown__overflow"
+                  ref={overflowRef()}
+                  >
+                  {options.map((option, index) =>
+                    <button
+                      className={classNames('selectable-dropdown__option', {
+                        'selectable-dropdown__option--selected': value === option.value,
+                        'selectable-dropdown__option--focused': index === focusedElement,
+                      })}
+                      key={option.value}
+                      onClick={() => {
+                        setValue(option.value)
+                        setSearch('')
+                        setFocused(false)
+                      }}
+                      onMouseEnter={() => setFocusedElement(index)}
+                      ref={focusableRef(index)}
+                      type="button"
+                      >
+                      {getSearchMatches(option.label).map(term =>
+                        term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                      )}
+                    </button>
+                  )}
+                </div>
+                <button
+                  className={classNames('selectable-dropdown__bottomOption', {
+                    'selectable-dropdown__option--focused': focusedElement === 'clear',
+                  })}
+                  onClick={() => {
+                    setValue(null)
+                    setFocused(false)
+                  }}
+                  onMouseEnter={() => setFocusedElement('clear')}
+                  ref={focusableRef('clear')}
+                  type="button"
+                  >
+                  Leave without value
+                </button>
+              </div>
+            }
           </div>
       }
     />
@@ -535,6 +514,7 @@
   code: >
     <div>
       <Selectable
+        onChange={console.log}
         options={[
           { label: 'Daniel Espinoza', value: 2 },
           { label: 'Víctor Sánchez', value: 5 },
