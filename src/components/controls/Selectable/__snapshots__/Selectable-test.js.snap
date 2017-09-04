@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select should allow to render options 1`] = `
+<ControllableComponent
+  options={
+    Array [
+      Object {
+        "label": "Option 1",
+        "value": 1,
+      },
+      Object {
+        "label": "Option 10",
+        "value": 10,
+      },
+      Object {
+        "label": "Option 5",
+        "value": 5,
+      },
+    ]
+  }
+  renderer={[Function]}
+>
+  <Selectable
+    blurOnClickOutside={true}
+    defaultFocused={false}
+    defaultSearch=""
+    focused={false}
+    onChange={[Function]}
+    onFocusedChange={[Function]}
+    onFocusedElementChange={[Function]}
+    onSearchChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "Option 1",
+          "value": 1,
+        },
+        Object {
+          "label": "Option 10",
+          "value": 10,
+        },
+        Object {
+          "label": "Option 5",
+          "value": 5,
+        },
+      ]
+    }
+    renderer={[Function]}
+    search=""
+  >
+    <div>
+      <div>
+        Option 1
+      </div>
+      <div>
+        Option 10
+      </div>
+      <div>
+        Option 5
+      </div>
+    </div>
+  </Selectable>
+</ControllableComponent>
+`;
+
+exports[`Select should render with minimum props 1`] = `
+<ControllableComponent
+  options={Array []}
+  renderer={[Function]}
+>
+  <Selectable
+    blurOnClickOutside={true}
+    defaultFocused={false}
+    defaultSearch=""
+    focused={false}
+    onChange={[Function]}
+    onFocusedChange={[Function]}
+    onFocusedElementChange={[Function]}
+    onSearchChange={[Function]}
+    options={Array []}
+    renderer={[Function]}
+    search=""
+  >
+    <span />
+  </Selectable>
+</ControllableComponent>
+`;
