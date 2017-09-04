@@ -525,7 +525,7 @@
           { label: 'Rodrigo Díaz', value: 3 },
         ],
         search: 'r',
-        value: 2,
+        value: 5,
       }
 
       handleChange = value => {
@@ -682,7 +682,7 @@
                               className="selectable-dropdown__searchIcon"
                               onClick={() => {
                                 setSearch('')
-                                setFocusedElement('input')
+                                setFocusedElement('input', { virtual: false })
                               }}
                               type="button"
                               >

@@ -357,6 +357,15 @@ export default class Selectable extends PureComponent {
     if (overflow && (!overflow.style.position || overflow.style.position === 'static')) {
       overflow.style.position = 'relative' // eslint-disable-line no-param-reassign
     }
+
+    if (overflow) {
+      const selectedOption = this.getSelectedOption()
+
+      if (selectedOption) {
+        this.setFocusedElement(this.state.options.indexOf(selectedOption))
+        this.scrollToFocusedElement()
+      }
+    }
   }
 
   render() {
