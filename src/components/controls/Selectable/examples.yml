@@ -758,6 +758,7 @@
         ]}
         renderer={
           ({
+            focusableRef,
             focusedElement,
             getSearchMatches,
             options,
@@ -812,6 +813,7 @@
                     }
                   }}
                   placeholder="Write to search"
+                  ref={focusableRef('input')}
                   type="text"
                   value={search}
                 />
@@ -819,7 +821,10 @@
                 {search &&
                   <button
                     className="e2-clear-search"
-                    onClick={() => setSearch('')}
+                    onClick={() => {
+                      setSearch('')
+                      setFocusedElement('input', { virtual: false })
+                    }}
                     type="button"
                     >
                     &times;
@@ -910,17 +915,18 @@
             }
 
             .e2-search-wrapper {
-              display: flex;
               padding: 8px 8px 4px 8px;
+              position: relative;
             }
 
             .e2-search {
-              flex: 1;
               height: 32px;
-              padding: 0 12px;
+              padding: 0 32px 0 12px;
               border: none;
               background-color: #EEF1F3;
               border-radius: 16px;
+              width: 100%;
+              display: block;
             }
 
             .e2-search::placeholder {
@@ -929,6 +935,14 @@
 
             .e2-clear-search {
               flex-shrink: 0;
+              border: none;
+              outline: none;
+              background: none;
+              margin: 0;
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              transform: translateY(-50%);
             }
 
             .e2-no-results {
