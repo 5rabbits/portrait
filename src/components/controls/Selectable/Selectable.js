@@ -7,6 +7,19 @@ import isNumber from 'lodash/isNumber'
 import defaults from 'lodash/defaults'
 import controllable from 'decorators/controllable'
 
+/**
+ * A pattern class to build components that displays selectable options lists. It manages:
+ *   - Search.
+ *   - Focus.
+ *   - Selection.
+ *   - Sorting.
+ *   - Inner overflow.
+ *   - Click outside.
+ *   - Controlled/Uncontrolled for every main property (value, search, focused, focusedElement).
+ *
+ * It doesn't generate any markup, so you can build any kind of UX if you need at least one
+ * of the previous features,
+ */
 @controllable({
   focused: 'onFocusedChange',
   focusedElement: 'onFocusedElementChange',
@@ -32,23 +45,109 @@ export default class Selectable extends PureComponent {
   static propTypes = {
     // Handled by uncontrollable
     /* eslint-disable react/no-unused-prop-types */
+
+    /**
+     * Specifies if the control is focused by default.
+     */
     defaultFocused: PropTypes.bool,
+
+    /**
+     * Default highlighted element.
+     */
     defaultFocusedElement: PropTypes.any,
+
+    /**
+     * Default search.
+     */
     defaultSearch: PropTypes.any,
+
+    /**
+     * Default selected value.
+     */
     defaultValue: PropTypes.string,
+
     /* eslint-enable react/no-unused-prop-types */
 
+    /**
+     * Specifies if the control should lose focus when clicking outside.
+     */
     blurOnClickOutside: PropTypes.bool,
+
+    /**
+     * Specifies if the control is focused.
+     */
     focused: PropTypes.bool.isRequired,
+
+    /**
+     * Specifies a controlled highlighted element.
+     */
     focusedElement: PropTypes.any,
+
+    /**
+     * Invoked when the selection changes. The first argument is the current value.
+     */
     onChange: PropTypes.func.isRequired,
+
+    /**
+     * Invoked when the user clicks outside of the control.
+     */
     onClickOutside: PropTypes.func,
+
+    /**
+     * Invoked when the control focus changes. The first argument specifies if the control
+     * is now focused or not.
+     */
     onFocusedChange: PropTypes.func.isRequired,
+
+    /**
+     * Invoked when the highlighted element changes. The first argument is the focusable id.
+     */
     onFocusedElementChange: PropTypes.func.isRequired,
+
+    /**
+     * Invoked when the search changes. The first argument is the new search.
+     */
     onSearchChange: PropTypes.func.isRequired,
-    options: PropTypes.array.isRequired,
+
+    /**
+     * An array of available options.
+     */
+    options: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.any.isRequired,
+    })).isRequired,
+
+    /**
+     * The markup renderer. This function receives an object with this properties:
+     *
+     * - focusableRef(id): Allows to define focusable elements.
+     * - focusedElement: The current focusable id.
+     * - getSearchMatches(text): Returns text matching info for the current search. Useful to
+     *   highlight search results.
+     * - focused: Specifies if the control is focused or not.
+     * - options: The visible and sorted options array.
+     * - overflowRef(): Allows to define the inner scrollable area, if needed.
+     * - search: The current search.
+     * - selectedOption: The current selected option, if any.
+     * - setFocused(focused): Changes the control focused state.
+     * - setFocusedElement(id, { virtual: true }): Allows to change the highlighted element. It
+     *   will attempt a real focus if `{ virtual: false }`.
+     * - setSearch(search): Changes the current search.
+     * - setValue(value): Changes the current value.
+     * - scrollToFocusedElement(): If the overflow container is defined, changes its scroll
+     *   to keep the current focused element in the viewport.
+     * - value: The current value.
+     */
     renderer: PropTypes.func.isRequired,
+
+    /**
+     * Specifies a controlled search.
+     */
     search: PropTypes.string,
+
+    /**
+     * Specifies a controlled value.
+     */
     value: PropTypes.any,
   }
 
