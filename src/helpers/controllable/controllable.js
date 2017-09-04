@@ -3,8 +3,10 @@ import React from 'react'
 export const getDefaultProps = prop =>
   `default${prop[0].toUpperCase()}${prop.substring(1)}`
 
-export default (propsMapping = {}, instanceMethods = []) => Component =>
+export default (propsMapping, instanceMethods = []) => Component =>
   class ControllableComponent extends React.PureComponent {
+    static WrappedComponent = Component
+
     controllableHandlers = {}
 
     constructor(props) {
@@ -60,6 +62,10 @@ export default (propsMapping = {}, instanceMethods = []) => Component =>
       if (Object.keys(newState).length > 0) {
         this.setState(newState)
       }
+    }
+
+    getWrappedInstance() {
+      return this.controlled
     }
 
     controlledRef = controlled => {
