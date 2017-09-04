@@ -117,9 +117,11 @@
       cycling when implementing a "focus next" and "focus prev" (in this example using the arrows
       down and up while the search input is focused). Pass `null` to remove the focus.
     - `focusedElement`: The current focused element `id`.
-    - `setFocusedElement(id)`: Changes the focused element. Is important to note that this is
-      a _virtual focus_ , useful to give a visual feedback while keeping the real focus on a text
-      input (for searching, autocomplete, etc) or any other element.
+    - `setFocusedElement(id, { virtual: true })`: Changes the focused element. Is important to note
+      that this is a _virtual focus_ by default, useful to give a visual feedback while keeping the
+      real focus on a text input (for searching, autocomplete, etc) or any other element.
+
+      Pass `{ virtual: false }` to attempt a real dom focus.
 
   code: >
     <Selectable
@@ -180,7 +182,7 @@
                   className="selectable-dropdown__searchIcon"
                   onClick={() => {
                     setSearch('')
-                    setFocusedElement('input')
+                    setFocusedElement('input', { virtual: false })
                   }}
                   type="button"
                   >
@@ -283,7 +285,7 @@
                   className="selectable-dropdown__searchIcon"
                   onClick={() => {
                     setSearch('')
-                    setFocusedElement('input')
+                    setFocusedElement('input', { virtual: false })
                   }}
                   type="button"
                   >
@@ -375,7 +377,7 @@
 
                   // Execute after the next paint
                   window.requestAnimationFrame(() =>
-                    setFocusedElement('input')
+                    setFocusedElement('input', { virtual: false })
                   )
                 }
               }}
@@ -452,7 +454,7 @@
                       className="selectable-dropdown__searchIcon"
                       onClick={() => {
                         setSearch('')
-                        setFocusedElement('input')
+                        setFocusedElement('input', { virtual: false })
                       }}
                       type="button"
                       >
@@ -603,7 +605,7 @@
 
                           // Execute after the next paint
                           window.requestAnimationFrame(() =>
-                            setFocusedElement('input')
+                            setFocusedElement('input', { virtual: false })
                           )
                         }
                       }}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
+import defaults from 'lodash/defaults'
 import controllable from 'helpers/controllable'
 
 @controllable({
@@ -11,7 +12,22 @@ import controllable from 'helpers/controllable'
   focusedElement: 'onFocusedElementChange',
   search: 'onSearchChange',
   value: 'onChange',
-}, ['scrollToFocusedElement'])
+}, [
+  'blur',
+  'focus',
+  'getFocusableNode',
+  'getFocusedElement',
+  'getSearch',
+  'getSelectedOption',
+  'getVisibleOptions',
+  'getValue',
+  'isFocused',
+  'scrollToFocusedElement',
+  'setFocused',
+  'setFocusedElement',
+  'setSearch',
+  'setValue',
+])
 export default class Selectable extends PureComponent {
   static propTypes = {
     // Handled by uncontrollable
@@ -124,9 +140,97 @@ export default class Selectable extends PureComponent {
     document.removeEventListener('click', this.handleOutsideClick)
   }
 
-  getFocusableElement = id => (
+  setFocusedElement = (id, options = {}) => {
+    defaults(options, {
+      virtual: true,
+    })
+
+    this.props.onFocusedElementChange(id)
+
+    if (!options.virtual) {
+      const node = this.getFocusableNode(id)
+
+      if (node.focus) {
+        node.focus()
+      }
+    }
+  }
+
+  getFocusedElement = () => (
+    this.state.focusedElement
+  )
+
+  setFocused = focused => {
+    this.props.onFocusedChange(focused)
+  }
+
+  setSearch = search => {
+    this.props.onSearchChange(search)
+  }
+
+  getSearch = () => (
+    this.props.search
+  )
+
+  setValue = value => {
+    this.props.onChange(value)
+  }
+
+  getValue = () => (
+    this.props.value
+  )
+
+  getSelectedOption = () => (
+    this.state.selectedOption
+  )
+
+  getVisibleOptions = () => (
+    this.state.options
+  )
+
+  getFocusableNode = id => (
     this.focusableRefs[id]
   )
+
+  getSearchMatches = text => {
+    const { search } = this.props
+
+    if (!search) {
+      return [{
+        text,
+        match: false,
+        fromIndex: 0,
+        toIndex: text.length - 1,
+      }]
+    }
+
+    const pattern = `(${deburr(search.trim()).split(/\s+/).join('|')})`
+    const regexp = new RegExp(pattern, 'ig')
+    const terms = []
+    let currentIndex = 0
+
+    deburr(text).split(regexp).forEach(term => {
+      if (term === '') {
+        return
+      }
+
+      const fromIndex = currentIndex
+      const toIndex = currentIndex + term.length
+      const termText = text.substring(fromIndex, toIndex)
+      const match = !!term.match(regexp)
+
+      currentIndex = toIndex
+
+      terms.push({
+        text: termText,
+        match,
+        fromIndex,
+        toIndex,
+      })
+    })
+
+    return terms
+  }
 
   getRendererProps = () => {
     const { focused, search, value } = this.props
@@ -135,20 +239,24 @@ export default class Selectable extends PureComponent {
     return {
       focusableRef: this.focusableRef,
       focusedElement,
-      getSearchMatches: this.searchMatches,
+      getSearchMatches: this.getSearchMatches,
       focused,
       options,
       overflowRef: this.overflowRef,
       search,
       selectedOption,
-      setFocused: this.props.onFocusedChange,
-      setFocusedElement: this.props.onFocusedElementChange,
-      setSearch: this.props.onSearchChange,
-      setValue: this.props.onChange,
+      setFocused: this.setFocused,
+      setFocusedElement: this.setFocusedElement,
+      setSearch: this.setSearch,
+      setValue: this.setValue,
       scrollToFocusedElement: this.scrollToFocusedElement,
       value,
     }
   }
+
+  isFocused = () => (
+    this.props.focused
+  )
 
   isNodeInViewport(node) {
     if (!this.overflow.contains(node)) {
@@ -210,49 +318,17 @@ export default class Selectable extends PureComponent {
     return options.filter(option => regexp.test(deburr(option.label)))
   }
 
-  searchMatches = text => {
-    const { search } = this.props
-
-    if (!search) {
-      return [{
-        text,
-        match: false,
-        fromIndex: 0,
-        toIndex: text.length - 1,
-      }]
-    }
-
-    const pattern = `(${deburr(search.trim()).split(/\s+/).join('|')})`
-    const regexp = new RegExp(pattern, 'ig')
-    const terms = []
-    let currentIndex = 0
-
-    deburr(text).split(regexp).forEach(term => {
-      if (term === '') {
-        return
-      }
-
-      const fromIndex = currentIndex
-      const toIndex = currentIndex + term.length
-      const termText = text.substring(fromIndex, toIndex)
-      const match = !!term.match(regexp)
-
-      currentIndex = toIndex
-
-      terms.push({
-        text: termText,
-        match,
-        fromIndex,
-        toIndex,
-      })
-    })
-
-    return terms
-  }
-
   sortOptions = options => (
     sortBy(options, option => deburr(option.label.toLowerCase()))
   )
+
+  focus = () => {
+    this.setFocused(true)
+  }
+
+  blur = () => {
+    this.setFocused(false)
+  }
 
   handleOutsideClick = event => {
     const isOutside = (
