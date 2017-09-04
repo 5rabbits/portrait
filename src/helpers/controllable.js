@@ -42,7 +42,9 @@ export default (propsMapping = {}, instanceMethods = []) => Component =>
       this.state = state
 
       instanceMethods.forEach(method => {
-        this[method] = Component.prototype[method]
+        this[method] = (...args) => (
+          this.controlled[method](...args)
+        )
       })
     }
 
@@ -60,6 +62,10 @@ export default (propsMapping = {}, instanceMethods = []) => Component =>
       }
     }
 
+    controlledRef = controlled => {
+      this.controlled = controlled
+    }
+
     render() {
       const props = {}
 
@@ -72,6 +78,7 @@ export default (propsMapping = {}, instanceMethods = []) => Component =>
         <Component
           {...this.props}
           {...props}
+          ref={this.controlledRef}
         />
       )
     }
