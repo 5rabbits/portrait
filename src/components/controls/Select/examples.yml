@@ -1,0 +1,385 @@
+-
+  description: Basic usage
+  code: >
+    <div style={{ width: 240 }}>
+      <Select
+        options={[
+          { label: 'Option 1', value: 1 },
+          { label: 'Option 2', value: 2 },
+          { label: 'Option 3', value: 3 },
+          { label: 'Option 4', value: 4 },
+          { label: 'Option 5', value: 5 },
+          { label: 'Option 6', value: 6 },
+          { label: 'Option 7', value: 7 },
+          { label: 'Option 8', value: 8 },
+          { label: 'Option 9', value: 9 },
+        ]}
+      />
+    </div>
+
+-
+  description: Diacritics sorting and filtering.
+  code: >
+    <div style={{ width: 240 }}>
+      <Select
+        options={[
+          { label: 'Ôption 2', value: 2 },
+          { label: 'optìÓn 3', value: 3 },
+          { label: 'öptíon 1', value: 1 },
+        ]}
+      />
+    </div>
+
+-
+  description: Creating options
+  code: >
+    <div style={{ width: 240 }}>
+      <Select
+        canCreate={true}
+        options={[
+          { label: 'Option 1', value: 1 },
+          { label: 'Option 2', value: 2 },
+          { label: 'Option 3', value: 3 },
+        ]}
+      />
+    </div>
+
+-
+  description: Clearable
+  code: >
+    <div style={{ width: 240 }}>
+      <Select
+        clearable={true}
+        options={[
+          { label: 'Option 1', value: 1 },
+          { label: 'Option 2', value: 2 },
+          { label: 'Option 3', value: 3 },
+          { label: 'Option 4', value: 4 },
+          { label: 'Option 5', value: 5 },
+          { label: 'Option 6', value: 6 },
+        ]}
+      />
+    </div>
+
+-
+  description: Disabled
+  code: >
+    <div style={{ width: 240 }}>
+      <Select
+        disabled={true}
+        options={[
+          { label: 'Option 1', value: 1 },
+          { label: 'Option 2', value: 2 },
+          { label: 'Option 3', value: 3 },
+          { label: 'Option 4', value: 4 },
+          { label: 'Option 5', value: 5 },
+          { label: 'Option 6', value: 6 },
+        ]}
+        value={2}
+      />
+    </div>
+
+-
+  description: Focusable
+  inline: false
+  code: >
+    class Example extends React.PureComponent {
+      handleFocusClick = () => {
+        this.select.focus()
+      }
+
+      selectRef = select => {
+        this.select = select
+      }
+
+      render() {
+        return (
+          <div style={{ width: 320 }}>
+            <button
+              onClick={this.handleFocusClick}
+              type="button"
+              >
+              Focus
+            </button>
+
+            <br />
+            <br />
+
+            <Select
+              defaultValue={2}
+              options={[
+                { label: 'Option 1', value: 1 },
+                { label: 'Option 2', value: 2 },
+                { label: 'Option 3', value: 3 },
+                { label: 'Option 4', value: 4 },
+                { label: 'Option 5', value: 5 },
+                { label: 'Option 6', value: 6 },
+              ]}
+              ref={this.selectRef}
+            />
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Example />, mountNode)
+
+-
+  description: |
+    Fully customizable selector. Try emptying the `PROJECTS` array
+    or removing the `UNASSIGNED` option.
+
+  inline: false
+  code: >
+    // Probably this would be injected by some global state handler.
+
+    const PROJECTS = [
+      {
+        label: 'Client 1, Project 1',
+        value: 1,
+        model: {
+          code: '1',
+          name: 'Project 1',
+          clientName: 'Client 1',
+        }
+      },
+      {
+        label: 'Client 2, Project 2',
+        value: 2,
+        model: {
+          code: '2',
+          name: 'Project 2',
+          clientName: 'Client 2',
+        }
+      },
+      {
+        label: 'Client 3, Project 3',
+        value: 3,
+        model: {
+          code: '3',
+          name: 'Project 3',
+          clientName: 'Client 3',
+        }
+      },
+      {
+        label: 'Client 4, Project 4',
+        value: 4,
+        model: {
+          code: '4',
+          name: 'Project 4',
+          clientName: 'Client 4',
+        }
+      },
+      {
+        label: 'No Client, No Project',
+        value: 123456,
+        model: {
+          code: 'UNASSIGNED',
+          name: 'No Project',
+          clientName: 'No Client',
+        }
+      },
+    ]
+
+    class ProjectSelect extends React.PureComponent {
+      emptyRenderer = ({ search }) => {
+        let view
+
+        if (search) {
+          view = (
+            <div>
+              <div style={{ fontSize: '1.1em', marginBottom: 8 }}>
+                No results for <b>"{search}"</b>
+              </div>
+              <div style={{ color: '#aaa' }}>
+                Click the button below to create a new project
+              </div>
+            </div>
+          )
+        }
+        else {
+          view = (
+            <div>
+              <div style={{ fontSize: '1.1em', marginBottom: 8 }}>
+                You don't have any projects
+              </div>
+              <div style={{ color: '#aaa' }}>
+                Write the name to create a new project
+              </div>
+            </div>
+          )
+        }
+
+        return (
+          <div
+            className="Select__emptyView"
+            style={{
+              paddingTop: 32,
+              paddingBottom: 32,
+            }}
+            >
+            {view}
+          </div>
+        )
+      }
+
+      // Complex option rendering. It gives independent styles to
+      // the project and client name while keeping the search
+      // highlighting.
+      optionRenderer = ({
+        cleanDiacritics,
+        option,
+        search,
+        optionSearchTerms,
+      }) => {
+        if (search) {
+          const terms = optionSearchTerms({ cleanDiacritics, option, search })
+          const text = []
+          const projectIndex = option.model.clientName
+            ? option.model.clientName.length + 1 // for ", "
+            : 0
+
+          terms.forEach(term => {
+            const wrappedTerms = []
+
+            // Between client and project
+            if (
+              term.fromIndex < projectIndex &&
+              term.toIndex >= projectIndex
+            ) {
+              wrappedTerms.push(
+                <span key={1} style={{ opacity: 0.5 }}>
+                  {option.label.substring(term.fromIndex, projectIndex)}
+                </span>
+              )
+              wrappedTerms.push(
+                <span key={2}>
+                  {option.label.substring(projectIndex, term.toIndex)}
+                </span>
+              )
+            }
+
+            // Client
+            else if (term.toIndex <= projectIndex) {
+              wrappedTerms.push(
+                <span key={1} style={{ opacity: 0.5 }}>{term.text}</span>
+              )
+            }
+
+            // Project
+            else if (term.fromIndex >= projectIndex) {
+              wrappedTerms.push(
+                <span key={1}>{term.text}</span>
+              )
+            }
+
+            if (term.matches) {
+              text.push(
+                <span
+                  className="Select__searchHighlight"
+                  key={term.fromIndex}
+                  >
+                  {wrappedTerms}
+                </span>
+              )
+            }
+            else {
+              text.push(
+                <span key={term.fromIndex}>
+                  {wrappedTerms}
+                </span>
+              )
+            }
+          })
+
+          return (
+            <div>
+              {text}
+            </div>
+          )
+        }
+
+        return (
+          <div>
+            {option.model.clientName &&
+              <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
+            }
+            <span>{option.model.name}</span>
+          </div>
+        )
+      }
+
+      valueRenderer = ({ option }) =>
+        <div className="Select__value">
+          {option.model.clientName &&
+            <span style={{ opacity: 0.5 }}>{option.model.clientName}, </span>
+          }
+          <span>{option.model.name}</span>
+        </div>
+
+      newOptionBuilder = ({ label, value }) => ({
+        label,
+        value,
+        model: {
+          code: value,
+          name: label,
+          clientName: null,
+        }
+      })
+
+      render() {
+        // Custom clear logic
+        const unassignOption = PROJECTS.find(option =>
+          option.model.code === 'UNASSIGNED'
+        )
+        const isClearable = !!unassignOption
+
+        return (
+          <Select
+            canCreate={true}
+            clearable={isClearable}
+            clearText="Leave without project"
+            clearValue={isClearable ? unassignOption.value : null}
+            createOptionLabel="Create new project"
+            emptyRenderer={this.emptyRenderer}
+            inputPlaceholder="Write to search or create projects"
+            newOptionBuilder={this.newOptionBuilder}
+            optionRenderer={this.optionRenderer}
+            options={PROJECTS}
+            placeholder="Select a project"
+            valueRenderer={this.valueRenderer}
+            {...this.props}
+          />
+        )
+      }
+    }
+
+
+    ReactDOM.render(
+      <div style={{ width: 320 }}>
+        <ProjectSelect onChange={console.log} />
+      </div>
+    , mountNode)
+
+-
+  description: Render performance.
+
+  inline: false
+  code: >
+    const optionsToCreate = 10000
+
+    const options = []
+
+    for (let i = 1; i <= optionsToCreate; i++) {
+      options.push({
+        label: `Option ${i}`,
+        value: i,
+      })
+    }
+
+    ReactDOM.render(
+      <div style={{ width: 320 }}>
+        <Select options={options} />
+      </div>
+    , mountNode)
+

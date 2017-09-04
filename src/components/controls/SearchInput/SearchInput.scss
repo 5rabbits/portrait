@@ -1,3 +1,6 @@
+@import '~core/variables';
+@import '~core/mixins';
+
 .SearchInput {
   position: relative;
 }
@@ -41,19 +44,18 @@
 .SearchInput--default {
   .SearchInput__input.form-control {
     background-color: #fff;
-    border-color: #CDD4DB;
+    border-color: $default-input-border-color;
     height: 36px;
     border-radius: 18px;
     padding-right: 40px;
     padding-left: 40px;
 
     &::placeholder {
-      color: #B3BDC7;
+      color: $placeholder-color;
     }
 
     &:focus {
-      border-color: rgba(102, 175, 233, .4);
-      box-shadow: 0 0 8px rgba(102, 175, 233, .6);
+      @include focus-control;
     }
   }
 
@@ -89,8 +91,7 @@
     }
 
     &:focus {
-      border-color: rgba(102, 175, 233, .4);
-      box-shadow: 0 0 8px rgba(102, 175, 233, .6);
+      @include focus-control;
     }
   }
 

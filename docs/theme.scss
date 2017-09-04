@@ -83,6 +83,10 @@
   margin-top: $spacing-base * 10;
 }
 
+.component-example:last-child {
+  margin-bottom: 240px;
+}
+
 // Examples
 .example {
   position: absolute;

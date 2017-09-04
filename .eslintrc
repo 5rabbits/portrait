@@ -11,6 +11,7 @@
   "rules": {
     "arrow-parens": [0],
     "brace-style": [2, "stroustrup", { "allowSingleLine": false }],
+    "default-case": [0],
     "import/extensions": [0],
     "import/no-extraneous-dependencies": [0],
     "import/no-unresolved": [0],
@@ -24,6 +25,7 @@
     "react/prefer-stateless-function": [0],
     "react/prop-types": [1],
     "react/forbid-prop-types": [0],
+    "react/require-default-props": [0],
     "semi": [2, "never"]
   }
 }

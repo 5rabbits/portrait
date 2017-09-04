@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select defaultMenuRenderer should render() 1`] = `
+<DefaultMenuRenderer
+  focusedElement={null}
+  menuRef={[Function]}
+  onOptionClick={[Function]}
+  onOptionMouseEnter={[Function]}
+  optionRef={[Function]}
+  optionRenderer={[Function]}
+  optionSearchTerms={[Function]}
+  options={
+    Array [
+      Object {
+        "label": "Option 1",
+        "value": 1,
+      },
+      Object {
+        "label": "Option 2",
+        "value": 2,
+      },
+      Object {
+        "label": "Option 3",
+        "value": 3,
+      },
+      Object {
+        "label": "Option 4",
+        "value": 4,
+      },
+      Object {
+        "label": "Option 5",
+        "value": 5,
+      },
+      Object {
+        "label": "Option 6",
+        "value": 6,
+      },
+      Object {
+        "label": "Option 7",
+        "value": 7,
+      },
+      Object {
+        "label": "Option 8",
+        "value": 8,
+      },
+      Object {
+        "label": "Option 9",
+        "value": 9,
+      },
+    ]
+  }
+  search=""
+  value={null}
+>
+  <div
+    className="Select__menu"
+    onScroll={[Function]}
+  >
+    <div
+      className="Select__innerMenu"
+      style={
+        Object {
+          "height": 360,
+          "position": "relative",
+        }
+      }
+    >
+      <Option
+        focused={false}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        option={
+          Object {
+            "label": "Option 1",
+            "value": 1,
+          }
+        }
+        optionRef={[Function]}
+        selected={false}
+        style={
+          Object {
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="Select__option"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          style={
+            Object {
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="Select__option__text"
+          >
+            Option 1
+          </div>
+        </div>
+      </Option>
+      <Option
+        focused={false}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        option={
+          Object {
+            "label": "Option 9",
+            "value": 9,
+          }
+        }
+        optionRef={[Function]}
+        selected={false}
+        style={
+          Object {
+            "left": 0,
+            "position": "absolute",
+            "top": 320,
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="Select__option"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          style={
+            Object {
+              "left": 0,
+              "position": "absolute",
+              "top": 320,
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="Select__option__text"
+          >
+            Option 9
+          </div>
+        </div>
+      </Option>
+    </div>
+  </div>
+</DefaultMenuRenderer>
+`;
+
+exports[`Select defaultOptionRenderer if it has a search should build a highlighted label 1`] = `
+<div>
+  <span
+    className="Select__searchHighlight"
+  >
+    Te
+  </span>
+  st l
+  <span
+    className="Select__searchHighlight"
+  >
+    abe
+  </span>
+  l
+</div>
+`;
+
+exports[`Select should render with minimum props 1`] = `
+<Select
+  arrowRenderer={[Function]}
+  autoFocus={false}
+  canCreate={false}
+  clearOptionRenderer={[Function]}
+  clearText="Leave without value"
+  clearValue={null}
+  clearable={false}
+  createOptionLabel="Create new option"
+  createOptionRenderer={[Function]}
+  defaultNewOptionLabel=""
+  defaultValue={null}
+  disabled={false}
+  emptyRenderer={[Function]}
+  inputPlaceholder={[Function]}
+  inputRenderer={[Function]}
+  menuRenderer={[Function]}
+  newOptionBuilder={[Function]}
+  optionRenderer={[Function]}
+  optionSearchTerms={[Function]}
+  options={Array []}
+  optionsFilter={[Function]}
+  placeholder={[Function]}
+  placeholderRenderer={[Function]}
+  searchable={true}
+  sort={[Function]}
+  valueRenderer={[Function]}
+>
+  <div
+    className="Select"
+  >
+    <button
+      autoFocus={false}
+      className="Select__control"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <div
+        className="Select__placeholder"
+      >
+        Select an option
+      </div>
+      <div
+        className="Select__arrow"
+      >
+        <svg
+          data-icon-name="caret-down"
+          viewBox="0 0 400 400"
+        >
+          <path
+            d="M3.625 110.875l2.25 2.625 170 195.625c5.75 6.625 14.375 10.75 24 10.75s18.25-4.25 24-10.75l169.875-195.25 2.875-3.25C398.75 107.5 400 103.75 400 99.75 400 88.875 390.75 80 379.25 80H20.75C9.25 80 0 88.875 0 99.75c0 4.125 1.375 8 3.625 11.125z"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+</Select>
+`;
