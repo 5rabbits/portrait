@@ -4,28 +4,31 @@ import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
-import defaults from 'lodash/defaults'
 import controllable from 'helpers/controllable'
 
 @controllable({
   focused: 'onFocusedChange',
+  focusedElement: 'onFocusedElementChange',
   search: 'onSearchChange',
   value: 'onChange',
-})
+}, ['scrollToFocusedElement'])
 export default class Selectable extends PureComponent {
   static propTypes = {
     // Handled by uncontrollable
     /* eslint-disable react/no-unused-prop-types */
     defaultFocused: PropTypes.bool,
+    defaultFocusedElement: PropTypes.any,
     defaultSearch: PropTypes.any,
     defaultValue: PropTypes.string,
     /* eslint-enable react/no-unused-prop-types */
 
     blurOnClickOutside: PropTypes.bool,
     focused: PropTypes.bool.isRequired,
+    focusedElement: PropTypes.any,
     onChange: PropTypes.func.isRequired,
     onClickOutside: PropTypes.func,
-    onFocusedChange: PropTypes.func,
+    onFocusedChange: PropTypes.func.isRequired,
+    onFocusedElementChange: PropTypes.func.isRequired,
     onSearchChange: PropTypes.func.isRequired,
     options: PropTypes.array.isRequired,
     renderer: PropTypes.func.isRequired,
@@ -50,7 +53,7 @@ export default class Selectable extends PureComponent {
     }
 
     this.state = {
-      focusedElement: null,
+      focusedElement: this.props.focusedElement,
       options: this.filterOptions({
         options: sortedOptions,
         search: this.props.search,
@@ -95,25 +98,35 @@ export default class Selectable extends PureComponent {
       })
     }
 
-    if (this.props.search !== nextProps.search) {
-      this.setState({
-        focusedElement: null,
-      })
-    }
-
     if (
       this.props.search !== nextProps.search ||
       this.props.focused !== nextProps.focused
     ) {
-      this.setState({
-        focusedElement: null,
-      })
+      nextProps.onFocusedElementChange(null)
+    }
+
+    if (this.props.focusedElement !== nextProps.focusedElement) {
+      let elementToFocus = nextProps.focusedElement
+
+      if (isNumber(nextProps.focusedElement)) {
+        const optionsCount = this.state.options.length
+
+        elementToFocus = nextProps.focusedElement < 0
+          ? (optionsCount + nextProps.focusedElement) % optionsCount
+          : nextProps.focusedElement % optionsCount
+      }
+
+      this.setState({ focusedElement: elementToFocus })
     }
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleOutsideClick)
   }
+
+  getFocusableElement = id => (
+    this.focusableRefs[id]
+  )
 
   getRendererProps = () => {
     const { focused, search, value } = this.props
@@ -129,55 +142,11 @@ export default class Selectable extends PureComponent {
       search,
       selectedOption,
       setFocused: this.props.onFocusedChange,
-      setFocusedElement: this.setFocusedElement,
+      setFocusedElement: this.props.onFocusedElementChange,
       setSearch: this.props.onSearchChange,
       setValue: this.props.onChange,
+      scrollToFocusedElement: this.scrollToFocusedElement,
       value,
-    }
-  }
-
-  setFocusedElement = (id, options = {}) => {
-    if (this.state.focusedElement === id) {
-      return
-    }
-
-    defaults(options, {
-      virtual: true,
-      scrollToViewport: false,
-    })
-
-    if (id == null) {
-      this.setState({ focusedElement: null })
-      return
-    }
-
-    let elementToFocus = id
-
-    if (isNumber(id)) {
-      const optionsCount = this.state.options.length
-
-      elementToFocus = id < 0
-        ? (optionsCount + id) % optionsCount
-        : id % optionsCount
-    }
-
-    this.setState({ focusedElement: elementToFocus })
-
-    const node = this.focusableRefs[elementToFocus]
-
-    if (!options.virtual && node.focus) {
-      node.focus()
-    }
-
-    if (this.overflow && options.scrollToViewport && elementToFocus != null) {
-      const viewportInfo = this.isNodeInViewport(node)
-
-      if (!viewportInfo.visibleFromBottom) {
-        this.scrollNodeToViewport(node, 'bottom')
-      }
-      else if (!viewportInfo.visibleFromTop) {
-        this.scrollNodeToViewport(node, 'top')
-      }
     }
   }
 
@@ -201,6 +170,24 @@ export default class Selectable extends PureComponent {
       visibleFromBottom,
       visibleFromTop,
     }
+  }
+
+  scrollToFocusedElement = () => {
+    requestAnimationFrame(() => {
+      const { focusedElement } = this.state
+      const node = this.focusableRefs[focusedElement]
+
+      if (this.overflow && focusedElement != null) {
+        const viewportInfo = this.isNodeInViewport(node)
+
+        if (!viewportInfo.visibleFromBottom) {
+          this.scrollNodeToViewport(node, 'bottom')
+        }
+        else if (!viewportInfo.visibleFromTop) {
+          this.scrollNodeToViewport(node, 'top')
+        }
+      }
+    })
   }
 
   scrollNodeToViewport = (node, fromDirection) => {
