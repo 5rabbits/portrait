@@ -2,7 +2,7 @@ import { React, toJSON, mount } from 'test/helper'
 import cx from 'classnames'
 import Selectable from './Selectable'
 
-describe('Select', () => {
+describe('Selectable', () => {
   it('should render with minimum props', () => {
     const component = mount(
       <Selectable
@@ -347,27 +347,6 @@ describe('Select', () => {
       )
 
       expect(component.find('div').getDOMNode().style.position).toBe('relative')
-    })
-
-    describe('if it has a selected option', () => {
-      it('should focus it and scroll it to viewport', () => {
-        const component = mount(
-          <Selectable
-            options={[
-              { label: 'Option 1', value: 1 },
-            ]}
-            renderer={({ focusableRef, overflowRef }) =>
-              <div ref={overflowRef()}>
-                <div ref={focusableRef(0)} />
-              </div>
-            }
-            value={1}
-          />,
-        )
-        const instance = component.instance()
-
-        expect(instance.getFocusedElement()).toBe(0)
-      })
     })
 
     it('should not fail when unmounting', () => {

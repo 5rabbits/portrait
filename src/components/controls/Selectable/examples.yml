@@ -376,9 +376,16 @@
                   setFocused(true)
 
                   // Execute after the next paint
-                  window.requestAnimationFrame(() =>
+                  window.requestAnimationFrame(() => {
                     setFocusedElement('input', { virtual: false })
-                  )
+
+                    const selectedIndex = options.indexOf(selectedOption)
+
+                    if (selectedIndex !== -1) {
+                      setFocusedElement(selectedIndex)
+                      scrollToFocusedElement()
+                    }
+                  })
                 }
               }}
               type="button"
@@ -604,9 +611,16 @@
                           setFocused(true)
 
                           // Execute after the next paint
-                          window.requestAnimationFrame(() =>
+                          window.requestAnimationFrame(() => {
                             setFocusedElement('input', { virtual: false })
-                          )
+
+                            const selectedIndex = options.indexOf(selectedOption)
+
+                            if (selectedIndex !== -1) {
+                              setFocusedElement(selectedIndex)
+                              scrollToFocusedElement()
+                            }
+                          })
                         }
                       }}
                       type="button"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Select should allow to render options 1`] = `
+exports[`Selectable should allow to render options 1`] = `
 <ControllableComponent
   options={
     Array [
@@ -63,7 +63,7 @@ exports[`Select should allow to render options 1`] = `
 </ControllableComponent>
 `;
 
-exports[`Select should render with minimum props 1`] = `
+exports[`Selectable should render with minimum props 1`] = `
 <ControllableComponent
   options={Array []}
   renderer={[Function]}
