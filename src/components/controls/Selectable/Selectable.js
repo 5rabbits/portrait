@@ -5,7 +5,7 @@ import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
 import defaults from 'lodash/defaults'
-import controllable from 'helpers/controllable'
+import controllable from 'decorators/controllable'
 
 @controllable({
   focused: 'onFocusedChange',
