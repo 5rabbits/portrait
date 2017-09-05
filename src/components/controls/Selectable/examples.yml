@@ -99,9 +99,11 @@
                 }}
                 type="button"
                 >
-                {getSearchMatches(option.label).map(term =>
-                  term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                )}
+                <div>
+                  {getSearchMatches(option.label).map(term =>
+                    term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                  )}
+                </div>
               </button>
             )}
           </div>
@@ -205,9 +207,11 @@
                 onMouseEnter={() => setFocusedElement(index)}
                 type="button"
                 >
-                {getSearchMatches(option.label).map(term =>
-                  term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                )}
+                <div>
+                  {getSearchMatches(option.label).map(term =>
+                    term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                  )}
+                </div>
               </button>
             )}
           </div>
@@ -314,9 +318,11 @@
                   ref={focusableRef(index)}
                   type="button"
                   >
-                  {getSearchMatches(option.label).map(term =>
-                    term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                  )}
+                  <div>
+                    {getSearchMatches(option.label).map(term =>
+                      term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                    )}
+                  </div>
                 </button>
               )}
             </div>
@@ -490,9 +496,11 @@
                       ref={focusableRef(index)}
                       type="button"
                       >
-                      {getSearchMatches(option.label).map(term =>
-                        term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                      )}
+                      <div>
+                        {getSearchMatches(option.label).map(term =>
+                          term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                        )}
+                      </div>
                     </button>
                   )}
                 </div>
@@ -725,9 +733,11 @@
                               ref={focusableRef(index)}
                               type="button"
                               >
-                              {getSearchMatches(option.label).map(term =>
-                                term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
-                              )}
+                              <div>
+                                {getSearchMatches(option.label).map(term =>
+                                  term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                                )}
+                              </div>
                             </button>
                           )}
                         </div>
