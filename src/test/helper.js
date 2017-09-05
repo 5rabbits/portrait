@@ -1,6 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { shallow, mount } from 'enzyme'
 import toJSON from 'enzyme-to-json'
+
+global.requestAnimationFrame = callback => callback()
 
 beforeEach(() => {
   let sandbox = document.getElementById('sandbox')
@@ -16,6 +19,7 @@ beforeEach(() => {
 })
 
 export {
+  PropTypes,
   React,
   shallow,
   mount,
