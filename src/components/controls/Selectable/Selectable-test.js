@@ -476,6 +476,27 @@ describe('Selectable', () => {
     })
   })
 
+  describe('if trying to move the scroll on a node inside the overflow container', () => {
+    it('should calculate if it is in the viewport', () => {
+      const component = mount(
+        <Selectable
+          options={[]}
+          renderer={({ focusableRef, overflowRef }) =>
+            <div ref={overflowRef()}>
+              <div ref={focusableRef(0)} />
+            </div>
+          }
+        />,
+      )
+      const instance = component.instance().getWrappedInstance()
+      const info = instance.isNodeInViewport(instance.getFocusableNode(0))
+
+      expect(Object.keys(info)).toEqual([
+        'inViewport', 'visibleFromBottom', 'visibleFromTop',
+      ])
+    })
+  })
+
   describe('scrolling to focused', () => {
     describe('if the element is hidden on the bottom the overflow', () => {
       it('should scroll to node to the bottom', () => {
@@ -526,6 +547,55 @@ describe('Selectable', () => {
         expect(() => {
           instance.scrollToFocusedElement()
         }).not.toThrow()
+      })
+    })
+
+    describe('if is entirely visible', () => {
+      it('should not try to scrollNodeToViewport', () => {
+        const component = mount(
+          <Selectable
+            options={[
+              { label: 'Option 1', value: 1 },
+            ]}
+            renderer={({ focusableRef, overflowRef }) =>
+              <div ref={overflowRef()}>
+                <div ref={focusableRef(0)} />
+              </div>
+            }
+          />,
+        )
+        const instance = component.instance().getWrappedInstance()
+
+        instance.scrollNodeToViewport = jest.fn()
+        instance.isNodeInViewport = () => ({ visibleFromBottom: true, visibleFromTop: true })
+        instance.setFocusedElement(0)
+        instance.scrollToFocusedElement()
+
+        expect(instance.scrollNodeToViewport).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('if there is no overflow defined', () => {
+      it('should not try to scrollNodeToViewport', () => {
+        const component = mount(
+          <Selectable
+            options={[
+              { label: 'Option 1', value: 1 },
+            ]}
+            renderer={({ focusableRef }) =>
+              <div>
+                <div ref={focusableRef(0)} />
+              </div>
+            }
+          />,
+        )
+        const instance = component.instance().getWrappedInstance()
+
+        instance.scrollNodeToViewport = jest.fn()
+        instance.setFocusedElement(0)
+        instance.scrollToFocusedElement()
+
+        expect(instance.scrollNodeToViewport).not.toHaveBeenCalled()
       })
     })
   })
