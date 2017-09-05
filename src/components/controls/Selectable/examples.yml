@@ -758,7 +758,11 @@
     ReactDOM.render(<Example />, mountNode)
 
 -
-  description: Inline multi-select
+  description: |
+    Inline multi-select
+
+    - `allOptions`: Sorted options without filtering.
+
   code: >
     <div>
       <Selectable
@@ -772,6 +776,7 @@
         ]}
         renderer={
           ({
+            allOptions,
             focusableRef,
             focusedElement,
             getSearchMatches,
@@ -846,28 +851,30 @@
                 }
               </div>
 
-              <label
-                className={`
-                  e2-option
-                  e2-option--all
-                  ${focusedElement === 'select-all' ? 'e2-option--focused' : ''}
-                `}
-                type="button"
-                >
-                <input
-                  checked={value.length === options.length}
-                  onChange={event => {
-                    if (event.target.checked) {
-                      setValue(options.map(option => option.value))
-                    }
-                    else {
-                      setValue([])
-                    }
-                  }}
-                  type="checkbox"
-                />
-                Select all
-              </label>
+              {!search &&
+                <label
+                  className={`
+                    e2-option
+                    e2-option--all
+                    ${focusedElement === 'select-all' ? 'e2-option--focused' : ''}
+                  `}
+                  type="button"
+                  >
+                  <input
+                    checked={value.length === allOptions.length}
+                    onChange={event => {
+                      if (event.target.checked) {
+                        setValue(allOptions.map(option => option.value))
+                      }
+                      else {
+                        setValue([])
+                      }
+                    }}
+                    type="checkbox"
+                  />
+                  Select all
+                </label>
+              }
 
               <div
                 className="e2-options-list"
@@ -929,7 +936,7 @@
             }
 
             .e2-search-wrapper {
-              padding: 8px 8px 4px 8px;
+              padding: 8px;
               position: relative;
             }
 
@@ -991,6 +998,10 @@
             .e2-option--selected {
               background-color: #1e85f2;
               color: #fff;
+            }
+
+            .e2-option--all {
+              margin-top: -4px;
             }
 
             .e2-clear-option {

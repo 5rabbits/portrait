@@ -120,6 +120,7 @@ export default class Selectable extends PureComponent {
     /**
      * The markup renderer. This function receives an object with this properties:
      *
+     * - allOptions: Sorted options without filtering.
      * - focusableRef(id): Allows to define focusable elements.
      * - focusedElement: The current focusable id.
      * - getSearchMatches(text): Returns text matching info for the current search. Useful to
@@ -333,9 +334,10 @@ export default class Selectable extends PureComponent {
 
   getRendererProps = () => {
     const { focused, search, value } = this.props
-    const { focusedElement, options, selectedOption } = this.state
+    const { focusedElement, options, selectedOption, sortedOptions } = this.state
 
     return {
+      allOptions: sortedOptions,
       focusableRef: this.focusableRef,
       focusedElement,
       getSearchMatches: this.getSearchMatches,
