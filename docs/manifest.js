@@ -49,6 +49,17 @@ export default sortBy([
       })
     }, 'Select'),
   },
+  {
+    name: 'Selectable',
+    getComponent: callback => require.ensure([], require => {
+      require('controls/Selectable/examples.scss')
+
+      callback({
+        source: require('!!docs-loader!controls/Selectable'),
+        examples: require('controls/Selectable/examples.yml'),
+      })
+    }, 'Selectable'),
+  },
 
   // Elements
   {
