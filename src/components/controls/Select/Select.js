@@ -704,6 +704,8 @@ export default class Select extends PureComponent {
         this.props.onChange(newOption.value, newOption)
       }
     })
+
+    return newOption
   }
 
   handleClearOptionClick = () => {
