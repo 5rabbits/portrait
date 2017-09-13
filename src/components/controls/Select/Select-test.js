@@ -1178,6 +1178,18 @@ describe('Select', () => {
         value: NEW_VALUE,
       })
     })
+
+    it('should invoke props.onNewOption', () => {
+      const onNewOption = jest.fn()
+      const component = mount(<Select canCreate onNewOption={onNewOption} options={[]} />)
+      const instance = component.instance()
+
+      instance.openMenu()
+      component.setState({ input: 'Some new option' })
+      component.find({ onClick: instance.handleCreateOptionClick }).at(0).simulate('click')
+
+      expect(onNewOption).toHaveBeenCalledWith(component.state('input'))
+    })
   })
 
   describe('when entering the mouse on the create option control', () => {
