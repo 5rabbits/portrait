@@ -225,7 +225,6 @@ export default class Select extends PureComponent {
     inputRenderer: defaultInputRenderer,
     menuRenderer: defaultMenuRenderer,
     newOptionBuilder: defaultNewOptionBuilder,
-    onNewOption: defaultOnNewOption,
     optionsFilter: defaultOptionsFilter,
     optionSearchTerms: defaultOptionSearchTerms,
     optionRenderer: defaultOptionRenderer,
