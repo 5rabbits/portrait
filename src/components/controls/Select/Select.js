@@ -162,6 +162,11 @@ export default class Select extends PureComponent {
     onFocus: PropTypes.func,
 
     /**
+     * Function that returns input value
+     */
+    onNewOption: PropTypes.func,
+
+    /**
      * Function that returns the view to display an option in the list.
      */
     optionRenderer: PropTypes.func.isRequired,
@@ -220,6 +225,7 @@ export default class Select extends PureComponent {
     inputRenderer: defaultInputRenderer,
     menuRenderer: defaultMenuRenderer,
     newOptionBuilder: defaultNewOptionBuilder,
+    onNewOption: defaultOnNewOption,
     optionsFilter: defaultOptionsFilter,
     optionSearchTerms: defaultOptionSearchTerms,
     optionRenderer: defaultOptionRenderer,
@@ -672,6 +678,10 @@ export default class Select extends PureComponent {
   }
 
   handleCreateOptionClick = () => {
+    if (this.props.onNewOption) {
+      return this.props.onNewOption(this.state.input)
+    }
+
     const newOption = this.props.newOptionBuilder({
       label: this.state.input,
       value: NEW_VALUE,
