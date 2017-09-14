@@ -48,7 +48,7 @@ export default class Option extends PureComponent {
       style.backgroundColor = color
     }
     else if (focused && color) {
-      style.backgroundColor = tinycolor(color).lighten(35).toHexString()
+      style.backgroundColor = tinycolor.mix(color, '#FFF', 90).toHexString()
     }
 
     if (style.backgroundColor) {
