@@ -1385,7 +1385,7 @@ describe('Select', () => {
       component.setState({ focusedElement: 0 })
 
       expect(component.find(Option).getDOMNode().style['background-color']).toBe(
-        tinycolor('rgb(255, 0, 0)').lighten(35).toRgbString(),
+        tinycolor.mix('rgb(255, 0, 0)', '#FFF', 90).toRgbString(),
       )
     })
   })
