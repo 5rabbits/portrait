@@ -52,7 +52,7 @@ export default class Option extends PureComponent {
     }
 
     if (style.backgroundColor) {
-      style.color = tinycolor.mostReadable(style.backgroundColor, ['#697D91', '#FFF'])
+      style.color = tinycolor.mostReadable(style.backgroundColor, ['#333', '#FFF'])
     }
 
     return (
