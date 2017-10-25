@@ -8,6 +8,7 @@ exports[`SearchInput should render with minimum props 1`] = `
   onClear={null}
   onSubmit={null}
   theme="default"
+  value={undefined}
 >
   <div
     className="SearchInput SearchInput--default"
