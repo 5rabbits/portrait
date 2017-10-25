@@ -3,23 +3,23 @@
   "version": "0.6.2",
   "description": "Base design for all 5Rabbits products",
   "keywords": [
-    "commonjs",
-    "es6",
-    "library",
-    "starter",
-    "umd",
-    "universal",
-    "webpack"
+    "portrait",
+    "react",
+    "5rabbits",
+    "lemontech",
+    "design",
+    "system"
   ],
-  "homepage": "https://bitbucket.org/lemontech/ux",
-  "bugs": "https://bitbucket.org/lemontech/ux/issues",
+  "homepage": "https://github.com/5rabbits/portrait",
+  "bugs": "https://github.com/5rabbits/portrait/issues",
   "license": "MIT",
   "author": "5rabbits <5rabbits@lemontech.com> (http://5rabbits.com/)",
   "contributors": [
     "Cristian Ferrari <cferrari@lemontech.cl>",
     "Daniel Ochoa <dochoa@lemontech.cl>",
     "Rodrigo Díaz <rdiaz@lemontech.cl>",
-    "Tamara Luque <tluque@lemontech.cl>"
+    "Tamara Luque <tluque@lemontech.cl>",
+    "Víctor Sánchez <vsanchez@lemontech.cl>"
   ],
   "files": [
     "lib"
@@ -27,7 +27,7 @@
   "main": "lib/portrait.js",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/lemontech/ux"
+    "url": "https://github.com/5rabbits/portrait"
   },
   "scripts": {
     "profile": "NODE_ENV=production webpack --progress --config webpack/webpack.config.js --profile --json > webpack.stats.json",
