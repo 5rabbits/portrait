@@ -32,6 +32,7 @@ exports[`SectionToolbar should render with minimum props 1`] = `
         >
           <div
             className="SectionToolbar__title"
+            key=".0"
             style={
               Object {
                 "flex": 1,
@@ -42,6 +43,7 @@ exports[`SectionToolbar should render with minimum props 1`] = `
           </div>
           <div
             className="SectionToolbar__search"
+            key=".1"
             style={
               Object {
                 "flex": "0 1 480px",
@@ -50,6 +52,7 @@ exports[`SectionToolbar should render with minimum props 1`] = `
           />
           <div
             className="SectionToolbar__actions"
+            key=".2"
             style={
               Object {
                 "flex": 1,

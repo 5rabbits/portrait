@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { shallow, mount } from 'enzyme'
+import { shallow, mount, configure } from 'enzyme'
 import toJSON from 'enzyme-to-json'
+import Adapter from 'enzyme-adapter-react-16'
 
 global.requestAnimationFrame = callback => callback()
 
@@ -17,6 +18,8 @@ beforeEach(() => {
 
   document.body.appendChild(sandbox)
 })
+
+configure({ adapter: new Adapter() })
 
 export {
   PropTypes,

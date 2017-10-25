@@ -11,7 +11,9 @@ exports[`NavigationItem should allow to define an icon 1`] = `
   <li
     className="navigation-item--top-level"
   >
-    <a>
+    <a
+      data-toggle={undefined}
+    >
       <span
         className="mr-xs navigation-item__icon"
       >
@@ -59,7 +61,9 @@ exports[`NavigationItem should render nested NavigationItem as a dropdown 1`] = 
         <li
           className=""
         >
-          <a>
+          <a
+            data-toggle={undefined}
+          >
             <span
               className=""
             />
@@ -76,7 +80,9 @@ exports[`NavigationItem should render nested NavigationItem as a dropdown 1`] = 
         <li
           className=""
         >
-          <a>
+          <a
+            data-toggle={undefined}
+          >
             <span
               className=""
             />
@@ -99,7 +105,9 @@ exports[`NavigationItem should render with minimum props 1`] = `
   <li
     className="navigation-item--top-level"
   >
-    <a>
+    <a
+      data-toggle={undefined}
+    >
       <span
         className="hidden-sm"
       />

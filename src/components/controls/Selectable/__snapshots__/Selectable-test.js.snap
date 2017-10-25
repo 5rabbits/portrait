@@ -25,6 +25,7 @@ exports[`Selectable should allow to render options 1`] = `
     defaultFocused={false}
     defaultSearch=""
     focused={false}
+    focusedElement={undefined}
     onChange={[Function]}
     onFocusedChange={[Function]}
     onFocusedElementChange={[Function]}
@@ -47,15 +48,22 @@ exports[`Selectable should allow to render options 1`] = `
     }
     renderer={[Function]}
     search=""
+    value={undefined}
   >
     <div>
-      <div>
+      <div
+        key="1"
+      >
         Option 1
       </div>
-      <div>
+      <div
+        key="10"
+      >
         Option 10
       </div>
-      <div>
+      <div
+        key="5"
+      >
         Option 5
       </div>
     </div>
@@ -73,6 +81,7 @@ exports[`Selectable should render with minimum props 1`] = `
     defaultFocused={false}
     defaultSearch=""
     focused={false}
+    focusedElement={undefined}
     onChange={[Function]}
     onFocusedChange={[Function]}
     onFocusedElementChange={[Function]}
@@ -80,6 +89,7 @@ exports[`Selectable should render with minimum props 1`] = `
     options={Array []}
     renderer={[Function]}
     search=""
+    value={undefined}
   >
     <span />
   </Selectable>
