@@ -388,6 +388,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
 
       expect(component.state('isOpen')).toBe(true)
     })
@@ -406,6 +407,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
 
       expect(component.state('focusedElement')).toBe(1)
     })
@@ -451,6 +453,7 @@ describe('Select', () => {
         const instance = component.instance()
 
         instance.openMenu()
+        component.update()
 
         const input = component.find({ onChange: instance.handleInputChange })
 
@@ -477,6 +480,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -491,6 +495,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -505,6 +510,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -528,6 +534,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -542,6 +549,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -565,6 +573,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -588,6 +597,7 @@ describe('Select', () => {
             const instance = component.instance()
 
             instance.openMenu()
+            component.update()
 
             const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -609,6 +619,7 @@ describe('Select', () => {
             const instance = component.instance()
 
             instance.openMenu()
+            component.update()
 
             const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -628,6 +639,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -649,6 +661,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -663,6 +676,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -686,6 +700,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -700,6 +715,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -723,6 +739,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -746,6 +763,7 @@ describe('Select', () => {
             const instance = component.instance()
 
             instance.openMenu()
+            component.update()
 
             const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -767,6 +785,7 @@ describe('Select', () => {
             const instance = component.instance()
 
             instance.openMenu()
+            component.update()
 
             const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -785,6 +804,7 @@ describe('Select', () => {
         const instance = component.instance()
 
         instance.openMenu()
+        component.update()
 
         const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -801,6 +821,7 @@ describe('Select', () => {
         const instance = component.instance()
 
         instance.openMenu()
+        component.update()
 
         const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -815,6 +836,7 @@ describe('Select', () => {
         const instance = component.instance()
 
         instance.openMenu()
+        component.update()
 
         const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -832,6 +854,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
 
@@ -854,6 +877,7 @@ describe('Select', () => {
             const instance = component.instance()
 
             instance.openMenu()
+            component.update()
             instance.handleCreateOptionClick = jest.fn()
 
             const input = component.find({ onKeyDown: instance.handleInputKeyDown })
@@ -874,6 +898,7 @@ describe('Select', () => {
             const instance = component.instance()
 
             instance.openMenu()
+            component.update()
             instance.handleClearOptionClick = jest.fn()
 
             const input = component.find({ onKeyDown: instance.handleInputKeyDown })
@@ -898,6 +923,7 @@ describe('Select', () => {
           const instance = component.instance()
 
           instance.openMenu()
+          component.update()
           instance.handleClearOptionClick = jest.fn()
 
           const input = component.find({ onKeyDown: instance.handleInputKeyDown })
@@ -1071,6 +1097,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.find(Option).at(0).simulate('click')
 
       expect(component.state('value')).toBe(1)
@@ -1089,6 +1116,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.find(Option).at(0).simulate('mouseenter')
 
       expect(component.state('focusedElement')).toBe(0)
@@ -1101,6 +1129,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
 
       const event = new CustomEvent('click')
 
@@ -1114,6 +1143,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.setState({ isFocused: true })
 
       const event = new CustomEvent('click')
@@ -1130,6 +1160,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.setState({ input: 'Some new option' })
       component.find({ onClick: instance.handleCreateOptionClick }).at(0).simulate('click')
 
@@ -1144,6 +1175,7 @@ describe('Select', () => {
         const instance = component.instance()
 
         instance.openMenu()
+        component.update()
         component.setState({ input: 'Some new option' })
         component.find({ onClick: instance.handleCreateOptionClick }).at(0).simulate('click')
 
@@ -1157,6 +1189,7 @@ describe('Select', () => {
         const instance = component.instance()
 
         instance.openMenu()
+        component.update()
         component.setState({ input: 'Some new option' })
         component.find({ onClick: instance.handleCreateOptionClick }).at(0).simulate('click')
 
@@ -1170,6 +1203,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.setState({ input: 'Some new option' })
       component.find({ onClick: instance.handleCreateOptionClick }).at(0).simulate('click')
 
@@ -1185,6 +1219,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.setState({ input: 'Some new option' })
       component.find({ onClick: instance.handleCreateOptionClick }).at(0).simulate('click')
 
@@ -1198,6 +1233,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.setState({ input: 'Some new option' })
       component.find({ onMouseEnter: instance.handleBottomControlMouseEnter }).simulate('mouseenter')
 
@@ -1211,6 +1247,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.setState({ value: 1 })
       component.find({ onClick: instance.handleClearOptionClick }).simulate('click')
 
@@ -1231,6 +1268,7 @@ describe('Select', () => {
         const instance = component.instance()
 
         instance.openMenu()
+        component.update()
         component.setState({ value: 2 })
         component.find({ onClick: instance.handleClearOptionClick }).simulate('click')
 
@@ -1245,6 +1283,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.setState({ input: 'Some new option' })
       component.find({ onMouseEnter: instance.handleBottomControlMouseEnter }).simulate('mouseenter')
 
@@ -1347,6 +1386,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
 
       expect(component.find('input').prop('placeholder')).toBe('Some placeholder')
     })
@@ -1366,6 +1406,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
 
       expect(component.find(Option).getDOMNode().style['background-color']).toBe('rgb(255, 0, 0)')
     })
@@ -1382,6 +1423,7 @@ describe('Select', () => {
       const instance = component.instance()
 
       instance.openMenu()
+      component.update()
       component.setState({ focusedElement: 0 })
 
       expect(component.find(Option).getDOMNode().style['background-color']).toBe(

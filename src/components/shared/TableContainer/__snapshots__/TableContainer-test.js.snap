@@ -8,6 +8,10 @@ exports[`TableContainer getContents() if props.loading should display a LoadingS
   filters={null}
   loading={true}
   noResults={false}
+  noResultsAction={undefined}
+  noResultsIcon={undefined}
+  noResultsText={undefined}
+  noResultsTitle={undefined}
   onDownload={null}
   onFiltersToggle={null}
   showFilters={null}
@@ -42,6 +46,7 @@ exports[`TableContainer getContents() if props.loading should display a LoadingS
           >
             <div
               className="TableContainer__toolbar__filters"
+              key=".0"
               style={
                 Object {
                   "flex": "0 0 100px",
@@ -50,6 +55,7 @@ exports[`TableContainer getContents() if props.loading should display a LoadingS
             />
             <div
               className="TableContainer__toolbar__totals"
+              key=".1"
               style={
                 Object {
                   "flex": 1,
@@ -58,6 +64,7 @@ exports[`TableContainer getContents() if props.loading should display a LoadingS
             />
             <div
               className="TableContainer__toolbar__downloads"
+              key=".2"
               style={
                 Object {
                   "flex": "0 0 100px",
@@ -127,6 +134,10 @@ exports[`TableContainer getContents() if props.noResults should display an Empty
   filters={null}
   loading={false}
   noResults={true}
+  noResultsAction={undefined}
+  noResultsIcon={undefined}
+  noResultsText={undefined}
+  noResultsTitle={undefined}
   onDownload={null}
   onFiltersToggle={null}
   showFilters={null}
@@ -161,6 +172,7 @@ exports[`TableContainer getContents() if props.noResults should display an Empty
           >
             <div
               className="TableContainer__toolbar__filters"
+              key=".0"
               style={
                 Object {
                   "flex": "0 0 100px",
@@ -169,6 +181,7 @@ exports[`TableContainer getContents() if props.noResults should display an Empty
             />
             <div
               className="TableContainer__toolbar__totals"
+              key=".1"
               style={
                 Object {
                   "flex": 1,
@@ -177,6 +190,7 @@ exports[`TableContainer getContents() if props.noResults should display an Empty
             />
             <div
               className="TableContainer__toolbar__downloads"
+              key=".2"
               style={
                 Object {
                   "flex": "0 0 100px",
@@ -278,6 +292,10 @@ exports[`TableContainer if props.filters is defined should render the toggle fil
   }
   loading={false}
   noResults={false}
+  noResultsAction={undefined}
+  noResultsIcon={undefined}
+  noResultsText={undefined}
+  noResultsTitle={undefined}
   onDownload={null}
   onFiltersToggle={null}
   showFilters={null}
@@ -312,6 +330,7 @@ exports[`TableContainer if props.filters is defined should render the toggle fil
           >
             <div
               className="TableContainer__toolbar__filters"
+              key=".0"
               style={
                 Object {
                   "flex": "0 0 100px",
@@ -341,6 +360,7 @@ exports[`TableContainer if props.filters is defined should render the toggle fil
             </div>
             <div
               className="TableContainer__toolbar__totals"
+              key=".1"
               style={
                 Object {
                   "flex": 1,
@@ -349,6 +369,7 @@ exports[`TableContainer if props.filters is defined should render the toggle fil
             />
             <div
               className="TableContainer__toolbar__downloads"
+              key=".2"
               style={
                 Object {
                   "flex": "0 0 100px",
@@ -398,6 +419,10 @@ exports[`TableContainer should render with minimum props 1`] = `
   filters={null}
   loading={false}
   noResults={false}
+  noResultsAction={undefined}
+  noResultsIcon={undefined}
+  noResultsText={undefined}
+  noResultsTitle={undefined}
   onDownload={null}
   onFiltersToggle={null}
   showFilters={null}
@@ -432,6 +457,7 @@ exports[`TableContainer should render with minimum props 1`] = `
           >
             <div
               className="TableContainer__toolbar__filters"
+              key=".0"
               style={
                 Object {
                   "flex": "0 0 100px",
@@ -440,6 +466,7 @@ exports[`TableContainer should render with minimum props 1`] = `
             />
             <div
               className="TableContainer__toolbar__totals"
+              key=".1"
               style={
                 Object {
                   "flex": 1,
@@ -448,6 +475,7 @@ exports[`TableContainer should render with minimum props 1`] = `
             />
             <div
               className="TableContainer__toolbar__downloads"
+              key=".2"
               style={
                 Object {
                   "flex": "0 0 100px",

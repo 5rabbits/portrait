@@ -3,23 +3,23 @@
   "version": "0.6.2",
   "description": "Base design for all 5Rabbits products",
   "keywords": [
-    "commonjs",
-    "es6",
-    "library",
-    "starter",
-    "umd",
-    "universal",
-    "webpack"
+    "portrait",
+    "react",
+    "5rabbits",
+    "lemontech",
+    "design",
+    "system"
   ],
-  "homepage": "https://bitbucket.org/lemontech/ux",
-  "bugs": "https://bitbucket.org/lemontech/ux/issues",
+  "homepage": "https://github.com/5rabbits/portrait",
+  "bugs": "https://github.com/5rabbits/portrait/issues",
   "license": "MIT",
   "author": "5rabbits <5rabbits@lemontech.com> (http://5rabbits.com/)",
   "contributors": [
     "Cristian Ferrari <cferrari@lemontech.cl>",
     "Daniel Ochoa <dochoa@lemontech.cl>",
     "Rodrigo Díaz <rdiaz@lemontech.cl>",
-    "Tamara Luque <tluque@lemontech.cl>"
+    "Tamara Luque <tluque@lemontech.cl>",
+    "Víctor Sánchez <vsanchez@lemontech.cl>"
   ],
   "files": [
     "lib"
@@ -27,7 +27,7 @@
   "main": "lib/portrait.js",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/lemontech/ux"
+    "url": "https://github.com/5rabbits/portrait"
   },
   "scripts": {
     "profile": "NODE_ENV=production webpack --progress --config webpack/webpack.config.js --profile --json > webpack.stats.json",
@@ -53,7 +53,7 @@
     "babel": "6.23.0",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
-    "babel-jest": "20.0.3",
+    "babel-jest": "21.2.0",
     "babel-loader": "7.0.0",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-transform-decorators-legacy": "1.3.4",
@@ -61,12 +61,13 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-1": "6.24.1",
     "clean-webpack-plugin": "0.1.16",
-    "component-playground": "2.0.0",
+    "component-playground": "3.0.0",
     "copy-webpack-plugin": "4.0.1",
     "css-loader": "0.28.1",
     "directory-named-webpack-plugin": "2.1.0",
-    "enzyme": "2.8.2",
-    "enzyme-to-json": "1.5.1",
+    "enzyme": "3.1.0",
+    "enzyme-adapter-react-16": "1.0.2",
+    "enzyme-to-json": "3.1.4",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.1",
     "eslint-loader": "1.7.1",
@@ -78,17 +79,17 @@
     "html-webpack-plugin": "2.28.0",
     "identity-obj-proxy": "3.0.0",
     "imports-loader": "0.7.1",
-    "jest": "20.0.3",
+    "jest": "21.2.1",
     "jest-directory-named-resolver": "jsonnull/jest-directory-named-resolver",
     "markdown-it": "8.3.1",
     "node-sass": "4.5.3",
-    "prop-types": "15.5.10",
+    "prop-types": "15.6.0",
     "raw-loader": "0.5.1",
-    "react": "15.5.4",
+    "react": "16.0.0",
     "react-docgen": "2.15.0",
-    "react-dom": "15.5.4",
-    "react-router": "3.0.4",
-    "react-test-renderer": "15.5.4",
+    "react-dom": "16.0.0",
+    "react-router": "3.2.0",
+    "react-test-renderer": "16.0.0",
     "sass-loader": "6.0.5",
     "style-loader": "0.17.0",
     "url-loader": "0.5.8",
@@ -99,7 +100,7 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.0",
-    "react": "^15.5.0"
+    "react": "^15.5.0 || ^16.0.0"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -117,11 +118,18 @@
       "\\.(css|scss|sass)$": "identity-obj-proxy"
     },
     "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/test/**"
+    ],
     "coverageDirectory": "coverage",
     "coverageReporters": [
       "html",
       "text-summary",
       "lcov"
+    ],
+    "setupFiles": [
+      "<rootDir>/src/test/polyfills.js"
     ]
   }
 }

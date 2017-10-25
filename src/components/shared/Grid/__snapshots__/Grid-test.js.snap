@@ -18,6 +18,7 @@ exports[`Grid it should allow to specify individual size 1`] = `
     className="grid-component grid-component--stretch-align grid-component--horizontal-direction grid-component--normal-gutter grid-component--start-justify"
   >
     <div
+      key=".0"
       style={
         Object {
           "flex": "0 0 auto",
@@ -25,6 +26,7 @@ exports[`Grid it should allow to specify individual size 1`] = `
       }
     />
     <div
+      key=".1"
       style={
         Object {
           "flex": 1,
@@ -48,6 +50,7 @@ exports[`Grid it should assign normalized flex size to each grid item 1`] = `
     className="grid-component grid-component--stretch-align grid-component--horizontal-direction grid-component--normal-gutter grid-component--start-justify"
   >
     <div
+      key=".0"
       style={
         Object {
           "flex": 1,
@@ -55,6 +58,7 @@ exports[`Grid it should assign normalized flex size to each grid item 1`] = `
       }
     />
     <div
+      key=".1"
       style={
         Object {
           "flex": 1,

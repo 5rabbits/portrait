@@ -93,6 +93,7 @@ describe('Selectable', () => {
       const instance = component.instance()
 
       instance.setFocusedElement(2)
+      component.update()
 
       expect(component.find('.focused').text()).toBe('Option 5')
     })

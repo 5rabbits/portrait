@@ -2,6 +2,7 @@
 
 exports[`Select defaultMenuRenderer should render() 1`] = `
 <DefaultMenuRenderer
+  color={undefined}
   focusedElement={null}
   menuRef={[Function]}
   onOptionClick={[Function]}
@@ -66,7 +67,9 @@ exports[`Select defaultMenuRenderer should render() 1`] = `
       }
     >
       <Option
+        color={undefined}
         focused={false}
+        key="1"
         onClick={[Function]}
         onMouseEnter={[Function]}
         option={
@@ -107,7 +110,9 @@ exports[`Select defaultMenuRenderer should render() 1`] = `
         </div>
       </Option>
       <Option
+        color={undefined}
         focused={false}
+        key="9"
         onClick={[Function]}
         onMouseEnter={[Function]}
         option={
@@ -156,12 +161,14 @@ exports[`Select defaultOptionRenderer if it has a search should build a highligh
 <div>
   <span
     className="Select__searchHighlight"
+    key="0"
   >
     Te
   </span>
   st l
   <span
     className="Select__searchHighlight"
+    key="6"
   >
     abe
   </span>
