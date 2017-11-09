@@ -332,7 +332,7 @@ describe('Selectable', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ overflowRef }) => <div ref={overflowRef} />}
+          renderer={({ getOverflowProps }) => <div {...getOverflowProps()} />}
         />,
       )
 
@@ -343,7 +343,7 @@ describe('Selectable', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ overflowRef }) => <div ref={overflowRef} style={{ position: 'static' }} />}
+          renderer={({ getOverflowProps }) => <div {...getOverflowProps()} style={{ position: 'static' }} />}
         />,
       )
 
@@ -355,7 +355,7 @@ describe('Selectable', () => {
         const component = mount(
           <Selectable
             options={[]}
-            renderer={({ overflowRef }) => <div ref={overflowRef} style={{ position: 'absolute' }} />}
+            renderer={({ getOverflowProps }) => <div {...getOverflowProps()} style={{ position: 'absolute' }} />}
           />,
         )
 
@@ -367,7 +367,7 @@ describe('Selectable', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ overflowRef }) => <div ref={overflowRef} />}
+          renderer={({ getOverflowProps }) => <div {...getOverflowProps()} />}
         />,
       )
 
@@ -382,9 +382,9 @@ describe('Selectable', () => {
           <Selectable
             options={[]}
             optionHeight={20}
-            renderer={({ overflowRef }) =>
+            renderer={({ getOverflowProps }) =>
               <div
-                ref={overflowRef}
+                {...getOverflowProps()}
                 style={{
                   maxHeight: 120,
                 }}
@@ -402,9 +402,9 @@ describe('Selectable', () => {
           <Selectable
             options={[]}
             optionHeight={20}
-            renderer={({ overflowRef }) =>
+            renderer={({ getOverflowProps }) =>
               <div
-                ref={overflowRef}
+                {...getOverflowProps()}
                 style={{
                   height: 60,
                   maxHeight: 120,
@@ -432,7 +432,7 @@ describe('Selectable', () => {
             <Selectable
               options={[]}
               optionHeight={20}
-              renderer={({ overflowRef }) => <div ref={overflowRef} />}
+              renderer={({ getOverflowProps }) => <div {...getOverflowProps()} />}
             />,
           )
           const instance = component.instance().getWrappedInstance()
@@ -450,10 +450,9 @@ describe('Selectable', () => {
             <Selectable
               options={[]}
               optionHeight={20}
-              renderer={({ handleOverflowScroll, overflowRef }) =>
+              renderer={({ getOverflowProps }) =>
                 <div
-                  onScroll={handleOverflowScroll}
-                  ref={overflowRef}
+                  {...getOverflowProps()}
                   style={{ height: 40 }}
                 />
               }
@@ -475,12 +474,7 @@ describe('Selectable', () => {
           const component = mount(
             <Selectable
               options={[]}
-              renderer={({ handleOverflowScroll, overflowRef }) =>
-                <div
-                  onScroll={handleOverflowScroll}
-                  ref={overflowRef}
-                />
-              }
+              renderer={({ getOverflowProps }) => <div {...getOverflowProps()} />}
             />,
           )
           const instance = component.instance().getWrappedInstance()
@@ -599,7 +593,7 @@ describe('Selectable', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ overflowRef }) => <div ref={overflowRef} />}
+          renderer={({ getOverflowProps }) => <div {...getOverflowProps()} />}
         />,
       )
       const instance = component.instance().getWrappedInstance()
@@ -614,8 +608,8 @@ describe('Selectable', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ focusableRef, overflowRef }) =>
-            <div ref={overflowRef}>
+          renderer={({ focusableRef, getOverflowProps }) =>
+            <div {...getOverflowProps()}>
               <div ref={focusableRef(0)} />
             </div>
           }
@@ -638,8 +632,8 @@ describe('Selectable', () => {
             options={[
               { label: 'Option 1', value: 1 },
             ]}
-            renderer={({ focusableRef, overflowRef }) =>
-              <div ref={overflowRef}>
+            renderer={({ focusableRef, getOverflowProps }) =>
+              <div {...getOverflowProps()}>
                 <div ref={focusableRef(0)} />
               </div>
             }
@@ -664,8 +658,8 @@ describe('Selectable', () => {
             options={[
               { label: 'Option 1', value: 1 },
             ]}
-            renderer={({ focusableRef, overflowRef }) =>
-              <div ref={overflowRef}>
+            renderer={({ focusableRef, getOverflowProps }) =>
+              <div {...getOverflowProps()}>
                 <div ref={focusableRef(0)} />
               </div>
             }
@@ -690,8 +684,8 @@ describe('Selectable', () => {
             options={[
               { label: 'Option 1', value: 1 },
             ]}
-            renderer={({ focusableRef, overflowRef }) =>
-              <div ref={overflowRef}>
+            renderer={({ focusableRef, getOverflowProps }) =>
+              <div {...getOverflowProps()}>
                 <div ref={focusableRef(0)} />
               </div>
             }
@@ -745,10 +739,10 @@ describe('Selectable', () => {
             { label: 'Option 5', value: 5 },
           ]}
           optionHeight={10}
-          renderer={({ options, overflowRef }) =>
+          renderer={({ options, getOverflowProps }) =>
             <div
+              {...getOverflowProps()}
               options={options}
-              ref={overflowRef}
               style={{
                 maxHeight: 25,
               }}
@@ -775,16 +769,15 @@ describe('Selectable', () => {
             { label: 'Option 5', value: 5 },
           ]}
           optionHeight={10}
-          renderer={({ getOptionStyles, options, overflowRef }) =>
+          renderer={({ getOptionProps, getOverflowProps, options }) =>
             <div
-              options={options}
-              ref={overflowRef}
+              {...getOverflowProps()}
               style={{
                 maxHeight: 25,
               }}
               >
               {options.map((option) =>
-                <button key={option.value} style={getOptionStyles(option)} />,
+                <button {...getOptionProps(option)} />,
               )}
             </div>
           }

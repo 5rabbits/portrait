@@ -370,6 +370,46 @@ export default class Selectable extends PureComponent {
     }
   }
 
+  getOptionProps = (option, props = {}) => {
+    const index = this.state.options.indexOf(option)
+
+    return {
+      ...props,
+      key: option.value,
+      onClick: (...args) => {
+        this.setValue(option.value)
+        this.setSearch('')
+
+        if (props.onClick) {
+          props.onClick(...args)
+        }
+      },
+      onMouseEnter: (...args) => {
+        this.setFocusedElement(index)
+
+        if (props.onMouseEnter) {
+          props.onMouseEnter(...args)
+        }
+      },
+      ref: node => {
+        this.focusableRef(index)(node)
+
+        if (props.ref) {
+          props.ref(node)
+        }
+      },
+      style: {
+        ...this.getOptionStyles(option),
+        ...props.style,
+      },
+    }
+  }
+
+  getOverflowProps = () => ({
+    onScroll: this.handleOverflowScroll,
+    ref: this.overflowRef,
+  })
+
   getRendererProps = () => {
     const { focused, search, value } = this.props
     const { focusedElement, options, selectedOption, sortedOptions } = this.state
@@ -380,10 +420,9 @@ export default class Selectable extends PureComponent {
       focusedElement,
       focused,
       getSearchMatches: this.getSearchMatches,
-      getOptionStyles: this.getOptionStyles,
-      handleOverflowScroll: this.handleOverflowScroll,
+      getOptionProps: this.getOptionProps,
+      getOverflowProps: this.getOverflowProps,
       options: this.getOptionsInViewport(options),
-      overflowRef: this.overflowRef,
       search,
       selectedOption,
       setFocused: this.setFocused,

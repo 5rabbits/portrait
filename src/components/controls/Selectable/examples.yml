@@ -45,10 +45,10 @@
                   focusedElement,
                   focused,
                   getSearchMatches,
-                  handleOverflowScroll,
-                  getOptionStyles,
+                  getOptionProps,
+                  getOverflowProps,
                   options,
-                  overflowRef,
+                  scrollToFocusedElement,
                   search,
                   selectedOption,
                   setFocused,
@@ -169,25 +169,20 @@
 
                         <div
                           className="selectable-dropdown__overflow"
-                          onScroll={handleOverflowScroll}
-                          ref={overflowRef()}
+                          {...getOverflowProps()}
                           >
                           {options.map((option, index) =>
                             <button
-                              className={classNames('selectable-dropdown__option', {
-                                'selectable-dropdown__option--selected': value === option.value,
-                                'selectable-dropdown__option--focused': index === focusedElement,
+                              {...getOptionProps(option, {
+                                className: classNames('selectable-dropdown__option', {
+                                  'selectable-dropdown__option--selected': value === option.value,
+                                  'selectable-dropdown__option--focused': index === focusedElement,
+                                }),
+                                onClick: () => {
+                                  setFocused(false)
+                                },
+                                type: 'button',
                               })}
-                              key={option.value}
-                              onClick={() => {
-                                setValue(option.value)
-                                setSearch('')
-                                setFocused(false)
-                              }}
-                              onMouseEnter={() => setFocusedElement(index)}
-                              ref={focusableRef(index)}
-                              style={getOptionStyles(option)}
-                              type="button"
                               >
                               <div>
                                 {getSearchMatches(option.label).map(term =>
