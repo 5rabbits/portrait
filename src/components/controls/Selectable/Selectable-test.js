@@ -332,7 +332,7 @@ describe('Selectable', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ overflowRef }) => <div ref={overflowRef()} />}
+          renderer={({ overflowRef }) => <div ref={overflowRef} />}
         />,
       )
 
@@ -343,24 +343,156 @@ describe('Selectable', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ overflowRef }) => <div ref={overflowRef()} style={{ position: 'static' }} />}
+          renderer={({ overflowRef }) => <div ref={overflowRef} style={{ position: 'static' }} />}
         />,
       )
 
       expect(component.find('div').getDOMNode().style.position).toBe('relative')
     })
 
+    describe('if the container has a position different from static', () => {
+      it('should keep it', () => {
+        const component = mount(
+          <Selectable
+            options={[]}
+            renderer={({ overflowRef }) => <div ref={overflowRef} style={{ position: 'absolute' }} />}
+          />,
+        )
+
+        expect(component.find('div').getDOMNode().style.position).toBe('absolute')
+      })
+    })
+
     it('should not fail when unmounting', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ overflowRef }) => <div ref={overflowRef()} />}
+          renderer={({ overflowRef }) => <div ref={overflowRef} />}
         />,
       )
 
       expect(() => {
         component.unmount()
       }).not.toThrow()
+    })
+
+    describe('if props.optionHeight', () => {
+      it('should cache the viewport max height', () => {
+        const component = mount(
+          <Selectable
+            options={[]}
+            optionHeight={20}
+            renderer={({ overflowRef }) =>
+              <div
+                ref={overflowRef}
+                style={{
+                  maxHeight: 120,
+                }}
+              />
+            }
+          />,
+        )
+        const instance = component.instance().getWrappedInstance()
+
+        expect(instance.overflowHeight).toBe(120)
+      })
+
+      it('should cache the viewport fixed height', () => {
+        const component = mount(
+          <Selectable
+            options={[]}
+            optionHeight={20}
+            renderer={({ overflowRef }) =>
+              <div
+                ref={overflowRef}
+                style={{
+                  height: 60,
+                  maxHeight: 120,
+                }}
+              />
+            }
+          />,
+        )
+        const instance = component.instance().getWrappedInstance()
+
+        expect(instance.overflowHeight).toBe(60)
+      })
+
+      describe('if the container does not have a defined height', () => {
+        beforeEach(() => {
+          jest.spyOn(console, 'warn').mockImplementation(() => {})
+        })
+
+        afterEach(() => {
+          console.warn.mockRestore() // eslint-disable-line no-console
+        })
+
+        it('should warn and assign zero', () => {
+          const component = mount(
+            <Selectable
+              options={[]}
+              optionHeight={20}
+              renderer={({ overflowRef }) => <div ref={overflowRef} />}
+            />,
+          )
+          const instance = component.instance().getWrappedInstance()
+
+          expect(instance.overflowHeight).toBe(0)
+          expect(console.warn).toHaveBeenCalledTimes(1) // eslint-disable-line no-console
+        })
+      })
+    })
+
+    describe('if handleOverflowScroll is set', () => {
+      describe('if is virtualized', () => {
+        it('should render when the overflow container scrolls', () => {
+          const component = mount(
+            <Selectable
+              options={[]}
+              optionHeight={20}
+              renderer={({ handleOverflowScroll, overflowRef }) =>
+                <div
+                  onScroll={handleOverflowScroll}
+                  ref={overflowRef}
+                  style={{ height: 40 }}
+                />
+              }
+            />,
+          )
+          const instance = component.instance().getWrappedInstance()
+
+          instance.forceUpdate = jest.fn()
+          component.find('div').simulate('scroll')
+          component.find('div').simulate('scroll')
+          component.find('div').simulate('scroll')
+
+          expect(instance.forceUpdate).toHaveBeenCalledTimes(3)
+        })
+      })
+
+      describe('if is not virtualized', () => {
+        it('should not render when the overflow container scrolls', () => {
+          const component = mount(
+            <Selectable
+              options={[]}
+              renderer={({ handleOverflowScroll, overflowRef }) =>
+                <div
+                  onScroll={handleOverflowScroll}
+                  ref={overflowRef}
+                />
+              }
+            />,
+          )
+          const instance = component.instance().getWrappedInstance()
+
+          instance.forceUpdate = jest.fn()
+          component.find('div').simulate('scroll')
+          component.find('div').simulate('scroll')
+          component.find('div').simulate('scroll')
+
+          expect(instance.forceUpdate).not.toHaveBeenCalled()
+        })
+      })
     })
   })
 
@@ -467,7 +599,7 @@ describe('Selectable', () => {
       const component = mount(
         <Selectable
           options={[]}
-          renderer={({ overflowRef }) => <div ref={overflowRef()} />}
+          renderer={({ overflowRef }) => <div ref={overflowRef} />}
         />,
       )
       const instance = component.instance().getWrappedInstance()
@@ -483,7 +615,7 @@ describe('Selectable', () => {
         <Selectable
           options={[]}
           renderer={({ focusableRef, overflowRef }) =>
-            <div ref={overflowRef()}>
+            <div ref={overflowRef}>
               <div ref={focusableRef(0)} />
             </div>
           }
@@ -507,7 +639,7 @@ describe('Selectable', () => {
               { label: 'Option 1', value: 1 },
             ]}
             renderer={({ focusableRef, overflowRef }) =>
-              <div ref={overflowRef()}>
+              <div ref={overflowRef}>
                 <div ref={focusableRef(0)} />
               </div>
             }
@@ -533,7 +665,7 @@ describe('Selectable', () => {
               { label: 'Option 1', value: 1 },
             ]}
             renderer={({ focusableRef, overflowRef }) =>
-              <div ref={overflowRef()}>
+              <div ref={overflowRef}>
                 <div ref={focusableRef(0)} />
               </div>
             }
@@ -559,7 +691,7 @@ describe('Selectable', () => {
               { label: 'Option 1', value: 1 },
             ]}
             renderer={({ focusableRef, overflowRef }) =>
-              <div ref={overflowRef()}>
+              <div ref={overflowRef}>
                 <div ref={focusableRef(0)} />
               </div>
             }
@@ -597,6 +729,90 @@ describe('Selectable', () => {
         instance.scrollToFocusedElement()
 
         expect(instance.scrollNodeToViewport).not.toHaveBeenCalled()
+      })
+    })
+  })
+
+  describe('if virtualized', () => {
+    it('should only pass the options in viewport to the renderer', () => {
+      const component = mount(
+        <Selectable
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 2', value: 2 },
+            { label: 'Option 3', value: 3 },
+            { label: 'Option 4', value: 4 },
+            { label: 'Option 5', value: 5 },
+          ]}
+          optionHeight={10}
+          renderer={({ options, overflowRef }) =>
+            <div
+              options={options}
+              ref={overflowRef}
+              style={{
+                maxHeight: 25,
+              }}
+            />
+          }
+        />,
+      )
+
+      expect(component.find('div').prop('options')).toEqual([
+        { label: 'Option 1', value: 1 },
+        { label: 'Option 2', value: 2 },
+        { label: 'Option 3', value: 3 },
+      ])
+    })
+
+    it('should return position and dimensions styles for options', () => {
+      const component = mount(
+        <Selectable
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 2', value: 2 },
+            { label: 'Option 3', value: 3 },
+            { label: 'Option 4', value: 4 },
+            { label: 'Option 5', value: 5 },
+          ]}
+          optionHeight={10}
+          renderer={({ getOptionStyles, options, overflowRef }) =>
+            <div
+              options={options}
+              ref={overflowRef}
+              style={{
+                maxHeight: 25,
+              }}
+              >
+              {options.map((option) =>
+                <button key={option.value} style={getOptionStyles(option)} />,
+              )}
+            </div>
+          }
+        />,
+      )
+
+      expect(component.find('button').at(0).prop('style')).toEqual({
+        height: 10,
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        left: 0,
+      })
+
+      expect(component.find('button').at(1).prop('style')).toEqual({
+        height: 10,
+        position: 'absolute',
+        top: 10,
+        right: 0,
+        left: 0,
+      })
+
+      expect(component.find('button').at(2).prop('style')).toEqual({
+        height: 10,
+        position: 'absolute',
+        top: 20,
+        right: 0,
+        left: 0,
       })
     })
   })

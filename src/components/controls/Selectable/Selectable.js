@@ -110,6 +110,11 @@ export default class Selectable extends PureComponent {
     onSearchChange: PropTypes.func.isRequired,
 
     /**
+     * Enables virtual scroll with fixed option height.
+     */
+    optionHeight: PropTypes.number,
+
+    /**
      * An array of available options.
      */
     options: PropTypes.arrayOf(PropTypes.shape({
@@ -332,6 +337,39 @@ export default class Selectable extends PureComponent {
     return terms
   }
 
+  getOptionsInViewport = options => {
+    if (!this.isVirtualized()) {
+      return options
+    }
+
+    const { optionHeight } = this.props
+    const overflowHeight = this.overflowHeight
+    const totalHeight = options.length * optionHeight
+    const fromIndex = Math.floor(this.overflow.scrollTop / optionHeight)
+    const toIndex = fromIndex + Math.ceil(overflowHeight / optionHeight)
+
+    this.spacer.style.height = `${totalHeight}px`
+
+    return options.slice(fromIndex, toIndex)
+  }
+
+  getOptionStyles = option => {
+    if (!this.isVirtualized()) {
+      return {}
+    }
+
+    const { optionHeight } = this.props
+    const index = this.state.options.indexOf(option)
+
+    return {
+      position: 'absolute',
+      top: optionHeight * index,
+      right: 0,
+      left: 0,
+      height: optionHeight,
+    }
+  }
+
   getRendererProps = () => {
     const { focused, search, value } = this.props
     const { focusedElement, options, selectedOption, sortedOptions } = this.state
@@ -340,9 +378,11 @@ export default class Selectable extends PureComponent {
       allOptions: sortedOptions,
       focusableRef: this.focusableRef,
       focusedElement,
-      getSearchMatches: this.getSearchMatches,
       focused,
-      options,
+      getSearchMatches: this.getSearchMatches,
+      getOptionStyles: this.getOptionStyles,
+      handleOverflowScroll: this.handleOverflowScroll,
+      options: this.getOptionsInViewport(options),
       overflowRef: this.overflowRef,
       search,
       selectedOption,
@@ -354,6 +394,10 @@ export default class Selectable extends PureComponent {
       value,
     }
   }
+
+  isVirtualized = () => (
+    !!(this.props.optionHeight && this.overflowHeight && this.overflow)
+  )
 
   isFocused = () => (
     this.props.focused
@@ -431,6 +475,12 @@ export default class Selectable extends PureComponent {
     this.setFocused(false)
   }
 
+  handleOverflowScroll = () => {
+    if (this.isVirtualized()) {
+      this.forceUpdate()
+    }
+  }
+
   handleOutsideClick = event => {
     const isOutside = (
       this.container &&
@@ -452,11 +502,40 @@ export default class Selectable extends PureComponent {
     this.focusableRefs[id] = node
   }
 
-  overflowRef = () => overflow => {
+  overflowRef = overflow => {
+    const shouldRender = !this.overflow && overflow
+
     this.overflow = overflow
 
-    if (overflow && (!overflow.style.position || overflow.style.position === 'static')) {
-      overflow.style.position = 'relative' // eslint-disable-line no-param-reassign
+    if (overflow) {
+      const style = getComputedStyle(overflow)
+
+      if (!style.position || style.position === 'static') {
+        overflow.style.position = 'relative' // eslint-disable-line no-param-reassign
+      }
+
+      if (this.props.optionHeight) {
+        const height = parseInt(style.height, 10)
+        const maxHeight = parseInt(style.maxHeight, 10)
+        const overflowHeight = height || maxHeight
+
+        if (!overflowHeight) {
+          // eslint-disable-next-line no-console
+          console.warn('Selectable overflow container should have an explicit height or max-height to virtualize the scroll')
+        }
+
+        this.overflowHeight = overflowHeight || 0
+      }
+
+      this.spacer = document.createElement('div')
+      this.overflow.appendChild(this.spacer)
+    }
+    else if (this.spacer) {
+      this.spacer.parentNode.removeChild(this.spacer)
+    }
+
+    if (shouldRender) {
+      this.forceUpdate()
     }
   }
 
