@@ -350,7 +350,11 @@ export default class Selectable extends PureComponent {
       this.spacer.style.height = `${totalHeight}px`
     }
 
-    if (!this.isVirtualized() || options.length === 0) {
+    if (!this.overflow) {
+      return []
+    }
+
+    if (!this.isVirtualized()) {
       return options.map((option, index) => ({
         option,
         index,
