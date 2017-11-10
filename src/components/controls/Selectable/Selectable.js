@@ -415,23 +415,15 @@ export default class Selectable extends PureComponent {
     const index = this.state.options.indexOf(option)
 
     return {
-      ...props,
-      key: option.value,
-      onClick: (...args) => {
+      onClick: () => {
         this.setValue(option.value)
         this.setSearch('')
-
-        if (props.onClick) {
-          props.onClick(...args)
-        }
       },
-      onMouseEnter: (...args) => {
+      onMouseEnter: () => {
         this.setFocusedElement(index)
-
-        if (props.onMouseEnter) {
-          props.onMouseEnter(...args)
-        }
       },
+      ...props,
+      key: option.value,
       ref: node => {
         this.focusableRef(index)(node)
 
@@ -446,8 +438,15 @@ export default class Selectable extends PureComponent {
     }
   }
 
-  getContainerProps = () => ({
-    onScroll: this.handleContainerScroll,
+  getContainerProps = (props = {}) => ({
+    ...props,
+    onScroll: (...args) => {
+      this.handleContainerScroll()
+
+      if (props.onScroll) {
+        props.onScroll(...args)
+      }
+    },
     ref: this.containerRef,
   })
 
