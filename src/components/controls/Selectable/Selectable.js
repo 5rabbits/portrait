@@ -70,6 +70,11 @@ export default class Selectable extends PureComponent {
     /* eslint-enable react/no-unused-prop-types */
 
     /**
+     * Indicates if the control should loose focus when an option is selected.
+     */
+    blurOnSelect: PropTypes.bool,
+
+    /**
      * Specifies if the control should lose focus when clicking outside.
      */
     blurOnClickOutside: PropTypes.bool,
@@ -159,6 +164,7 @@ export default class Selectable extends PureComponent {
   }
 
   static defaultProps = {
+    blurOnSelect: false,
     blurOnClickOutside: true,
     defaultFocused: false,
     defaultSearch: '',
@@ -284,6 +290,10 @@ export default class Selectable extends PureComponent {
 
   setValue = value => {
     this.props.onChange(value)
+
+    if (this.props.blurOnSelect) {
+      this.setFocused(false)
+    }
   }
 
   getValue = () => (
