@@ -1127,7 +1127,7 @@ describe('Selectable', () => {
             optionHeight={10}
             renderer={({ viewportOptions, getContainerProps }) => (
               <div
-                {...getContainerProps() }
+                {...getContainerProps()}
                 options={viewportOptions}
                 style={{
                   maxHeight: 15,
@@ -1250,7 +1250,7 @@ describe('Selectable', () => {
           renderer={({ getOptionProps, options }) =>
             <div>
               {options.map((option) =>
-                <button {...getOptionProps(option) } />,
+                <button {...getOptionProps(option)} />,
               )}
             </div>
           }
