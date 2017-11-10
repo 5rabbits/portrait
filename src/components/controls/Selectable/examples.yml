@@ -188,3 +188,544 @@
           </div>
       }
     />
+
+-
+  description: |
+    Defines an inner scrollable options list, very common for floating lists:
+
+    - `getContainerProps()`: Registers the options container.
+
+  code: >
+    <Selectable
+      onChange={console.log}
+      options={[
+        { label: 'Daniel Espinoza', value: 2 },
+        { label: 'Víctor Sánchez', value: 5 },
+        { label: 'Tamara Luque', value: 4 },
+        { label: 'Abraham Barrera', value: 1 },
+        { label: 'Rodrigo Díaz', value: 3 },
+      ]}
+      renderer={
+        ({
+          focusedElement,
+          getContainerProps,
+          getClearInputProps,
+          getInputProps,
+          getOptionProps,
+          getSearchMatches,
+          options,
+          search,
+          value,
+        }) =>
+          <div className="selectable-dropdown">
+            <div className="selectable-dropdown__searchWrapper">
+              <input
+                {...getInputProps({
+                  className: 'selectable-dropdown__searchInput',
+                  placeholder: 'Write to search',
+                  type: 'text',
+                })}
+              />
+              {search &&
+                <button
+                  {...getClearInputProps({
+                    className: 'selectable-dropdown__searchIcon',
+                    type: 'button',
+                  })}
+                  >
+                  &times;
+                </button>
+              }
+            </div>
+
+            <div
+              {...getContainerProps({
+                className: 'selectable-dropdown__overflow',
+              })}
+              >
+              {options.map((option, index) =>
+                <button
+                  {...getOptionProps(option, {
+                    className: classNames('selectable-dropdown__option', {
+                      'selectable-dropdown__option--selected': value === option.value,
+                      'selectable-dropdown__option--focused': index === focusedElement,
+                    }),
+                    type: 'button',
+                  })}
+                  >
+                  <div>
+                    {getSearchMatches(option.label).map(term =>
+                      term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                    )}
+                  </div>
+                </button>
+              )}
+            </div>
+          </div>
+      }
+    />
+
+-
+  description: |
+    Displays the options list on a dropdown when the control is focused.
+
+    - `focused`: Specifies if the controls as a whole is focused.
+    - `selectedOption`: The currently selected option, if any.
+    - `setFocused(focused)`: Changes the global focused state.
+
+    Additionally, we set `blurOnSelect` to automatically call `setFocused(false)`
+    when an option is selected.
+
+  code: >
+    <Selectable
+      blurOnSelect
+      onChange={console.log}
+      onClickOutside={({ setSearch }) => setSearch('')}
+      options={[
+        { label: 'Daniel Espinoza', value: 2 },
+        { label: 'Víctor Sánchez', value: 5 },
+        { label: 'Tamara Luque', value: 4 },
+        { label: 'Abraham Barrera', value: 1 },
+        { label: 'Rodrigo Díaz', value: 3 },
+      ]}
+      renderer={
+        ({
+          focused,
+          focusedElement,
+          getContainerProps,
+          getClearInputProps,
+          getInputProps,
+          getOptionProps,
+          getSearchMatches,
+          selectedOption,
+          options,
+          search,
+          setFocused,
+          value,
+        }) =>
+          <div
+            className={classNames('selectable-dropdown', {
+              'selectable-dropdown--with-value': value != null,
+              'selectable-dropdown--without-value': value == null,
+            })}
+            >
+            <button
+              className="selectable-dropdown__control"
+              onClick={() => setFocused(!focused)}
+              type="button"
+              >
+              {selectedOption ? selectedOption.label : 'Select an option'}
+            </button>
+            {focused &&
+              <div className="selectable-dropdown__menu">
+                <div className="selectable-dropdown__searchWrapper">
+                  <input
+                    {...getInputProps({
+                      className: 'selectable-dropdown__searchInput',
+                      placeholder: 'Write to search',
+                      type: 'text',
+                    })}
+                  />
+                  {search &&
+                    <button
+                      {...getClearInputProps({
+                        className: 'selectable-dropdown__searchIcon',
+                        type: 'button',
+                      })}
+                      >
+                      &times;
+                    </button>
+                  }
+                </div>
+
+                <div
+                  {...getContainerProps({
+                    className: 'selectable-dropdown__overflow',
+                  })}
+                  >
+                  {options.map((option, index) =>
+                    <button
+                      {...getOptionProps(option, {
+                        className: classNames('selectable-dropdown__option', {
+                          'selectable-dropdown__option--selected': value === option.value,
+                          'selectable-dropdown__option--focused': index === focusedElement,
+                        }),
+                        type: 'button',
+                      })}
+                      >
+                      <div>
+                        {getSearchMatches(option.label).map(term =>
+                          term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                        )}
+                      </div>
+                    </button>
+                  )}
+                </div>
+              </div>
+            }
+          </div>
+      }
+    />
+
+-
+  description: |
+    To enable scroll virtualization we have to make the following changes from the previous
+    example:
+
+    - Declare the `optionHeight` prop.
+    - Use `viewportOptions` instead of `options`. Because we need the option index to check
+      if it's highlighted or not, we cannot use `viewportOptions.map((option, index) =>`.
+      Instead we need to do this: `viewportOptions.map(({ option, index }) =>`.
+
+      `viewportOptions` is an array of objects with this structure: `{ option, index }`, where
+      `index` is the real index in the available options, not only in the viewport visible options.
+
+  inline: false
+  code: >
+    class Example extends React.PureComponent {
+      state = {
+        fixedHeight: true,
+      }
+
+      componentWillMount() {
+        this.options = []
+
+        for (let i = 1; i <= 10000; i++) {
+          this.options.push({
+            label: `Option ${i}`,
+            value: i,
+          })
+        }
+      }
+
+      render() {
+        return (
+          <div>
+            <div style={{ marginBottom: 32 }}>
+              <div>
+                <button
+                  onClick={() => this.setState({ fixedHeight: !this.state.fixedHeight })}
+                  type="button"
+                  >
+                  {this.state.fixedHeight && 'Use variable height'}
+                  {!this.state.fixedHeight && 'Use fixed height'}
+                </button>
+              </div>
+            </div>
+
+            <Selectable
+              blurOnSelect
+              onChange={console.log}
+              onClickOutside={({ setSearch }) => setSearch('')}
+              optionHeight={this.state.fixedHeight ? 40 : null}
+              options={this.options}
+              renderer={
+                ({
+                  focused,
+                  focusedElement,
+                  getContainerProps,
+                  getClearInputProps,
+                  getInputProps,
+                  getOptionProps,
+                  getSearchMatches,
+                  selectedOption,
+                  search,
+                  setFocused,
+                  value,
+                  viewportOptions,
+                }) =>
+                  <div
+                    className={classNames('selectable-dropdown', {
+                      'selectable-dropdown--with-value': value != null,
+                      'selectable-dropdown--without-value': value == null,
+                    })}
+                    >
+                    <button
+                      className="selectable-dropdown__control"
+                      onClick={() => setFocused(!focused)}
+                      type="button"
+                      >
+                      {selectedOption ? selectedOption.label : 'Select an option'}
+                    </button>
+                    {focused &&
+                      <div className="selectable-dropdown__menu">
+                        <div className="selectable-dropdown__searchWrapper">
+                          <input
+                            {...getInputProps({
+                              className: 'selectable-dropdown__searchInput',
+                              placeholder: 'Write to search',
+                              type: 'text',
+                            })}
+                          />
+                          {search &&
+                            <button
+                              {...getClearInputProps({
+                                className: 'selectable-dropdown__searchIcon',
+                                type: 'button',
+                              })}
+                              >
+                              &times;
+                            </button>
+                          }
+                        </div>
+
+                        <div
+                          {...getContainerProps({
+                            className: 'selectable-dropdown__overflow',
+                          })}
+                          >
+                          {viewportOptions.map(({ option, index }) =>
+                            <button
+                              {...getOptionProps(option, {
+                                className: classNames('selectable-dropdown__option', {
+                                  'selectable-dropdown__option--selected': value === option.value,
+                                  'selectable-dropdown__option--focused': index === focusedElement,
+                                }),
+                                type: 'button',
+                              })}
+                              >
+                              <div>
+                                {getSearchMatches(option.label).map(term =>
+                                  term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                                )}
+                              </div>
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    }
+                  </div>
+              }
+            />
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Example />, mountNode)
+
+-
+  description: |
+    Inline multi-select
+
+    - `allOptions`: Sorted options without filtering.
+
+  collapsible: true
+  expanded: false
+
+  code: >
+    <div>
+      <Selectable
+        defaultValue={[]}
+        onChange={console.log}
+        options={[
+          { label: 'Daniel Espinoza', value: 2 },
+          { label: 'Víctor Sánchez', value: 5 },
+          { label: 'Tamara Luque', value: 4 },
+          { label: 'Abraham Barrera', value: 1 },
+          { label: 'Rodrigo Díaz', value: 3 },
+        ]}
+        renderer={
+          ({
+            allOptions,
+            focused,
+            focusedElement,
+            getClearInputProps,
+            getInputProps,
+            getOptionProps,
+            getSearchMatches,
+            options,
+            selectedOption,
+            search,
+            setFocused,
+            setFocusedElement,
+            setValue,
+            value,
+          }) =>
+            <div className="e2-select">
+              <div className="e2-search-wrapper">
+                <input
+                  {...getInputProps({
+                    className: 'e2-search',
+                    placeholder: 'Write to search',
+                    type: 'text',
+                  })}
+                />
+                {search &&
+                  <button
+                    {...getClearInputProps({
+                      className: 'e2-clear-search',
+                      type: 'button',
+                    })}
+                    >
+                    &times;
+                  </button>
+                }
+              </div>
+
+              {!search &&
+                <label
+                  className="e2-option e2-option--all"
+                  type="button"
+                  >
+                  <input
+                    checked={value.length === allOptions.length}
+                    onChange={event => {
+                      setValue(event.target.checked
+                        ? allOptions.map(option => option.value)
+                        : []
+                      )
+                    }}
+                    type="checkbox"
+                  />
+                  Select all
+                </label>
+              }
+
+              <div
+                className="e2-options-list"
+                onMouseLeave={() => setFocusedElement(null)}
+                >
+                {options.length === 0 &&
+                  <div className="e2-no-results">
+                    No results
+                  </div>
+                }
+                {options.map((option, index) =>
+                  <label
+                    {...getOptionProps(option, {
+                      className: classNames('e2-option', {
+                        'e2-option--focused': index === focusedElement,
+                      }),
+                      onClick: null,
+                    })}
+                    >
+                    <input
+                      checked={value.indexOf(option.value) !== -1}
+                      onChange={() => {
+                        const index = value.indexOf(option.value)
+
+                        if (index === -1) {
+                          setValue([
+                            ...value,
+                            option.value,
+                          ])
+                        }
+                        else {
+                          setValue([
+                            ...value.slice(0, index),
+                            ...value.slice(index + 1),
+                          ])
+                        }
+                      }}
+                      type="checkbox"
+                    />
+                    <div>
+                      {getSearchMatches(option.label).map(term =>
+                        term.match ? <b key={term.fromIndex}>{term.text}</b> : term.text
+                      )}
+                    </div>
+                  </label>
+                )}
+              </div>
+            </div>
+        }
+      />
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .e2-select {
+              width: 240px;
+              background-color: #fff;
+            }
+
+            .e2-search-wrapper {
+              padding: 8px;
+              position: relative;
+            }
+
+            .e2-search {
+              height: 32px;
+              padding: 0 32px 0 12px;
+              border: none;
+              background-color: #EEF1F3;
+              border-radius: 16px;
+              width: 100%;
+              display: block;
+            }
+
+            .e2-search::placeholder {
+              color: #A7B3BE;
+            }
+
+            .e2-clear-search {
+              flex-shrink: 0;
+              border: none;
+              outline: none;
+              background: none;
+              margin: 0;
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              transform: translateY(-50%);
+            }
+
+            .e2-no-results {
+              padding: 16px;
+            }
+
+            .e2-options-list {
+              border-top: #cdd4db solid 1px;
+            }
+
+            .e2-option {
+              height: 32px;
+              width: 100%;
+              background: none;
+              border: none;
+              outline: none;
+              text-align: left;
+              margin: 0;
+              padding: 0 12px;
+              display: flex;
+              align-items: center;
+            }
+
+            .e2-option input {
+              margin-right: 8px;
+            }
+
+            .e2-option--focused {
+              background-color: #eee;
+            }
+
+            .e2-option--selected {
+              background-color: #1e85f2;
+              color: #fff;
+            }
+
+            .e2-option--all {
+              margin-top: -4px;
+            }
+
+            .e2-clear-option {
+              height: 40px;
+              width: 100%;
+              background: none;
+              border: none;
+              outline: none;
+              text-align: left;
+              margin: 0;
+              padding: 0 12px;
+              border-top: #E7EAED solid 1px;
+              color: #B3BDC7;
+            }
+
+            .e2-select--without-value .e2-control {
+              color: #B3BDC7;
+            }
+          `
+        }}
+      />
+    </div>
