@@ -1,4 +1,4 @@
-import { PureComponent } from 'react'
+import React, { Children, PureComponent } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
@@ -450,6 +450,58 @@ export default class Selectable extends PureComponent {
     ref: this.containerRef,
   })
 
+  getInputProps = (props = {}) => {
+    const { focusedElement, options } = this.state
+
+    return {
+      ...props,
+      onChange: event => {
+        this.setSearch(event.target.value)
+
+        if (props.onChange) {
+          props.onChange(event)
+        }
+      },
+      onKeyDown: event => {
+        switch (event.key) {
+          case 'ArrowDown':
+            event.preventDefault()
+            this.setFocusedElement(focusedElement === null ? 0 : focusedElement + 1)
+            break
+
+          case 'ArrowUp':
+            event.preventDefault()
+            this.setFocusedElement(focusedElement === null ? 0 : focusedElement - 1)
+            break
+
+          case 'Enter':
+            event.preventDefault()
+            this.setValue(options[focusedElement].value)
+            this.setSearch('')
+            break
+        }
+
+        if (props.onKeyDown) {
+          props.onKeyDown(event)
+        }
+      },
+      ref: this.focusableRef('input'),
+      value: this.getSearch(),
+    }
+  }
+
+  getClearInputProps = (props = {}) => ({
+    ...props,
+    onClick: (...args) => {
+      this.setSearch('')
+      this.setFocusedElement('input', { virtual: false })
+
+      if (props.onClick) {
+        props.onClick(args)
+      }
+    },
+  })
+
   getRendererProps = () => {
     const { focused, search, value } = this.props
     const { focusedElement, options, selectedOption, sortedOptions } = this.state
@@ -460,6 +512,8 @@ export default class Selectable extends PureComponent {
       focusedElement,
       focused,
       getSearchMatches: this.getSearchMatches,
+      getClearInputProps: this.getClearInputProps,
+      getInputProps: this.getInputProps,
       getOptionProps: this.getOptionProps,
       getContainerProps: this.getContainerProps,
       options,
@@ -618,7 +672,19 @@ export default class Selectable extends PureComponent {
     }
   }
 
+  handleContainerMouseLeave = child => (...args) => {
+    this.setFocusedElement(null)
+
+    if (child.props && child.props.onMouseLeave) {
+      child.props.onMouseLeave(...args)
+    }
+  }
+
   render() {
-    return this.props.renderer(this.getRendererProps())
+    const child = Children.only(this.props.renderer(this.getRendererProps()))
+
+    return React.cloneElement(child, {
+      onMouseLeave: this.handleContainerMouseLeave(child),
+    })
   }
 }
