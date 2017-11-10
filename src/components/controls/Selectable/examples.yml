@@ -46,7 +46,7 @@
                   focused,
                   getSearchMatches,
                   getOptionProps,
-                  getOverflowProps,
+                  getContainerProps,
                   options,
                   scrollToFocusedElement,
                   search,
@@ -170,7 +170,7 @@
 
                         <div
                           className="selectable-dropdown__overflow"
-                          {...getOverflowProps()}
+                          {...getContainerProps()}
                           >
                           {viewportOptions.map(({ option, index }) =>
                             <button

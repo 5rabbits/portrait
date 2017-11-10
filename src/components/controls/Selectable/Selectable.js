@@ -133,7 +133,7 @@ export default class Selectable extends PureComponent {
      *   highlight search results.
      * - focused: Specifies if the control is focused or not.
      * - options: The visible and sorted options array.
-     * - overflowRef(): Allows to define the inner scrollable area, if needed.
+     * - containerRef(): Allows to define the inner scrollable area, if needed.
      * - search: The current search.
      * - selectedOption: The current selected option, if any.
      * - setFocused(focused): Changes the control focused state.
@@ -141,7 +141,7 @@ export default class Selectable extends PureComponent {
      *   will attempt a real focus if `{ virtual: false }`.
      * - setSearch(search): Changes the current search.
      * - setValue(value): Changes the current value.
-     * - scrollToFocusedElement(): If the overflow container is defined, changes its scroll
+     * - scrollToFocusedElement(): If the container is defined, changes its scroll
      *   to keep the current focused element in the viewport.
      * - value: The current value.
      */
@@ -188,7 +188,7 @@ export default class Selectable extends PureComponent {
   }
 
   componentDidMount() {
-    this.container = ReactDOM.findDOMNode(this) // eslint-disable-line react/no-find-dom-node
+    this.node = ReactDOM.findDOMNode(this) // eslint-disable-line react/no-find-dom-node
     document.addEventListener('click', this.handleOutsideClick)
   }
 
@@ -211,8 +211,8 @@ export default class Selectable extends PureComponent {
         }),
       })
 
-      if (this.overflow) {
-        this.overflow.scrollTop = 0
+      if (this.container) {
+        this.container.scrollTop = 0
       }
     }
 
@@ -350,7 +350,7 @@ export default class Selectable extends PureComponent {
       this.spacer.style.height = `${totalHeight}px`
     }
 
-    if (!this.overflow) {
+    if (!this.container) {
       return []
     }
 
@@ -362,9 +362,9 @@ export default class Selectable extends PureComponent {
     }
 
     const { selectedOption } = this.state
-    const overflowHeight = this.overflowHeight
-    const fromIndex = Math.floor(this.overflow.scrollTop / optionHeight)
-    const toIndex = fromIndex + Math.ceil(overflowHeight / optionHeight)
+    const containerHeight = this.containerHeight
+    const fromIndex = Math.floor(this.container.scrollTop / optionHeight)
+    const toIndex = fromIndex + Math.ceil(containerHeight / optionHeight)
     const indices = range(
       Math.max(fromIndex - 1, 0),
       Math.min(toIndex + 1, options.length - 1),
@@ -446,9 +446,9 @@ export default class Selectable extends PureComponent {
     }
   }
 
-  getOverflowProps = () => ({
-    onScroll: this.handleOverflowScroll,
-    ref: this.overflowRef,
+  getContainerProps = () => ({
+    onScroll: this.handleContainerScroll,
+    ref: this.containerRef,
   })
 
   getRendererProps = () => {
@@ -462,7 +462,7 @@ export default class Selectable extends PureComponent {
       focused,
       getSearchMatches: this.getSearchMatches,
       getOptionProps: this.getOptionProps,
-      getOverflowProps: this.getOverflowProps,
+      getContainerProps: this.getContainerProps,
       options,
       search,
       selectedOption,
@@ -477,7 +477,7 @@ export default class Selectable extends PureComponent {
   }
 
   isVirtualized = () => (
-    !!(this.props.optionHeight && this.overflowHeight && this.overflow)
+    !!(this.props.optionHeight && this.containerHeight)
   )
 
   isFocused = () => (
@@ -485,7 +485,7 @@ export default class Selectable extends PureComponent {
   )
 
   isNodeInViewport(node) {
-    if (!this.overflow.contains(node)) {
+    if (!this.container.contains(node)) {
       return {
         inViewport: true,
         visibleFromBottom: true,
@@ -493,11 +493,10 @@ export default class Selectable extends PureComponent {
       }
     }
 
-    const overflow = this.overflow
     const nodeTop = node.offsetTop
-    const visibleFromTop = nodeTop >= overflow.scrollTop
+    const visibleFromTop = nodeTop >= this.container.scrollTop
     const visibleFromBottom = nodeTop + node.offsetHeight <=
-      overflow.scrollTop + overflow.offsetHeight
+      this.container.scrollTop + this.container.offsetHeight
 
     return {
       inViewport: visibleFromBottom && visibleFromTop,
@@ -511,7 +510,7 @@ export default class Selectable extends PureComponent {
       const { focusedElement } = this.state
       const node = this.focusableRefs[focusedElement]
 
-      if (this.overflow && focusedElement != null) {
+      if (this.container && focusedElement != null) {
         const viewportInfo = this.isNodeInViewport(node)
 
         if (!viewportInfo.visibleFromBottom) {
@@ -526,10 +525,10 @@ export default class Selectable extends PureComponent {
 
   scrollNodeToViewport = (node, fromDirection) => {
     const scrollTop = fromDirection === 'bottom'
-      ? node.offsetTop - (this.overflow.offsetHeight - node.offsetHeight)
+      ? node.offsetTop - (this.container.offsetHeight - node.offsetHeight)
       : node.offsetTop
 
-    this.overflow.scrollTop = scrollTop
+    this.container.scrollTop = scrollTop
   }
 
   filterOptions = ({ options, search }) => {
@@ -556,7 +555,7 @@ export default class Selectable extends PureComponent {
     this.setFocused(false)
   }
 
-  handleOverflowScroll = () => {
+  handleContainerScroll = () => {
     if (this.isVirtualized()) {
       this.forceUpdate()
     }
@@ -564,9 +563,9 @@ export default class Selectable extends PureComponent {
 
   handleOutsideClick = event => {
     const isOutside = (
-      this.container &&
-      this.container !== event.target &&
-      !this.container.contains(event.target) &&
+      this.node &&
+      this.node !== event.target &&
+      !this.node.contains(event.target) &&
       event.target.parentNode
     )
 
@@ -583,33 +582,33 @@ export default class Selectable extends PureComponent {
     this.focusableRefs[id] = node
   }
 
-  overflowRef = overflow => {
-    const shouldRender = !this.overflow && overflow
+  containerRef = container => {
+    const shouldRender = !this.container && container
 
-    this.overflow = overflow
+    this.container = container
 
-    if (overflow) {
-      const style = getComputedStyle(overflow)
+    if (container) {
+      const style = getComputedStyle(container)
 
       if (!style.position || style.position === 'static') {
-        overflow.style.position = 'relative' // eslint-disable-line no-param-reassign
+        container.style.position = 'relative' // eslint-disable-line no-param-reassign
       }
 
       if (this.props.optionHeight) {
         const height = parseInt(style.height, 10)
         const maxHeight = parseInt(style.maxHeight, 10)
-        const overflowHeight = height || maxHeight
+        const containerHeight = height || maxHeight
 
-        if (!overflowHeight) {
+        if (!containerHeight) {
           // eslint-disable-next-line no-console
-          console.warn('Selectable overflow container should have an explicit height or max-height to virtualize the scroll')
+          console.warn('Selectable container should have an explicit height or max-height to virtualize the scroll')
         }
 
-        this.overflowHeight = overflowHeight || 0
+        this.containerHeight = containerHeight || 0
       }
 
       this.spacer = document.createElement('div')
-      this.overflow.appendChild(this.spacer)
+      this.container.appendChild(this.spacer)
     }
     else if (this.spacer) {
       this.spacer.parentNode.removeChild(this.spacer)
