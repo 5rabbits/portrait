@@ -278,6 +278,19 @@ export default class Selectable extends PureComponent {
 
   setFocused = focused => {
     this.props.onFocusedChange(focused)
+
+    if (focused) {
+      requestAnimationFrame(() => {
+        this.setFocusedElement('input', { virtual: false })
+
+        const selectedIndex = this.state.options.indexOf(this.state.selectedOption)
+
+        if (selectedIndex !== -1) {
+          this.setFocusedElement(selectedIndex)
+          this.scrollToFocusedElement()
+        }
+      })
+    }
   }
 
   setSearch = search => {
@@ -478,11 +491,13 @@ export default class Selectable extends PureComponent {
           case 'ArrowDown':
             event.preventDefault()
             this.setFocusedElement(focusedElement === null ? 0 : focusedElement + 1)
+            this.scrollToFocusedElement()
             break
 
           case 'ArrowUp':
             event.preventDefault()
             this.setFocusedElement(focusedElement === null ? 0 : focusedElement - 1)
+            this.scrollToFocusedElement()
             break
 
           case 'Enter':
