@@ -59,6 +59,46 @@ describe('Selectable', () => {
     ])
   })
 
+  describe('when moving the cursor out of the component', () => {
+    it('should clear the element highlight', () => {
+      const onFocusedElementChange = jest.fn()
+      const component = mount(
+        <Selectable
+          onFocusedElementChange={onFocusedElementChange}
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 5', value: 5 },
+            { label: 'Option 10', value: 10 },
+          ]}
+          renderer={() => <div />}
+        />,
+      )
+
+      component.simulate('mouseleave')
+
+      expect(onFocusedElementChange).toHaveBeenCalledTimes(1)
+      expect(onFocusedElementChange).toHaveBeenCalledWith(null)
+    })
+
+    it('should call the onMouseLeave prop on the container node', () => {
+      const onMouseLeave = jest.fn()
+      const component = mount(
+        <Selectable
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 5', value: 5 },
+            { label: 'Option 10', value: 10 },
+          ]}
+          renderer={() => <div onMouseLeave={onMouseLeave} />}
+        />,
+      )
+
+      component.simulate('mouseleave')
+
+      expect(onMouseLeave).toHaveBeenCalledTimes(1)
+    })
+  })
+
   describe('focusable elements', () => {
     it('should allow to define focusable elements', () => {
       const component = mount(
@@ -189,68 +229,277 @@ describe('Selectable', () => {
     })
   })
 
-  describe('searching', () => {
-    it('should allow to filter options', () => {
-      const renderer = jest.fn().mockImplementation(() => <span />)
-
-      mount(
-        <Selectable
-          options={[
-            { label: 'Option 1', value: 1 },
-            { label: 'Option 5', value: 5 },
-            { label: 'Option 10', value: 10 },
-          ]}
-          renderer={renderer}
-          search="1"
-        />,
-      )
-
-      expect(renderer.mock.calls[0][0].options).toEqual([
-        { label: 'Option 1', value: 1 },
-        { label: 'Option 10', value: 10 },
-      ])
-    })
-
-    it('should expose a method to get search matches', () => {
-      const renderer = jest.fn().mockImplementation(() => <span />)
-
-      mount(
-        <Selectable
-          options={[
-            { label: 'Option 1', value: 1 },
-            { label: 'Option 5', value: 5 },
-            { label: 'Option 10', value: 10 },
-          ]}
-          renderer={renderer}
-          search="10"
-        />,
-      )
-
-      expect(renderer.mock.calls[0][0].getSearchMatches('Option 10')).toEqual([
-        { fromIndex: 0, match: false, text: 'Option ', toIndex: 7 },
-        { fromIndex: 7, match: true, text: '10', toIndex: 9 },
-      ])
-    })
-
-    describe('if there is no search', () => {
-      it('should returna default text match', () => {
-        const renderer = jest.fn().mockImplementation(() => <span />)
-
-        mount(
+  describe('search input', () => {
+    describe('when it changes', () => {
+      it('should filter options', () => {
+        const renderer = jest.fn().mockImplementation(({ getInputProps, options }) =>
+          <input {...getInputProps()} options={options} />,
+        )
+        const component = mount(
           <Selectable
             options={[
               { label: 'Option 1', value: 1 },
-              { label: 'Option 5', value: 5 },
               { label: 'Option 10', value: 10 },
+              { label: 'Option 5', value: 5 },
             ]}
             renderer={renderer}
           />,
         )
 
-        expect(renderer.mock.calls[0][0].getSearchMatches('Option 10')).toEqual([
-          { fromIndex: 0, match: false, text: 'Option 10', toIndex: 8 },
+        component.find('input').simulate('change', { target: { value: '1' } })
+
+        expect(renderer.mock.calls[renderer.mock.calls.length - 1][0].options).toEqual([
+          { label: 'Option 1', value: 1 },
+          { label: 'Option 10', value: 10 },
         ])
       })
+
+      it('should invoke the input onChange prop', () => {
+        const onChange = jest.fn()
+        const component = mount(
+          <Selectable
+            options={[
+              { label: 'Option 1', value: 1 },
+              { label: 'Option 10', value: 10 },
+              { label: 'Option 5', value: 5 },
+            ]}
+            renderer={({ getInputProps, options }) =>
+              <input
+                {...getInputProps({
+                  onChange,
+                })}
+                options={options}
+              />
+            }
+          />,
+        )
+
+        component.find('input').simulate('change')
+
+        expect(onChange).toHaveBeenCalled()
+      })
+    })
+
+    describe('when pressing the arrow down key', () => {
+      describe('if there is no option focused', () => {
+        it('should focus the first option', () => {
+          const component = mount(
+            <Selectable
+              options={[
+                { label: 'Option 1', value: 1 },
+                { label: 'Option 10', value: 10 },
+                { label: 'Option 5', value: 5 },
+              ]}
+              renderer={({ getInputProps }) =>
+                <input {...getInputProps()} />
+              }
+            />,
+          )
+          const instance = component.instance().getWrappedInstance()
+
+          instance.setFocusedElement(null)
+          component.find('input').simulate('keydown', { key: 'ArrowDown' })
+
+          expect(instance.getFocusedElement()).toBe(0)
+        })
+      })
+
+      describe('if there is an option focused', () => {
+        it('should focus the next option', () => {
+          const component = mount(
+            <Selectable
+              options={[
+                { label: 'Option 1', value: 1 },
+                { label: 'Option 10', value: 10 },
+                { label: 'Option 5', value: 5 },
+              ]}
+              renderer={({ getInputProps }) =>
+                <input {...getInputProps()} />
+              }
+            />,
+          )
+          const instance = component.instance().getWrappedInstance()
+
+          instance.setFocusedElement(0)
+          component.find('input').simulate('keydown', { key: 'ArrowDown' })
+
+          expect(instance.getFocusedElement()).toBe(1)
+        })
+      })
+    })
+
+    describe('when pressing the arrow up key', () => {
+      describe('if there is no option focused', () => {
+        it('should focus the last option', () => {
+          const component = mount(
+            <Selectable
+              options={[
+                { label: 'Option 1', value: 1 },
+                { label: 'Option 10', value: 10 },
+                { label: 'Option 5', value: 5 },
+              ]}
+              renderer={({ getInputProps }) =>
+                <input {...getInputProps()} />
+              }
+            />,
+          )
+          const instance = component.instance().getWrappedInstance()
+
+          instance.setFocusedElement(null)
+          component.find('input').simulate('keydown', { key: 'ArrowUp' })
+
+          expect(instance.getFocusedElement()).toBe(2)
+        })
+      })
+
+      describe('if there is an option focused', () => {
+        it('should focus the previous option', () => {
+          const component = mount(
+            <Selectable
+              options={[
+                { label: 'Option 1', value: 1 },
+                { label: 'Option 10', value: 10 },
+                { label: 'Option 5', value: 5 },
+              ]}
+              renderer={({ getInputProps }) =>
+                <input {...getInputProps()} />
+              }
+            />,
+          )
+          const instance = component.instance().getWrappedInstance()
+
+          instance.setFocusedElement(1)
+          component.find('input').simulate('keydown', { key: 'ArrowUp' })
+
+          expect(instance.getFocusedElement()).toBe(0)
+        })
+      })
+    })
+
+    describe('when pressing the enter key', () => {
+      it('should selected the focused option', () => {
+        const component = mount(
+          <Selectable
+            options={[
+              { label: 'Option 1', value: 1 },
+              { label: 'Option 10', value: 10 },
+              { label: 'Option 5', value: 5 },
+            ]}
+            renderer={({ getInputProps }) =>
+              <input {...getInputProps()} />
+            }
+          />,
+        )
+        const instance = component.instance().getWrappedInstance()
+
+        instance.setFocusedElement(1)
+        component.find('input').simulate('keydown', { key: 'Enter' })
+
+        expect(instance.getValue()).toBe(10)
+      })
+    })
+
+    describe('when pressing a key', () => {
+      it('should invoke the input onKeyDown prop', () => {
+        const onKeyDown = jest.fn()
+        const component = mount(
+          <Selectable
+            options={[
+              { label: 'Option 1', value: 1 },
+              { label: 'Option 10', value: 10 },
+              { label: 'Option 5', value: 5 },
+            ]}
+            renderer={({ getInputProps }) =>
+              <input {...getInputProps({ onKeyDown })} />
+            }
+          />,
+        )
+
+        component.find('input').simulate('keydown')
+
+        expect(onKeyDown).toHaveBeenCalled()
+      })
+    })
+  })
+
+  describe('clear search button', () => {
+    describe('when clicked', () => {
+      it('should clear the current search', () => {
+        const component = mount(
+          <Selectable
+            defaultSearch="test"
+            options={[]}
+            renderer={({ getClearInputProps }) =>
+              <button {...getClearInputProps()} />
+            }
+          />,
+        )
+        const instance = component.instance().getWrappedInstance()
+
+        expect(instance.getSearch()).toBe('test')
+
+        component.find('button').simulate('click')
+
+        expect(instance.getSearch()).toBe('')
+      })
+
+      it('should invoke the button onClick prop', () => {
+        const onClick = jest.fn()
+        const component = mount(
+          <Selectable
+            options={[]}
+            renderer={({ getClearInputProps }) =>
+              <button {...getClearInputProps({ onClick })} />
+            }
+          />,
+        )
+
+        component.find('button').simulate('click')
+
+        expect(onClick).toHaveBeenCalled()
+      })
+    })
+  })
+
+  it('should expose a method to get search matches', () => {
+    const renderer = jest.fn().mockImplementation(() => <span />)
+
+    mount(
+      <Selectable
+        options={[
+          { label: 'Option 1', value: 1 },
+          { label: 'Option 5', value: 5 },
+          { label: 'Option 10', value: 10 },
+        ]}
+        renderer={renderer}
+        search="10"
+      />,
+    )
+
+    expect(renderer.mock.calls[0][0].getSearchMatches('Option 10')).toEqual([
+      { fromIndex: 0, match: false, text: 'Option ', toIndex: 7 },
+      { fromIndex: 7, match: true, text: '10', toIndex: 9 },
+    ])
+  })
+
+  describe('if there is no search', () => {
+    it('should return a default text match', () => {
+      const renderer = jest.fn().mockImplementation(() => <span />)
+
+      mount(
+        <Selectable
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 5', value: 5 },
+            { label: 'Option 10', value: 10 },
+          ]}
+          renderer={renderer}
+        />,
+      )
+
+      expect(renderer.mock.calls[0][0].getSearchMatches('Option 10')).toEqual([
+        { fromIndex: 0, match: false, text: 'Option 10', toIndex: 8 },
+      ])
     })
   })
 
@@ -490,6 +739,30 @@ describe('Selectable', () => {
     })
   })
 
+  describe('when gaining focus', () => {
+    it('should highlight and scroll to the selected option', () => {
+      const component = mount(
+        <Selectable
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 2', value: 2 },
+            { label: 'Option 3', value: 3 },
+          ]}
+          renderer={() => <div />}
+          value={2}
+        />,
+      )
+      const instance = component.instance().getWrappedInstance()
+
+      instance.setFocusedElement = jest.fn()
+      instance.scrollToFocusedElement = jest.fn()
+      instance.setFocused(true)
+
+      expect(instance.setFocusedElement).toHaveBeenCalledWith(1)
+      expect(instance.scrollToFocusedElement).toHaveBeenCalled()
+    })
+  })
+
   describe('when receiving new props', () => {
     describe('if props.options changes', () => {
       it('should sort the new options', () => {
@@ -515,6 +788,45 @@ describe('Selectable', () => {
           { label: 'Option 5', value: 5 },
         ])
       })
+
+      it('should reset the container scroll', () => {
+        const component = mount(
+          <Selectable
+            options={[
+              { label: 'Option 1', value: 1 },
+              { label: 'Option 2', value: 2 },
+              { label: 'Option 3', value: 3 },
+              { label: 'Option 4', value: 4 },
+              { label: 'Option 5', value: 5 },
+            ]}
+            optionHeight={10}
+            renderer={({ getContainerProps }) =>
+              <div
+                {...getContainerProps({
+                  style: { maxHeight: 20 },
+                })}
+              />
+            }
+          />,
+        )
+        const container = component.find('div').getDOMNode()
+
+        container.scrollTop = 30
+        component.instance().getWrappedInstance().forceUpdate()
+        component.update()
+
+        expect(container.scrollTop).toBe(30)
+
+        component.setProps({
+          options: [
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 5', value: 5 },
+            { label: 'Option 10', value: 10 },
+          ],
+        })
+
+        expect(container.scrollTop).toBe(0)
+      })
     })
 
     describe('if props.value changes', () => {
@@ -538,6 +850,27 @@ describe('Selectable', () => {
         component.setProps({ value: null })
 
         expect(instance.getSelectedOption()).toBe(null)
+      })
+
+      describe('if props.blurOnSelect', () => {
+        it('should blur', () => {
+          const component = mount(
+            <Selectable
+              blurOnSelect
+              options={[
+                { label: 'Option 1', value: 1 },
+                { label: 'Option 5', value: 5 },
+              ]}
+              renderer={() => <span />}
+            />,
+          )
+          const instance = component.instance().getWrappedInstance()
+
+          instance.setFocused = jest.fn()
+          instance.setValue(5)
+
+          expect(instance.setFocused).toHaveBeenCalledWith(false)
+        })
       })
     })
   })
@@ -775,6 +1108,57 @@ describe('Selectable', () => {
       })))
     })
 
+    describe('if there is a selected option', () => {
+      it('should include the selected option', () => {
+        const options = [
+          { label: 'Option 1', value: 1 },
+          { label: 'Option 2', value: 2 },
+          { label: 'Option 3', value: 3 },
+          { label: 'Option 4', value: 4 },
+          { label: 'Option 5', value: 5 },
+          { label: 'Option 6', value: 6 },
+          { label: 'Option 7', value: 7 },
+          { label: 'Option 8', value: 8 },
+          { label: 'Option 9', value: 9 },
+        ]
+        const component = mount(
+          <Selectable
+            options={options}
+            optionHeight={10}
+            renderer={({ viewportOptions, getContainerProps }) => (
+              <div
+                {...getContainerProps() }
+                options={viewportOptions}
+                style={{
+                  maxHeight: 15,
+                }}
+              />
+            )}
+            value={7}
+          />,
+        )
+
+        component.find('div').getDOMNode().scrollTop = 30
+        component.instance().getWrappedInstance().forceUpdate()
+        component.update()
+
+        const expectedIndices = [
+          2, // Extra from the bottom
+          3, // In viewport
+          4, // In viewport
+          5, // Extra from the top
+          0, // First option is always included
+          8, // Last option is always included
+          6, // The selected option
+        ]
+
+        expect(component.find('div').prop('options')).toEqual(expectedIndices.map(index => ({
+          index,
+          option: options[index],
+        })))
+      })
+    })
+
     it('should return position and dimensions styles for options', () => {
       const component = mount(
         <Selectable
@@ -824,6 +1208,129 @@ describe('Selectable', () => {
         right: 0,
         left: 0,
       })
+    })
+  })
+
+  describe('when selecting an option', () => {
+    it('should set the option value', () => {
+      const component = mount(
+        <Selectable
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 2', value: 2 },
+            { label: 'Option 3', value: 3 },
+          ]}
+          renderer={({ getOptionProps, options }) =>
+            <div>
+              {options.map((option) =>
+                <button {...getOptionProps(option)} />,
+              )}
+            </div>
+          }
+        />,
+      )
+      const instance = component.instance().getWrappedInstance()
+
+      component.find('button').at(1).simulate('click')
+
+      expect(instance.getValue()).toBe(2)
+    })
+  })
+
+  describe('if the current value is an array', () => {
+    it('should toggle the option value', () => {
+      const component = mount(
+        <Selectable
+          defaultValue={[1]}
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 2', value: 2 },
+            { label: 'Option 3', value: 3 },
+          ]}
+          renderer={({ getOptionProps, options }) =>
+            <div>
+              {options.map((option) =>
+                <button {...getOptionProps(option) } />,
+              )}
+            </div>
+          }
+        />,
+      )
+      const instance = component.instance().getWrappedInstance()
+
+      component.find('button').at(1).simulate('click')
+
+      expect(instance.getValue()).toEqual([1, 2])
+
+      component.find('button').at(0).simulate('click')
+
+      expect(instance.getValue()).toEqual([2])
+    })
+  })
+
+  describe('when the cursor enters an option', () => {
+    it('should give the focus to the option', () => {
+      const component = mount(
+        <Selectable
+          options={[
+            { label: 'Option 1', value: 1 },
+            { label: 'Option 2', value: 2 },
+            { label: 'Option 3', value: 3 },
+          ]}
+          renderer={({ getOptionProps, options }) =>
+            <div>
+              {options.map((option) =>
+                <button {...getOptionProps(option)} />,
+              )}
+            </div>
+          }
+        />,
+      )
+      const instance = component.instance().getWrappedInstance()
+
+      component.find('button').at(1).simulate('mouseenter')
+
+      expect(instance.getFocusedElement()).toBe(1)
+    })
+  })
+
+  it('should respect the option ref', () => {
+    const optionRef = jest.fn()
+    const component = mount(
+      <Selectable
+        options={[
+          { label: 'Option 1', value: 1 },
+        ]}
+        renderer={({ getOptionProps, options }) =>
+          <div>
+            {options.map((option) =>
+              <button {...getOptionProps(option, { ref: optionRef })} />,
+            )}
+          </div>
+        }
+      />,
+    )
+
+    expect(optionRef).toHaveBeenCalledWith(component.find('button').at(0).getDOMNode())
+  })
+
+  describe('when the container scrolls', () => {
+    it('should invoke the container onScroll prop', () => {
+      const onScroll = jest.fn()
+      const component = mount(
+        <Selectable
+          options={[
+            { label: 'Option 1', value: 1 },
+          ]}
+          renderer={({ getContainerProps }) =>
+            <div {...getContainerProps({ onScroll })} />
+          }
+        />,
+      )
+
+      component.find('div').simulate('scroll')
+
+      expect(onScroll).toHaveBeenCalled()
     })
   })
 })

@@ -6,6 +6,7 @@ import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
 import defaults from 'lodash/defaults'
 import range from 'lodash/range'
+import uniq from 'lodash/uniq'
 import controllable from 'decorators/controllable'
 
 /**
@@ -395,23 +396,14 @@ export default class Selectable extends PureComponent {
     const selectedIndex = selectedOption ? options.indexOf(selectedOption) : null
 
     // Always include the first, last and selected option
-    if (indices.indexOf(0) === -1) {
-      indices.push(0)
-    }
+    indices.push(0)
+    indices.push(options.length - 1)
 
-    if (indices.indexOf(options.length - 1) === -1) {
-      indices.push(options.length - 1)
-    }
-
-    if (
-      selectedIndex != null &&
-      selectedIndex !== -1 &&
-      indices.indexOf(selectedIndex) === -1
-    ) {
+    if (selectedIndex != null && selectedIndex !== -1) {
       indices.push(selectedIndex)
     }
 
-    return indices.map(index => ({
+    return uniq(indices).map(index => ({
       option: options[index],
       index,
     }))
@@ -496,7 +488,10 @@ export default class Selectable extends PureComponent {
 
           case 'ArrowUp':
             event.preventDefault()
-            this.setFocusedElement(focusedElement === null ? 0 : focusedElement - 1)
+            this.setFocusedElement(focusedElement === null
+              ? options.length - 1
+              : focusedElement - 1,
+            )
             this.scrollToFocusedElement()
             break
 
@@ -713,7 +708,7 @@ export default class Selectable extends PureComponent {
       this.spacer = document.createElement('div')
       this.container.appendChild(this.spacer)
     }
-    else if (this.spacer) {
+    else {
       this.spacer.parentNode.removeChild(this.spacer)
     }
 
