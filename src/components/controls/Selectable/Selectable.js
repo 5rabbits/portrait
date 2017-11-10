@@ -5,6 +5,7 @@ import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
 import defaults from 'lodash/defaults'
+import range from 'lodash/range'
 import controllable from 'decorators/controllable'
 
 /**
@@ -209,6 +210,10 @@ export default class Selectable extends PureComponent {
           search: nextProps.search,
         }),
       })
+
+      if (this.overflow) {
+        this.overflow.scrollTop = 0
+      }
     }
 
     if (this.props.value !== nextProps.value) {
@@ -338,19 +343,51 @@ export default class Selectable extends PureComponent {
   }
 
   getOptionsInViewport = options => {
-    if (!this.isVirtualized()) {
-      return options
+    const { optionHeight } = this.props
+    const totalHeight = options.length * optionHeight
+
+    if (this.spacer) {
+      this.spacer.style.height = `${totalHeight}px`
     }
 
-    const { optionHeight } = this.props
+    if (!this.isVirtualized() || options.length === 0) {
+      return options.map((option, index) => ({
+        option,
+        index,
+      }))
+    }
+
+    const { selectedOption } = this.state
     const overflowHeight = this.overflowHeight
-    const totalHeight = options.length * optionHeight
     const fromIndex = Math.floor(this.overflow.scrollTop / optionHeight)
     const toIndex = fromIndex + Math.ceil(overflowHeight / optionHeight)
+    const indices = range(
+      Math.max(fromIndex - 1, 0),
+      Math.min(toIndex + 1, options.length - 1),
+    )
+    const selectedIndex = selectedOption ? options.indexOf(selectedOption) : null
 
-    this.spacer.style.height = `${totalHeight}px`
+    // Always include the first, last and selected option
+    if (indices.indexOf(0) === -1) {
+      indices.push(0)
+    }
 
-    return options.slice(fromIndex, toIndex)
+    if (indices.indexOf(options.length - 1) === -1) {
+      indices.push(options.length - 1)
+    }
+
+    if (
+      selectedIndex != null &&
+      selectedIndex !== -1 &&
+      indices.indexOf(selectedIndex) === -1
+    ) {
+      indices.push(selectedIndex)
+    }
+
+    return indices.map(index => ({
+      option: options[index],
+      index,
+    }))
   }
 
   getOptionStyles = option => {
@@ -422,7 +459,7 @@ export default class Selectable extends PureComponent {
       getSearchMatches: this.getSearchMatches,
       getOptionProps: this.getOptionProps,
       getOverflowProps: this.getOverflowProps,
-      options: this.getOptionsInViewport(options),
+      options,
       search,
       selectedOption,
       setFocused: this.setFocused,
@@ -431,6 +468,7 @@ export default class Selectable extends PureComponent {
       setValue: this.setValue,
       scrollToFocusedElement: this.scrollToFocusedElement,
       value,
+      viewportOptions: this.getOptionsInViewport(options),
     }
   }
 

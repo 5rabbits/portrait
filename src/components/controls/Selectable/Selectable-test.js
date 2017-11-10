@@ -728,34 +728,51 @@ describe('Selectable', () => {
   })
 
   describe('if virtualized', () => {
-    it('should only pass the options in viewport to the renderer', () => {
-      const component = mount(
-        <Selectable
-          options={[
-            { label: 'Option 1', value: 1 },
-            { label: 'Option 2', value: 2 },
-            { label: 'Option 3', value: 3 },
-            { label: 'Option 4', value: 4 },
-            { label: 'Option 5', value: 5 },
-          ]}
-          optionHeight={10}
-          renderer={({ options, getOverflowProps }) =>
-            <div
-              {...getOverflowProps()}
-              options={options}
-              style={{
-                maxHeight: 25,
-              }}
-            />
-          }
-        />,
-      )
-
-      expect(component.find('div').prop('options')).toEqual([
+    it('should pass the viewport options to the renderer', () => {
+      const options = [
         { label: 'Option 1', value: 1 },
         { label: 'Option 2', value: 2 },
         { label: 'Option 3', value: 3 },
-      ])
+        { label: 'Option 4', value: 4 },
+        { label: 'Option 5', value: 5 },
+        { label: 'Option 6', value: 6 },
+        { label: 'Option 7', value: 7 },
+        { label: 'Option 8', value: 8 },
+        { label: 'Option 9', value: 9 },
+      ]
+      const component = mount(
+        <Selectable
+          options={options}
+          optionHeight={10}
+          renderer={({ viewportOptions, getOverflowProps }) => (
+            <div
+              {...getOverflowProps()}
+              options={viewportOptions}
+              style={{
+                maxHeight: 15,
+              }}
+            />
+          )}
+        />,
+      )
+
+      component.find('div').getDOMNode().scrollTop = 30
+      component.instance().getWrappedInstance().forceUpdate()
+      component.update()
+
+      const expectedIndices = [
+        2, // Extra from the bottom
+        3, // In viewport
+        4, // In viewport
+        5, // Extra from the top
+        0, // First option is always included
+        8, // Last option is always included
+      ]
+
+      expect(component.find('div').prop('options')).toEqual(expectedIndices.map(index => ({
+        index,
+        option: options[index],
+      })))
     })
 
     it('should return position and dimensions styles for options', () => {
