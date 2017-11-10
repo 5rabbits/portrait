@@ -266,7 +266,7 @@ export default class Selectable extends PureComponent {
     if (!options.virtual) {
       const node = this.getFocusableNode(id)
 
-      if (node.focus) {
+      if (node && node.focus) {
         node.focus()
       }
     }
@@ -428,6 +428,7 @@ export default class Selectable extends PureComponent {
       onClick: () => {
         this.selectOption(option)
         this.setSearch('')
+        this.setFocusedElement('input', { virtual: false })
       },
       onMouseEnter: () => {
         this.setFocusedElement(index)
