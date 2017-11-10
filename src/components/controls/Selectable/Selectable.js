@@ -350,7 +350,7 @@ export default class Selectable extends PureComponent {
       this.spacer.style.height = `${totalHeight}px`
     }
 
-    if (!this.container) {
+    if (!this.container || options.length === 0) {
       return []
     }
 
