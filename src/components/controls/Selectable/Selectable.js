@@ -65,7 +65,7 @@ export default class Selectable extends PureComponent {
     /**
      * Default selected value.
      */
-    defaultValue: PropTypes.string,
+    defaultValue: PropTypes.any,
 
     /* eslint-enable react/no-unused-prop-types */
 
@@ -416,7 +416,7 @@ export default class Selectable extends PureComponent {
 
     return {
       onClick: () => {
-        this.setValue(option.value)
+        this.selectOption(option)
         this.setSearch('')
       },
       onMouseEnter: () => {
@@ -476,7 +476,7 @@ export default class Selectable extends PureComponent {
 
           case 'Enter':
             event.preventDefault()
-            this.setValue(options[focusedElement].value)
+            this.selectOption(options[focusedElement])
             this.setSearch('')
             break
         }
@@ -526,6 +526,30 @@ export default class Selectable extends PureComponent {
       scrollToFocusedElement: this.scrollToFocusedElement,
       value,
       viewportOptions: this.getOptionsInViewport(options),
+    }
+  }
+
+  selectOption = option => {
+    const { value } = this.props
+
+    if (value instanceof Array) {
+      const index = value.indexOf(option.value)
+
+      if (index === -1) {
+        this.setValue([
+          ...value,
+          option.value,
+        ])
+      }
+      else {
+        this.setValue([
+          ...value.slice(0, index),
+          ...value.slice(index + 1),
+        ])
+      }
+    }
+    else {
+      this.setValue(option.value)
     }
   }
 
