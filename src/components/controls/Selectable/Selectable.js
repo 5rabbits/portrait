@@ -1,10 +1,12 @@
-import { PureComponent } from 'react'
+import React, { Children, PureComponent } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
 import defaults from 'lodash/defaults'
+import range from 'lodash/range'
+import uniq from 'lodash/uniq'
 import controllable from 'decorators/controllable'
 
 /**
@@ -64,9 +66,14 @@ export default class Selectable extends PureComponent {
     /**
      * Default selected value.
      */
-    defaultValue: PropTypes.string,
+    defaultValue: PropTypes.any,
 
     /* eslint-enable react/no-unused-prop-types */
+
+    /**
+     * Indicates if the control should loose focus when an option is selected.
+     */
+    blurOnSelect: PropTypes.bool,
 
     /**
      * Specifies if the control should lose focus when clicking outside.
@@ -110,6 +117,11 @@ export default class Selectable extends PureComponent {
     onSearchChange: PropTypes.func.isRequired,
 
     /**
+     * Enables virtual scroll with fixed option height.
+     */
+    optionHeight: PropTypes.number,
+
+    /**
      * An array of available options.
      */
     options: PropTypes.arrayOf(PropTypes.shape({
@@ -127,7 +139,7 @@ export default class Selectable extends PureComponent {
      *   highlight search results.
      * - focused: Specifies if the control is focused or not.
      * - options: The visible and sorted options array.
-     * - overflowRef(): Allows to define the inner scrollable area, if needed.
+     * - containerRef(): Allows to define the inner scrollable area, if needed.
      * - search: The current search.
      * - selectedOption: The current selected option, if any.
      * - setFocused(focused): Changes the control focused state.
@@ -135,7 +147,7 @@ export default class Selectable extends PureComponent {
      *   will attempt a real focus if `{ virtual: false }`.
      * - setSearch(search): Changes the current search.
      * - setValue(value): Changes the current value.
-     * - scrollToFocusedElement(): If the overflow container is defined, changes its scroll
+     * - scrollToFocusedElement(): If the container is defined, changes its scroll
      *   to keep the current focused element in the viewport.
      * - value: The current value.
      */
@@ -153,6 +165,7 @@ export default class Selectable extends PureComponent {
   }
 
   static defaultProps = {
+    blurOnSelect: false,
     blurOnClickOutside: true,
     defaultFocused: false,
     defaultSearch: '',
@@ -182,7 +195,7 @@ export default class Selectable extends PureComponent {
   }
 
   componentDidMount() {
-    this.container = ReactDOM.findDOMNode(this) // eslint-disable-line react/no-find-dom-node
+    this.node = ReactDOM.findDOMNode(this) // eslint-disable-line react/no-find-dom-node
     document.addEventListener('click', this.handleOutsideClick)
   }
 
@@ -204,6 +217,10 @@ export default class Selectable extends PureComponent {
           search: nextProps.search,
         }),
       })
+
+      if (this.container) {
+        this.container.scrollTop = 0
+      }
     }
 
     if (this.props.value !== nextProps.value) {
@@ -250,7 +267,7 @@ export default class Selectable extends PureComponent {
     if (!options.virtual) {
       const node = this.getFocusableNode(id)
 
-      if (node.focus) {
+      if (node && node.focus) {
         node.focus()
       }
     }
@@ -262,6 +279,19 @@ export default class Selectable extends PureComponent {
 
   setFocused = focused => {
     this.props.onFocusedChange(focused)
+
+    if (focused) {
+      requestAnimationFrame(() => {
+        this.setFocusedElement('input', { virtual: false })
+
+        const selectedIndex = this.state.options.indexOf(this.state.selectedOption)
+
+        if (selectedIndex !== -1) {
+          this.setFocusedElement(selectedIndex)
+          this.scrollToFocusedElement()
+        }
+      })
+    }
   }
 
   setSearch = search => {
@@ -274,6 +304,10 @@ export default class Selectable extends PureComponent {
 
   setValue = value => {
     this.props.onChange(value)
+
+    if (this.props.blurOnSelect) {
+      this.setFocused(false)
+    }
   }
 
   getValue = () => (
@@ -332,6 +366,163 @@ export default class Selectable extends PureComponent {
     return terms
   }
 
+  getOptionsInViewport = options => {
+    const { optionHeight } = this.props
+    const totalHeight = options.length * optionHeight
+
+    if (this.spacer) {
+      this.spacer.style.height = `${totalHeight}px`
+    }
+
+    if (!this.container || options.length === 0) {
+      return []
+    }
+
+    if (!this.isVirtualized()) {
+      return options.map((option, index) => ({
+        option,
+        index,
+      }))
+    }
+
+    const { selectedOption } = this.state
+    const containerHeight = this.containerHeight
+    const fromIndex = Math.floor(this.container.scrollTop / optionHeight)
+    const toIndex = fromIndex + Math.ceil(containerHeight / optionHeight)
+    const indices = range(
+      Math.max(fromIndex - 1, 0),
+      Math.min(toIndex + 1, options.length - 1),
+    )
+    const selectedIndex = selectedOption ? options.indexOf(selectedOption) : null
+
+    // Always include the first, last and selected option
+    indices.push(0)
+    indices.push(options.length - 1)
+
+    if (selectedIndex != null && selectedIndex !== -1) {
+      indices.push(selectedIndex)
+    }
+
+    return uniq(indices).map(index => ({
+      option: options[index],
+      index,
+    }))
+  }
+
+  getOptionStyles = option => {
+    if (!this.isVirtualized()) {
+      return {}
+    }
+
+    const { optionHeight } = this.props
+    const index = this.state.options.indexOf(option)
+
+    return {
+      position: 'absolute',
+      top: optionHeight * index,
+      right: 0,
+      left: 0,
+      height: optionHeight,
+    }
+  }
+
+  getOptionProps = (option, props = {}) => {
+    const index = this.state.options.indexOf(option)
+
+    return {
+      onClick: () => {
+        this.selectOption(option)
+        this.setSearch('')
+        this.setFocusedElement('input', { virtual: false })
+      },
+      onMouseEnter: () => {
+        this.setFocusedElement(index)
+      },
+      ...props,
+      key: option.value,
+      ref: node => {
+        this.focusableRef(index)(node)
+
+        if (props.ref) {
+          props.ref(node)
+        }
+      },
+      style: {
+        ...this.getOptionStyles(option),
+        ...props.style,
+      },
+    }
+  }
+
+  getContainerProps = (props = {}) => ({
+    ...props,
+    onScroll: (...args) => {
+      this.handleContainerScroll()
+
+      if (props.onScroll) {
+        props.onScroll(...args)
+      }
+    },
+    ref: this.containerRef,
+  })
+
+  getInputProps = (props = {}) => {
+    const { focusedElement, options } = this.state
+
+    return {
+      ...props,
+      onChange: event => {
+        this.setSearch(event.target.value)
+
+        if (props.onChange) {
+          props.onChange(event)
+        }
+      },
+      onKeyDown: event => {
+        switch (event.key) {
+          case 'ArrowDown':
+            event.preventDefault()
+            this.setFocusedElement(focusedElement === null ? 0 : focusedElement + 1)
+            this.scrollToFocusedElement()
+            break
+
+          case 'ArrowUp':
+            event.preventDefault()
+            this.setFocusedElement(focusedElement === null
+              ? options.length - 1
+              : focusedElement - 1,
+            )
+            this.scrollToFocusedElement()
+            break
+
+          case 'Enter':
+            event.preventDefault()
+            this.selectOption(options[focusedElement])
+            this.setSearch('')
+            break
+        }
+
+        if (props.onKeyDown) {
+          props.onKeyDown(event)
+        }
+      },
+      ref: this.focusableRef('input'),
+      value: this.getSearch(),
+    }
+  }
+
+  getClearInputProps = (props = {}) => ({
+    ...props,
+    onClick: (...args) => {
+      this.setSearch('')
+      this.setFocusedElement('input', { virtual: false })
+
+      if (props.onClick) {
+        props.onClick(args)
+      }
+    },
+  })
+
   getRendererProps = () => {
     const { focused, search, value } = this.props
     const { focusedElement, options, selectedOption, sortedOptions } = this.state
@@ -340,10 +531,13 @@ export default class Selectable extends PureComponent {
       allOptions: sortedOptions,
       focusableRef: this.focusableRef,
       focusedElement,
-      getSearchMatches: this.getSearchMatches,
       focused,
+      getSearchMatches: this.getSearchMatches,
+      getClearInputProps: this.getClearInputProps,
+      getInputProps: this.getInputProps,
+      getOptionProps: this.getOptionProps,
+      getContainerProps: this.getContainerProps,
       options,
-      overflowRef: this.overflowRef,
       search,
       selectedOption,
       setFocused: this.setFocused,
@@ -352,15 +546,44 @@ export default class Selectable extends PureComponent {
       setValue: this.setValue,
       scrollToFocusedElement: this.scrollToFocusedElement,
       value,
+      viewportOptions: this.getOptionsInViewport(options),
     }
   }
+
+  selectOption = option => {
+    const { value } = this.props
+
+    if (value instanceof Array) {
+      const index = value.indexOf(option.value)
+
+      if (index === -1) {
+        this.setValue([
+          ...value,
+          option.value,
+        ])
+      }
+      else {
+        this.setValue([
+          ...value.slice(0, index),
+          ...value.slice(index + 1),
+        ])
+      }
+    }
+    else {
+      this.setValue(option.value)
+    }
+  }
+
+  isVirtualized = () => (
+    !!(this.props.optionHeight && this.containerHeight)
+  )
 
   isFocused = () => (
     this.props.focused
   )
 
   isNodeInViewport(node) {
-    if (!this.overflow.contains(node)) {
+    if (!this.container.contains(node)) {
       return {
         inViewport: true,
         visibleFromBottom: true,
@@ -368,11 +591,10 @@ export default class Selectable extends PureComponent {
       }
     }
 
-    const overflow = this.overflow
     const nodeTop = node.offsetTop
-    const visibleFromTop = nodeTop >= overflow.scrollTop
+    const visibleFromTop = nodeTop >= this.container.scrollTop
     const visibleFromBottom = nodeTop + node.offsetHeight <=
-      overflow.scrollTop + overflow.offsetHeight
+      this.container.scrollTop + this.container.offsetHeight
 
     return {
       inViewport: visibleFromBottom && visibleFromTop,
@@ -386,7 +608,7 @@ export default class Selectable extends PureComponent {
       const { focusedElement } = this.state
       const node = this.focusableRefs[focusedElement]
 
-      if (this.overflow && focusedElement != null) {
+      if (this.container && focusedElement != null) {
         const viewportInfo = this.isNodeInViewport(node)
 
         if (!viewportInfo.visibleFromBottom) {
@@ -401,10 +623,10 @@ export default class Selectable extends PureComponent {
 
   scrollNodeToViewport = (node, fromDirection) => {
     const scrollTop = fromDirection === 'bottom'
-      ? node.offsetTop - (this.overflow.offsetHeight - node.offsetHeight)
+      ? node.offsetTop - (this.container.offsetHeight - node.offsetHeight)
       : node.offsetTop
 
-    this.overflow.scrollTop = scrollTop
+    this.container.scrollTop = scrollTop
   }
 
   filterOptions = ({ options, search }) => {
@@ -431,11 +653,17 @@ export default class Selectable extends PureComponent {
     this.setFocused(false)
   }
 
+  handleContainerScroll = () => {
+    if (this.isVirtualized()) {
+      this.forceUpdate()
+    }
+  }
+
   handleOutsideClick = event => {
     const isOutside = (
-      this.container &&
-      this.container !== event.target &&
-      !this.container.contains(event.target) &&
+      this.node &&
+      this.node !== event.target &&
+      !this.node.contains(event.target) &&
       event.target.parentNode
     )
 
@@ -452,15 +680,56 @@ export default class Selectable extends PureComponent {
     this.focusableRefs[id] = node
   }
 
-  overflowRef = () => overflow => {
-    this.overflow = overflow
+  containerRef = container => {
+    const shouldRender = !this.container && container
 
-    if (overflow && (!overflow.style.position || overflow.style.position === 'static')) {
-      overflow.style.position = 'relative' // eslint-disable-line no-param-reassign
+    this.container = container
+
+    if (container) {
+      const style = getComputedStyle(container)
+
+      if (!style.position || style.position === 'static') {
+        container.style.position = 'relative' // eslint-disable-line no-param-reassign
+      }
+
+      if (this.props.optionHeight) {
+        const height = parseInt(style.height, 10)
+        const maxHeight = parseInt(style.maxHeight, 10)
+        const containerHeight = height || maxHeight
+
+        if (!containerHeight) {
+          // eslint-disable-next-line no-console
+          console.warn('Selectable container should have an explicit height or max-height to virtualize the scroll')
+        }
+
+        this.containerHeight = containerHeight || 0
+      }
+
+      this.spacer = document.createElement('div')
+      this.container.appendChild(this.spacer)
+    }
+    else {
+      this.spacer.parentNode.removeChild(this.spacer)
+    }
+
+    if (shouldRender) {
+      this.forceUpdate()
+    }
+  }
+
+  handleContainerMouseLeave = child => (...args) => {
+    this.setFocusedElement(null)
+
+    if (child.props && child.props.onMouseLeave) {
+      child.props.onMouseLeave(...args)
     }
   }
 
   render() {
-    return this.props.renderer(this.getRendererProps())
+    const child = Children.only(this.props.renderer(this.getRendererProps()))
+
+    return React.cloneElement(child, {
+      onMouseLeave: this.handleContainerMouseLeave(child),
+    })
   }
 }
