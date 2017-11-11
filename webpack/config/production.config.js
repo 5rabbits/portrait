@@ -1,6 +1,5 @@
 /* eslint-disable no-var */
 
-var webpack = require('webpack')
 var path = require('path')
 var Config = require('webpack-config').default
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -19,7 +18,7 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
         test: /\.(css|sass|scss)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use:[
+          use: [
             {
               loader: 'css-loader',
               options: {
@@ -39,9 +38,6 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
   },
   plugins: [
     new ExtractTextPlugin('[name].css'),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
     new CleanWebpackPlugin(['lib'], {
       root: path.resolve('.'),
       verbose: false,
