@@ -2,9 +2,13 @@
   description: |
     A simple selectable options list. It uses these minimum arguments:
 
+    - `getOptionProps(option, otherProps = {})`: Get props for an option.
     - `options`: Sorted options array.
-    - `setValue(value)`: Changes the current value.
     - `value`: The current value.
+
+    Its important to note that both `getContainerProps` and `getOptionProps` allows to
+    declare additional props for the component without worrying about overriding core
+    props declared by Selectable.
 
   code: >
     <Selectable
@@ -18,19 +22,19 @@
       ]}
       renderer={
         ({
+          getOptionProps,
           options,
-          setValue,
           value,
         }) =>
           <div className="selectable-dropdown">
             {options.map(option =>
               <button
-                className={classNames('selectable-dropdown__option', {
-                  'selectable-dropdown__option--selected': value === option.value,
+                {...getOptionProps(option, {
+                  className: classNames('selectable-dropdown__option', {
+                    'selectable-dropdown__option--selected': value === option.value,
+                  }),
+                  type: 'button',
                 })}
-                key={option.value}
-                onClick={() => setValue(option.value)}
-                type="button"
                 >
                 {option.label}
               </button>
@@ -60,11 +64,11 @@
       ]}
       renderer={
         ({
+          getOptionProps,
           getSearchMatches,
           options,
           search,
           setSearch,
-          setValue,
           value,
         }) =>
           <div className="selectable-dropdown">
@@ -89,15 +93,12 @@
 
             {options.map(option =>
               <button
-                className={classNames('selectable-dropdown__option', {
-                  'selectable-dropdown__option--selected': value === option.value,
+                {...getOptionProps(option, {
+                  className: classNames('selectable-dropdown__option', {
+                    'selectable-dropdown__option--selected': value === option.value,
+                  }),
+                  type: 'button',
                 })}
-                key={option.value}
-                onClick={() => {
-                  setValue(option.value)
-                  setSearch('')
-                }}
-                type="button"
                 >
                 <div>
                   {getSearchMatches(option.label).map(term =>
@@ -112,18 +113,18 @@
 
 -
   description: |
-    Adds keyboard navigation:
+    Having a list with a search input is common pattern, so it's already built into Selectable:
 
-    - `focusableRef(id)`: Registers a focusable element. For focusable options it's recommended
-      to use their indices as `id` so that `setFocusedElement` can automatically handle options
-      cycling when implementing a "focus next" and "focus prev" (in this example using the arrows
-      down and up while the search input is focused). Pass `null` to remove the focus.
-    - `focusedElement`: The current focused element `id`.
-    - `setFocusedElement(id, { virtual: true })`: Changes the focused element. Is important to note
-      that this is a _virtual focus_ by default, useful to give a visual feedback while keeping the
-      real focus on a text input (for searching, autocomplete, etc) or any other element.
+    - `getInputProps(otherProps = {})`: Keeps the current search in sync with the input and
+      allows to navigate options with the keyboard, using the arrow down, arrow up and enter
+      keys.
+    - `getClearInputProps(otherProps = {})`: Resets the search and gives the focus back to
+      the search input.
 
-      Pass `{ virtual: false }` to attempt a real dom focus.
+    We are also taking advantaje of the virtual focusing that's automatically handled. All we
+    need to do is add a class for the option that's currently focused:
+
+    - `focusedElement`: The current focused element `id`. For options this is the index.
 
   code: >
     <Selectable
@@ -137,56 +138,30 @@
       ]}
       renderer={
         ({
-          focusableRef,
           focusedElement,
+          getClearInputProps,
+          getInputProps,
+          getOptionProps,
           getSearchMatches,
           options,
           search,
-          setFocusedElement,
-          setSearch,
-          setValue,
           value,
         }) =>
-          <div
-            className="selectable-dropdown"
-            onMouseLeave={() => setFocusedElement(null)}
-            >
+          <div className="selectable-dropdown">
             <div className="selectable-dropdown__searchWrapper">
               <input
-                className="selectable-dropdown__searchInput"
-                onChange={event => setSearch(event.target.value)}
-                onKeyDown={event => {
-                  switch (event.key) {
-                    case 'ArrowDown':
-                      event.preventDefault()
-                      setFocusedElement(focusedElement === null ? 0 : focusedElement + 1)
-                      break
-
-                    case 'ArrowUp':
-                      event.preventDefault()
-                      setFocusedElement(focusedElement === null ? 0 : focusedElement - 1)
-                      break
-
-                    case 'Enter':
-                      event.preventDefault()
-                      setValue(options[focusedElement].value)
-                      setSearch('')
-                      break
-                  }
-                }}
-                placeholder="Write to search"
-                ref={focusableRef('input')}
-                type="text"
-                value={search}
+                {...getInputProps({
+                  className: 'selectable-dropdown__searchInput',
+                  placeholder: 'Write to search',
+                  type: 'text',
+                })}
               />
               {search &&
                 <button
-                  className="selectable-dropdown__searchIcon"
-                  onClick={() => {
-                    setSearch('')
-                    setFocusedElement('input', { virtual: false })
-                  }}
-                  type="button"
+                  {...getClearInputProps({
+                    className: 'selectable-dropdown__searchIcon',
+                    type: 'button',
+                  })}
                   >
                   &times;
                 </button>
@@ -195,17 +170,13 @@
 
             {options.map((option, index) =>
               <button
-                className={classNames('selectable-dropdown__option', {
-                  'selectable-dropdown__option--selected': value === option.value,
-                  'selectable-dropdown__option--focused': index === focusedElement,
+                {...getOptionProps(option, {
+                  className: classNames('selectable-dropdown__option', {
+                    'selectable-dropdown__option--selected': value === option.value,
+                    'selectable-dropdown__option--focused': index === focusedElement,
+                  }),
+                  type: 'button',
                 })}
-                key={option.value}
-                onClick={() => {
-                  setValue(option.value)
-                  setSearch('')
-                }}
-                onMouseEnter={() => setFocusedElement(index)}
-                type="button"
                 >
                 <div>
                   {getSearchMatches(option.label).map(term =>
@@ -222,9 +193,7 @@
   description: |
     Defines an inner scrollable options list, very common for floating lists:
 
-    - `overflowRef()`: Registers the overflow container.
-    - `scrollToFocusedElement()`: Scrolls the overflow container if the focused element isn't in
-      the current viewport.
+    - `getContainerProps()`: Registers the options container.
 
   code: >
     <Selectable
@@ -238,60 +207,31 @@
       ]}
       renderer={
         ({
-          focusableRef,
           focusedElement,
+          getContainerProps,
+          getClearInputProps,
+          getInputProps,
+          getOptionProps,
           getSearchMatches,
           options,
-          overflowRef,
-          scrollToFocusedElement,
           search,
-          setFocusedElement,
-          setSearch,
-          setValue,
           value,
         }) =>
-          <div
-            className="selectable-dropdown"
-            onMouseLeave={() => setFocusedElement(null)}
-            >
+          <div className="selectable-dropdown">
             <div className="selectable-dropdown__searchWrapper">
               <input
-                className="selectable-dropdown__searchInput"
-                onChange={event => setSearch(event.target.value)}
-                onKeyDown={event => {
-                  switch (event.key) {
-                    case 'ArrowDown':
-                      event.preventDefault()
-                      setFocusedElement(focusedElement === null ? 0 : focusedElement + 1)
-                      scrollToFocusedElement()
-                      break
-
-                    case 'ArrowUp':
-                      event.preventDefault()
-                      setFocusedElement(focusedElement === null ? 0 : focusedElement - 1)
-                      scrollToFocusedElement()
-                      break
-
-                    case 'Enter':
-                      event.preventDefault()
-                      setValue(options[focusedElement].value)
-                      setSearch('')
-                      break
-                  }
-                }}
-                placeholder="Write to search"
-                ref={focusableRef('input')}
-                type="text"
-                value={search}
+                {...getInputProps({
+                  className: 'selectable-dropdown__searchInput',
+                  placeholder: 'Write to search',
+                  type: 'text',
+                })}
               />
               {search &&
                 <button
-                  className="selectable-dropdown__searchIcon"
-                  onClick={() => {
-                    setSearch('')
-                    setFocusedElement('input', { virtual: false })
-                  }}
-                  type="button"
+                  {...getClearInputProps({
+                    className: 'selectable-dropdown__searchIcon',
+                    type: 'button',
+                  })}
                   >
                   &times;
                 </button>
@@ -299,24 +239,19 @@
             </div>
 
             <div
-              className="selectable-dropdown__overflow"
-              ref={overflowRef()}
+              {...getContainerProps({
+                className: 'selectable-dropdown__overflow',
+              })}
               >
               {options.map((option, index) =>
                 <button
-                  className={classNames('selectable-dropdown__option', {
-                    'selectable-dropdown__option--selected': value === option.value,
-                    'selectable-dropdown__option--focused': index === focusedElement,
+                  {...getOptionProps(option, {
+                    className: classNames('selectable-dropdown__option', {
+                      'selectable-dropdown__option--selected': value === option.value,
+                      'selectable-dropdown__option--focused': index === focusedElement,
+                    }),
+                    type: 'button',
                   })}
-                  key={option.value}
-                  onClick={() => {
-                    setValue(option.value)
-                    setSearch('')
-                    setFocusedElement('input')
-                  }}
-                  onMouseEnter={() => setFocusedElement(index)}
-                  ref={focusableRef(index)}
-                  type="button"
                   >
                   <div>
                     {getSearchMatches(option.label).map(term =>
@@ -338,8 +273,12 @@
     - `selectedOption`: The currently selected option, if any.
     - `setFocused(focused)`: Changes the global focused state.
 
+    Additionally, we set `blurOnSelect` to automatically call `setFocused(false)`
+    when an option is selected.
+
   code: >
     <Selectable
+      blurOnSelect
       onChange={console.log}
       onClickOutside={({ setSearch }) => setSearch('')}
       options={[
@@ -351,19 +290,17 @@
       ]}
       renderer={
         ({
-          focusableRef,
-          focusedElement,
-          getSearchMatches,
           focused,
-          options,
-          overflowRef,
-          scrollToFocusedElement,
-          search,
+          focusedElement,
+          getContainerProps,
+          getClearInputProps,
+          getInputProps,
+          getOptionProps,
+          getSearchMatches,
           selectedOption,
+          options,
+          search,
           setFocused,
-          setFocusedElement,
-          setSearch,
-          setValue,
           value,
         }) =>
           <div
@@ -374,26 +311,7 @@
             >
             <button
               className="selectable-dropdown__control"
-              onClick={() => {
-                if (focused) {
-                  setFocused(false)
-                }
-                else {
-                  setFocused(true)
-
-                  // Execute after the next paint
-                  window.requestAnimationFrame(() => {
-                    setFocusedElement('input', { virtual: false })
-
-                    const selectedIndex = options.indexOf(selectedOption)
-
-                    if (selectedIndex !== -1) {
-                      setFocusedElement(selectedIndex)
-                      scrollToFocusedElement()
-                    }
-                  })
-                }
-              }}
+              onClick={() => setFocused(!focused)}
               type="button"
               >
               {selectedOption ? selectedOption.label : 'Select an option'}
@@ -402,74 +320,18 @@
               <div className="selectable-dropdown__menu">
                 <div className="selectable-dropdown__searchWrapper">
                   <input
-                    className="selectable-dropdown__searchInput"
-                    onChange={event => setSearch(event.target.value)}
-                    onKeyDown={event => {
-                      switch (event.key) {
-                        case 'ArrowDown':
-                          event.preventDefault()
-
-                          if (focusedElement === 'clear' || focusedElement === 'input') {
-                            setFocusedElement(0)
-                            scrollToFocusedElement()
-                          }
-                          else if (focusedElement === options.length - 1) {
-                            setFocusedElement('clear')
-                          }
-                          else {
-                            setFocusedElement(focusedElement + 1)
-                            scrollToFocusedElement()
-                          }
-                          break
-
-                        case 'ArrowUp':
-                          event.preventDefault()
-
-                          if (focusedElement === 'input' || focusedElement === 0) {
-                            setFocusedElement('clear')
-                          }
-                          else if (focusedElement === 'clear') {
-                            setFocusedElement(options.length - 1)
-                            scrollToFocusedElement()
-                          }
-                          else {
-                            setFocusedElement(focusedElement - 1)
-                            scrollToFocusedElement()
-                          }
-                          break
-
-                        case 'Enter':
-                          event.preventDefault()
-
-                          if (focusedElement === 'input') {
-                            return
-                          }
-
-                          if (focusedElement === 'clear') {
-                            setValue(null)
-                          }
-                          else {
-                            setValue(options[focusedElement].value)
-                          }
-
-                          setSearch('')
-                          setFocused(false)
-                          break
-                      }
-                    }}
-                    placeholder="Write to search"
-                    ref={focusableRef('input')}
-                    type="text"
-                    value={search}
+                    {...getInputProps({
+                      className: 'selectable-dropdown__searchInput',
+                      placeholder: 'Write to search',
+                      type: 'text',
+                    })}
                   />
                   {search &&
                     <button
-                      className="selectable-dropdown__searchIcon"
-                      onClick={() => {
-                        setSearch('')
-                        setFocusedElement('input', { virtual: false })
-                      }}
-                      type="button"
+                      {...getClearInputProps({
+                        className: 'selectable-dropdown__searchIcon',
+                        type: 'button',
+                      })}
                       >
                       &times;
                     </button>
@@ -477,24 +339,19 @@
                 </div>
 
                 <div
-                  className="selectable-dropdown__overflow"
-                  ref={overflowRef()}
+                  {...getContainerProps({
+                    className: 'selectable-dropdown__overflow',
+                  })}
                   >
                   {options.map((option, index) =>
                     <button
-                      className={classNames('selectable-dropdown__option', {
-                        'selectable-dropdown__option--selected': value === option.value,
-                        'selectable-dropdown__option--focused': index === focusedElement,
+                      {...getOptionProps(option, {
+                        className: classNames('selectable-dropdown__option', {
+                          'selectable-dropdown__option--selected': value === option.value,
+                          'selectable-dropdown__option--focused': index === focusedElement,
+                        }),
+                        type: 'button',
                       })}
-                      key={option.value}
-                      onClick={() => {
-                        setValue(option.value)
-                        setSearch('')
-                        setFocused(false)
-                      }}
-                      onMouseEnter={() => setFocusedElement(index)}
-                      ref={focusableRef(index)}
-                      type="button"
                       >
                       <div>
                         {getSearchMatches(option.label).map(term =>
@@ -504,20 +361,6 @@
                     </button>
                   )}
                 </div>
-                <button
-                  className={classNames('selectable-dropdown__bottomOption', {
-                    'selectable-dropdown__option--focused': focusedElement === 'clear',
-                  })}
-                  onClick={() => {
-                    setValue(null)
-                    setFocused(false)
-                  }}
-                  onMouseEnter={() => setFocusedElement('clear')}
-                  ref={focusableRef('clear')}
-                  type="button"
-                  >
-                  Leave without value
-                </button>
               </div>
             }
           </div>
@@ -526,33 +369,33 @@
 
 -
   description: |
-    The same component but fully controlled.
+    To enable scroll virtualization we have to make the following changes from the previous
+    example:
+
+    - Declare the `optionHeight` prop.
+    - Use `viewportOptions` instead of `options`. Because we need the option index to check
+      if it's highlighted or not, we cannot use `viewportOptions.map((option, index) =>`.
+      Instead we need to do this: `viewportOptions.map(({ option, index }) =>`.
+
+      `viewportOptions` is an array of objects with this structure: `{ option, index }`, where
+      `index` is the real index in the available options, not only in the viewport visible options.
+
   inline: false
   code: >
     class Example extends React.PureComponent {
       state = {
-        focused: true,
-        options: [
-          { label: 'Daniel Espinoza', value: 2 },
-          { label: 'Víctor Sánchez', value: 5 },
-          { label: 'Tamara Luque', value: 4 },
-          { label: 'Abraham Barrera', value: 1 },
-          { label: 'Rodrigo Díaz', value: 3 },
-        ],
-        search: 'r',
-        value: 5,
+        fixedHeight: true,
       }
 
-      handleChange = value => {
-        this.setState({ value })
-      }
+      componentWillMount() {
+        this.options = []
 
-      handleFocusedChange = focused => {
-        this.setState({ focused })
-      }
-
-      handleSearchChange = search => {
-        this.setState({ search })
+        for (let i = 1; i <= 10000; i++) {
+          this.options.push({
+            label: `Option ${i}`,
+            value: i,
+          })
+        }
       }
 
       render() {
@@ -561,47 +404,35 @@
             <div style={{ marginBottom: 32 }}>
               <div>
                 <button
-                  onClick={() => this.setState({ focused: !this.state.focused })}
+                  onClick={() => this.setState({ fixedHeight: !this.state.fixedHeight })}
                   type="button"
                   >
-                  {this.state.focused && 'Close menu'}
-                  {!this.state.focused && 'Open menu'}
+                  {this.state.fixedHeight && 'Use variable height'}
+                  {!this.state.fixedHeight && 'Use fixed height'}
                 </button>
-              </div>
-              <div>
-                <input
-                  onChange={event => this.setState({ search: event.target.value })}
-                  placeholder="Search"
-                  type="search"
-                  value={this.state.search}
-                />
               </div>
             </div>
 
             <Selectable
-              blurOnClickOutside={false}
-              focused={this.state.focused}
-              value={this.state.value}
-              onChange={this.handleChange}
-              onFocusedChange={this.handleFocusedChange}
-              onSearchChange={this.handleSearchChange}
-              options={this.state.options}
-              search={this.state.search}
+              blurOnSelect
+              onChange={console.log}
+              onClickOutside={({ setSearch }) => setSearch('')}
+              optionHeight={this.state.fixedHeight ? 40 : null}
+              options={this.options}
               renderer={
                 ({
-                  focusableRef,
-                  focusedElement,
-                  getSearchMatches,
                   focused,
-                  options,
-                  overflowRef,
-                  search,
+                  focusedElement,
+                  getContainerProps,
+                  getClearInputProps,
+                  getInputProps,
+                  getOptionProps,
+                  getSearchMatches,
                   selectedOption,
+                  search,
                   setFocused,
-                  setFocusedElement,
-                  setSearch,
-                  setValue,
                   value,
+                  viewportOptions,
                 }) =>
                   <div
                     className={classNames('selectable-dropdown', {
@@ -611,26 +442,7 @@
                     >
                     <button
                       className="selectable-dropdown__control"
-                      onClick={() => {
-                        if (focused) {
-                          setFocused(false)
-                        }
-                        else {
-                          setFocused(true)
-
-                          // Execute after the next paint
-                          window.requestAnimationFrame(() => {
-                            setFocusedElement('input', { virtual: false })
-
-                            const selectedIndex = options.indexOf(selectedOption)
-
-                            if (selectedIndex !== -1) {
-                              setFocusedElement(selectedIndex)
-                              scrollToFocusedElement()
-                            }
-                          })
-                        }
-                      }}
+                      onClick={() => setFocused(!focused)}
                       type="button"
                       >
                       {selectedOption ? selectedOption.label : 'Select an option'}
@@ -639,74 +451,18 @@
                       <div className="selectable-dropdown__menu">
                         <div className="selectable-dropdown__searchWrapper">
                           <input
-                            className="selectable-dropdown__searchInput"
-                            onChange={event => setSearch(event.target.value)}
-                            onKeyDown={event => {
-                              switch (event.key) {
-                                case 'ArrowDown':
-                                  event.preventDefault()
-
-                                  if (focusedElement === 'clear' || focusedElement === 'input') {
-                                    setFocusedElement(0)
-                                    scrollToFocusedElement()
-                                  }
-                                  else if (focusedElement === options.length - 1) {
-                                    setFocusedElement('clear')
-                                  }
-                                  else {
-                                    setFocusedElement(focusedElement + 1)
-                                    scrollToFocusedElement()
-                                  }
-                                  break
-
-                                case 'ArrowUp':
-                                  event.preventDefault()
-
-                                  if (focusedElement === 'input' || focusedElement === 0) {
-                                    setFocusedElement('clear')
-                                  }
-                                  else if (focusedElement === 'clear') {
-                                    setFocusedElement(options.length - 1)
-                                    scrollToFocusedElement()
-                                  }
-                                  else {
-                                    setFocusedElement(focusedElement - 1)
-                                    scrollToFocusedElement()
-                                  }
-                                  break
-
-                                case 'Enter':
-                                  event.preventDefault()
-
-                                  if (focusedElement === 'input') {
-                                    return
-                                  }
-
-                                  if (focusedElement === 'clear') {
-                                    setValue(null)
-                                  }
-                                  else {
-                                    setValue(options[focusedElement].value)
-                                  }
-
-                                  setSearch('')
-                                  setFocused(false)
-                                  break
-                              }
-                            }}
-                            placeholder="Write to search"
-                            ref={focusableRef('input')}
-                            type="text"
-                            value={search}
+                            {...getInputProps({
+                              className: 'selectable-dropdown__searchInput',
+                              placeholder: 'Write to search',
+                              type: 'text',
+                            })}
                           />
                           {search &&
                             <button
-                              className="selectable-dropdown__searchIcon"
-                              onClick={() => {
-                                setSearch('')
-                                setFocusedElement('input', { virtual: false })
-                              }}
-                              type="button"
+                              {...getClearInputProps({
+                                className: 'selectable-dropdown__searchIcon',
+                                type: 'button',
+                              })}
                               >
                               &times;
                             </button>
@@ -714,24 +470,19 @@
                         </div>
 
                         <div
-                          className="selectable-dropdown__overflow"
-                          ref={overflowRef()}
+                          {...getContainerProps({
+                            className: 'selectable-dropdown__overflow',
+                          })}
                           >
-                          {options.map((option, index) =>
+                          {viewportOptions.map(({ option, index }) =>
                             <button
-                              className={classNames('selectable-dropdown__option', {
-                                'selectable-dropdown__option--selected': value === option.value,
-                                'selectable-dropdown__option--focused': index === focusedElement,
+                              {...getOptionProps(option, {
+                                className: classNames('selectable-dropdown__option', {
+                                  'selectable-dropdown__option--selected': value === option.value,
+                                  'selectable-dropdown__option--focused': index === focusedElement,
+                                }),
+                                type: 'button',
                               })}
-                              key={option.value}
-                              onClick={() => {
-                                setValue(option.value)
-                                setSearch('')
-                                setFocused(false)
-                              }}
-                              onMouseEnter={() => setFocusedElement(index)}
-                              ref={focusableRef(index)}
-                              type="button"
                               >
                               <div>
                                 {getSearchMatches(option.label).map(term =>
@@ -741,20 +492,6 @@
                             </button>
                           )}
                         </div>
-                        <button
-                          className={classNames('selectable-dropdown__bottomOption', {
-                            'selectable-dropdown__option--focused': focusedElement === 'clear',
-                          })}
-                          onClick={() => {
-                            setValue(null)
-                            setFocused(false)
-                          }}
-                          onMouseEnter={() => setFocusedElement('clear')}
-                          ref={focusableRef('clear')}
-                          type="button"
-                          >
-                          Leave without value
-                        </button>
                       </div>
                     }
                   </div>
@@ -773,9 +510,13 @@
 
     - `allOptions`: Sorted options without filtering.
 
+  collapsible: true
+  expanded: false
+
   code: >
     <div>
       <Selectable
+        defaultValue={[]}
         onChange={console.log}
         options={[
           { label: 'Daniel Espinoza', value: 2 },
@@ -787,74 +528,35 @@
         renderer={
           ({
             allOptions,
-            focusableRef,
+            focused,
             focusedElement,
+            getClearInputProps,
+            getInputProps,
+            getOptionProps,
             getSearchMatches,
             options,
-            search,
             selectedOption,
+            search,
             setFocused,
             setFocusedElement,
-            setSearch,
             setValue,
-            value = [],
+            value,
           }) =>
             <div className="e2-select">
               <div className="e2-search-wrapper">
                 <input
-                  className="e2-search"
-                  onChange={event => setSearch(event.target.value)}
-                  onKeyDown={event => {
-                    switch (event.key) {
-                      case 'ArrowDown':
-                        event.preventDefault()
-                        setFocusedElement(
-                          focusedElement === null ? 0 : focusedElement + 1
-                        )
-                        break
-
-                      case 'ArrowUp':
-                        event.preventDefault()
-                        setFocusedElement(
-                          focusedElement === null ? 0 : focusedElement - 1
-                        )
-                        break
-
-                      case 'Enter':
-                        event.preventDefault()
-                        const option = options[focusedElement]
-                        const index = value.indexOf(option.value)
-
-                        if (index === -1) {
-                          setValue([
-                            ...value,
-                            option.value,
-                          ])
-                        }
-                        else {
-                          setValue([
-                            ...value.slice(0, index),
-                            ...value.slice(index + 1),
-                          ])
-                        }
-
-                        break
-                    }
-                  }}
-                  placeholder="Write to search"
-                  ref={focusableRef('input')}
-                  type="text"
-                  value={search}
+                  {...getInputProps({
+                    className: 'e2-search',
+                    placeholder: 'Write to search',
+                    type: 'text',
+                  })}
                 />
-
                 {search &&
                   <button
-                    className="e2-clear-search"
-                    onClick={() => {
-                      setSearch('')
-                      setFocusedElement('input', { virtual: false })
-                    }}
-                    type="button"
+                    {...getClearInputProps({
+                      className: 'e2-clear-search',
+                      type: 'button',
+                    })}
                     >
                     &times;
                   </button>
@@ -863,22 +565,16 @@
 
               {!search &&
                 <label
-                  className={`
-                    e2-option
-                    e2-option--all
-                    ${focusedElement === 'select-all' ? 'e2-option--focused' : ''}
-                  `}
+                  className="e2-option e2-option--all"
                   type="button"
                   >
                   <input
                     checked={value.length === allOptions.length}
                     onChange={event => {
-                      if (event.target.checked) {
-                        setValue(allOptions.map(option => option.value))
-                      }
-                      else {
-                        setValue([])
-                      }
+                      setValue(event.target.checked
+                        ? allOptions.map(option => option.value)
+                        : []
+                      )
                     }}
                     type="checkbox"
                   />
@@ -897,13 +593,12 @@
                 }
                 {options.map((option, index) =>
                   <label
-                    key={option.value}
-                    className={`
-                      e2-option
-                      ${index === focusedElement ? 'e2-option--focused' : ''}
-                    `}
-                    onMouseEnter={() => setFocusedElement(index)}
-                    type="button"
+                    {...getOptionProps(option, {
+                      className: classNames('e2-option', {
+                        'e2-option--focused': index === focusedElement,
+                      }),
+                      onClick: null,
+                    })}
                     >
                     <input
                       checked={value.indexOf(option.value) !== -1}
