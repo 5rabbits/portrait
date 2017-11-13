@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import deburr from 'lodash/deburr'
 import sortBy from 'lodash/sortBy'
 import isNumber from 'lodash/isNumber'
+import isObject from 'lodash/isObject'
 import defaults from 'lodash/defaults'
 import range from 'lodash/range'
 import uniq from 'lodash/uniq'
@@ -472,7 +473,7 @@ export default class Selectable extends PureComponent {
     return {
       ...props,
       onChange: event => {
-        this.setSearch(event.target.value)
+        this.setSearch(isObject(event) ? event.target.value : event)
 
         if (props.onChange) {
           props.onChange(event)
