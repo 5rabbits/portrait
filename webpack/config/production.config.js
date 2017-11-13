@@ -9,6 +9,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'source-map',
+  entry: {
+    portrait: path.resolve('src/components/index.js'),
+  },
   output: {
     publicPath: '../',
   },
