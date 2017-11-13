@@ -22,6 +22,7 @@ exports[`Selectable should allow to render options 1`] = `
 >
   <Selectable
     blurOnClickOutside={true}
+    blurOnSelect={false}
     defaultFocused={false}
     defaultSearch=""
     focused={false}
@@ -48,7 +49,9 @@ exports[`Selectable should allow to render options 1`] = `
     renderer={[Function]}
     search=""
   >
-    <div>
+    <div
+      onMouseLeave={[Function]}
+    >
       <div>
         Option 1
       </div>
@@ -70,6 +73,7 @@ exports[`Selectable should render with minimum props 1`] = `
 >
   <Selectable
     blurOnClickOutside={true}
+    blurOnSelect={false}
     defaultFocused={false}
     defaultSearch=""
     focused={false}
@@ -81,7 +85,9 @@ exports[`Selectable should render with minimum props 1`] = `
     renderer={[Function]}
     search=""
   >
-    <span />
+    <span
+      onMouseLeave={[Function]}
+    />
   </Selectable>
 </ControllableComponent>
 `;

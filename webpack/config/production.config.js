@@ -57,4 +57,11 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
       filename: 'docs/index.html',
     }),
   ],
+
+  // Peer dependencies
+  externals: [
+    'react',
+    'react-dom',
+    'prop-types',
+  ],
 })
