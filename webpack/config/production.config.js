@@ -10,6 +10,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Config().extend('webpack/config/base.config.js').merge({
   devtool: 'source-map',
+  entry: {
+    portrait: path.resolve('src/components/index.js'),
+  },
   output: {
     publicPath: '../',
   },
@@ -19,7 +22,7 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
         test: /\.(css|sass|scss)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use:[
+          use: [
             {
               loader: 'css-loader',
               options: {
@@ -57,5 +60,12 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
       template: path.resolve('docs/index.html'),
       filename: 'docs/index.html',
     }),
+  ],
+
+  // Peer dependencies
+  externals: [
+    'react',
+    'react-dom',
+    'prop-types',
   ],
 })

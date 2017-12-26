@@ -254,6 +254,25 @@ describe('Selectable', () => {
         ])
       })
 
+      it('should work with components that pass the new value directly', () => {
+        const component = mount(
+          <Selectable
+            options={[
+              { label: 'Option 1', value: 1 },
+              { label: 'Option 10', value: 10 },
+              { label: 'Option 5', value: 5 },
+            ]}
+            renderer={({ getInputProps }) =>
+              <input {...getInputProps()} />
+            }
+          />,
+        )
+
+        component.find('input').prop('onChange')('test')
+
+        expect(component.instance().getWrappedInstance().getSearch()).toBe('test')
+      })
+
       it('should invoke the input onChange prop', () => {
         const onChange = jest.fn()
         const component = mount(

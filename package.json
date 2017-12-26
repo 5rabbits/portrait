@@ -1,6 +1,6 @@
 {
   "name": "portrait",
-  "version": "0.8.0",
+  "version": "0.8.1-beta.3",
   "description": "Base design for all 5Rabbits products",
   "keywords": [
     "portrait",
@@ -30,7 +30,7 @@
     "url": "https://github.com/5rabbits/portrait"
   },
   "scripts": {
-    "profile": "NODE_ENV=production webpack --progress --config webpack/webpack.config.js --profile --json > webpack.stats.json",
+    "profile": "NODE_ENV=production webpack --progress --config webpack/webpack.config.js --json > webpack.stats.json",
     "build": "NODE_ENV=production webpack --progress --config webpack/webpack.config.js",
     "build-watch": "NODE_ENV=production webpack --progress --config webpack/webpack.config.js --watch",
     "dev": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.js --hot --inline --content-base lib/docs",
@@ -100,7 +100,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.0",
-    "react": "^15.5.0 || ^16.0.0"
+    "react": "^15.5.0 || ^16.0.0",
+    "react-dom": "^15.5.0 || ^16.0.0"
   },
   "engines": {
     "node": ">=6.0.0"

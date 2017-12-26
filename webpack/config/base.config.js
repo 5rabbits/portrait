@@ -1,21 +1,11 @@
 /* eslint-disable no-var, prefer-template, object-shorthand */
 
 var path = require('path')
-var webpack = require('webpack')
 var Config = require('webpack-config').default
 var DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin')
 
 module.exports = new Config().merge({
   cache: true,
-  entry: {
-    portrait: path.resolve('src/components/index.js'),
-    'docs/index': [
-      'bootstrap-sass/assets/javascripts/bootstrap',
-      'font-awesome/css/font-awesome.css',
-      path.resolve('docs/entry.js'),
-      path.resolve('docs/theme.scss'),
-    ],
-  },
   output: {
     path: path.resolve('lib'),
     filename: '[name].js',

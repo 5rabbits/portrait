@@ -11,6 +11,15 @@ module.exports = new Config().extend('webpack/config/base.config.js').merge({
     port: process.env.PORT || 8080,
     historyApiFallback: true,
   },
+  entry: {
+    portrait: path.resolve('src/components/index.js'),
+    'docs/index': [
+      'bootstrap-sass/assets/javascripts/bootstrap',
+      'font-awesome/css/font-awesome.css',
+      path.resolve('docs/entry.js'),
+      path.resolve('docs/theme.scss'),
+    ],
+  },
   output: {
     publicPath: '/',
   },
