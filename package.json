@@ -99,8 +99,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.0",
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0"
+    "react": "^15.5.0 || ^16.0.0",
+    "react-dom": "^15.5.0 || ^16.0.0"
   },
   "engines": {
     "node": ">=6.0.0"
