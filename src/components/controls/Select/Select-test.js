@@ -1940,6 +1940,23 @@ describe('Select', () => {
         expect(filtered).toBe(options)
       })
     })
+
+    it('allows to search special characters', () => {
+      const filtered = defaultOptionsFilter({
+        cleanDiacritics: deburr,
+        search: '( * /',
+        options: [
+          { label: '(test*/option)' },
+          { label: 'óption 27' },
+          { label: 'Ôption 10' },
+          { label: 'Option 23' },
+        ],
+      })
+
+      expect(filtered).toEqual([
+        { label: '(test*/option)' },
+      ])
+    })
   })
 
   describe('defaultPlaceholder', () => {
