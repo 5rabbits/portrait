@@ -1,5 +1,10 @@
+import escapeRegExp from 'lodash/escapeRegExp'
+
 export default ({ cleanDiacritics, option, search }) => {
-  const pattern = `(${cleanDiacritics(search.trim()).split(/\s+/).join('|')})`
+  const pattern = `(${cleanDiacritics(search.trim())
+    .split(/\s+/)
+    .map(escapeRegExp)
+    .join('|')})`
   const regexp = new RegExp(pattern, 'ig')
   const terms = []
   let currentIndex = 0

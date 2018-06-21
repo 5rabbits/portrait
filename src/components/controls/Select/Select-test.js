@@ -1906,6 +1906,35 @@ describe('Select', () => {
         },
       ])
     })
+
+    it('highlights special characters', () => {
+      const terms = defaultOptionSearchTerms({
+        cleanDiacritics: deburr,
+        option: { label: 'hello (world)' },
+        search: '(wor',
+      })
+
+      expect(terms).toEqual([
+        {
+          text: 'hello ',
+          matches: false,
+          fromIndex: 0,
+          toIndex: 6,
+        },
+        {
+          text: '(wor',
+          matches: true,
+          fromIndex: 6,
+          toIndex: 10,
+        },
+        {
+          text: 'ld)',
+          matches: false,
+          fromIndex: 10,
+          toIndex: 13,
+        },
+      ])
+    })
   })
 
   describe('defaultOptionsFilter', () => {
