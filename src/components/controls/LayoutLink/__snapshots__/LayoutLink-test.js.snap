@@ -4,6 +4,7 @@ exports[`LayoutLink should render with minimum props 1`] = `
 <LayoutLink
   active={false}
   className={null}
+  disabled={false}
   href="#"
   onClick={null}
 >

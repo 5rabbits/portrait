@@ -18,4 +18,12 @@ $transition-duration: 200ms;
     padding: 4px 10px;
     text-decoration: none;
   }
+
+  &.LayoutLink--disabled,
+  &.LayoutLink--disabled:hover {
+    background: transparent;
+    padding: 4px;
+    color: $default-disabled-color;
+    cursor: not-allowed;
+  }
 }

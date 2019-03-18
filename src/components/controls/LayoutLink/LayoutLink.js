@@ -24,6 +24,11 @@ export default class LayoutLink extends PureComponent {
     className: PropTypes.string,
 
     /**
+     * Whether the link is disabled or not.
+     */
+    disabled: PropTypes.bool,
+
+    /**
      * Optional link href.
      */
     href: PropTypes.string,
@@ -37,6 +42,7 @@ export default class LayoutLink extends PureComponent {
   static defaultProps = {
     active: false,
     className: null,
+    disabled: false,
     href: '#',
     onClick: null,
   }
@@ -44,21 +50,26 @@ export default class LayoutLink extends PureComponent {
   handleClick = event => {
     event.preventDefault()
 
+    if (this.props.disabled) {
+      return
+    }
+
     if (this.props.onClick) {
       this.props.onClick(event)
     }
   }
 
   render() {
-    const { active, children, className, href, onClick, ...other } = this.props
+    const { active, children, className, disabled, href, onClick, ...other } = this.props
 
     return (
       <a
         className={cx('LayoutLink', className, {
           'LayoutLink--active': active,
+          'LayoutLink--disabled': disabled,
         })}
         href={href}
-        onClick={href === '#' ? this.handleClick : onClick}
+        onClick={(href === '#' || disabled) ? this.handleClick : onClick}
         {...other}
         >
         {children}

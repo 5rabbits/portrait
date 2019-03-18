@@ -23,6 +23,7 @@ exports[`FiltersForm if context.toggleFilters is defined should render the close
             <LayoutLink
               active={false}
               className={null}
+              disabled={false}
               href="#"
               onClick={[Function]}
             >

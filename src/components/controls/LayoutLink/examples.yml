@@ -1,10 +1,11 @@
--
-  description: Default state.
+- description: Default state.
   code: >
     <LayoutLink>Toggle panel</LayoutLink>
 
--
-  description: Active state.
+- description: Active state.
   code: >
     <LayoutLink active>Toggle panel</LayoutLink>
 
+- description: Disabled.
+  code: >
+    <LayoutLink disabled>Disabled link</LayoutLink>
